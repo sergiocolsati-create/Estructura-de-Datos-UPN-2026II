@@ -1,0 +1,116 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\lista_enlazada_simple\\lista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|solutionrelative:lista_enlazada_simple\\lista.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|c:\\users\\pc\\onedrive\\desktop\\lista_enlazada_simple\\lista_enlazada_simple\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|solutionrelative:lista_enlazada_simple\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\lista_enlazada_simple\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|solutionrelative:lista_enlazada_simple\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\lista_enlazada_simple\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|solutionrelative:lista_enlazada_simple\\form1.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\lista_enlazada_simple\\nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5519C13B-CE16-48B7-BEE7-C18140A18143}|Lista_enlazada_simple\\Lista_enlazada_simple.csproj|solutionrelative:lista_enlazada_simple\\nodo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Nodo.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Nodo.cs",
+              "RelativeDocumentMoniker": "Lista_enlazada_simple\\Nodo.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Nodo.cs",
+              "RelativeToolTip": "Lista_enlazada_simple\\Nodo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T16:26:35.21Z",
+              "IsPinned": true
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:130:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Lista.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Lista.cs",
+              "RelativeDocumentMoniker": "Lista_enlazada_simple\\Lista.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Lista.cs",
+              "RelativeToolTip": "Lista_enlazada_simple\\Lista.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAwwE4AAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T16:27:08.459Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Form1.Designer.cs",
+              "RelativeDocumentMoniker": "Lista_enlazada_simple\\Form1.Designer.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Form1.Designer.cs",
+              "RelativeToolTip": "Lista_enlazada_simple\\Form1.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAANkAAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T05:16:55.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Form1.cs [Dise\u00F1o]",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Form1.cs",
+              "RelativeDocumentMoniker": "Lista_enlazada_simple\\Form1.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Form1.cs [Dise\u00F1o]",
+              "RelativeToolTip": "Lista_enlazada_simple\\Form1.cs [Dise\u00F1o]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-04T05:16:52.477Z",
+              "EditorCaption": " [Dise\u00F1o]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Form1.cs",
+              "RelativeDocumentMoniker": "Lista_enlazada_simple\\Form1.cs",
+              "ToolTip": "C:\\Users\\PC\\OneDrive\\Desktop\\Lista_enlazada_simple\\Lista_enlazada_simple\\Form1.cs",
+              "RelativeToolTip": "Lista_enlazada_simple\\Form1.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABIAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-28T17:16:04.749Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
