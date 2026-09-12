@@ -1,0 +1,21 @@
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
+C:\Users\JHON\Desktop\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe.config
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.exe
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\bin\Debug\WindowsFormsApp1.pdb
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.AssemblyReference.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Form1.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.FormHistorial.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.Properties.Resources.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.GenerateResource.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.csproj.CoreCompileInputs.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.exe
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\lab22\WindowsFormsApp1\WindowsFormsApp1\obj\Debug\WindowsFormsApp1.pdb
