@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,66 +14,83 @@ namespace WindowsFormsApp1
 {
     public partial class FormHistorial : Form
     {
-        private ListaDoble historial = new ListaDoble();
-        private int indiceActual = -1;
+
 
         public FormHistorial()
         {
             InitializeComponent();
         }
+        ListaDoble_Nav H = new ListaDoble_Nav();// definimos la listadoble "H"
 
-        private void btnVisitar_Click(object sender, EventArgs e)
+        private void btnVisitar_Click(object sender, EventArgs e)// Boton equivalente a insertar o insertar al final
         {
-            int numeroPagina;
-            if (!int.TryParse(txtPagina.Text, out numeroPagina))
+            try
             {
-                MessageBox.Show("Ingresa un número de página válido.");
-                return;
+                H.visitar(txtPagina.Text);// agrega el url ingresado
+                lblActual.Text = "Página actual: " + txtPagina.Text;// actualiza el label
+                webB.Navigate(txtPagina.Text);// muestra en el Webbrowser el url ingresado
+                txtPagina.Text = "";// limpia el textbox
+                txtPagina.Focus();// vuelva a colocar el marcador en textbox
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Debe ingresar una direccion web");
+
             }
 
-            if (historial.agregarAlFinal(numeroPagina))
-            {
-                historial.imprimirAdelante(lstHistorial);
-                indiceActual = lstHistorial.Items.Count - 1;
-                MostrarActual();
-                txtPagina.Text = "";
-                txtPagina.Focus();
-            }
+            H.listar(lstHistorial);// list automaticamente el historial
+
         }
 
         private void btnAtrás_Click(object sender, EventArgs e)
         {
-            if (indiceActual > 0)
+            try
             {
-                indiceActual--;
-                MostrarActual();
+                string url = H.Ante();// definimos url como el resultado de H.ante()
+                txtPagina.Text = url;//-- lamamos a txtpagina y le asignamos el valor de url
+                lblActual.Text = "Página actual: " + url;// actualizamos lbl
+                webB.Navigate(url);// actualizamos webbrowser
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("No hay páginas anteriores en el historial.");
+                MessageBox.Show("No hay historial disponible.");
+
             }
+
         }
 
-        private void btnAdelante_Click(object sender, EventArgs e)
+        private void btnAdelante_Click(object sender, EventArgs e)// misma logica que el boton atras, solo que con la funcion adelante
         {
-            if (indiceActual >= 0 && indiceActual < lstHistorial.Items.Count - 1)
+            try
             {
-                indiceActual++;
-                MostrarActual();
+                string url = H.Sgte();
+                txtPagina.Text = url;
+                lblActual.Text = "Página actual: " + url;
+                webB.Navigate(url);
             }
-            else
+            catch (Exception)
             {
-                MessageBox.Show("No hay páginas siguientes en el historial.");
+                MessageBox.Show("No hay historial disponible.");
             }
+
         }
 
-        private void MostrarActual()
+        private void btnClean_Click(object sender, EventArgs e)// eliminacion de nodos
         {
-            if (indiceActual >= 0 && indiceActual < lstHistorial.Items.Count)
+            try
             {
-                lblActual.Text = "Página actual: " + lstHistorial.Items[indiceActual];
-                lstHistorial.SelectedIndex = indiceActual;
+                H.delete(txtPagina.Text);
+                string url = H.Ante(); // nos movemos al anterior tras borrar
+                txtPagina.Text = url;
+                lblActual.Text = "Página actual: " + url;
+                webB.Navigate(url);
             }
+            catch (Exception)
+            {
+
+                MessageBox.Show("No se ha seleccionado que eliminar");
+            }
+            H.listar(lstHistorial);
         }
     }
 }

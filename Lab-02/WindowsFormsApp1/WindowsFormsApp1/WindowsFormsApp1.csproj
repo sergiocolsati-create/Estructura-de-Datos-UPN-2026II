@@ -58,8 +58,10 @@
     <Compile Include="FormHistorial.Designer.cs">
       <DependentUpon>FormHistorial.cs</DependentUpon>
     </Compile>
+    <Compile Include="ListaDobleNav.cs" />
     <Compile Include="ListaEnlazadaDoble.cs" />
     <Compile Include="Nodo.cs" />
+    <Compile Include="Nododoble.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
