@@ -1,0 +1,33 @@
+C:\Users\JHON\Desktop\lab4\lab4\lab4\bin\Debug\lab4.exe.config
+C:\Users\JHON\Desktop\lab4\lab4\lab4\bin\Debug\lab4.exe
+C:\Users\JHON\Desktop\lab4\lab4\lab4\bin\Debug\lab4.pdb
+C:\Users\JHON\Desktop\lab4\lab4\lab4\obj\Debug\lab4.csproj.AssemblyReference.cache
+C:\Users\JHON\Desktop\lab4\lab4\lab4\obj\Debug\lab4.Form1.resources
+C:\Users\JHON\Desktop\lab4\lab4\lab4\obj\Debug\lab4.Properties.Resources.resources
+C:\Users\JHON\Desktop\lab4\lab4\lab4\obj\Debug\lab4.csproj.GenerateResource.cache
+C:\Users\JHON\Desktop\lab4\lab4\lab4\obj\Debug\lab4.csproj.CoreCompileInputs.cache
+C:\Users\JHON\Desktop\lab4\lab4\lab4\obj\Debug\lab4.exe
+C:\Users\JHON\Desktop\lab4\lab4\lab4\obj\Debug\lab4.pdb
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\bin\Debug\lab4.exe.config
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\bin\Debug\lab4.exe
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\bin\Debug\lab4.pdb
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.csproj.AssemblyReference.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.Form1.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.Form2.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.Properties.Resources.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.csproj.GenerateResource.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.csproj.CoreCompileInputs.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.exe
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\lab4\lab4\lab4\obj\Debug\lab4.pdb
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\bin\Debug\lab4.exe.config
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\bin\Debug\lab4.exe
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\bin\Debug\lab4.pdb
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.csproj.AssemblyReference.cache
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.Form1.resources
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.Form2.resources
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.Properties.Resources.resources
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.csproj.GenerateResource.cache
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.csproj.CoreCompileInputs.cache
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.exe
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.pdb
+C:\Users\PC\OneDrive\Desktop\lab4\lab4\obj\Debug\lab4.Evaluacion_de_Expresiones.resources
