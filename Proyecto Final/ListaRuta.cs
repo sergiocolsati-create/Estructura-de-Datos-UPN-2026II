@@ -180,5 +180,18 @@ namespace Shalom
             }
             return textos;
         }
+        public Envio[] ObtenerEnvios()
+        {
+            Envio[] envios = new Envio[ContarParadas()];
+            int i = 0;
+            NodoParada actual = pri;
+            while (actual != null)
+            {
+                envios[i] = actual.Dato;
+                i++;
+                actual = actual.Sgte;
+            }
+            return envios;
+        }
     }
 }

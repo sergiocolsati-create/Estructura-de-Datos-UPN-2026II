@@ -43,5 +43,18 @@ namespace Shalom
                 actual = actual.Sgte;
             }
         }
+        // Una línea por evento, en orden cronológico
+        public string ObtenerTexto()
+        {
+            string texto = "";
+            NodoEvento actual = pri;
+            while (actual != null)
+            {
+                EventoRastreo ev = actual.Dato;
+                texto += ev.Fecha.ToString("dd/MM HH:mm") + " - " + ev.Estado + " - " + ev.Ubicacion + Environment.NewLine;
+                actual = actual.Sgte;
+            }
+            return texto;
+        }
     }
 }
