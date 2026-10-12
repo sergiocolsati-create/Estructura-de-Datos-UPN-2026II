@@ -51,7 +51,7 @@ namespace Shalom
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
+            this.lblSeleccionado = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button8 = new System.Windows.Forms.Button();
@@ -78,19 +78,19 @@ namespace Shalom
             this.menuArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miSalir});
             this.menuArchivo.Name = "menuArchivo";
-            this.menuArchivo.Size = new System.Drawing.Size(73, 24);
+            this.menuArchivo.Size = new System.Drawing.Size(60, 19);
             this.menuArchivo.Text = "Archivo";
             // 
             // miSalir
             // 
             this.miSalir.Name = "miSalir";
-            this.miSalir.Size = new System.Drawing.Size(121, 26);
+            this.miSalir.Size = new System.Drawing.Size(96, 22);
             this.miSalir.Text = "Salir";
             // 
             // menuOperaciones
             // 
             this.menuOperaciones.Name = "menuOperaciones";
-            this.menuOperaciones.Size = new System.Drawing.Size(106, 24);
+            this.menuOperaciones.Size = new System.Drawing.Size(85, 19);
             this.menuOperaciones.Text = "Operaciones";
             // 
             // menuPrincipal
@@ -103,19 +103,19 @@ namespace Shalom
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Padding = new System.Windows.Forms.Padding(14, 8, 0, 8);
-            this.menuPrincipal.Size = new System.Drawing.Size(876, 40);
+            this.menuPrincipal.Size = new System.Drawing.Size(876, 35);
             this.menuPrincipal.TabIndex = 3;
             // 
             // menuAyuda
             // 
             this.menuAyuda.Name = "menuAyuda";
-            this.menuAyuda.Size = new System.Drawing.Size(65, 24);
+            this.menuAyuda.Size = new System.Drawing.Size(53, 19);
             this.menuAyuda.Text = "Ayuda";
             // 
             // lblEstado
             // 
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(855, 20);
+            this.lblEstado.Size = new System.Drawing.Size(855, 17);
             this.lblEstado.Spring = true;
             this.lblEstado.Text = "Listo";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -123,7 +123,7 @@ namespace Shalom
             // lblSesion
             // 
             this.lblSesion.Name = "lblSesion";
-            this.lblSesion.Size = new System.Drawing.Size(0, 20);
+            this.lblSesion.Size = new System.Drawing.Size(0, 17);
             // 
             // barraEstado
             // 
@@ -131,10 +131,10 @@ namespace Shalom
             this.barraEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEstado,
             this.lblSesion});
-            this.barraEstado.Location = new System.Drawing.Point(0, 556);
+            this.barraEstado.Location = new System.Drawing.Point(0, 560);
             this.barraEstado.Name = "barraEstado";
             this.barraEstado.Padding = new System.Windows.Forms.Padding(1, 0, 20, 0);
-            this.barraEstado.Size = new System.Drawing.Size(876, 26);
+            this.barraEstado.Size = new System.Drawing.Size(876, 22);
             this.barraEstado.SizingGrip = false;
             this.barraEstado.TabIndex = 2;
             // 
@@ -166,7 +166,7 @@ namespace Shalom
             this.label11.AutoSize = true;
             this.label11.Location = new System.Drawing.Point(10, 44);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(84, 20);
+            this.label11.Size = new System.Drawing.Size(66, 15);
             this.label11.TabIndex = 4;
             this.label11.Text = "Entregados";
             // 
@@ -175,7 +175,7 @@ namespace Shalom
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(39, 16);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(17, 20);
+            this.label7.Size = new System.Drawing.Size(13, 15);
             this.label7.TabIndex = 0;
             this.label7.Text = "0";
             // 
@@ -194,7 +194,7 @@ namespace Shalom
             this.label10.AutoSize = true;
             this.label10.Location = new System.Drawing.Point(18, 44);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(55, 20);
+            this.label10.Size = new System.Drawing.Size(44, 15);
             this.label10.TabIndex = 3;
             this.label10.Text = "En ruta";
             // 
@@ -203,7 +203,7 @@ namespace Shalom
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(32, 16);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(17, 20);
+            this.label6.Size = new System.Drawing.Size(13, 15);
             this.label6.TabIndex = 0;
             this.label6.Text = "0";
             // 
@@ -222,7 +222,7 @@ namespace Shalom
             this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(1, 44);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(85, 20);
+            this.label9.Size = new System.Drawing.Size(68, 15);
             this.label9.TabIndex = 2;
             this.label9.Text = "En almacén";
             // 
@@ -231,7 +231,7 @@ namespace Shalom
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(32, 16);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 20);
+            this.label5.Size = new System.Drawing.Size(13, 15);
             this.label5.TabIndex = 0;
             this.label5.Text = "0";
             // 
@@ -250,7 +250,7 @@ namespace Shalom
             this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(11, 44);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(57, 20);
+            this.label8.Size = new System.Drawing.Size(45, 15);
             this.label8.TabIndex = 1;
             this.label8.Text = "En cola";
             // 
@@ -259,7 +259,7 @@ namespace Shalom
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(28, 16);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 20);
+            this.label4.Size = new System.Drawing.Size(13, 15);
             this.label4.TabIndex = 0;
             this.label4.Text = "0";
             // 
@@ -280,7 +280,7 @@ namespace Shalom
             // 
             this.textBox1.Location = new System.Drawing.Point(138, 36);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 27);
+            this.textBox1.Size = new System.Drawing.Size(160, 23);
             this.textBox1.TabIndex = 6;
             // 
             // button2
@@ -297,7 +297,7 @@ namespace Shalom
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Location = new System.Drawing.Point(49, 63);
             this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(160, 20);
+            this.linkLabel2.Size = new System.Drawing.Size(126, 15);
             this.linkLabel2.TabIndex = 5;
             this.linkLabel2.TabStop = true;
             this.linkLabel2.Text = "Abrir rastreo completo";
@@ -307,7 +307,7 @@ namespace Shalom
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(49, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 20);
+            this.label1.Size = new System.Drawing.Size(66, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "N° de guía:";
             // 
@@ -316,7 +316,7 @@ namespace Shalom
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Controls.Add(this.linkLabel1);
             this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.lblSeleccionado);
             this.groupBox3.Controls.Add(this.label2);
             this.groupBox3.Location = new System.Drawing.Point(238, 301);
             this.groupBox3.Name = "groupBox3";
@@ -373,7 +373,7 @@ namespace Shalom
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Location = new System.Drawing.Point(225, 181);
             this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(201, 20);
+            this.linkLabel1.Size = new System.Drawing.Size(157, 15);
             this.linkLabel1.TabIndex = 4;
             this.linkLabel1.TabStop = true;
             this.linkLabel1.Text = "Ver paquetes asignados(pila)";
@@ -386,22 +386,23 @@ namespace Shalom
             this.button1.TabIndex = 2;
             this.button1.Text = "Ver carga del vehículo";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // label3
+            // lblSeleccionado
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(531, 211);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(17, 20);
-            this.label3.TabIndex = 1;
-            this.label3.Text = "0";
+            this.lblSeleccionado.AutoSize = true;
+            this.lblSeleccionado.Location = new System.Drawing.Point(531, 211);
+            this.lblSeleccionado.Name = "lblSeleccionado";
+            this.lblSeleccionado.Size = new System.Drawing.Size(13, 15);
+            this.lblSeleccionado.TabIndex = 1;
+            this.lblSeleccionado.Text = "0";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(412, 211);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 20);
+            this.label2.Size = new System.Drawing.Size(80, 15);
             this.label2.TabIndex = 0;
             this.label2.Text = "Seleccionado:";
             // 
@@ -466,6 +467,7 @@ namespace Shalom
             this.button4.TabIndex = 1;
             this.button4.Text = "Panel Principal";
             this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button4_Click);
             // 
             // button3
             // 
@@ -479,7 +481,7 @@ namespace Shalom
             // 
             // RastreoYLogística
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(876, 582);
@@ -539,7 +541,7 @@ namespace Shalom
         private DataGridView dataGridView1;
         private LinkLabel linkLabel1;
         private Button button1;
-        private Label label3;
+        private Label lblSeleccionado;
         private DataGridViewTextBoxColumn Column1;
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;

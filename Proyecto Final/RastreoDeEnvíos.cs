@@ -18,10 +18,8 @@ namespace Shalom
         {
             InitializeComponent();
 
-            this.Load += RastreoDeEnvíos_Load;
-            button1.Click += button1_Click;
-            button2.Click += button2_Click;
-            button4.Click += button4_Click;
+            // CellClick responde al clic en cualquier parte de la fila (CellContentClick solo sobre el texto)
+            dataGridView1.CellClick += dataGridView1_CellContentClick;
         }
 
         private void RastreoDeEnvíos_Load(object sender, EventArgs e)
@@ -33,15 +31,17 @@ namespace Shalom
             comboBox1.Items.Add(EstadoEnvio.EnReparto);
             comboBox1.Items.Add(EstadoEnvio.Entregado);
             comboBox1.Items.Add(EstadoEnvio.Incidencia);
-           
 
-            comboBox3.Items.Add(EstadoEnvio.Registrado);
-            comboBox3.Items.Add(EstadoEnvio.EnPreparacion);
-            comboBox3.Items.Add(EstadoEnvio.EnTransito);
-            comboBox3.Items.Add(EstadoEnvio.EnReparto);
+
+            // Desde Rastreo solo se puede ENTREGAR o registrar una INCIDENCIA.
+            // Los demás estados los cambian sus formularios (cola, almacén, pila, ruta),
+            // así el paquete nunca queda en una estructura que no corresponde a su estado.
             comboBox3.Items.Add(EstadoEnvio.Entregado);
             comboBox3.Items.Add(EstadoEnvio.Incidencia);
-           
+            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            comboBox1.SelectedIndex = 0;
+
 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ReadOnly = true;
@@ -113,7 +113,7 @@ namespace Shalom
             MostrarDetalle(envio);
         }
 
-        // Cambia el estado del envío seleccionado (botón "Actualizar estado").
+        // ---------- Actualizar estado: Entregado o Incidencia (se guarda en SQL) ----------
         private void button4_Click(object sender, EventArgs e)
         {
             if (envioSeleccionado == null)
@@ -129,12 +129,33 @@ namespace Shalom
             }
 
             EstadoEnvio nuevoEstado = (EstadoEnvio)comboBox3.SelectedItem;
-            envioSeleccionado.CambiarEstado(nuevoEstado, "Rastreo", textBox6.Text);
+            string observacion = textBox6.Text.Trim();
+
+            try
+            {
+                string error = nuevoEstado == EstadoEnvio.Entregado
+                    ? Sistema.MarcarEntregado(envioSeleccionado, observacion)
+                    : Sistema.RegistrarIncidencia(envioSeleccionado, observacion);
+
+                if (error != "")
+                {
+                    MessageBox.Show(error, "Actualizar estado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             MostrarDetalle(envioSeleccionado);
             MostrarTodos();
             textBox6.Text = "";
-            MessageBox.Show("Estado actualizado a " + nuevoEstado + ".");
+            MessageBox.Show(nuevoEstado == EstadoEnvio.Entregado
+                ? "Envío " + envioSeleccionado.Codigo + " entregado."
+                : "Incidencia registrada en " + envioSeleccionado.Codigo + ".", "Actualizar estado");
         }
 
         private void MostrarTodos()
@@ -161,6 +182,7 @@ namespace Shalom
             textBox5.Text = placa;
 
             envio.Historial.Mostrar(dataGridView2);
+            MostrarResumen(envio);          // ← Llena el ListBox con todo el recorrido
         }
 
         private void LimpiarDetalle()
@@ -171,11 +193,39 @@ namespace Shalom
             textBox4.Text = "";
             textBox5.Text = "";
             dataGridView2.Rows.Clear();
+            MostrarResumen(null);           // ← Vacía el ListBox
         }
+
 
         private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
+
+        // Todo lo que ha pasado con el envío, una línea por ítem
+        private void MostrarResumen(Envio envio)
+        {
+            lstResumen.Items.Clear();
+            if (envio == null) return;
+
+            lstResumen.Items.Add("Origen: " + envio.SedeOrigen.Nombre);
+            lstResumen.Items.Add("Destino: " + envio.SedeDestino.Nombre);
+            lstResumen.Items.Add("Remitente: " + envio.Remitente.Nombres + " / " + envio.Remitente.NumeroDocumento);
+            lstResumen.Items.Add("Destinatario: " + envio.Destinatario.Nombres + " / " + envio.Destinatario.NumeroDocumento);
+            lstResumen.Items.Add("Paquete: " + envio.Tipo + ", " + envio.PesoKg + " kg / " + envio.Descripcion);
+            lstResumen.Items.Add("Pago: " + envio.ModalidadPago + " / S/ " + envio.Precio.ToString("0.00"));
+            lstResumen.Items.Add("Vehículo: " + (envio.PlacaVehiculo ?? "-"));
+            lstResumen.Items.Add("Clave de entrega: " + envio.ClaveSeguridad);
+            lstResumen.Items.Add("");
+            lstResumen.Items.Add("Recorrido:");
+
+            // ObtenerTexto() devuelve una línea por evento; se separan para agregarlas como ítems
+            string[] eventos = envio.Historial.ObtenerTexto()
+                .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            lstResumen.Items.AddRange(eventos);
+        }
+        private void lstResumen_SelectedIndexChanged(object sender, EventArgs e)
+        {
+        }
+
     }
 }

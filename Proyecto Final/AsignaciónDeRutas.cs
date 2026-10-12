@@ -34,19 +34,12 @@ namespace Shalom
             botonesCadena = new Button[] { button1, button2, button3, button4, button5 };
             flechas = new Label[] { label3, label4, label5, label6 };
 
-      
+
             comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-            button1.Click += button1_Click;
-            button2.Click += button2_Click;
-            button3.Click += button3_Click;
-            button4.Click += button4_Click;
-            button5.Click += button5_Click;
-            button7.Click += button7_Click;   // Insertar después
-            button8.Click += button8_Click;   // Eliminar parada
-            button9.Click += button9_Click;   // Confirmar ruta
+
         }
 
-       
+
         private void AsignaciónDeRutas_Load_1(object sender, EventArgs e)
         {
             if (comboBox1.Items.Count > 0)
@@ -59,17 +52,61 @@ namespace Shalom
             ActualizarPantalla();
         }
 
+        // "Paquetes por asignar" = la PILA del vehículo, del tope a la base.
+        // Solo el tope puede pasar a la ruta (LIFO), por eso queda seleccionado.
         private void CargarPaquetesDisponibles()
         {
             listBox1.Items.Clear();
             if (vehiculoActual == null) return;
 
-            Envio[] todos = vehiculoActual.Carga.ObtenerTodos();
-            for (int i = 0; i < todos.Length; i++)
+            Envio[] pila = vehiculoActual.Carga.ObtenerTodos();
+            for (int i = 0; i < pila.Length; i++)
+                listBox1.Items.Add(pila[i]);
+
+            if (listBox1.Items.Count > 0)
+                listBox1.SelectedIndex = 0;   // El tope
+        }
+
+        // Revisa que el usuario haya elegido el tope de la pila
+        private bool EsElTope()
+        {
+            Envio seleccionado = listBox1.SelectedItem as Envio;
+            Envio tope = vehiculoActual.Carga.VerTope();
+
+            if (tope == null)
             {
-                if (!vehiculoActual.Ruta.Contiene(todos[i].Codigo))
-                    listBox1.Items.Add(todos[i]);
+                MessageBox.Show("No hay paquetes por asignar en este vehículo.", "Rutas");
+                return false;
             }
+            if (seleccionado != tope)
+            {
+                MessageBox.Show("Solo puede asignarse el paquete del TOPE de la pila (" + tope.Codigo +
+                                "): es el último que se cargó y el primero que sale (LIFO).",
+                                "Rutas", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                listBox1.SelectedIndex = 0;
+                return false;
+            }
+            return true;
+        }
+
+        // Ejecuta una operación de Sistema y muestra el error si lo hay
+        private void Ejecutar(Func<string> operacion, string titulo)
+        {
+            try
+            {
+                string error = operacion();
+                if (error != "")
+                {
+                    MessageBox.Show(error, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            ActualizarPantalla();
         }
 
         private void ActualizarCadena()
@@ -125,21 +162,14 @@ namespace Shalom
             MessageBox.Show("Parada: " + textos[posicion], "Detalle de parada");
         }
 
+        // ---------- Agregar al final: tope de la pila → última parada ----------
         private void button6_Click(object sender, EventArgs e)
         {
-            if (vehiculoActual == null) return;
-
-            Envio seleccionado = listBox1.SelectedItem as Envio;
-            if (seleccionado == null)
-            {
-                MessageBox.Show("Seleccione un paquete de la lista.");
-                return;
-            }
-
-            vehiculoActual.Ruta.AgregarAlFinal(seleccionado);
-            ActualizarPantalla();
+            if (vehiculoActual == null || !EsElTope()) return;
+            Ejecutar(() => Sistema.AsignarTope(vehiculoActual, null), "Agregar al final");
         }
 
+        // ---------- Insertar después: tope de la pila → después de la parada elegida ----------
         private void button7_Click(object sender, EventArgs e)
         {
             if (vehiculoActual == null) return;
@@ -149,22 +179,13 @@ namespace Shalom
                 MessageBox.Show("Seleccione primero la parada de referencia en la tabla.");
                 return;
             }
-
-            Envio seleccionado = listBox1.SelectedItem as Envio;
-            if (seleccionado == null)
-            {
-                MessageBox.Show("Seleccione un paquete de la lista.");
-                return;
-            }
+            if (!EsElTope()) return;
 
             string codigoReferencia = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-
-            if (vehiculoActual.Ruta.InsertarDespues(codigoReferencia, seleccionado))
-                ActualizarPantalla();
-            else
-                MessageBox.Show("No se pudo insertar la parada.");
+            Ejecutar(() => Sistema.AsignarTope(vehiculoActual, codigoReferencia), "Insertar después");
         }
 
+        // ---------- Eliminar parada: sale de la ruta y vuelve al tope del vehículo ----------
         private void button8_Click(object sender, EventArgs e)
         {
             if (vehiculoActual == null) return;
@@ -176,10 +197,10 @@ namespace Shalom
             }
 
             string codigo = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            vehiculoActual.Ruta.EliminarParada(codigo);
-            ActualizarPantalla();
+            Ejecutar(() => Sistema.QuitarParada(vehiculoActual, codigo), "Eliminar parada");
         }
 
+        // ---------- Confirmar ruta: cada cambio ya se guardó; aquí solo se resume ----------
         private void button9_Click(object sender, EventArgs e)
         {
             if (vehiculoActual == null) return;
@@ -190,9 +211,10 @@ namespace Shalom
                 return;
             }
 
-            vehiculoActual.Ruta.CambiarEstadoTodas(EstadoEnvio.EnReparto, "En reparto", "Ruta confirmada");
-            MessageBox.Show("Ruta confirmada: " + vehiculoActual.Ruta.ContarParadas() + " paradas.");
-            ActualizarPantalla();
+            MessageBox.Show("Ruta de " + vehiculoActual.Placa + " guardada con " +
+                            vehiculoActual.Ruta.ContarParadas() + " paradas.\n" +
+                            "Paquetes aún en el vehículo: " + vehiculoActual.Carga.Contar(),
+                            "Confirmar ruta");
         }
 
         private void ActualizarPantalla()
