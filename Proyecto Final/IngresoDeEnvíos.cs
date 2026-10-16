@@ -15,6 +15,7 @@ namespace Shalom
         public Ingreso_de_envíos_Cola_de_Recepción()
         {
             InitializeComponent();
+            lblMonto.Text = "Pendiente de calcular";
             ConfigurarControles();
             ActualizarVista();
         }
@@ -85,18 +86,38 @@ namespace Shalom
                 return;
             }
 
-            // 4.Precio con la tarifa leída de SQL Server
-            envio.CalcularPrecio(Sistema.PrecioBase, Sistema.PrecioPorKg);
+
 
             // 5. Guardar: SQL asigna el Id → se genera la guía → historial → cola y árbol
             try
             {
+                // Buscar la tarifa del origen y destino seleccionados.
+                Tarifa tarifa = Sistema.BuscarTarifa(
+                    envio.SedeOrigen.Id,
+                    envio.SedeDestino.Id);
+
+                if (tarifa == null)
+                {
+                    MessageBox.Show(
+                        "No hay tarifa registrada para el trayecto:\n" +
+                        envio.SedeOrigen.Nombre + " → " +
+                        envio.SedeDestino.Nombre);
+
+                    return;
+                }
+
+                // Calcular el precio antes de guardar el envío.
+                envio.CalcularPrecio(
+                    tarifa.PrecioBase,
+                    tarifa.PrecioPorKg);
+
                 Sistema.RegistrarEnvio(envio);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo guardar el envío en la base de datos:\n" + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "No se pudo registrar el envío:\n" + ex.Message);
+
                 return;
             }
 

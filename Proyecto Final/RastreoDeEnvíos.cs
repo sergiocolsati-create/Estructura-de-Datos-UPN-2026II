@@ -13,13 +13,29 @@ namespace Shalom
     public partial class RastreoDeEnvíos : Form
     {
         private Envio envioSeleccionado;
+        private string guiaInicial = "";
 
         public RastreoDeEnvíos()
         {
             InitializeComponent();
+            button1.Click += button1_Click;
+            button2.Click += button2_Click;
+            button4.Click += button4_Click;
+            textBox2.ReadOnly = true;
+            textBox3.ReadOnly = true;
+            textBox4.ReadOnly = true;
+            textBox5.ReadOnly = true;
+            // El Designer ya conecta CellContentClick; usamos solo CellClick.
+            dataGridView1.CellContentClick -= dataGridView1_CellContentClick;
+
 
             // CellClick responde al clic en cualquier parte de la fila (CellContentClick solo sobre el texto)
             dataGridView1.CellClick += dataGridView1_CellContentClick;
+        }
+
+        public RastreoDeEnvíos(string codigo) : this()
+        {
+            guiaInicial = codigo;
         }
 
         private void RastreoDeEnvíos_Load(object sender, EventArgs e)
@@ -51,13 +67,20 @@ namespace Shalom
             dataGridView2.ReadOnly = true;
 
             MostrarTodos();
+            if (!string.IsNullOrWhiteSpace(guiaInicial))
+            {
+                textBox1.Text = guiaInicial;
+                button1_Click(this, EventArgs.Empty);
+            }
         }
 
         // Si hay texto en "N° de guía", busca ese envío exacto (árbol).
         // Si no, aplica el filtro de Estado a la lista completa.
         private void button1_Click(object sender, EventArgs e)
         {
-            string codigo = textBox1.Text.Trim();
+            string codigo = textBox1.Text.Trim().ToUpperInvariant();
+            LimpiarDetalle();
+            dataGridView1.Rows.Clear();
 
             if (codigo != "")
             {

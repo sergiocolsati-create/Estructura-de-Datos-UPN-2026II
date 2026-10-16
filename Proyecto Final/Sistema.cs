@@ -959,5 +959,49 @@ namespace Shalom
                 return DBNull.Value;
             return valor;
         }
+
+        public static Tarifa BuscarTarifa(int origenId, int destinoId)
+        {
+            string consulta = @"
+        SELECT SedeOrigenId, SedeDestinoId, PrecioBase, PrecioPorKg
+        FROM logistica.TarifaTrayecto
+        WHERE SedeOrigenId = @origen
+          AND SedeDestinoId = @destino";
+
+            using (SqlConnection conexion = CrearConexion())
+            {
+                conexion.Open();
+
+                using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@origen", origenId);
+                    comando.Parameters.AddWithValue("@destino", destinoId);
+
+                    using (SqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (lector.Read())
+                        {
+                            Tarifa tarifa = new Tarifa();
+
+                            tarifa.SedeOrigenId =
+                                Convert.ToInt32(lector["SedeOrigenId"]);
+
+                            tarifa.SedeDestinoId =
+                                Convert.ToInt32(lector["SedeDestinoId"]);
+
+                            tarifa.PrecioBase =
+                                Convert.ToDecimal(lector["PrecioBase"]);
+
+                            tarifa.PrecioPorKg =
+                                Convert.ToDecimal(lector["PrecioPorKg"]);
+
+                            return tarifa;
+                        }
+                    }
+                }
+            }
+
+            return null;
+        }
     }
 }
