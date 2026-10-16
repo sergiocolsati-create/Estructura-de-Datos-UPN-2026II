@@ -1,5 +1,4 @@
-﻿using Shalom;
-using System;
+﻿using System;
 using System.Windows.Forms;
 
 namespace Shalom
@@ -9,131 +8,211 @@ namespace Shalom
         public RastreoYLogística()
         {
             InitializeComponent();
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.MultiSelect = false;
-            dataGridView1.SelectionChanged += dataGridView1_SelectionChanged;
-
-            // Cada vez que se vuelve al panel (desde otro formulario) se refresca
-            this.Activated += (s, e) => ActualizarPanel();
         }
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            new Ingreso_de_envíos_Cola_de_Recepción().Show();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            new AsignaciónDeRutas().Show();
-        }
-
-        private void button5_Click(object sender, EventArgs e)
-        {
-            new Almacén().Show();
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            new CargaDelVehículo().Show();
-        }
-
-        private void button8_Click(object sender, EventArgs e)
-        {
-            new RastreoDeEnvíos().Show();
-        }
-
 
         private void RastreoYLogística_Load(object sender, EventArgs e)
         {
-            try
-            {
-                // Una sola vez: SQL Server → estructuras en memoria
-                Sistema.CargarDatosSQL();
-                ActualizarPanel();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudieron cargar los datos de Shalom desde SQL Server.\n\n" + ex.Message,
-                                "Error al cargar datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            // Program.cs ya cargó SQL. Aquí mostramos los objetos compartidos.
+            ActualizarPanel();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        // ---------- Resumen del día + tabla de vehículos ----------
         private void ActualizarPanel()
         {
-            // Contadores: se cuentan recorriendo el ÁRBOL (registro general)
-            label4.Text = Sistema.Registro.Contar(EstadoEnvio.Registrado).ToString();       // En cola
-            label5.Text = Sistema.Registro.Contar(EstadoEnvio.EnPreparacion).ToString();    // En almacén
-            label6.Text = (Sistema.Registro.Contar(EstadoEnvio.EnTransito) +
-                           Sistema.Registro.Contar(EstadoEnvio.EnReparto)).ToString();      // En ruta (pila + ruta)
-            label7.Text = Sistema.Registro.Contar(EstadoEnvio.Entregado).ToString();        // Entregados
+            lblEnCola.Text = Sistema.Registro.Contar(EstadoEnvio.Registrado).ToString();
+            lblEnAlmacen.Text = Sistema.Registro.Contar(EstadoEnvio.EnPreparacion).ToString();
+            lblEntregados.Text = Sistema.Registro.Contar(EstadoEnvio.Entregado).ToString();
+
+            int enTransito = Sistema.Registro.Contar(EstadoEnvio.EnTransito);
+            int enReparto = Sistema.Registro.Contar(EstadoEnvio.EnReparto);
+            lblEnRuta.Text = (enTransito + enReparto).ToString();
 
             MostrarVehiculos();
+            lblEstado.Text = "Vista actualizada: " + DateTime.Now.ToString("HH:mm:ss");
         }
-        // Columnas del diseñador: Placa, Estado, Paq., Carga
+
         private void MostrarVehiculos()
         {
-            string placaSeleccionada = PlacaSeleccionada();   // Para no perder la selección al refrescar
-            dataGridView1.Rows.Clear();
+            Vehiculo anterior = ObtenerVehiculoSeleccionado();
+            dgvVehiculos.Rows.Clear();
 
-            for (int i = 0; i < Sistema.Vehiculos.Length; i++)
+            foreach (Vehiculo vehiculo in Sistema.Vehiculos)
             {
-                Vehiculo v = Sistema.Vehiculos[i];
+                int pendientes = vehiculo.Carga.Contar();
+                int enReparto = vehiculo.Ruta.ContarParadas();
+                string estado = "Disponible";
 
-                int enPila = v.Carga.Contar();
-                int enRuta = v.Ruta.ContarParadas();
+                if (enReparto > 0)
+                    estado = "En ruta";
+                else if (pendientes > 0)
+                    estado = "Cargando";
 
-                string estado;
-                if (enRuta > 0) estado = "En ruta";
-                else if (enPila > 0) estado = "Cargando";
-                else estado = "Disponible";
+                decimal peso = CalcularPesoTotal(vehiculo);
+                int porcentaje = 0;
+                if (vehiculo.CapacidadKg > 0)
+                    porcentaje = (int)(peso / vehiculo.CapacidadKg * 100);
 
-                string carga = v.Carga.PesoActual.ToString("0.00") + " / " +
-                               v.CapacidadKg.ToString("0") + " kg (" + v.PorcentajeCarga() + "%)";
+                string paquetes = "Por asignar: " + pendientes +
+                                  " | En reparto: " + enReparto;
+                string carga = peso.ToString("0.00") + " / " +
+                               vehiculo.CapacidadKg.ToString("0.00") +
+                               " kg (" + porcentaje + "%)";
 
-                int fila = dataGridView1.Rows.Add(v.Placa, estado, enPila + " + " + enRuta + " en ruta", carga);
-
-                if (v.Placa == placaSeleccionada)
-                    dataGridView1.Rows[fila].Selected = true;
+                int fila = dgvVehiculos.Rows.Add(vehiculo.Placa, estado, paquetes, carga);
+                // La fila guarda el vehículo al que corresponde, aunque se ordene la tabla.
+                dgvVehiculos.Rows[fila].Tag = vehiculo;
             }
-        }
-        private string PlacaSeleccionada()
-        {
-            if (dataGridView1.SelectedRows.Count == 0) return null;
-            object valor = dataGridView1.SelectedRows[0].Cells[0].Value;
-            return valor == null ? null : valor.ToString();
+
+            dgvVehiculos.ClearSelection();
+            if (anterior != null)
+            {
+                foreach (DataGridViewRow fila in dgvVehiculos.Rows)
+                {
+                    Vehiculo vehiculo = fila.Tag as Vehiculo;
+                    if (vehiculo != null && vehiculo.Placa == anterior.Placa)
+                    {
+                        fila.Selected = true;
+                        break;
+                    }
+                }
+            }
+            ActualizarSeleccion();
         }
 
-        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        private decimal CalcularPesoTotal(Vehiculo vehiculo)
         {
-            string placa = PlacaSeleccionada();
-            lblSeleccionado.Text = placa ?? "-";
+            // En este proyecto, los paquetes en ruta siguen físicamente en el vehículo.
+            decimal peso = vehiculo.Carga.PesoActual;
+            foreach (Envio envio in vehiculo.Ruta.ObtenerEnvios())
+                peso += envio.PesoKg;
+            return peso;
         }
 
-        // ---------- "Ver carga del vehículo" (debajo de la tabla) ----------
-        // Conéctalo en Propiedades → Eventos → Click del botón
+        private Vehiculo ObtenerVehiculoSeleccionado()
+        {
+            if (dgvVehiculos.SelectedRows.Count == 0)
+                return null;
+            return dgvVehiculos.SelectedRows[0].Tag as Vehiculo;
+        }
+
+        private void ActualizarSeleccion()
+        {
+            Vehiculo vehiculo = ObtenerVehiculoSeleccionado();
+            lblSeleccionado.Text = vehiculo == null ? "-" : vehiculo.Placa;
+            btnVerCarga.Enabled = vehiculo != null;
+            lnkPendientesRuta.Enabled = vehiculo != null;
+        }
+
+        private void dgvVehiculos_SelectionChanged(object sender, EventArgs e)
+        {
+            ActualizarSeleccion();
+        }
+
+        private void AbrirFormulario(Form formulario)
+        {
+            using (formulario)
+            {
+                formulario.ShowDialog(this);
+            }
+            ActualizarPanel();
+        }
+
+        private void btnActualizar_Click(object sender, EventArgs e)
+        {
+            ActualizarPanel();
+        }
+
+        private void btnIngreso_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new Ingreso_de_envíos_Cola_de_Recepción());
+        }
+
+        private void btnAlmacen_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new Almacén());
+        }
+
+        private void btnCarga_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new CargaDelVehículo());
+        }
+
+        private void btnRutas_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new AsignaciónDeRutas());
+        }
+
+        private void btnRastreo_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new RastreoDeEnvíos());
+        }
+
         private void btnVerCarga_Click(object sender, EventArgs e)
         {
-            Vehiculo v = Sistema.BuscarVehiculoPorPlaca(PlacaSeleccionada());
-            if (v == null)
+            Vehiculo vehiculo = ObtenerVehiculoSeleccionado();
+            if (vehiculo == null)
             {
-                MessageBox.Show("Seleccione un vehículo en la tabla.", "Ver carga");
+                MessageBox.Show("Seleccione un vehículo en la tabla.");
                 return;
             }
-            new CargaDelVehículo(v).ShowDialog();
-            ActualizarPanel();
+            AbrirFormulario(new CargaDelVehículo(vehiculo));
+        }
+
+        private void btnBuscarEnvio_Click(object sender, EventArgs e)
+        {
+            string guia = txtGuia.Text.Trim().ToUpperInvariant();
+            if (guia == "")
+            {
+                MessageBox.Show("Ingrese el número de guía.");
+                txtGuia.Focus();
+                return;
+            }
+            if (Sistema.Registro.Buscar(guia) == null)
+            {
+                MessageBox.Show("No existe un envío con esa guía.");
+                return;
+            }
+            AbrirFormulario(new RastreoDeEnvíos(guia));
+        }
+
+        private void lnkRastreoCompleto_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtGuia.Text))
+                AbrirFormulario(new RastreoDeEnvíos());
+            else
+                btnBuscarEnvio_Click(sender, EventArgs.Empty);
+        }
+
+        private void lnkPendientesRuta_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Vehiculo vehiculo = ObtenerVehiculoSeleccionado();
+            if (vehiculo == null)
+                return;
+
+            Envio[] paquetes = vehiculo.Carga.ObtenerTodos();
+            if (paquetes.Length == 0)
+            {
+                MessageBox.Show("No hay paquetes pendientes de asignar a la ruta.\n" +
+                    "En reparto: " + vehiculo.Ruta.ContarParadas(), vehiculo.Placa);
+                return;
+            }
+
+            string texto = "Del tope a la base:\n";
+            foreach (Envio paquete in paquetes)
+                texto += "\n" + paquete.Codigo + " - " + paquete.PesoKg.ToString("0.00") + " kg";
+            MessageBox.Show(texto, "Pendientes de ruta - " + vehiculo.Placa);
+        }
+
+        private void miSalir_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void menuAyuda_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("1. Registrar el envío.\n2. Enviarlo al almacén.\n" +
+                "3. Cargarlo en un vehículo.\n4. Asignarlo a la ruta.\n" +
+                "5. Registrar la entrega desde Rastreo.\n\n" +
+                "El resumen cuenta todos los envíos por su estado actual.", "Ayuda");
         }
     }
 }

@@ -17,6 +17,13 @@ namespace Shalom
 
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.miIngreso = new System.Windows.Forms.ToolStripMenuItem();
+            this.miAlmacen = new System.Windows.Forms.ToolStripMenuItem();
+            this.miCarga = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRutas = new System.Windows.Forms.ToolStripMenuItem();
+            this.miRastreo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuArchivo = new System.Windows.Forms.ToolStripMenuItem();
             this.miSalir = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOperaciones = new System.Windows.Forms.ToolStripMenuItem();
@@ -25,53 +32,88 @@ namespace Shalom
             this.lblEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblSesion = new System.Windows.Forms.ToolStripStatusLabel();
             this.barraEstado = new System.Windows.Forms.StatusStrip();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.panel4 = new System.Windows.Forms.Panel();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.grpResumen = new System.Windows.Forms.GroupBox();
+            this.pnlEntregados = new System.Windows.Forms.Panel();
+            this.lblTituloEntregados = new System.Windows.Forms.Label();
+            this.lblEntregados = new System.Windows.Forms.Label();
+            this.pnlRuta = new System.Windows.Forms.Panel();
+            this.lblTituloRuta = new System.Windows.Forms.Label();
+            this.lblEnRuta = new System.Windows.Forms.Label();
+            this.pnlAlmacen = new System.Windows.Forms.Panel();
+            this.lblTituloAlmacen = new System.Windows.Forms.Label();
+            this.lblEnAlmacen = new System.Windows.Forms.Label();
+            this.pnlCola = new System.Windows.Forms.Panel();
+            this.lblTituloCola = new System.Windows.Forms.Label();
+            this.lblEnCola = new System.Windows.Forms.Label();
+            this.grpRastreo = new System.Windows.Forms.GroupBox();
+            this.txtGuia = new System.Windows.Forms.TextBox();
+            this.btnBuscarEnvio = new System.Windows.Forms.Button();
+            this.lnkRastreoCompleto = new System.Windows.Forms.LinkLabel();
+            this.lblTituloGuia = new System.Windows.Forms.Label();
+            this.grpVehiculos = new System.Windows.Forms.GroupBox();
+            this.dgvVehiculos = new System.Windows.Forms.DataGridView();
+            this.colPlaca = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colEstado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colPaquetes = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colCarga = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lnkPendientesRuta = new System.Windows.Forms.LinkLabel();
+            this.btnVerCarga = new System.Windows.Forms.Button();
             this.lblSeleccionado = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.lblTituloSeleccionado = new System.Windows.Forms.Label();
+            this.pnlNavegacion = new System.Windows.Forms.Panel();
+            this.btnRastreo = new System.Windows.Forms.Button();
+            this.btnRutas = new System.Windows.Forms.Button();
+            this.btnCarga = new System.Windows.Forms.Button();
+            this.btnAlmacen = new System.Windows.Forms.Button();
+            this.btnActualizar = new System.Windows.Forms.Button();
+            this.btnIngreso = new System.Windows.Forms.Button();
             this.menuPrincipal.SuspendLayout();
             this.barraEstado.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.panel5.SuspendLayout();
-            this.panel4.SuspendLayout();
-            this.panel3.SuspendLayout();
-            this.panel2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel1.SuspendLayout();
+            this.grpResumen.SuspendLayout();
+            this.pnlEntregados.SuspendLayout();
+            this.pnlRuta.SuspendLayout();
+            this.pnlAlmacen.SuspendLayout();
+            this.pnlCola.SuspendLayout();
+            this.grpRastreo.SuspendLayout();
+            this.grpVehiculos.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).BeginInit();
+            this.pnlNavegacion.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // miIngreso
+            // 
+            this.miIngreso.Name = "miIngreso";
+            this.miIngreso.Size = new System.Drawing.Size(178, 22);
+            this.miIngreso.Text = "Ingreso de envíos";
+            this.miIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
+            // 
+            // miAlmacen
+            // 
+            this.miAlmacen.Name = "miAlmacen";
+            this.miAlmacen.Size = new System.Drawing.Size(178, 22);
+            this.miAlmacen.Text = "Almacén";
+            this.miAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
+            // 
+            // miCarga
+            // 
+            this.miCarga.Name = "miCarga";
+            this.miCarga.Size = new System.Drawing.Size(178, 22);
+            this.miCarga.Text = "Carga de vehículos";
+            this.miCarga.Click += new System.EventHandler(this.btnCarga_Click);
+            // 
+            // miRutas
+            // 
+            this.miRutas.Name = "miRutas";
+            this.miRutas.Size = new System.Drawing.Size(178, 22);
+            this.miRutas.Text = "Asignación de rutas";
+            this.miRutas.Click += new System.EventHandler(this.btnRutas_Click);
+            // 
+            // miRastreo
+            // 
+            this.miRastreo.Name = "miRastreo";
+            this.miRastreo.Size = new System.Drawing.Size(178, 22);
+            this.miRastreo.Text = "Rastreo de envíos";
+            this.miRastreo.Click += new System.EventHandler(this.btnRastreo_Click);
             // 
             // menuArchivo
             // 
@@ -86,9 +128,16 @@ namespace Shalom
             this.miSalir.Name = "miSalir";
             this.miSalir.Size = new System.Drawing.Size(96, 22);
             this.miSalir.Text = "Salir";
+            this.miSalir.Click += new System.EventHandler(this.miSalir_Click);
             // 
             // menuOperaciones
             // 
+            this.menuOperaciones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.miIngreso,
+            this.miAlmacen,
+            this.miCarga,
+            this.miRutas,
+            this.miRastreo});
             this.menuOperaciones.Name = "menuOperaciones";
             this.menuOperaciones.Size = new System.Drawing.Size(85, 19);
             this.menuOperaciones.Text = "Operaciones";
@@ -111,6 +160,7 @@ namespace Shalom
             this.menuAyuda.Name = "menuAyuda";
             this.menuAyuda.Size = new System.Drawing.Size(53, 19);
             this.menuAyuda.Text = "Ayuda";
+            this.menuAyuda.Click += new System.EventHandler(this.menuAyuda_Click);
             // 
             // lblEstado
             // 
@@ -124,6 +174,7 @@ namespace Shalom
             // 
             this.lblSesion.Name = "lblSesion";
             this.lblSesion.Size = new System.Drawing.Size(0, 17);
+            this.lblSesion.Visible = false;
             // 
             // barraEstado
             // 
@@ -138,346 +189,384 @@ namespace Shalom
             this.barraEstado.SizingGrip = false;
             this.barraEstado.TabIndex = 2;
             // 
-            // groupBox1
+            // grpResumen
             // 
-            this.groupBox1.Controls.Add(this.panel5);
-            this.groupBox1.Controls.Add(this.panel4);
-            this.groupBox1.Controls.Add(this.panel3);
-            this.groupBox1.Controls.Add(this.panel2);
-            this.groupBox1.Location = new System.Drawing.Point(238, 50);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(579, 135);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Resumen del día";
+            this.grpResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpResumen.Controls.Add(this.pnlEntregados);
+            this.grpResumen.Controls.Add(this.pnlRuta);
+            this.grpResumen.Controls.Add(this.pnlAlmacen);
+            this.grpResumen.Controls.Add(this.pnlCola);
+            this.grpResumen.Location = new System.Drawing.Point(238, 50);
+            this.grpResumen.Name = "grpResumen";
+            this.grpResumen.Size = new System.Drawing.Size(579, 135);
+            this.grpResumen.TabIndex = 4;
+            this.grpResumen.TabStop = false;
+            this.grpResumen.Text = "Resumen de envíos";
             // 
-            // panel5
+            // pnlEntregados
             // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Controls.Add(this.label11);
-            this.panel5.Controls.Add(this.label7);
-            this.panel5.Location = new System.Drawing.Point(439, 29);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(97, 75);
-            this.panel5.TabIndex = 5;
+            this.pnlEntregados.BackColor = System.Drawing.Color.White;
+            this.pnlEntregados.Controls.Add(this.lblTituloEntregados);
+            this.pnlEntregados.Controls.Add(this.lblEntregados);
+            this.pnlEntregados.Location = new System.Drawing.Point(439, 29);
+            this.pnlEntregados.Name = "pnlEntregados";
+            this.pnlEntregados.Size = new System.Drawing.Size(97, 75);
+            this.pnlEntregados.TabIndex = 5;
             // 
-            // label11
+            // lblTituloEntregados
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(10, 44);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(66, 15);
-            this.label11.TabIndex = 4;
-            this.label11.Text = "Entregados";
+            this.lblTituloEntregados.AutoSize = true;
+            this.lblTituloEntregados.Location = new System.Drawing.Point(10, 44);
+            this.lblTituloEntregados.Name = "lblTituloEntregados";
+            this.lblTituloEntregados.Size = new System.Drawing.Size(66, 15);
+            this.lblTituloEntregados.TabIndex = 4;
+            this.lblTituloEntregados.Text = "Entregados";
             // 
-            // label7
+            // lblEntregados
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(39, 16);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(13, 15);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "0";
+            this.lblEntregados.AutoSize = true;
+            this.lblEntregados.Location = new System.Drawing.Point(39, 16);
+            this.lblEntregados.Name = "lblEntregados";
+            this.lblEntregados.Size = new System.Drawing.Size(13, 15);
+            this.lblEntregados.TabIndex = 0;
+            this.lblEntregados.Text = "0";
             // 
-            // panel4
+            // pnlRuta
             // 
-            this.panel4.BackColor = System.Drawing.Color.White;
-            this.panel4.Controls.Add(this.label10);
-            this.panel4.Controls.Add(this.label6);
-            this.panel4.Location = new System.Drawing.Point(308, 29);
-            this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(82, 75);
-            this.panel4.TabIndex = 5;
+            this.pnlRuta.BackColor = System.Drawing.Color.White;
+            this.pnlRuta.Controls.Add(this.lblTituloRuta);
+            this.pnlRuta.Controls.Add(this.lblEnRuta);
+            this.pnlRuta.Location = new System.Drawing.Point(308, 29);
+            this.pnlRuta.Name = "pnlRuta";
+            this.pnlRuta.Size = new System.Drawing.Size(82, 75);
+            this.pnlRuta.TabIndex = 5;
             // 
-            // label10
+            // lblTituloRuta
             // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(18, 44);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 15);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "En ruta";
+            this.lblTituloRuta.AutoSize = true;
+            this.lblTituloRuta.Location = new System.Drawing.Point(18, 44);
+            this.lblTituloRuta.Name = "lblTituloRuta";
+            this.lblTituloRuta.Size = new System.Drawing.Size(44, 15);
+            this.lblTituloRuta.TabIndex = 3;
+            this.lblTituloRuta.Text = "En ruta";
             // 
-            // label6
+            // lblEnRuta
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(32, 16);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(13, 15);
-            this.label6.TabIndex = 0;
-            this.label6.Text = "0";
+            this.lblEnRuta.AutoSize = true;
+            this.lblEnRuta.Location = new System.Drawing.Point(32, 16);
+            this.lblEnRuta.Name = "lblEnRuta";
+            this.lblEnRuta.Size = new System.Drawing.Size(13, 15);
+            this.lblEnRuta.TabIndex = 0;
+            this.lblEnRuta.Text = "0";
             // 
-            // panel3
+            // pnlAlmacen
             // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Controls.Add(this.label9);
-            this.panel3.Controls.Add(this.label5);
-            this.panel3.Location = new System.Drawing.Point(170, 29);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(89, 75);
-            this.panel3.TabIndex = 5;
+            this.pnlAlmacen.BackColor = System.Drawing.Color.White;
+            this.pnlAlmacen.Controls.Add(this.lblTituloAlmacen);
+            this.pnlAlmacen.Controls.Add(this.lblEnAlmacen);
+            this.pnlAlmacen.Location = new System.Drawing.Point(170, 29);
+            this.pnlAlmacen.Name = "pnlAlmacen";
+            this.pnlAlmacen.Size = new System.Drawing.Size(89, 75);
+            this.pnlAlmacen.TabIndex = 5;
             // 
-            // label9
+            // lblTituloAlmacen
             // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(1, 44);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(68, 15);
-            this.label9.TabIndex = 2;
-            this.label9.Text = "En almacén";
+            this.lblTituloAlmacen.AutoSize = true;
+            this.lblTituloAlmacen.Location = new System.Drawing.Point(1, 44);
+            this.lblTituloAlmacen.Name = "lblTituloAlmacen";
+            this.lblTituloAlmacen.Size = new System.Drawing.Size(68, 15);
+            this.lblTituloAlmacen.TabIndex = 2;
+            this.lblTituloAlmacen.Text = "En almacén";
             // 
-            // label5
+            // lblEnAlmacen
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(32, 16);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(13, 15);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "0";
+            this.lblEnAlmacen.AutoSize = true;
+            this.lblEnAlmacen.Location = new System.Drawing.Point(32, 16);
+            this.lblEnAlmacen.Name = "lblEnAlmacen";
+            this.lblEnAlmacen.Size = new System.Drawing.Size(13, 15);
+            this.lblEnAlmacen.TabIndex = 0;
+            this.lblEnAlmacen.Text = "0";
             // 
-            // panel2
+            // pnlCola
             // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Controls.Add(this.label8);
-            this.panel2.Controls.Add(this.label4);
-            this.panel2.Location = new System.Drawing.Point(39, 29);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(82, 75);
-            this.panel2.TabIndex = 4;
+            this.pnlCola.BackColor = System.Drawing.Color.White;
+            this.pnlCola.Controls.Add(this.lblTituloCola);
+            this.pnlCola.Controls.Add(this.lblEnCola);
+            this.pnlCola.Location = new System.Drawing.Point(39, 29);
+            this.pnlCola.Name = "pnlCola";
+            this.pnlCola.Size = new System.Drawing.Size(82, 75);
+            this.pnlCola.TabIndex = 4;
             // 
-            // label8
+            // lblTituloCola
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(11, 44);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 15);
-            this.label8.TabIndex = 1;
-            this.label8.Text = "En cola";
+            this.lblTituloCola.AutoSize = true;
+            this.lblTituloCola.Location = new System.Drawing.Point(11, 44);
+            this.lblTituloCola.Name = "lblTituloCola";
+            this.lblTituloCola.Size = new System.Drawing.Size(45, 15);
+            this.lblTituloCola.TabIndex = 1;
+            this.lblTituloCola.Text = "En cola";
             // 
-            // label4
+            // lblEnCola
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(28, 16);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(13, 15);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "0";
+            this.lblEnCola.AutoSize = true;
+            this.lblEnCola.Location = new System.Drawing.Point(28, 16);
+            this.lblEnCola.Name = "lblEnCola";
+            this.lblEnCola.Size = new System.Drawing.Size(13, 15);
+            this.lblEnCola.TabIndex = 0;
+            this.lblEnCola.Text = "0";
             // 
-            // groupBox2
+            // grpRastreo
             // 
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.linkLabel2);
-            this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Location = new System.Drawing.Point(238, 191);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(579, 98);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Rastreo rápido";
+            this.grpRastreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpRastreo.Controls.Add(this.txtGuia);
+            this.grpRastreo.Controls.Add(this.btnBuscarEnvio);
+            this.grpRastreo.Controls.Add(this.lnkRastreoCompleto);
+            this.grpRastreo.Controls.Add(this.lblTituloGuia);
+            this.grpRastreo.Location = new System.Drawing.Point(238, 191);
+            this.grpRastreo.Name = "grpRastreo";
+            this.grpRastreo.Size = new System.Drawing.Size(579, 98);
+            this.grpRastreo.TabIndex = 5;
+            this.grpRastreo.TabStop = false;
+            this.grpRastreo.Text = "Rastreo rápido";
             // 
-            // textBox1
+            // txtGuia
             // 
-            this.textBox1.Location = new System.Drawing.Point(138, 36);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(160, 23);
-            this.textBox1.TabIndex = 6;
+            this.txtGuia.Location = new System.Drawing.Point(138, 36);
+            this.txtGuia.Name = "txtGuia";
+            this.txtGuia.Size = new System.Drawing.Size(160, 23);
+            this.txtGuia.TabIndex = 6;
             // 
-            // button2
+            // btnBuscarEnvio
             // 
-            this.button2.Location = new System.Drawing.Point(331, 36);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(189, 27);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Ver carga del vehículo";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnBuscarEnvio.Location = new System.Drawing.Point(331, 36);
+            this.btnBuscarEnvio.Name = "btnBuscarEnvio";
+            this.btnBuscarEnvio.Size = new System.Drawing.Size(189, 27);
+            this.btnBuscarEnvio.TabIndex = 5;
+            this.btnBuscarEnvio.Text = "Buscar envío";
+            this.btnBuscarEnvio.UseVisualStyleBackColor = true;
+            this.btnBuscarEnvio.Click += new System.EventHandler(this.btnBuscarEnvio_Click);
             // 
-            // linkLabel2
+            // lnkRastreoCompleto
             // 
-            this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(49, 63);
-            this.linkLabel2.Name = "linkLabel2";
-            this.linkLabel2.Size = new System.Drawing.Size(126, 15);
-            this.linkLabel2.TabIndex = 5;
-            this.linkLabel2.TabStop = true;
-            this.linkLabel2.Text = "Abrir rastreo completo";
+            this.lnkRastreoCompleto.AutoSize = true;
+            this.lnkRastreoCompleto.Location = new System.Drawing.Point(49, 63);
+            this.lnkRastreoCompleto.Name = "lnkRastreoCompleto";
+            this.lnkRastreoCompleto.Size = new System.Drawing.Size(126, 15);
+            this.lnkRastreoCompleto.TabIndex = 5;
+            this.lnkRastreoCompleto.TabStop = true;
+            this.lnkRastreoCompleto.Text = "Abrir rastreo completo";
+            this.lnkRastreoCompleto.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkRastreoCompleto_LinkClicked);
             // 
-            // label1
+            // lblTituloGuia
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(49, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(66, 15);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "N° de guía:";
+            this.lblTituloGuia.AutoSize = true;
+            this.lblTituloGuia.Location = new System.Drawing.Point(49, 36);
+            this.lblTituloGuia.Name = "lblTituloGuia";
+            this.lblTituloGuia.Size = new System.Drawing.Size(66, 15);
+            this.lblTituloGuia.TabIndex = 0;
+            this.lblTituloGuia.Text = "N° de guía:";
             // 
-            // groupBox3
+            // grpVehiculos
             // 
-            this.groupBox3.Controls.Add(this.dataGridView1);
-            this.groupBox3.Controls.Add(this.linkLabel1);
-            this.groupBox3.Controls.Add(this.button1);
-            this.groupBox3.Controls.Add(this.lblSeleccionado);
-            this.groupBox3.Controls.Add(this.label2);
-            this.groupBox3.Location = new System.Drawing.Point(238, 301);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(607, 239);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Vehículos y carga";
+            this.grpVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpVehiculos.Controls.Add(this.dgvVehiculos);
+            this.grpVehiculos.Controls.Add(this.lnkPendientesRuta);
+            this.grpVehiculos.Controls.Add(this.btnVerCarga);
+            this.grpVehiculos.Controls.Add(this.lblSeleccionado);
+            this.grpVehiculos.Controls.Add(this.lblTituloSeleccionado);
+            this.grpVehiculos.Location = new System.Drawing.Point(238, 301);
+            this.grpVehiculos.Name = "grpVehiculos";
+            this.grpVehiculos.Size = new System.Drawing.Size(607, 239);
+            this.grpVehiculos.TabIndex = 6;
+            this.grpVehiculos.TabStop = false;
+            this.grpVehiculos.Text = "Vehículos y carga";
             // 
-            // dataGridView1
+            // dgvVehiculos
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3,
-            this.Column4});
-            this.dataGridView1.Location = new System.Drawing.Point(18, 28);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(583, 143);
-            this.dataGridView1.TabIndex = 5;
+            this.dgvVehiculos.AllowUserToAddRows = false;
+            this.dgvVehiculos.AllowUserToDeleteRows = false;
+            this.dgvVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvVehiculos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvVehiculos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dgvVehiculos.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvVehiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVehiculos.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colPlaca,
+            this.colEstado,
+            this.colPaquetes,
+            this.colCarga});
+            this.dgvVehiculos.Location = new System.Drawing.Point(18, 28);
+            this.dgvVehiculos.MultiSelect = false;
+            this.dgvVehiculos.Name = "dgvVehiculos";
+            this.dgvVehiculos.ReadOnly = true;
+            this.dgvVehiculos.RowHeadersVisible = false;
+            this.dgvVehiculos.RowHeadersWidth = 51;
+            this.dgvVehiculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvVehiculos.Size = new System.Drawing.Size(583, 143);
+            this.dgvVehiculos.TabIndex = 5;
+            this.dgvVehiculos.SelectionChanged += new System.EventHandler(this.dgvVehiculos_SelectionChanged);
             // 
-            // Column1
+            // colPlaca
             // 
-            this.Column1.HeaderText = "Placa";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 125;
+            this.colPlaca.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colPlaca.FillWeight = 18F;
+            this.colPlaca.HeaderText = "Placa";
+            this.colPlaca.MinimumWidth = 6;
+            this.colPlaca.Name = "colPlaca";
+            this.colPlaca.ReadOnly = true;
             // 
-            // Column2
+            // colEstado
             // 
-            this.Column2.HeaderText = "Estado";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 125;
+            this.colEstado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colEstado.FillWeight = 18F;
+            this.colEstado.HeaderText = "Estado";
+            this.colEstado.MinimumWidth = 6;
+            this.colEstado.Name = "colEstado";
+            this.colEstado.ReadOnly = true;
             // 
-            // Column3
+            // colPaquetes
             // 
-            this.Column3.HeaderText = "Paq.";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 125;
+            this.colPaquetes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle1;
+            this.colPaquetes.FillWeight = 32F;
+            this.colPaquetes.HeaderText = "Paquetes";
+            this.colPaquetes.MinimumWidth = 6;
+            this.colPaquetes.Name = "colPaquetes";
+            this.colPaquetes.ReadOnly = true;
             // 
-            // Column4
+            // colCarga
             // 
-            this.Column4.HeaderText = "Carga";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 180;
+            this.colCarga.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCarga.DefaultCellStyle = dataGridViewCellStyle2;
+            this.colCarga.FillWeight = 32F;
+            this.colCarga.HeaderText = "Carga";
+            this.colCarga.MinimumWidth = 6;
+            this.colCarga.Name = "colCarga";
+            this.colCarga.ReadOnly = true;
             // 
-            // linkLabel1
+            // lnkPendientesRuta
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(225, 181);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(157, 15);
-            this.linkLabel1.TabIndex = 4;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Ver paquetes asignados(pila)";
+            this.lnkPendientesRuta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lnkPendientesRuta.AutoSize = true;
+            this.lnkPendientesRuta.Location = new System.Drawing.Point(225, 181);
+            this.lnkPendientesRuta.Name = "lnkPendientesRuta";
+            this.lnkPendientesRuta.Size = new System.Drawing.Size(124, 15);
+            this.lnkPendientesRuta.TabIndex = 4;
+            this.lnkPendientesRuta.TabStop = true;
+            this.lnkPendientesRuta.Text = "Ver pendientes de ruta";
+            this.lnkPendientesRuta.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPendientesRuta_LinkClicked);
             // 
-            // button1
+            // btnVerCarga
             // 
-            this.button1.Location = new System.Drawing.Point(18, 177);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(189, 33);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Ver carga del vehículo";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnVerCarga.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnVerCarga.Location = new System.Drawing.Point(18, 177);
+            this.btnVerCarga.Name = "btnVerCarga";
+            this.btnVerCarga.Size = new System.Drawing.Size(189, 33);
+            this.btnVerCarga.TabIndex = 2;
+            this.btnVerCarga.Text = "Ver carga del vehículo";
+            this.btnVerCarga.UseVisualStyleBackColor = true;
+            this.btnVerCarga.Click += new System.EventHandler(this.btnVerCarga_Click);
             // 
             // lblSeleccionado
             // 
+            this.lblSeleccionado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSeleccionado.AutoSize = true;
             this.lblSeleccionado.Location = new System.Drawing.Point(531, 211);
             this.lblSeleccionado.Name = "lblSeleccionado";
-            this.lblSeleccionado.Size = new System.Drawing.Size(13, 15);
+            this.lblSeleccionado.Size = new System.Drawing.Size(12, 15);
             this.lblSeleccionado.TabIndex = 1;
-            this.lblSeleccionado.Text = "0";
+            this.lblSeleccionado.Text = "-";
             // 
-            // label2
+            // lblTituloSeleccionado
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(412, 211);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(80, 15);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Seleccionado:";
+            this.lblTituloSeleccionado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblTituloSeleccionado.AutoSize = true;
+            this.lblTituloSeleccionado.Location = new System.Drawing.Point(412, 211);
+            this.lblTituloSeleccionado.Name = "lblTituloSeleccionado";
+            this.lblTituloSeleccionado.Size = new System.Drawing.Size(55, 15);
+            this.lblTituloSeleccionado.TabIndex = 0;
+            this.lblTituloSeleccionado.Text = "Vehículo:";
             // 
-            // panel1
+            // pnlNavegacion
             // 
-            this.panel1.Controls.Add(this.button8);
-            this.panel1.Controls.Add(this.button7);
-            this.panel1.Controls.Add(this.button6);
-            this.panel1.Controls.Add(this.button5);
-            this.panel1.Controls.Add(this.button4);
-            this.panel1.Controls.Add(this.button3);
-            this.panel1.Location = new System.Drawing.Point(16, 49);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(193, 484);
-            this.panel1.TabIndex = 7;
+            this.pnlNavegacion.Controls.Add(this.btnRastreo);
+            this.pnlNavegacion.Controls.Add(this.btnRutas);
+            this.pnlNavegacion.Controls.Add(this.btnCarga);
+            this.pnlNavegacion.Controls.Add(this.btnAlmacen);
+            this.pnlNavegacion.Controls.Add(this.btnActualizar);
+            this.pnlNavegacion.Controls.Add(this.btnIngreso);
+            this.pnlNavegacion.Location = new System.Drawing.Point(16, 49);
+            this.pnlNavegacion.Name = "pnlNavegacion";
+            this.pnlNavegacion.Size = new System.Drawing.Size(193, 484);
+            this.pnlNavegacion.TabIndex = 7;
             // 
-            // button8
+            // btnRastreo
             // 
-            this.button8.Location = new System.Drawing.Point(18, 400);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(142, 53);
-            this.button8.TabIndex = 5;
-            this.button8.Text = "Rastreo de envíos";
-            this.button8.UseVisualStyleBackColor = true;
-            this.button8.Click += new System.EventHandler(this.button8_Click);
+            this.btnRastreo.Location = new System.Drawing.Point(18, 400);
+            this.btnRastreo.Name = "btnRastreo";
+            this.btnRastreo.Size = new System.Drawing.Size(142, 53);
+            this.btnRastreo.TabIndex = 5;
+            this.btnRastreo.Text = "Rastreo de envíos";
+            this.btnRastreo.UseVisualStyleBackColor = true;
+            this.btnRastreo.Click += new System.EventHandler(this.btnRastreo_Click);
             // 
-            // button7
+            // btnRutas
             // 
-            this.button7.Location = new System.Drawing.Point(18, 178);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(142, 53);
-            this.button7.TabIndex = 4;
-            this.button7.Text = "Asignación de rutas";
-            this.button7.UseVisualStyleBackColor = true;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
+            this.btnRutas.Location = new System.Drawing.Point(18, 326);
+            this.btnRutas.Name = "btnRutas";
+            this.btnRutas.Size = new System.Drawing.Size(142, 53);
+            this.btnRutas.TabIndex = 4;
+            this.btnRutas.Text = "Asignación de rutas";
+            this.btnRutas.UseVisualStyleBackColor = true;
+            this.btnRutas.Click += new System.EventHandler(this.btnRutas_Click);
             // 
-            // button6
+            // btnCarga
             // 
-            this.button6.Location = new System.Drawing.Point(18, 326);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(142, 53);
-            this.button6.TabIndex = 3;
-            this.button6.Text = "Carga de Vehículos";
-            this.button6.UseVisualStyleBackColor = true;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
+            this.btnCarga.Location = new System.Drawing.Point(18, 252);
+            this.btnCarga.Name = "btnCarga";
+            this.btnCarga.Size = new System.Drawing.Size(142, 53);
+            this.btnCarga.TabIndex = 3;
+            this.btnCarga.Text = "Carga de Vehículos";
+            this.btnCarga.UseVisualStyleBackColor = true;
+            this.btnCarga.Click += new System.EventHandler(this.btnCarga_Click);
             // 
-            // button5
+            // btnAlmacen
             // 
-            this.button5.Location = new System.Drawing.Point(18, 252);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(142, 53);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "Almacén";
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btnAlmacen.Location = new System.Drawing.Point(18, 178);
+            this.btnAlmacen.Name = "btnAlmacen";
+            this.btnAlmacen.Size = new System.Drawing.Size(142, 53);
+            this.btnAlmacen.TabIndex = 2;
+            this.btnAlmacen.Text = "Almacén";
+            this.btnAlmacen.UseVisualStyleBackColor = true;
+            this.btnAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
             // 
-            // button4
+            // btnActualizar
             // 
-            this.button4.Location = new System.Drawing.Point(18, 30);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(142, 53);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Panel Principal";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.button4_Click);
+            this.btnActualizar.Location = new System.Drawing.Point(18, 30);
+            this.btnActualizar.Name = "btnActualizar";
+            this.btnActualizar.Size = new System.Drawing.Size(142, 53);
+            this.btnActualizar.TabIndex = 1;
+            this.btnActualizar.Text = "Actualizar panel";
+            this.btnActualizar.UseVisualStyleBackColor = true;
+            this.btnActualizar.Click += new System.EventHandler(this.btnActualizar_Click);
             // 
-            // button3
+            // btnIngreso
             // 
-            this.button3.Location = new System.Drawing.Point(18, 104);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(142, 53);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "Ingreso de envíos";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
+            this.btnIngreso.Location = new System.Drawing.Point(18, 104);
+            this.btnIngreso.Name = "btnIngreso";
+            this.btnIngreso.Size = new System.Drawing.Size(142, 53);
+            this.btnIngreso.TabIndex = 0;
+            this.btnIngreso.Text = "Ingreso de envíos";
+            this.btnIngreso.UseVisualStyleBackColor = true;
+            this.btnIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
             // 
             // RastreoYLogística
             // 
@@ -485,43 +574,48 @@ namespace Shalom
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(876, 582);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.pnlNavegacion);
+            this.Controls.Add(this.grpVehiculos);
+            this.Controls.Add(this.grpRastreo);
+            this.Controls.Add(this.grpResumen);
             this.Controls.Add(this.barraEstado);
             this.Controls.Add(this.menuPrincipal);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.MainMenuStrip = this.menuPrincipal;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(600, 500);
+            this.MinimumSize = new System.Drawing.Size(892, 621);
             this.Name = "RastreoYLogística";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "RastreoYLogística";
+            this.Text = "Rastreo y logística";
             this.Load += new System.EventHandler(this.RastreoYLogística_Load);
             this.menuPrincipal.ResumeLayout(false);
             this.menuPrincipal.PerformLayout();
             this.barraEstado.ResumeLayout(false);
             this.barraEstado.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.panel5.ResumeLayout(false);
-            this.panel5.PerformLayout();
-            this.panel4.ResumeLayout(false);
-            this.panel4.PerformLayout();
-            this.panel3.ResumeLayout(false);
-            this.panel3.PerformLayout();
-            this.panel2.ResumeLayout(false);
-            this.panel2.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.panel1.ResumeLayout(false);
+            this.grpResumen.ResumeLayout(false);
+            this.pnlEntregados.ResumeLayout(false);
+            this.pnlEntregados.PerformLayout();
+            this.pnlRuta.ResumeLayout(false);
+            this.pnlRuta.PerformLayout();
+            this.pnlAlmacen.ResumeLayout(false);
+            this.pnlAlmacen.PerformLayout();
+            this.pnlCola.ResumeLayout(false);
+            this.pnlCola.PerformLayout();
+            this.grpRastreo.ResumeLayout(false);
+            this.grpRastreo.PerformLayout();
+            this.grpVehiculos.ResumeLayout(false);
+            this.grpVehiculos.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).EndInit();
+            this.pnlNavegacion.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
+        private ToolStripMenuItem miIngreso;
+        private ToolStripMenuItem miAlmacen;
+        private ToolStripMenuItem miCarga;
+        private ToolStripMenuItem miRutas;
+        private ToolStripMenuItem miRastreo;
         private ToolStripMenuItem menuArchivo;
         private ToolStripMenuItem miSalir;
         private ToolStripMenuItem menuOperaciones;
@@ -530,40 +624,40 @@ namespace Shalom
         private ToolStripStatusLabel lblEstado;
         private ToolStripStatusLabel lblSesion;
         private StatusStrip barraEstado;
-        private GroupBox groupBox1;
-        private GroupBox groupBox2;
-        private GroupBox groupBox3;
-        private Label label1;
-        private Label label2;
-        private TextBox textBox1;
-        private Button button2;
-        private LinkLabel linkLabel2;
-        private DataGridView dataGridView1;
-        private LinkLabel linkLabel1;
-        private Button button1;
+        private GroupBox grpResumen;
+        private GroupBox grpRastreo;
+        private GroupBox grpVehiculos;
+        private Label lblTituloGuia;
+        private Label lblTituloSeleccionado;
+        private TextBox txtGuia;
+        private Button btnBuscarEnvio;
+        private LinkLabel lnkRastreoCompleto;
+        private DataGridView dgvVehiculos;
+        private LinkLabel lnkPendientesRuta;
+        private Button btnVerCarga;
         private Label lblSeleccionado;
-        private DataGridViewTextBoxColumn Column1;
-        private DataGridViewTextBoxColumn Column2;
-        private DataGridViewTextBoxColumn Column3;
-        private DataGridViewTextBoxColumn Column4;
-        private Label label4;
-        private Panel panel1;
-        private Button button7;
-        private Button button6;
-        private Button button5;
-        private Button button4;
-        private Button button3;
-        private Panel panel5;
-        private Label label11;
-        private Label label7;
-        private Panel panel4;
-        private Label label10;
-        private Label label6;
-        private Panel panel3;
-        private Label label9;
-        private Label label5;
-        private Panel panel2;
-        private Label label8;
-        private Button button8;
+        private DataGridViewTextBoxColumn colPlaca;
+        private DataGridViewTextBoxColumn colEstado;
+        private DataGridViewTextBoxColumn colPaquetes;
+        private DataGridViewTextBoxColumn colCarga;
+        private Label lblEnCola;
+        private Panel pnlNavegacion;
+        private Button btnRutas;
+        private Button btnCarga;
+        private Button btnAlmacen;
+        private Button btnActualizar;
+        private Button btnIngreso;
+        private Panel pnlEntregados;
+        private Label lblTituloEntregados;
+        private Label lblEntregados;
+        private Panel pnlRuta;
+        private Label lblTituloRuta;
+        private Label lblEnRuta;
+        private Panel pnlAlmacen;
+        private Label lblTituloAlmacen;
+        private Label lblEnAlmacen;
+        private Panel pnlCola;
+        private Label lblTituloCola;
+        private Button btnRastreo;
     }
 }

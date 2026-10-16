@@ -99,6 +99,7 @@
     </Compile>
     <Compile Include="Sede.cs" />
     <Compile Include="Sistema.cs" />
+    <Compile Include="Tarifa.cs" />
     <Compile Include="Vehiculo.cs" />
     <EmbeddedResource Include="Almacén.resx">
       <DependentUpon>Almacén.cs</DependentUpon>
