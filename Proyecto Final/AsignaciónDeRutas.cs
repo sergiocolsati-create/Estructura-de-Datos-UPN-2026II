@@ -181,7 +181,7 @@ namespace Shalom
             }
             if (!EsElTope()) return;
 
-            string codigoReferencia = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
+            string codigoReferencia = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
             Ejecutar(() => Sistema.AsignarTope(vehiculoActual, codigoReferencia), "Insertar después");
         }
 
