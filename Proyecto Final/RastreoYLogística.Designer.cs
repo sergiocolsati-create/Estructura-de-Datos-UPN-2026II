@@ -17,8 +17,8 @@ namespace Shalom
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.miIngreso = new System.Windows.Forms.ToolStripMenuItem();
             this.miAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.miCarga = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,35 +83,35 @@ namespace Shalom
             // miIngreso
             // 
             this.miIngreso.Name = "miIngreso";
-            this.miIngreso.Size = new System.Drawing.Size(178, 22);
+            this.miIngreso.Size = new System.Drawing.Size(222, 26);
             this.miIngreso.Text = "Ingreso de envíos";
             this.miIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
             // 
             // miAlmacen
             // 
             this.miAlmacen.Name = "miAlmacen";
-            this.miAlmacen.Size = new System.Drawing.Size(178, 22);
+            this.miAlmacen.Size = new System.Drawing.Size(222, 26);
             this.miAlmacen.Text = "Almacén";
             this.miAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
             // 
             // miCarga
             // 
             this.miCarga.Name = "miCarga";
-            this.miCarga.Size = new System.Drawing.Size(178, 22);
+            this.miCarga.Size = new System.Drawing.Size(222, 26);
             this.miCarga.Text = "Carga de vehículos";
             this.miCarga.Click += new System.EventHandler(this.btnCarga_Click);
             // 
             // miRutas
             // 
             this.miRutas.Name = "miRutas";
-            this.miRutas.Size = new System.Drawing.Size(178, 22);
+            this.miRutas.Size = new System.Drawing.Size(222, 26);
             this.miRutas.Text = "Asignación de rutas";
             this.miRutas.Click += new System.EventHandler(this.btnRutas_Click);
             // 
             // miRastreo
             // 
             this.miRastreo.Name = "miRastreo";
-            this.miRastreo.Size = new System.Drawing.Size(178, 22);
+            this.miRastreo.Size = new System.Drawing.Size(222, 26);
             this.miRastreo.Text = "Rastreo de envíos";
             this.miRastreo.Click += new System.EventHandler(this.btnRastreo_Click);
             // 
@@ -120,13 +120,13 @@ namespace Shalom
             this.menuArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miSalir});
             this.menuArchivo.Name = "menuArchivo";
-            this.menuArchivo.Size = new System.Drawing.Size(60, 19);
+            this.menuArchivo.Size = new System.Drawing.Size(73, 24);
             this.menuArchivo.Text = "Archivo";
             // 
             // miSalir
             // 
             this.miSalir.Name = "miSalir";
-            this.miSalir.Size = new System.Drawing.Size(96, 22);
+            this.miSalir.Size = new System.Drawing.Size(121, 26);
             this.miSalir.Text = "Salir";
             this.miSalir.Click += new System.EventHandler(this.miSalir_Click);
             // 
@@ -139,7 +139,7 @@ namespace Shalom
             this.miRutas,
             this.miRastreo});
             this.menuOperaciones.Name = "menuOperaciones";
-            this.menuOperaciones.Size = new System.Drawing.Size(85, 19);
+            this.menuOperaciones.Size = new System.Drawing.Size(106, 24);
             this.menuOperaciones.Text = "Operaciones";
             // 
             // menuPrincipal
@@ -152,20 +152,20 @@ namespace Shalom
             this.menuPrincipal.Location = new System.Drawing.Point(0, 0);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Padding = new System.Windows.Forms.Padding(14, 8, 0, 8);
-            this.menuPrincipal.Size = new System.Drawing.Size(876, 35);
+            this.menuPrincipal.Size = new System.Drawing.Size(876, 40);
             this.menuPrincipal.TabIndex = 3;
             // 
             // menuAyuda
             // 
             this.menuAyuda.Name = "menuAyuda";
-            this.menuAyuda.Size = new System.Drawing.Size(53, 19);
+            this.menuAyuda.Size = new System.Drawing.Size(65, 24);
             this.menuAyuda.Text = "Ayuda";
             this.menuAyuda.Click += new System.EventHandler(this.menuAyuda_Click);
             // 
             // lblEstado
             // 
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(855, 17);
+            this.lblEstado.Size = new System.Drawing.Size(855, 20);
             this.lblEstado.Spring = true;
             this.lblEstado.Text = "Listo";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -173,7 +173,7 @@ namespace Shalom
             // lblSesion
             // 
             this.lblSesion.Name = "lblSesion";
-            this.lblSesion.Size = new System.Drawing.Size(0, 17);
+            this.lblSesion.Size = new System.Drawing.Size(0, 20);
             this.lblSesion.Visible = false;
             // 
             // barraEstado
@@ -182,10 +182,10 @@ namespace Shalom
             this.barraEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEstado,
             this.lblSesion});
-            this.barraEstado.Location = new System.Drawing.Point(0, 560);
+            this.barraEstado.Location = new System.Drawing.Point(0, 556);
             this.barraEstado.Name = "barraEstado";
             this.barraEstado.Padding = new System.Windows.Forms.Padding(1, 0, 20, 0);
-            this.barraEstado.Size = new System.Drawing.Size(876, 22);
+            this.barraEstado.Size = new System.Drawing.Size(876, 26);
             this.barraEstado.SizingGrip = false;
             this.barraEstado.TabIndex = 2;
             // 
@@ -217,9 +217,9 @@ namespace Shalom
             // lblTituloEntregados
             // 
             this.lblTituloEntregados.AutoSize = true;
-            this.lblTituloEntregados.Location = new System.Drawing.Point(10, 44);
+            this.lblTituloEntregados.Location = new System.Drawing.Point(3, 44);
             this.lblTituloEntregados.Name = "lblTituloEntregados";
-            this.lblTituloEntregados.Size = new System.Drawing.Size(66, 15);
+            this.lblTituloEntregados.Size = new System.Drawing.Size(84, 20);
             this.lblTituloEntregados.TabIndex = 4;
             this.lblTituloEntregados.Text = "Entregados";
             // 
@@ -228,7 +228,7 @@ namespace Shalom
             this.lblEntregados.AutoSize = true;
             this.lblEntregados.Location = new System.Drawing.Point(39, 16);
             this.lblEntregados.Name = "lblEntregados";
-            this.lblEntregados.Size = new System.Drawing.Size(13, 15);
+            this.lblEntregados.Size = new System.Drawing.Size(17, 20);
             this.lblEntregados.TabIndex = 0;
             this.lblEntregados.Text = "0";
             // 
@@ -245,18 +245,19 @@ namespace Shalom
             // lblTituloRuta
             // 
             this.lblTituloRuta.AutoSize = true;
-            this.lblTituloRuta.Location = new System.Drawing.Point(18, 44);
+            this.lblTituloRuta.Location = new System.Drawing.Point(19, 44);
             this.lblTituloRuta.Name = "lblTituloRuta";
-            this.lblTituloRuta.Size = new System.Drawing.Size(44, 15);
+            this.lblTituloRuta.Size = new System.Drawing.Size(55, 20);
             this.lblTituloRuta.TabIndex = 3;
             this.lblTituloRuta.Text = "En ruta";
+            this.lblTituloRuta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEnRuta
             // 
             this.lblEnRuta.AutoSize = true;
             this.lblEnRuta.Location = new System.Drawing.Point(32, 16);
             this.lblEnRuta.Name = "lblEnRuta";
-            this.lblEnRuta.Size = new System.Drawing.Size(13, 15);
+            this.lblEnRuta.Size = new System.Drawing.Size(17, 20);
             this.lblEnRuta.TabIndex = 0;
             this.lblEnRuta.Text = "0";
             // 
@@ -275,16 +276,17 @@ namespace Shalom
             this.lblTituloAlmacen.AutoSize = true;
             this.lblTituloAlmacen.Location = new System.Drawing.Point(1, 44);
             this.lblTituloAlmacen.Name = "lblTituloAlmacen";
-            this.lblTituloAlmacen.Size = new System.Drawing.Size(68, 15);
+            this.lblTituloAlmacen.Size = new System.Drawing.Size(85, 20);
             this.lblTituloAlmacen.TabIndex = 2;
             this.lblTituloAlmacen.Text = "En almacén";
+            this.lblTituloAlmacen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEnAlmacen
             // 
             this.lblEnAlmacen.AutoSize = true;
             this.lblEnAlmacen.Location = new System.Drawing.Point(32, 16);
             this.lblEnAlmacen.Name = "lblEnAlmacen";
-            this.lblEnAlmacen.Size = new System.Drawing.Size(13, 15);
+            this.lblEnAlmacen.Size = new System.Drawing.Size(17, 20);
             this.lblEnAlmacen.TabIndex = 0;
             this.lblEnAlmacen.Text = "0";
             // 
@@ -301,18 +303,19 @@ namespace Shalom
             // lblTituloCola
             // 
             this.lblTituloCola.AutoSize = true;
-            this.lblTituloCola.Location = new System.Drawing.Point(11, 44);
+            this.lblTituloCola.Location = new System.Drawing.Point(10, 44);
             this.lblTituloCola.Name = "lblTituloCola";
-            this.lblTituloCola.Size = new System.Drawing.Size(45, 15);
+            this.lblTituloCola.Size = new System.Drawing.Size(57, 20);
             this.lblTituloCola.TabIndex = 1;
             this.lblTituloCola.Text = "En cola";
+            this.lblTituloCola.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEnCola
             // 
             this.lblEnCola.AutoSize = true;
             this.lblEnCola.Location = new System.Drawing.Point(28, 16);
             this.lblEnCola.Name = "lblEnCola";
-            this.lblEnCola.Size = new System.Drawing.Size(13, 15);
+            this.lblEnCola.Size = new System.Drawing.Size(17, 20);
             this.lblEnCola.TabIndex = 0;
             this.lblEnCola.Text = "0";
             // 
@@ -335,7 +338,7 @@ namespace Shalom
             // 
             this.txtGuia.Location = new System.Drawing.Point(138, 36);
             this.txtGuia.Name = "txtGuia";
-            this.txtGuia.Size = new System.Drawing.Size(160, 23);
+            this.txtGuia.Size = new System.Drawing.Size(160, 27);
             this.txtGuia.TabIndex = 6;
             // 
             // btnBuscarEnvio
@@ -353,7 +356,7 @@ namespace Shalom
             this.lnkRastreoCompleto.AutoSize = true;
             this.lnkRastreoCompleto.Location = new System.Drawing.Point(49, 63);
             this.lnkRastreoCompleto.Name = "lnkRastreoCompleto";
-            this.lnkRastreoCompleto.Size = new System.Drawing.Size(126, 15);
+            this.lnkRastreoCompleto.Size = new System.Drawing.Size(160, 20);
             this.lnkRastreoCompleto.TabIndex = 5;
             this.lnkRastreoCompleto.TabStop = true;
             this.lnkRastreoCompleto.Text = "Abrir rastreo completo";
@@ -364,7 +367,7 @@ namespace Shalom
             this.lblTituloGuia.AutoSize = true;
             this.lblTituloGuia.Location = new System.Drawing.Point(49, 36);
             this.lblTituloGuia.Name = "lblTituloGuia";
-            this.lblTituloGuia.Size = new System.Drawing.Size(66, 15);
+            this.lblTituloGuia.Size = new System.Drawing.Size(83, 20);
             this.lblTituloGuia.TabIndex = 0;
             this.lblTituloGuia.Text = "N° de guía:";
             // 
@@ -433,8 +436,8 @@ namespace Shalom
             // colPaquetes
             // 
             this.colPaquetes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle9;
             this.colPaquetes.FillWeight = 32F;
             this.colPaquetes.HeaderText = "Paquetes";
             this.colPaquetes.MinimumWidth = 6;
@@ -444,8 +447,8 @@ namespace Shalom
             // colCarga
             // 
             this.colCarga.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCarga.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCarga.DefaultCellStyle = dataGridViewCellStyle10;
             this.colCarga.FillWeight = 32F;
             this.colCarga.HeaderText = "Carga";
             this.colCarga.MinimumWidth = 6;
@@ -458,7 +461,7 @@ namespace Shalom
             this.lnkPendientesRuta.AutoSize = true;
             this.lnkPendientesRuta.Location = new System.Drawing.Point(225, 181);
             this.lnkPendientesRuta.Name = "lnkPendientesRuta";
-            this.lnkPendientesRuta.Size = new System.Drawing.Size(124, 15);
+            this.lnkPendientesRuta.Size = new System.Drawing.Size(158, 20);
             this.lnkPendientesRuta.TabIndex = 4;
             this.lnkPendientesRuta.TabStop = true;
             this.lnkPendientesRuta.Text = "Ver pendientes de ruta";
@@ -481,7 +484,7 @@ namespace Shalom
             this.lblSeleccionado.AutoSize = true;
             this.lblSeleccionado.Location = new System.Drawing.Point(531, 211);
             this.lblSeleccionado.Name = "lblSeleccionado";
-            this.lblSeleccionado.Size = new System.Drawing.Size(12, 15);
+            this.lblSeleccionado.Size = new System.Drawing.Size(15, 20);
             this.lblSeleccionado.TabIndex = 1;
             this.lblSeleccionado.Text = "-";
             // 
@@ -491,7 +494,7 @@ namespace Shalom
             this.lblTituloSeleccionado.AutoSize = true;
             this.lblTituloSeleccionado.Location = new System.Drawing.Point(412, 211);
             this.lblTituloSeleccionado.Name = "lblTituloSeleccionado";
-            this.lblTituloSeleccionado.Size = new System.Drawing.Size(55, 15);
+            this.lblTituloSeleccionado.Size = new System.Drawing.Size(68, 20);
             this.lblTituloSeleccionado.TabIndex = 0;
             this.lblTituloSeleccionado.Text = "Vehículo:";
             // 
@@ -570,7 +573,7 @@ namespace Shalom
             // 
             // RastreoYLogística
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(246)))), ((int)(((byte)(247)))), ((int)(((byte)(248)))));
             this.ClientSize = new System.Drawing.Size(876, 582);
@@ -581,8 +584,11 @@ namespace Shalom
             this.Controls.Add(this.barraEstado);
             this.Controls.Add(this.menuPrincipal);
             this.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MainMenuStrip = this.menuPrincipal;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(892, 621);
             this.Name = "RastreoYLogística";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

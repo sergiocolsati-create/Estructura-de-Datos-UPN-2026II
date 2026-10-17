@@ -95,6 +95,23 @@ namespace Shalom
             InOrden(raiz, tabla, filtro);
         }
 
+        public static string NombreCliente(Envio e)
+        {
+            if (e.Remitente != null) return e.Remitente.Nombres;
+            return "";
+        }
+
+        public static string NombreDestino(Envio e)
+        {
+            if (e.SedeDestino != null) return e.SedeDestino.Nombre;
+            return "";
+        }
+
+        public static void AgregarFila(DataGridView tabla, Envio e)
+        {
+            tabla.Rows.Add(e.Codigo, NombreCliente(e), NombreDestino(e), NombreEstadoLegible(e.Estado), e.FechaActualizacion.ToString("dd/MM/yyyy HH:mm"));
+        }
+
         private void InOrden(NodoArbol nodo, DataGridView tabla, EstadoEnvio? filtro)
         {
             if (nodo == null)
@@ -105,16 +122,39 @@ namespace Shalom
             Envio e = nodo.Dato;
             if (filtro == null || e.Estado == filtro)
             {
-                string cliente = "";
-                if (e.Remitente != null) cliente = e.Remitente.Nombres;
-
-                string destino = "";
-                if (e.SedeDestino != null) destino = e.SedeDestino.Nombre;
-
-                tabla.Rows.Add(e.Codigo, cliente, destino, e.Estado, e.FechaActualizacion.ToString("dd/MM/yyyy HH:mm"));
+                AgregarFila(tabla, e);
             }
 
             InOrden(nodo.Derecho, tabla, filtro);
+        }
+
+        public List<Envio> ObtenerTodos()
+        {
+            List<Envio> lista = new List<Envio>();
+            InOrdenLista(raiz, lista);
+            return lista;
+        }
+
+        public static string NombreEstadoLegible(EstadoEnvio estado)
+        {
+            switch (estado)
+            {
+                case EstadoEnvio.Registrado: return "Registrado";
+                case EstadoEnvio.EnPreparacion: return "En Preparación";
+                case EstadoEnvio.EnTransito: return "En Tránsito";
+                case EstadoEnvio.EnReparto: return "En Reparto";
+                case EstadoEnvio.Entregado: return "Entregado";
+                case EstadoEnvio.Incidencia: return "Incidencia";
+                default: return estado.ToString();
+            }
+        }
+
+        private void InOrdenLista(NodoArbol nodo, List<Envio> lista)
+        {
+            if (nodo == null) return;
+            InOrdenLista(nodo.Izquierdo, lista);
+            lista.Add(nodo.Dato);
+            InOrdenLista(nodo.Derecho, lista);
         }
     }
 }
