@@ -111,8 +111,11 @@ namespace Shalom
         {
             using (formulario)
             {
+                this.Hide();
+                formulario.StartPosition = FormStartPosition.CenterParent;
                 formulario.ShowDialog(this);
             }
+            this.Show();
             ActualizarPanel();
         }
 
