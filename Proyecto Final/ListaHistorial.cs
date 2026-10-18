@@ -39,7 +39,7 @@ namespace Shalom
             while (actual != null)
             {
                 EventoRastreo e = actual.Dato;
-                tabla.Rows.Add(e.Fecha.ToString("dd/MM/yyyy HH:mm"), e.Estado, e.Ubicacion);
+                tabla.Rows.Add(e.Fecha.ToString("dd/MM/yyyy HH:mm"), ArbolEnvios.NombreEstadoLegible(e.Estado), e.Ubicacion);
                 actual = actual.Sgte;
             }
         }
@@ -51,7 +51,7 @@ namespace Shalom
             while (actual != null)
             {
                 EventoRastreo ev = actual.Dato;
-                texto += ev.Fecha.ToString("dd/MM HH:mm") + " - " + ev.Estado + " - " + ev.Ubicacion + Environment.NewLine;
+                texto += ev.Fecha.ToString("dd/MM HH:mm") + " - " + ArbolEnvios.NombreEstadoLegible(ev.Estado) + " - " + ev.Ubicacion + Environment.NewLine;
                 actual = actual.Sgte;
             }
             return texto;

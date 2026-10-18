@@ -28,7 +28,6 @@ namespace Shalom
             // El Designer ya conecta CellContentClick; usamos solo CellClick.
             dataGridView1.CellContentClick -= dataGridView1_CellContentClick;
 
-
             // CellClick responde al clic en cualquier parte de la fila (CellContentClick solo sobre el texto)
             dataGridView1.CellClick += dataGridView1_CellContentClick;
         }
@@ -58,6 +57,12 @@ namespace Shalom
             comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBox1.SelectedIndex = 0;
 
+            ConfigurarSugerenciasGuia();
+
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Format += ComboEstado_Format;
+            comboBox3.FormattingEnabled = true;
+            comboBox3.Format += ComboEstado_Format;
 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.ReadOnly = true;
@@ -74,11 +79,35 @@ namespace Shalom
             }
         }
 
+        private void ComboEstado_Format(object sender, ListControlConvertEventArgs e)
+        {
+            if (e.ListItem is EstadoEnvio estado)
+                e.Value = ArbolEnvios.NombreEstadoLegible(estado);
+            else
+                e.Value = e.ListItem.ToString(); // "Todos" se queda igual
+        }
+
+        private void ConfigurarSugerenciasGuia()
+        {
+            List<Envio> todos = Sistema.Registro.ObtenerTodos();
+            todos.Sort((a, b) => b.Id.CompareTo(a.Id));
+
+            AutoCompleteStringCollection sugerencias = new AutoCompleteStringCollection();
+            int max = Math.Min(todos.Count, 5);
+            for (int i = 0; i < max; i++)
+                sugerencias.Add(todos[i].Codigo);
+
+            textBox1.AutoCompleteMode = AutoCompleteMode.Suggest;
+            textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            textBox1.AutoCompleteCustomSource = sugerencias;
+        }
+
         // Si hay texto en "N° de guía", busca ese envío exacto (árbol).
         // Si no, aplica el filtro de Estado a la lista completa.
         private void button1_Click(object sender, EventArgs e)
         {
             string codigo = textBox1.Text.Trim().ToUpperInvariant();
+
             LimpiarDetalle();
             dataGridView1.Rows.Clear();
 
@@ -91,15 +120,8 @@ namespace Shalom
                     return;
                 }
 
-                string cliente = "";
-                if (envio.Remitente != null) cliente = envio.Remitente.Nombres;
-
-                string destino = "";
-                if (envio.SedeDestino != null) destino = envio.SedeDestino.Nombre;
-
                 dataGridView1.Rows.Clear();
-                dataGridView1.Rows.Add(envio.Codigo, cliente, destino, envio.Estado,
-                    envio.FechaActualizacion.ToString("dd/MM/yyyy HH:mm"));
+                ArbolEnvios.AgregarFila(dataGridView1, envio);
 
                 MostrarDetalle(envio);
                 return;
@@ -190,11 +212,8 @@ namespace Shalom
         {
             envioSeleccionado = envio;
 
-            string cliente = "";
-            if (envio.Remitente != null) cliente = envio.Remitente.Nombres;
-
-            string destino = "";
-            if (envio.SedeDestino != null) destino = envio.SedeDestino.Nombre;
+            string cliente = ArbolEnvios.NombreCliente(envio);
+            string destino = ArbolEnvios.NombreDestino(envio);
 
             string placa = "(sin asignar)";
             if (envio.PlacaVehiculo != null) placa = envio.PlacaVehiculo;
@@ -230,12 +249,21 @@ namespace Shalom
             lstResumen.Items.Clear();
             if (envio == null) return;
 
-            lstResumen.Items.Add("Origen: " + envio.SedeOrigen.Nombre);
-            lstResumen.Items.Add("Destino: " + envio.SedeDestino.Nombre);
-            lstResumen.Items.Add("Remitente: " + envio.Remitente.Nombres + " / " + envio.Remitente.NumeroDocumento);
-            lstResumen.Items.Add("Destinatario: " + envio.Destinatario.Nombres + " / " + envio.Destinatario.NumeroDocumento);
+            string origen = envio.SedeOrigen != null ? envio.SedeOrigen.Nombre : "(sin origen)";
+            string destino = envio.SedeDestino != null ? envio.SedeDestino.Nombre : "(sin destino)";
+            string remitente = envio.Remitente != null
+                ? envio.Remitente.Nombres + " / " + envio.Remitente.NumeroDocumento
+                : "(sin remitente)";
+            string destinatario = envio.Destinatario != null
+                ? envio.Destinatario.Nombres + " / " + envio.Destinatario.NumeroDocumento
+                : "(sin destinatario)";
+
+            lstResumen.Items.Add("Origen: " + origen);
+            lstResumen.Items.Add("Destino: " + destino);
+            lstResumen.Items.Add("Remitente: " + remitente);
+            lstResumen.Items.Add("Destinatario: " + destinatario);
             lstResumen.Items.Add("Paquete: " + envio.Tipo + ", " + envio.PesoKg + " kg / " + envio.Descripcion);
-            lstResumen.Items.Add("Pago: " + envio.ModalidadPago + " / S/ " + envio.Precio.ToString("0.00"));
+            lstResumen.Items.Add("Pago: " + NombrePago(envio.ModalidadPago) + " / S/ " + envio.Precio.ToString("0.00"));
             lstResumen.Items.Add("Vehículo: " + (envio.PlacaVehiculo ?? "-"));
             lstResumen.Items.Add("Clave de entrega: " + envio.ClaveSeguridad);
             lstResumen.Items.Add("");
@@ -246,9 +274,29 @@ namespace Shalom
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             lstResumen.Items.AddRange(eventos);
         }
+
+        private string NombrePago(ModalidadPago pago)
+        {
+            switch (pago)
+            {
+                case ModalidadPago.PagadoEnOrigen: return "Pagado en origen";
+                case ModalidadPago.PorCobrarEnDestino: return "Por cobrar en destino";
+                default: return pago.ToString();
+            }
+        }
+
         private void lstResumen_SelectedIndexChanged(object sender, EventArgs e)
         {
         }
 
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
