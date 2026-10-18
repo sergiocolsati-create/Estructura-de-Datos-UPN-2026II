@@ -1,0 +1,31 @@
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\bin\Debug\Shalom.exe
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\bin\Debug\Shalom.pdb
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.csproj.AssemblyReference.cache
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.Almacén.resources
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.AsignaciónDeRutas.resources
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.CargaDelVehículo.resources
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.Ingreso_de_envíos_Cola_de_Recepción.resources
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.RastreoDeEnvíos.resources
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.Properties.Resources.resources
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.RastreoYLogística.resources
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.csproj.GenerateResource.cache
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.csproj.CoreCompileInputs.cache
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.exe
+C:\Users\PC\OneDrive\Desktop\EP\Proyecto Final\obj\Debug\Shalom.pdb
+C:\Users\JHON\Downloads\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.csproj.AssemblyReference.cache
+C:\Users\JHON\Downloads\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.exe
+C:\Users\JHON\Downloads\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.pdb
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\bin\Debug\Shalom.exe
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\bin\Debug\Shalom.pdb
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.csproj.AssemblyReference.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.Almacén.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.AsignaciónDeRutas.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.CargaDelVehículo.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.Ingreso_de_envíos_Cola_de_Recepción.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.RastreoDeEnvíos.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.Properties.Resources.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.RastreoYLogística.resources
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.csproj.GenerateResource.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.csproj.CoreCompileInputs.cache
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.exe
+C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.pdb

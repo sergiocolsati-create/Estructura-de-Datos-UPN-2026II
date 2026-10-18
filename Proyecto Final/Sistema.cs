@@ -8,7 +8,7 @@ namespace Shalom
     {
         // CONEXIÓN A SQL SERVER
         private static readonly string cadenaConexion =
-            @"Data Source=localhost;Initial Catalog=ShalomDB;Integrated Security=True;";
+            @"Data Source=ANGGIE\SQLEXPRESS;Initial Catalog=ShalomDB;Integrated Security=True;";
 
         public static SqlConnection CrearConexion()
         {
@@ -21,7 +21,7 @@ namespace Shalom
         public static ArbolEnvios Registro = new ArbolEnvios();
 
         // CATÁLOGOS
-        public static Sede[] Sedes = new Sede[0];
+        public static Sede[] Sedes = new Sede[0]; 
         public static Vehiculo[] Vehiculos = new Vehiculo[0];
 
         // TARIFAS

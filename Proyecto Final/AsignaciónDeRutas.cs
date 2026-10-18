@@ -1,209 +1,181 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace Shalom
 {
     public partial class AsignaciónDeRutas : Form
     {
         private Vehiculo vehiculoActual;
-        private Button[] botonesCadena;
+        private Button[] botonesParada;
         private Label[] flechas;
 
         public AsignaciónDeRutas()
         {
             InitializeComponent();
 
-            comboBox1.DisplayMember = "Placa";
-            comboBox1.Items.AddRange(Sistema.Vehiculos);
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboVehiculo.DisplayMember = "Placa";
+            cboVehiculo.Items.AddRange(Sistema.Vehiculos);
+            cboVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboVehiculo.SelectedIndexChanged += cboVehiculo_SelectedIndexChanged;
 
-            listBox1.DisplayMember = "Codigo";
+            lstPaquetesPendientes.DisplayMember = "Codigo";
 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvParadasRuta.AllowUserToAddRows = false;
+            dgvParadasRuta.ReadOnly = true;
+            dgvParadasRuta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvParadasRuta.MultiSelect = false;
 
-            botonesCadena = new Button[] { button1, button2, button3, button4, button5 };
-            flechas = new Label[] { label3, label4, label5, label6 };
+            botonesParada = new Button[]
+            {
+                btnParada1, btnParada2, btnParada3, btnParada4, btnParada5
+            };
 
-
-            comboBox1.SelectedIndexChanged += comboBox1_SelectedIndexChanged;
-
+            flechas = new Label[]
+            {
+                lblFlecha1, lblFlecha2, lblFlecha3, lblFlecha4
+            };
         }
 
-
-        private void AsignaciónDeRutas_Load_1(object sender, EventArgs e)
+        private void AsignaciónDeRutas_Load(object sender, EventArgs e)
         {
-            if (comboBox1.Items.Count > 0)
-                comboBox1.SelectedIndex = 0;
+            if (cboVehiculo.Items.Count > 0)
+                cboVehiculo.SelectedIndex = 0;
         }
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void cboVehiculo_SelectedIndexChanged(object sender, EventArgs e)
         {
-            vehiculoActual = comboBox1.SelectedItem as Vehiculo;
+            vehiculoActual = cboVehiculo.SelectedItem as Vehiculo;
             ActualizarPantalla();
         }
 
-        // "Paquetes por asignar" = la PILA del vehículo, del tope a la base.
-        // Solo el tope puede pasar a la ruta (LIFO), por eso queda seleccionado.
-        private void CargarPaquetesDisponibles()
+        private bool EsElPaqueteDelTope()
         {
-            listBox1.Items.Clear();
-            if (vehiculoActual == null) return;
+            if (vehiculoActual == null)
+                return false;
 
-            Envio[] pila = vehiculoActual.Carga.ObtenerTodos();
-            for (int i = 0; i < pila.Length; i++)
-                listBox1.Items.Add(pila[i]);
+            Envio paqueteSeleccionado = lstPaquetesPendientes.SelectedItem as Envio;
+            Envio paqueteDelTope = vehiculoActual.Carga.VerTope();
 
-            if (listBox1.Items.Count > 0)
-                listBox1.SelectedIndex = 0;   // El tope
-        }
-
-        // Revisa que el usuario haya elegido el tope de la pila
-        private bool EsElTope()
-        {
-            Envio seleccionado = listBox1.SelectedItem as Envio;
-            Envio tope = vehiculoActual.Carga.VerTope();
-
-            if (tope == null)
+            if (paqueteDelTope == null)
             {
-                MessageBox.Show("No hay paquetes por asignar en este vehículo.", "Rutas");
+                MessageBox.Show("Este vehículo no tiene paquetes por asignar.");
                 return false;
             }
-            if (seleccionado != tope)
+
+            if (paqueteSeleccionado != paqueteDelTope)
             {
-                MessageBox.Show("Solo puede asignarse el paquete del TOPE de la pila (" + tope.Codigo +
-                                "): es el último que se cargó y el primero que sale (LIFO).",
-                                "Rutas", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                listBox1.SelectedIndex = 0;
+                MessageBox.Show(
+                    "Solo puedes asignar el paquete que está en el tope de la carga.");
+
+                lstPaquetesPendientes.SelectedIndex = 0;
                 return false;
             }
+
             return true;
         }
 
-        // Ejecuta una operación de Sistema y muestra el error si lo hay
-        private void Ejecutar(Func<string> operacion, string titulo)
+        private string ObtenerGuiaSeleccionada()
+        {
+            if (dgvParadasRuta.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona una parada de la tabla.");
+                return null;
+            }
+
+            object valor = dgvParadasRuta.SelectedRows[0].Cells["colGuia"].Value;
+
+            if (valor == null)
+            {
+                MessageBox.Show("No se pudo obtener el número de guía.");
+                return null;
+            }
+
+            return valor.ToString();
+        }
+
+        private void EjecutarOperacion(Func<string> operacion, string titulo)
         {
             try
             {
                 string error = operacion();
-                if (error != "")
+
+                if (!string.IsNullOrEmpty(error))
                 {
-                    MessageBox.Show(error, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show(error, titulo);
                     return;
                 }
+
+                ActualizarPantalla();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(
+                    "No se pudo completar la operación:\n" + ex.Message,
+                    "Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
-            ActualizarPantalla();
         }
 
-        private void ActualizarCadena()
+        private void btnAgregarAlFinal_Click(object sender, EventArgs e)
         {
-            for (int i = 0; i < botonesCadena.Length; i++)
-                botonesCadena[i].Visible = false;
-            for (int i = 0; i < flechas.Length; i++)
-                flechas[i].Visible = false;
-
-            if (vehiculoActual == null) return;
-
-            string[] textos = vehiculoActual.Ruta.ObtenerTextos();
-            if (textos.Length == 0) return;
-
-            int mostrar = textos.Length;
-            bool hayMas = false;
-            if (mostrar > botonesCadena.Length)
+            if (vehiculoActual == null)
             {
-                hayMas = true;
-                mostrar = botonesCadena.Length;
-            }
-
-            for (int i = 0; i < mostrar; i++)
-            {
-                botonesCadena[i].Visible = true;
-                botonesCadena[i].Text = textos[i];
-
-                if (i > 0)
-                    flechas[i - 1].Visible = true;
-            }
-
-            botonesCadena[0].Text = "cabeza " + textos[0];
-
-            if (hayMas)
-                botonesCadena[mostrar - 1].Text = "... (+" + (textos.Length - mostrar + 1) + " más)";
-            else if (mostrar > 1)
-                botonesCadena[mostrar - 1].Text = "cola " + textos[mostrar - 1];
-        }
-
-        private void button1_Click(object sender, EventArgs e) { MostrarDetalleParada(0); }
-        private void button2_Click(object sender, EventArgs e) { MostrarDetalleParada(1); }
-        private void button3_Click(object sender, EventArgs e) { MostrarDetalleParada(2); }
-        private void button4_Click(object sender, EventArgs e) { MostrarDetalleParada(3); }
-        private void button5_Click(object sender, EventArgs e) { MostrarDetalleParada(4); }
-
-        private void MostrarDetalleParada(int posicion)
-        {
-            if (vehiculoActual == null) return;
-
-            string[] textos = vehiculoActual.Ruta.ObtenerTextos();
-            if (posicion >= textos.Length) return;
-
-            MessageBox.Show("Parada: " + textos[posicion], "Detalle de parada");
-        }
-
-        // ---------- Agregar al final: tope de la pila → última parada ----------
-        private void button6_Click(object sender, EventArgs e)
-        {
-            if (vehiculoActual == null || !EsElTope()) return;
-            Ejecutar(() => Sistema.AsignarTope(vehiculoActual, null), "Agregar al final");
-        }
-
-        // ---------- Insertar después: tope de la pila → después de la parada elegida ----------
-        private void button7_Click(object sender, EventArgs e)
-        {
-            if (vehiculoActual == null) return;
-
-            if (dataGridView1.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione primero la parada de referencia en la tabla.");
-                return;
-            }
-            if (!EsElTope()) return;
-
-            string codigoReferencia = dataGridView1.SelectedRows[0].Cells[0].Value.ToString();
-            Ejecutar(() => Sistema.AsignarTope(vehiculoActual, codigoReferencia), "Insertar después");
-        }
-
-        // ---------- Eliminar parada: sale de la ruta y vuelve al tope del vehículo ----------
-        private void button8_Click(object sender, EventArgs e)
-        {
-            if (vehiculoActual == null) return;
-
-            if (dataGridView1.SelectedRows.Count == 0)
-            {
-                MessageBox.Show("Seleccione la parada que quiere eliminar.");
+                MessageBox.Show("Selecciona un vehículo.");
                 return;
             }
 
-            string codigo = dataGridView1.SelectedRows[0].Cells[1].Value.ToString();
-            Ejecutar(() => Sistema.QuitarParada(vehiculoActual, codigo), "Eliminar parada");
+            if (!EsElPaqueteDelTope())
+                return;
+
+            EjecutarOperacion(
+                () => Sistema.AsignarTope(vehiculoActual, null),
+                "Agregar al final");
         }
 
-        // ---------- Confirmar ruta: cada cambio ya se guardó; aquí solo se resume ----------
-        private void button9_Click(object sender, EventArgs e)
+        private void btnInsertarDespues_Click(object sender, EventArgs e)
         {
-            if (vehiculoActual == null) return;
+            if (vehiculoActual == null)
+            {
+                MessageBox.Show("Selecciona un vehículo.");
+                return;
+            }
+
+            string guiaReferencia = ObtenerGuiaSeleccionada();
+
+            if (guiaReferencia == null || !EsElPaqueteDelTope())
+                return;
+
+            EjecutarOperacion(
+                () => Sistema.AsignarTope(vehiculoActual, guiaReferencia),
+                "Insertar después");
+        }
+
+        private void btnEliminarParada_Click(object sender, EventArgs e)
+        {
+            if (vehiculoActual == null)
+            {
+                MessageBox.Show("Selecciona un vehículo.");
+                return;
+            }
+
+            string guia = ObtenerGuiaSeleccionada();
+
+            if (guia == null)
+                return;
+
+            EjecutarOperacion(
+                () => Sistema.QuitarParada(vehiculoActual, guia),
+                "Eliminar parada");
+        }
+
+        private void btnVerResumenRuta_Click(object sender, EventArgs e)
+        {
+            if (vehiculoActual == null)
+            {
+                MessageBox.Show("Selecciona un vehículo.");
+                return;
+            }
 
             if (vehiculoActual.Ruta.EstaVacia())
             {
@@ -211,20 +183,72 @@ namespace Shalom
                 return;
             }
 
-            MessageBox.Show("Ruta de " + vehiculoActual.Placa + " guardada con " +
-                            vehiculoActual.Ruta.ContarParadas() + " paradas.\n" +
-                            "Paquetes aún en el vehículo: " + vehiculoActual.Carga.Contar(),
-                            "Confirmar ruta");
+            MessageBox.Show(
+                "Vehículo: " + vehiculoActual.Placa +
+                "\nParadas: " + vehiculoActual.Ruta.ContarParadas() +
+                "\nPaquetes que siguen en el vehículo: " +
+                vehiculoActual.Carga.Contar(),
+                "Resumen de ruta");
         }
 
         private void ActualizarPantalla()
         {
-            if (vehiculoActual == null) return;
+            if (vehiculoActual == null)
+                return;
 
-            vehiculoActual.Ruta.Mostrar(dataGridView1);
-            label2.Text = "Paradas: " + vehiculoActual.Ruta.ContarParadas();
-            CargarPaquetesDisponibles();
-            ActualizarCadena();
+            vehiculoActual.Ruta.Mostrar(dgvParadasRuta);
+            lblCantidadParadas.Text =
+                "Paradas: " + vehiculoActual.Ruta.ContarParadas();
+
+            lstPaquetesPendientes.Items.Clear();
+
+            Envio[] paquetes = vehiculoActual.Carga.ObtenerTodos();
+
+            for (int i = 0; i < paquetes.Length; i++)
+                lstPaquetesPendientes.Items.Add(paquetes[i]);
+
+            if (lstPaquetesPendientes.Items.Count > 0)
+                lstPaquetesPendientes.SelectedIndex = 0;
+
+            ActualizarCadenaDeParadas();
+        }
+
+        private void ActualizarCadenaDeParadas()
+        {
+            for (int i = 0; i < botonesParada.Length; i++)
+                botonesParada[i].Visible = false;
+
+            for (int i = 0; i < flechas.Length; i++)
+                flechas[i].Visible = false;
+
+            string[] paradas = vehiculoActual.Ruta.ObtenerTextos();
+            int cantidadVisible = paradas.Length;
+
+            if (cantidadVisible > botonesParada.Length)
+                cantidadVisible = botonesParada.Length;
+
+            for (int i = 0; i < cantidadVisible; i++)
+            {
+                botonesParada[i].Visible = true;
+                botonesParada[i].Text = paradas[i];
+
+                if (i > 0)
+                    flechas[i - 1].Visible = true;
+            }
+
+            if (cantidadVisible > 0)
+                botonesParada[0].Text = "Cabeza " + paradas[0];
+
+            if (paradas.Length > botonesParada.Length)
+            {
+                botonesParada[botonesParada.Length - 1].Text =
+                    "... (+" + (paradas.Length - botonesParada.Length + 1) + " más)";
+            }
+            else if (cantidadVisible > 1)
+            {
+                botonesParada[cantidadVisible - 1].Text =
+                    "Cola " + paradas[cantidadVisible - 1];
+            }
         }
     }
 }
