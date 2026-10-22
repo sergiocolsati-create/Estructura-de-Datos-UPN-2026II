@@ -16,5 +16,36 @@ namespace Lab05
         {
             InitializeComponent();
         }
+        Colita col = new Colita();
+        
+
+        private void btnQueue_Click(object sender, EventArgs e)
+        {
+            col.enqueue(txtCod.Text, txtDescrip.Text, txtPrioridad.Text);
+            txtCod.Text = "";
+            txtDescrip.Text = "";
+            txtPrioridad.Text= "";
+            txtCod.Focus();
+        }
+        
+        private void btnDequeue_Click(object sender, EventArgs e)
+        {
+            Nodo fuera = col.dequeue();
+            if (fuera == null) MessageBox.Show("La cola esta vacias");
+            else MessageBox.Show("Salio de cola:  " + fuera.Cod);
+        }
+
+        private void btnListar_Click(object sender, EventArgs e)
+        {
+            lstBox.Items.Clear();
+            col.VerCola(lstBox);
+        }
+
+        private void btnVer_Click(object sender, EventArgs e)
+        {
+            Nodo frente = col.front();
+            if (frente == null) MessageBox.Show("la cola esta vacia");
+            else MessageBox.Show("El frente de la cola es: " + frente.Cod);
+        }
     }
 }
