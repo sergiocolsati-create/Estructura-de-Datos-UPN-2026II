@@ -17,17 +17,17 @@ namespace Lab05
             InitializeComponent();
         }
         Colita col = new Colita();
-        
+
 
         private void btnQueue_Click(object sender, EventArgs e)
         {
             col.enqueue(txtCod.Text, txtDescrip.Text, txtPrioridad.Text);
             txtCod.Text = "";
             txtDescrip.Text = "";
-            txtPrioridad.Text= "";
+            txtPrioridad.Text = "";
             txtCod.Focus();
         }
-        
+
         private void btnDequeue_Click(object sender, EventArgs e)
         {
             Nodo fuera = col.dequeue();
@@ -46,6 +46,12 @@ namespace Lab05
             Nodo frente = col.front();
             if (frente == null) MessageBox.Show("la cola esta vacia");
             else MessageBox.Show("El frente de la cola es: " + frente.Cod);
+        }
+
+        private void btnIrForm2_Click(object sender, EventArgs e)
+        {
+            Form2 f = new Form2();
+            f.Show();
         }
     }
 }
