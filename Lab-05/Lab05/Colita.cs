@@ -85,5 +85,17 @@ namespace Lab05
                 actual = actual.Sgte; // pasamos al siguiente nodo
             }
         }
+
+
+        public int Contador()
+        {
+            Nodo actual = pri;
+            int contador = 0;
+            while (actual != null) {
+                actual=actual.Sgte; contador++;
+                        }
+            return contador;
+
+        }
     }
 }
