@@ -61,8 +61,7 @@ namespace Lab05
 
         private void button1_Click(object sender, EventArgs e)
         {
-            FormImplementacionCola f = new FormImplementacionCola();
-            f.Show();
+            
         }
     }
 }
