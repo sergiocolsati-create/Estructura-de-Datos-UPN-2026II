@@ -41,6 +41,7 @@
             this.lstBox = new System.Windows.Forms.ListBox();
             this.btnIrForm2 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -80,7 +81,7 @@
             // 
             this.txtCod.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.txtCod.Location = new System.Drawing.Point(142, 125);
-            this.txtCod.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCod.Margin = new System.Windows.Forms.Padding(4);
             this.txtCod.Name = "txtCod";
             this.txtCod.Size = new System.Drawing.Size(132, 23);
             this.txtCod.TabIndex = 3;
@@ -89,7 +90,7 @@
             // 
             this.txtDescrip.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.txtDescrip.Location = new System.Drawing.Point(142, 166);
-            this.txtDescrip.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescrip.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescrip.Name = "txtDescrip";
             this.txtDescrip.Size = new System.Drawing.Size(132, 23);
             this.txtDescrip.TabIndex = 4;
@@ -98,7 +99,7 @@
             // 
             this.txtPrioridad.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.txtPrioridad.Location = new System.Drawing.Point(142, 202);
-            this.txtPrioridad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrioridad.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrioridad.Name = "txtPrioridad";
             this.txtPrioridad.Size = new System.Drawing.Size(132, 23);
             this.txtPrioridad.TabIndex = 5;
@@ -106,7 +107,7 @@
             // btnQueue
             // 
             this.btnQueue.Location = new System.Drawing.Point(49, 355);
-            this.btnQueue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQueue.Margin = new System.Windows.Forms.Padding(4);
             this.btnQueue.Name = "btnQueue";
             this.btnQueue.Size = new System.Drawing.Size(152, 57);
             this.btnQueue.TabIndex = 6;
@@ -117,7 +118,7 @@
             // btnDequeue
             // 
             this.btnDequeue.Location = new System.Drawing.Point(49, 420);
-            this.btnDequeue.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDequeue.Margin = new System.Windows.Forms.Padding(4);
             this.btnDequeue.Name = "btnDequeue";
             this.btnDequeue.Size = new System.Drawing.Size(152, 57);
             this.btnDequeue.TabIndex = 7;
@@ -128,7 +129,7 @@
             // btnListar
             // 
             this.btnListar.Location = new System.Drawing.Point(49, 290);
-            this.btnListar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnListar.Margin = new System.Windows.Forms.Padding(4);
             this.btnListar.Name = "btnListar";
             this.btnListar.Size = new System.Drawing.Size(152, 57);
             this.btnListar.TabIndex = 8;
@@ -139,7 +140,7 @@
             // btnVer
             // 
             this.btnVer.Location = new System.Drawing.Point(49, 485);
-            this.btnVer.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVer.Margin = new System.Windows.Forms.Padding(4);
             this.btnVer.Name = "btnVer";
             this.btnVer.Size = new System.Drawing.Size(152, 57);
             this.btnVer.TabIndex = 9;
@@ -152,17 +153,17 @@
             this.lstBox.FormattingEnabled = true;
             this.lstBox.ItemHeight = 16;
             this.lstBox.Location = new System.Drawing.Point(351, 90);
-            this.lstBox.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstBox.Margin = new System.Windows.Forms.Padding(4);
             this.lstBox.Name = "lstBox";
             this.lstBox.Size = new System.Drawing.Size(305, 356);
             this.lstBox.TabIndex = 10;
             // 
             // btnIrForm2
             // 
-            this.btnIrForm2.Location = new System.Drawing.Point(589, 485);
+            this.btnIrForm2.Location = new System.Drawing.Point(520, 485);
             this.btnIrForm2.Margin = new System.Windows.Forms.Padding(4);
             this.btnIrForm2.Name = "btnIrForm2";
-            this.btnIrForm2.Size = new System.Drawing.Size(157, 57);
+            this.btnIrForm2.Size = new System.Drawing.Size(136, 57);
             this.btnIrForm2.TabIndex = 11;
             this.btnIrForm2.Text = "Ir a Cola de Impresión";
             this.btnIrForm2.UseVisualStyleBackColor = true;
@@ -180,11 +181,23 @@
             this.label4.Text = "Cola de Atención al Cliente";
             this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(351, 485);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(161, 57);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "Ir a Implementación de la cola";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(759, 571);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnIrForm2);
             this.Controls.Add(this.lstBox);
@@ -198,9 +211,10 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -221,6 +235,7 @@
         private System.Windows.Forms.ListBox lstBox;
         private System.Windows.Forms.Button btnIrForm2;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button button1;
     }
 }
 

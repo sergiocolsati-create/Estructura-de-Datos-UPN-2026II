@@ -76,5 +76,10 @@ namespace Lab05
             if (frente == null) MessageBox.Show("No hay documentos en espera");
             else MessageBox.Show("El siguiente en imprimirse es: " + frente.Cod + " - " + frente.Descripcion);
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
