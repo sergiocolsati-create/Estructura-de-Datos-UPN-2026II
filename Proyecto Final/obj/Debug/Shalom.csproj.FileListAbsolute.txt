@@ -29,3 +29,21 @@ C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_co
 C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.csproj.CoreCompileInputs.cache
 C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.exe
 C:\Users\anggi\OneDrive\Escritorio\Anshe_ING\4to ciclo\ESTRUCTURA DE DATOS\EP_corregido\EP\Proyecto Final\obj\Debug\Shalom.pdb
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\bin\Debug\Shalom.exe
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\bin\Debug\Shalom.pdb
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\bin\Debug\Guna.UI2.dll
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\bin\Debug\Telerik.FontIcons.dll
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\bin\Debug\Telerik.SvgIcons.dll
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.csproj.AssemblyReference.cache
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.Almacén.resources
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.AsignaciónDeRutas.resources
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.CargaDelVehículo.resources
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.Ingreso_de_envíos_Cola_de_Recepción.resources
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.RastreoDeEnvíos.resources
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.Properties.Resources.resources
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.RastreoYLogística.resources
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.csproj.GenerateResource.cache
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.csproj.CoreCompileInputs.cache
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.csproj.Up2Date
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.exe
+C:\Users\PC\OneDrive\Desktop\Estructura de Datos-UPN-2026II\Proyecto Final\obj\Debug\Shalom.pdb
