@@ -13,4 +13,4 @@ namespace Shalom
         public decimal PrecioBase { get; set; }
         public decimal PrecioPorKg { get; set; }
     }
-}
+}//camote
