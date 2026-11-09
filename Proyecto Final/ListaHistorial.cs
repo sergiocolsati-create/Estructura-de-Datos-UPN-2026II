@@ -55,6 +55,7 @@ namespace Shalom
                 if (!string.IsNullOrWhiteSpace(ev.Observacion))
                     texto += " - " + ev.Observacion;
                 texto += Environment.NewLine;
+                actual = actual.Sgte;
             }
             return texto;
         }
