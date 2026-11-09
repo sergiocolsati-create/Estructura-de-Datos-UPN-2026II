@@ -8,7 +8,7 @@ namespace Shalom
     {
         // CONEXIÓN A SQL SERVER
         private static readonly string cadenaConexion =
-            @"Data Source=ANGGIE\SQLEXPRESS;Initial Catalog=ShalomDB_Final;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
+            @"Data Source=localhost;Initial Catalog=ShalomDB_Final;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
 
         public static SqlConnection CrearConexion()
         {
@@ -21,7 +21,7 @@ namespace Shalom
         public static ArbolEnvios Registro = new ArbolEnvios();
 
         // CATÁLOGOS
-        public static Sede[] Sedes = new Sede[0]; 
+        public static Sede[] Sedes = new Sede[0];
         public static Vehiculo[] Vehiculos = new Vehiculo[0];
 
         // BUSCAR SEDE POR ID
@@ -728,7 +728,7 @@ namespace Shalom
         // Registra una INCIDENCIA en el historial (retraso, daño, etc.).
         // El paquete NO cambia de estructura: sigue en la cola, pila o ruta donde estaba.
         // REGISTRAR UNA INCIDENCIA
-        public static string RegistrarIncidencia( Envio envio, string observacion)
+        public static string RegistrarIncidencia(Envio envio, string observacion)
         {
             if (envio == null)
                 return "Seleccione un envío.";
@@ -946,6 +946,67 @@ namespace Shalom
             if (string.IsNullOrWhiteSpace(valor))
                 return DBNull.Value;
             return valor;
+        }
+
+        // =========================================================
+        //  PERSONAS (validaciones del formulario de Ingreso)
+        // =========================================================
+
+        // Busca una persona por su DNI. Devuelve null si no está registrada.
+        public static Persona BuscarPersonaPorDni(string dni)
+        {
+            string consulta =
+                "SELECT Id, TipoDocumento, NumeroDocumento, Nombres, Telefono " +
+                "FROM Persona WHERE NumeroDocumento = @dni";
+
+            using (SqlConnection conexion = CrearConexion())
+            {
+                conexion.Open();
+
+                using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@dni", dni);
+
+                    using (SqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (!lector.Read())
+                            return null;
+
+                        Persona persona = new Persona();
+                        persona.Id = Convert.ToInt32(lector["Id"]);
+                        persona.TipoDocumento = lector["TipoDocumento"].ToString();
+                        persona.NumeroDocumento = lector["NumeroDocumento"].ToString();
+                        persona.Nombres = lector["Nombres"].ToString();
+                        persona.Telefono = lector["Telefono"] == DBNull.Value
+                            ? ""
+                            : lector["Telefono"].ToString();
+                        return persona;
+                    }
+                }
+            }
+        }
+
+        // ¿El teléfono ya pertenece a OTRA persona (otro DNI)?
+        // Devuelve el nombre de esa persona, o null si el teléfono está libre.
+        public static string TelefonoDeOtraPersona(string telefono, string dniPropio)
+        {
+            string consulta =
+                "SELECT TOP 1 Nombres FROM Persona " +
+                "WHERE Telefono = @tel AND NumeroDocumento <> @dni";
+
+            using (SqlConnection conexion = CrearConexion())
+            {
+                conexion.Open();
+
+                using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@tel", telefono);
+                    comando.Parameters.AddWithValue("@dni", dniPropio);
+
+                    object nombre = comando.ExecuteScalar();
+                    return nombre == null ? null : nombre.ToString();
+                }
+            }
         }
 
         // BUSCAR TARIFA SEGÚN EL TRAYECTO

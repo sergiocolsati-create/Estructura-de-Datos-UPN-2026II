@@ -78,6 +78,18 @@
       <DependentUpon>CargaDelVehículo.cs</DependentUpon>
     </Compile>
     <Compile Include="ColaEnvios.cs" />
+    <Compile Include="DevAnsh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevAnsh.Designer.cs">
+      <DependentUpon>DevAnsh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevSer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevSer.Designer.cs">
+      <DependentUpon>DevSer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="EventoRastreo.cs" />
@@ -122,6 +134,12 @@
     <EmbeddedResource Include="CargaDelVehículo.resx">
       <DependentUpon>CargaDelVehículo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DevAnsh.resx">
+      <DependentUpon>DevAnsh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevSer.resx">
+      <DependentUpon>DevSer.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IngresoDeEnvíos.resx">
       <DependentUpon>IngresoDeEnvíos.cs</DependentUpon>
     </EmbeddedResource>
@@ -153,6 +171,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-11-09 001404.png" />
+    <None Include="Resources\imagen_23x24.png" />
     <Content Include="Resources\logo_shalom_blanco.png" />
     <Content Include="Resources\logo_shalom_cabecera.png" />
     <Content Include="Resources\logo_shalom_rojo.png" />
