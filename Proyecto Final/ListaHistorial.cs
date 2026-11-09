@@ -51,8 +51,10 @@ namespace Shalom
             while (actual != null)
             {
                 EventoRastreo ev = actual.Dato;
-                texto += ev.Fecha.ToString("dd/MM HH:mm") + " - " + ArbolEnvios.NombreEstadoLegible(ev.Estado) + " - " + ev.Ubicacion + Environment.NewLine;
-                actual = actual.Sgte;
+                texto += ev.Fecha.ToString("dd/MM HH:mm") + " - " + ArbolEnvios.NombreEstadoLegible(ev.Estado) + " - " + ev.Ubicacion;
+                if (!string.IsNullOrWhiteSpace(ev.Observacion))
+                    texto += " - " + ev.Observacion;
+                texto += Environment.NewLine;
             }
             return texto;
         }

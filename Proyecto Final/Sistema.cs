@@ -8,7 +8,7 @@ namespace Shalom
     {
         // CONEXIÓN A SQL SERVER
         private static readonly string cadenaConexion =
-            @"Data Source=localhost;Initial Catalog=ShalomDB;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
+            @"Data Source=ANGGIE\SQLEXPRESS;Initial Catalog=ShalomDB_Final;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
 
         public static SqlConnection CrearConexion()
         {
@@ -23,10 +23,6 @@ namespace Shalom
         // CATÁLOGOS
         public static Sede[] Sedes = new Sede[0]; 
         public static Vehiculo[] Vehiculos = new Vehiculo[0];
-
-        // TARIFAS
-        public static decimal PrecioBase { get; private set; }
-        public static decimal PrecioPorKg { get; private set; }
 
         // BUSCAR SEDE POR ID
         public static Sede BuscarSedePorId(int id)
@@ -69,7 +65,6 @@ namespace Shalom
 
                 CargarSedes(conexion);
                 CargarVehiculos(conexion);
-                CargarTarifa(conexion);
 
                 List<Persona> personas = CargarPersonas(conexion);
                 List<Envio> envios = CargarEnvios(conexion, personas);
@@ -136,32 +131,6 @@ namespace Shalom
             }
 
             Vehiculos = lista.ToArray();
-        }
-
-        // CARGAR TARIFA
-        private static void CargarTarifa(SqlConnection conexion)
-        {
-            string consulta =
-                "SELECT TOP 1 PrecioBase, PrecioPorKg " +
-                "FROM Tarifa ORDER BY Id";
-
-            using (SqlCommand comando = new SqlCommand(consulta, conexion))
-            using (SqlDataReader lector = comando.ExecuteReader())
-            {
-                if (lector.Read())
-                {
-                    PrecioBase =
-                        Convert.ToDecimal(lector["PrecioBase"]);
-
-                    PrecioPorKg =
-                        Convert.ToDecimal(lector["PrecioPorKg"]);
-                }
-                else
-                {
-                    throw new Exception(
-                        "No hay tarifas registradas en SQL Server.");
-                }
-            }
         }
 
         // CARGAR PERSONAS
@@ -461,22 +430,21 @@ namespace Shalom
             {
                 while (lector.Read())
                 {
-                    string placa =
-                        lector["PlacaVehiculo"].ToString();
+                    string placa = lector["PlacaVehiculo"].ToString();
+                    string codigo = lector["CodigoEnvio"].ToString();
 
-                    string codigo =
-                        lector["CodigoEnvio"].ToString();
+                    Vehiculo vehiculo = BuscarVehiculoPorPlaca(placa);
+                    Envio envio = BuscarEnvioPorCodigo(envios, codigo);
 
-                    Vehiculo vehiculo =
-                        BuscarVehiculoPorPlaca(placa);
-
-                    Envio envio =
-                        BuscarEnvioPorCodigo(envios, codigo);
-
-                    // Solo los envíos en reparto pertenecen a una ruta
-                    if (vehiculo != null && envio != null &&
-                        envio.Estado == EstadoEnvio.EnReparto)
+                    // Solo se cargan envíos en reparto
+                    // que pertenezcan al vehículo indicado.
+                    if (vehiculo != null &&
+                        envio != null &&
+                        envio.Estado == EstadoEnvio.EnReparto &&
+                        envio.PlacaVehiculo == placa)
+                    {
                         vehiculo.Ruta.AgregarAlFinal(envio);
+                    }
                 }
             }
         }
@@ -759,8 +727,12 @@ namespace Shalom
 
         // Registra una INCIDENCIA en el historial (retraso, daño, etc.).
         // El paquete NO cambia de estructura: sigue en la cola, pila o ruta donde estaba.
-        public static string RegistrarIncidencia(Envio envio, string observacion)
+        // REGISTRAR UNA INCIDENCIA
+        public static string RegistrarIncidencia( Envio envio, string observacion)
         {
+            if (envio == null)
+                return "Seleccione un envío.";
+
             if (string.IsNullOrWhiteSpace(observacion))
                 return "Describa la incidencia en el campo Observación.";
 
@@ -770,12 +742,20 @@ namespace Shalom
             using (SqlConnection conexion = CrearConexion())
             {
                 conexion.Open();
+
                 using (SqlTransaction tx = conexion.BeginTransaction())
                 {
                     try
                     {
-                        InsertarHistorial(conexion, tx, envio.Codigo,
-                            EstadoEnvio.Incidencia, ahora, ubicacion, observacion);
+                        InsertarHistorial(
+                            conexion,
+                            tx,
+                            envio.Codigo,
+                            EstadoEnvio.Incidencia,
+                            ahora,
+                            ubicacion,
+                            observacion);
+
                         tx.Commit();
                     }
                     catch
@@ -786,9 +766,17 @@ namespace Shalom
                 }
             }
 
-            // Solo se agrega el evento; el estado del envío no cambia
-            envio.Historial.AgregarAlFinal(
-                new EventoRastreo(EstadoEnvio.Incidencia, ubicacion, observacion));
+            // Agregar el evento al historial en memoria.
+            EventoRastreo evento = new EventoRastreo(
+                EstadoEnvio.Incidencia,
+                ubicacion,
+                observacion);
+
+            evento.Fecha = ahora;
+            evento.PendienteSincronizar = false;
+
+            envio.Historial.AgregarAlFinal(evento);
+
             return "";
         }
 
@@ -960,11 +948,15 @@ namespace Shalom
             return valor;
         }
 
+        // BUSCAR TARIFA SEGÚN EL TRAYECTO
         public static Tarifa BuscarTarifa(int origenId, int destinoId)
         {
+            if (origenId <= 0 || destinoId <= 0 || origenId == destinoId)
+                return null;
+
             string consulta = @"
         SELECT SedeOrigenId, SedeDestinoId, PrecioBase, PrecioPorKg
-        FROM logistica.TarifaTrayecto
+        FROM Tarifa
         WHERE SedeOrigenId = @origen
           AND SedeDestinoId = @destino";
 

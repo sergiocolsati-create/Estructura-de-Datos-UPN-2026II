@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CargaDelVehículo));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cboVehiculo = new System.Windows.Forms.ComboBox();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
@@ -54,10 +55,17 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
             this.lblTope = new System.Windows.Forms.Label();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblNombre = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -71,11 +79,11 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(31, 12);
+            this.groupBox1.Location = new System.Drawing.Point(21, 58);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(267, 235);
+            this.groupBox1.Size = new System.Drawing.Size(294, 252);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Vehículo";
@@ -84,7 +92,7 @@
             // 
             this.cboVehiculo.FormattingEnabled = true;
             this.cboVehiculo.Location = new System.Drawing.Point(95, 32);
-            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4);
             this.cboVehiculo.Name = "cboVehiculo";
             this.cboVehiculo.Size = new System.Drawing.Size(160, 24);
             this.cboVehiculo.TabIndex = 9;
@@ -166,11 +174,11 @@
             this.groupBox2.Controls.Add(this.btnPop);
             this.groupBox2.Controls.Add(this.btnPush);
             this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Location = new System.Drawing.Point(31, 277);
+            this.groupBox2.Location = new System.Drawing.Point(21, 335);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(267, 218);
+            this.groupBox2.Size = new System.Drawing.Size(294, 246);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Operaciones de la pila";
@@ -219,10 +227,10 @@
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 530);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 676);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 13, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(919, 26);
+            this.statusStrip1.Size = new System.Drawing.Size(1075, 26);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -239,11 +247,11 @@
             this.groupBox3.Controls.Add(this.label6);
             this.groupBox3.Controls.Add(this.lstPaquetes);
             this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(337, 11);
+            this.groupBox3.Location = new System.Drawing.Point(346, 115);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(549, 428);
+            this.groupBox3.Size = new System.Drawing.Size(659, 442);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Paquetes asignados";
@@ -251,7 +259,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(32, 380);
+            this.label7.Location = new System.Drawing.Point(32, 367);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(128, 16);
             this.label7.TabIndex = 4;
@@ -260,7 +268,7 @@
             // lblContador
             // 
             this.lblContador.AutoSize = true;
-            this.lblContador.Location = new System.Drawing.Point(165, 380);
+            this.lblContador.Location = new System.Drawing.Point(165, 368);
             this.lblContador.Name = "lblContador";
             this.lblContador.Size = new System.Drawing.Size(14, 16);
             this.lblContador.TabIndex = 3;
@@ -283,7 +291,7 @@
             this.lstPaquetes.Location = new System.Drawing.Point(35, 63);
             this.lstPaquetes.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lstPaquetes.Name = "lstPaquetes";
-            this.lstPaquetes.Size = new System.Drawing.Size(484, 260);
+            this.lstPaquetes.Size = new System.Drawing.Size(598, 260);
             this.lstPaquetes.TabIndex = 1;
             // 
             // label5
@@ -297,7 +305,7 @@
             // 
             // btnCerrar
             // 
-            this.btnCerrar.Location = new System.Drawing.Point(765, 449);
+            this.btnCerrar.Location = new System.Drawing.Point(885, 572);
             this.btnCerrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(121, 52);
@@ -309,17 +317,70 @@
             // lblTope
             // 
             this.lblTope.AutoSize = true;
-            this.lblTope.Location = new System.Drawing.Point(674, 531);
+            this.lblTope.Location = new System.Drawing.Point(789, 638);
             this.lblTope.Name = "lblTope";
             this.lblTope.Size = new System.Drawing.Size(104, 16);
             this.lblTope.TabIndex = 5;
             this.lblTope.Text = "Tope de la pila :";
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label9);
+            this.groupBox4.Controls.Add(this.label8);
+            this.groupBox4.Controls.Add(this.lblNombre);
+            this.groupBox4.Controls.Add(this.pictureBox1);
+            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.Location = new System.Drawing.Point(792, 12);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(271, 98);
+            this.groupBox4.TabIndex = 6;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Desarrolladora del formulario";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(6, 21);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(77, 71);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // lblNombre
+            // 
+            this.lblNombre.AutoSize = true;
+            this.lblNombre.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNombre.Location = new System.Drawing.Point(89, 21);
+            this.lblNombre.Name = "lblNombre";
+            this.lblNombre.Size = new System.Drawing.Size(174, 16);
+            this.lblNombre.TabIndex = 1;
+            this.lblNombre.Text = "Anshely Quezada Prado";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(90, 46);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(123, 16);
+            this.label8.TabIndex = 2;
+            this.label8.Text = "Código: N00474619";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(90, 67);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(163, 16);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Estructura de Datos - UPN";
+            // 
             // CargaDelVehículo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(919, 556);
+            this.ClientSize = new System.Drawing.Size(1075, 702);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.lblTope);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox3);
@@ -341,6 +402,9 @@
             this.statusStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -374,5 +438,10 @@
         private System.Windows.Forms.Button btnCerrar;
         private System.Windows.Forms.Label lblTope;
         private System.Windows.Forms.ComboBox cboVehiculo;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label lblNombre;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
     }
 }
