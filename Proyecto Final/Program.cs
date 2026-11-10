@@ -11,6 +11,14 @@ namespace Shalom
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
+            using (var login = new FormularioLogin())
+            {
+                if (login.ShowDialog() != DialogResult.OK)
+                {
+                    return;
+                }
+            }
+
             try
             {
                 // Conectar con SQL y cargar los datos iniciales.

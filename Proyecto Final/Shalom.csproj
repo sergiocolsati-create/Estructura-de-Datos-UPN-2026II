@@ -84,6 +84,12 @@
     <Compile Include="DevAnsh.Designer.cs">
       <DependentUpon>DevAnsh.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevDavid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevDavid.Designer.cs">
+      <DependentUpon>DevDavid.cs</DependentUpon>
+    </Compile>
     <Compile Include="DevSer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,6 +99,12 @@
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="EventoRastreo.cs" />
+    <Compile Include="FormularioLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioLogin.Designer.cs">
+      <DependentUpon>FormularioLogin.cs</DependentUpon>
+    </Compile>
     <Compile Include="IngresoDeEnvíos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,8 +149,14 @@
     <EmbeddedResource Include="DevAnsh.resx">
       <DependentUpon>DevAnsh.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DevDavid.resx">
+      <DependentUpon>DevDavid.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DevSer.resx">
       <DependentUpon>DevSer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioLogin.resx">
+      <DependentUpon>FormularioLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngresoDeEnvíos.resx">
       <DependentUpon>IngresoDeEnvíos.cs</DependentUpon>

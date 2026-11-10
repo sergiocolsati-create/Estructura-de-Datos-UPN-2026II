@@ -217,5 +217,10 @@ namespace Shalom
                 "5. Registrar la entrega desde Rastreo.\n\n" +
                 "El resumen cuenta todos los envíos por su estado actual.", "Ayuda");
         }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new DevDavid().ShowDialog(this);
+        }
     }
 }

@@ -47,9 +47,9 @@
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(42)))), ((int)(((byte)(47)))));
             this.pnlCabecera.Controls.Add(this.lblMarca);
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
-            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pnlCabecera.Name = "pnlCabecera";
-            this.pnlCabecera.Size = new System.Drawing.Size(427, 98);
+            this.pnlCabecera.Size = new System.Drawing.Size(480, 122);
             this.pnlCabecera.TabIndex = 1;
             // 
             // lblMarca
@@ -57,20 +57,20 @@
             this.lblMarca.AutoSize = true;
             this.lblMarca.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
             this.lblMarca.ForeColor = System.Drawing.Color.White;
-            this.lblMarca.Location = new System.Drawing.Point(13, 12);
+            this.lblMarca.Location = new System.Drawing.Point(15, 15);
             this.lblMarca.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(96, 28);
+            this.lblMarca.Size = new System.Drawing.Size(114, 32);
             this.lblMarca.TabIndex = 0;
             this.lblMarca.Text = "SHALOM";
             // 
             // lblNombre
             // 
             this.lblNombre.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
-            this.lblNombre.Location = new System.Drawing.Point(13, 178);
+            this.lblNombre.Location = new System.Drawing.Point(15, 222);
             this.lblNombre.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNombre.Name = "lblNombre";
-            this.lblNombre.Size = new System.Drawing.Size(400, 31);
+            this.lblNombre.Size = new System.Drawing.Size(450, 39);
             this.lblNombre.TabIndex = 2;
             this.lblNombre.Text = "Anshely Quezada Prado";
             this.lblNombre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -79,10 +79,10 @@
             // 
             this.lblRol.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.lblRol.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(42)))), ((int)(((byte)(47)))));
-            this.lblRol.Location = new System.Drawing.Point(13, 212);
+            this.lblRol.Location = new System.Drawing.Point(15, 265);
             this.lblRol.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRol.Name = "lblRol";
-            this.lblRol.Size = new System.Drawing.Size(400, 27);
+            this.lblRol.Size = new System.Drawing.Size(450, 34);
             this.lblRol.TabIndex = 3;
             this.lblRol.Text = "Desarrolladora";
             this.lblRol.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -91,10 +91,10 @@
             // 
             this.lblCodigo.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblCodigo.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCodigo.Location = new System.Drawing.Point(13, 252);
+            this.lblCodigo.Location = new System.Drawing.Point(15, 315);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
-            this.lblCodigo.Size = new System.Drawing.Size(400, 25);
+            this.lblCodigo.Size = new System.Drawing.Size(450, 31);
             this.lblCodigo.TabIndex = 4;
             this.lblCodigo.Text = "Código: N00474619";
             this.lblCodigo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -103,10 +103,10 @@
             // 
             this.lblCarrera.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblCarrera.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCarrera.Location = new System.Drawing.Point(13, 279);
+            this.lblCarrera.Location = new System.Drawing.Point(15, 349);
             this.lblCarrera.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCarrera.Name = "lblCarrera";
-            this.lblCarrera.Size = new System.Drawing.Size(400, 25);
+            this.lblCarrera.Size = new System.Drawing.Size(450, 31);
             this.lblCarrera.TabIndex = 5;
             this.lblCarrera.Text = "Ingeniería de Software";
             this.lblCarrera.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -116,10 +116,10 @@
             // 
             this.lblCurso.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.lblCurso.ForeColor = System.Drawing.Color.DimGray;
-            this.lblCurso.Location = new System.Drawing.Point(13, 306);
+            this.lblCurso.Location = new System.Drawing.Point(15, 382);
             this.lblCurso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCurso.Name = "lblCurso";
-            this.lblCurso.Size = new System.Drawing.Size(400, 25);
+            this.lblCurso.Size = new System.Drawing.Size(450, 31);
             this.lblCurso.TabIndex = 6;
             this.lblCurso.Text = "Estructura de Datos - UPN";
             this.lblCurso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -132,10 +132,10 @@
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Font = new System.Drawing.Font("Segoe UI", 9.5F);
             this.btnCerrar.ForeColor = System.Drawing.Color.White;
-            this.btnCerrar.Location = new System.Drawing.Point(140, 357);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Location = new System.Drawing.Point(158, 446);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(147, 39);
+            this.btnCerrar.Size = new System.Drawing.Size(165, 49);
             this.btnCerrar.TabIndex = 9;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
@@ -146,21 +146,21 @@
             this.picFoto.BackColor = System.Drawing.Color.White;
             this.picFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picFoto.Image = ((System.Drawing.Image)(resources.GetObject("picFoto.Image")));
-            this.picFoto.Location = new System.Drawing.Point(140, 31);
-            this.picFoto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.picFoto.Location = new System.Drawing.Point(158, 49);
+            this.picFoto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.picFoto.Name = "picFoto";
-            this.picFoto.Size = new System.Drawing.Size(146, 135);
+            this.picFoto.Size = new System.Drawing.Size(164, 168);
             this.picFoto.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFoto.TabIndex = 0;
             this.picFoto.TabStop = false;
             // 
             // DevAnsh
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.CancelButton = this.btnCerrar;
-            this.ClientSize = new System.Drawing.Size(427, 418);
+            this.ClientSize = new System.Drawing.Size(480, 522);
             this.Controls.Add(this.picFoto);
             this.Controls.Add(this.pnlCabecera);
             this.Controls.Add(this.lblNombre);
@@ -170,7 +170,7 @@
             this.Controls.Add(this.lblCurso);
             this.Controls.Add(this.btnCerrar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "DevAnsh";

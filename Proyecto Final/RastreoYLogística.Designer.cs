@@ -17,8 +17,9 @@ namespace Shalom
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RastreoYLogística));
             this.miIngreso = new System.Windows.Forms.ToolStripMenuItem();
             this.miAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.miCarga = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,6 +62,9 @@ namespace Shalom
             this.lblSeleccionado = new System.Windows.Forms.Label();
             this.lblTituloSeleccionado = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.btnRastreo = new System.Windows.Forms.Button();
             this.btnRutas = new System.Windows.Forms.Button();
             this.btnCarga = new System.Windows.Forms.Button();
@@ -68,12 +72,11 @@ namespace Shalom
             this.btnActualizar = new System.Windows.Forms.Button();
             this.btnIngreso = new System.Windows.Forms.Button();
             this.pnlCabecera = new System.Windows.Forms.Panel();
-            this.picLogo = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.menuPrincipal.SuspendLayout();
             this.barraEstado.SuspendLayout();
             this.grpResumen.SuspendLayout();
@@ -87,40 +90,41 @@ namespace Shalom
             this.pnlNavegacion.SuspendLayout();
             this.pnlCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // miIngreso
             // 
             this.miIngreso.Name = "miIngreso";
-            this.miIngreso.Size = new System.Drawing.Size(178, 22);
+            this.miIngreso.Size = new System.Drawing.Size(270, 34);
             this.miIngreso.Text = "Ingreso de envíos";
             this.miIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
             // 
             // miAlmacen
             // 
             this.miAlmacen.Name = "miAlmacen";
-            this.miAlmacen.Size = new System.Drawing.Size(178, 22);
+            this.miAlmacen.Size = new System.Drawing.Size(270, 34);
             this.miAlmacen.Text = "Almacén";
             this.miAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
             // 
             // miCarga
             // 
             this.miCarga.Name = "miCarga";
-            this.miCarga.Size = new System.Drawing.Size(178, 22);
+            this.miCarga.Size = new System.Drawing.Size(270, 34);
             this.miCarga.Text = "Carga de vehículos";
             this.miCarga.Click += new System.EventHandler(this.btnCarga_Click);
             // 
             // miRutas
             // 
             this.miRutas.Name = "miRutas";
-            this.miRutas.Size = new System.Drawing.Size(178, 22);
+            this.miRutas.Size = new System.Drawing.Size(270, 34);
             this.miRutas.Text = "Asignación de rutas";
             this.miRutas.Click += new System.EventHandler(this.btnRutas_Click);
             // 
             // miRastreo
             // 
             this.miRastreo.Name = "miRastreo";
-            this.miRastreo.Size = new System.Drawing.Size(178, 22);
+            this.miRastreo.Size = new System.Drawing.Size(270, 34);
             this.miRastreo.Text = "Rastreo de envíos";
             this.miRastreo.Click += new System.EventHandler(this.btnRastreo_Click);
             // 
@@ -129,13 +133,13 @@ namespace Shalom
             this.menuArchivo.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miSalir});
             this.menuArchivo.Name = "menuArchivo";
-            this.menuArchivo.Size = new System.Drawing.Size(60, 19);
+            this.menuArchivo.Size = new System.Drawing.Size(88, 29);
             this.menuArchivo.Text = "Archivo";
             // 
             // miSalir
             // 
             this.miSalir.Name = "miSalir";
-            this.miSalir.Size = new System.Drawing.Size(96, 22);
+            this.miSalir.Size = new System.Drawing.Size(147, 34);
             this.miSalir.Text = "Salir";
             this.miSalir.Click += new System.EventHandler(this.miSalir_Click);
             // 
@@ -148,11 +152,12 @@ namespace Shalom
             this.miRutas,
             this.miRastreo});
             this.menuOperaciones.Name = "menuOperaciones";
-            this.menuOperaciones.Size = new System.Drawing.Size(85, 19);
+            this.menuOperaciones.Size = new System.Drawing.Size(127, 29);
             this.menuOperaciones.Text = "Operaciones";
             // 
             // menuPrincipal
             // 
+            this.menuPrincipal.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuPrincipal.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuArchivo,
@@ -161,20 +166,20 @@ namespace Shalom
             this.menuPrincipal.Location = new System.Drawing.Point(0, 70);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Padding = new System.Windows.Forms.Padding(14, 8, 0, 8);
-            this.menuPrincipal.Size = new System.Drawing.Size(1054, 35);
+            this.menuPrincipal.Size = new System.Drawing.Size(1054, 45);
             this.menuPrincipal.TabIndex = 3;
             // 
             // menuAyuda
             // 
             this.menuAyuda.Name = "menuAyuda";
-            this.menuAyuda.Size = new System.Drawing.Size(53, 19);
+            this.menuAyuda.Size = new System.Drawing.Size(79, 29);
             this.menuAyuda.Text = "Ayuda";
             this.menuAyuda.Click += new System.EventHandler(this.menuAyuda_Click);
             // 
             // lblEstado
             // 
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(1033, 17);
+            this.lblEstado.Size = new System.Drawing.Size(1033, 25);
             this.lblEstado.Spring = true;
             this.lblEstado.Text = "Listo";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -182,7 +187,7 @@ namespace Shalom
             // lblSesion
             // 
             this.lblSesion.Name = "lblSesion";
-            this.lblSesion.Size = new System.Drawing.Size(0, 17);
+            this.lblSesion.Size = new System.Drawing.Size(0, 25);
             this.lblSesion.Visible = false;
             // 
             // barraEstado
@@ -191,10 +196,10 @@ namespace Shalom
             this.barraEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEstado,
             this.lblSesion});
-            this.barraEstado.Location = new System.Drawing.Point(0, 612);
+            this.barraEstado.Location = new System.Drawing.Point(0, 602);
             this.barraEstado.Name = "barraEstado";
             this.barraEstado.Padding = new System.Windows.Forms.Padding(1, 0, 20, 0);
-            this.barraEstado.Size = new System.Drawing.Size(1054, 22);
+            this.barraEstado.Size = new System.Drawing.Size(1054, 32);
             this.barraEstado.SizingGrip = false;
             this.barraEstado.TabIndex = 2;
             // 
@@ -202,6 +207,8 @@ namespace Shalom
             // 
             this.grpResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpResumen.Controls.Add(this.linkLabel1);
+            this.grpResumen.Controls.Add(this.pictureBox1);
             this.grpResumen.Controls.Add(this.pnlEntregados);
             this.grpResumen.Controls.Add(this.pnlRuta);
             this.grpResumen.Controls.Add(this.pnlAlmacen);
@@ -228,7 +235,7 @@ namespace Shalom
             this.lblTituloEntregados.AutoSize = true;
             this.lblTituloEntregados.Location = new System.Drawing.Point(3, 44);
             this.lblTituloEntregados.Name = "lblTituloEntregados";
-            this.lblTituloEntregados.Size = new System.Drawing.Size(66, 15);
+            this.lblTituloEntregados.Size = new System.Drawing.Size(102, 25);
             this.lblTituloEntregados.TabIndex = 4;
             this.lblTituloEntregados.Text = "Entregados";
             // 
@@ -237,7 +244,7 @@ namespace Shalom
             this.lblEntregados.AutoSize = true;
             this.lblEntregados.Location = new System.Drawing.Point(39, 16);
             this.lblEntregados.Name = "lblEntregados";
-            this.lblEntregados.Size = new System.Drawing.Size(13, 15);
+            this.lblEntregados.Size = new System.Drawing.Size(22, 25);
             this.lblEntregados.TabIndex = 0;
             this.lblEntregados.Text = "0";
             // 
@@ -256,7 +263,7 @@ namespace Shalom
             this.lblTituloRuta.AutoSize = true;
             this.lblTituloRuta.Location = new System.Drawing.Point(19, 44);
             this.lblTituloRuta.Name = "lblTituloRuta";
-            this.lblTituloRuta.Size = new System.Drawing.Size(44, 15);
+            this.lblTituloRuta.Size = new System.Drawing.Size(67, 25);
             this.lblTituloRuta.TabIndex = 3;
             this.lblTituloRuta.Text = "En ruta";
             this.lblTituloRuta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -266,7 +273,7 @@ namespace Shalom
             this.lblEnRuta.AutoSize = true;
             this.lblEnRuta.Location = new System.Drawing.Point(32, 16);
             this.lblEnRuta.Name = "lblEnRuta";
-            this.lblEnRuta.Size = new System.Drawing.Size(13, 15);
+            this.lblEnRuta.Size = new System.Drawing.Size(22, 25);
             this.lblEnRuta.TabIndex = 0;
             this.lblEnRuta.Text = "0";
             // 
@@ -285,7 +292,7 @@ namespace Shalom
             this.lblTituloAlmacen.AutoSize = true;
             this.lblTituloAlmacen.Location = new System.Drawing.Point(1, 44);
             this.lblTituloAlmacen.Name = "lblTituloAlmacen";
-            this.lblTituloAlmacen.Size = new System.Drawing.Size(68, 15);
+            this.lblTituloAlmacen.Size = new System.Drawing.Size(101, 25);
             this.lblTituloAlmacen.TabIndex = 2;
             this.lblTituloAlmacen.Text = "En almacén";
             this.lblTituloAlmacen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -295,7 +302,7 @@ namespace Shalom
             this.lblEnAlmacen.AutoSize = true;
             this.lblEnAlmacen.Location = new System.Drawing.Point(32, 16);
             this.lblEnAlmacen.Name = "lblEnAlmacen";
-            this.lblEnAlmacen.Size = new System.Drawing.Size(13, 15);
+            this.lblEnAlmacen.Size = new System.Drawing.Size(22, 25);
             this.lblEnAlmacen.TabIndex = 0;
             this.lblEnAlmacen.Text = "0";
             // 
@@ -314,7 +321,7 @@ namespace Shalom
             this.lblTituloCola.AutoSize = true;
             this.lblTituloCola.Location = new System.Drawing.Point(10, 44);
             this.lblTituloCola.Name = "lblTituloCola";
-            this.lblTituloCola.Size = new System.Drawing.Size(45, 15);
+            this.lblTituloCola.Size = new System.Drawing.Size(68, 25);
             this.lblTituloCola.TabIndex = 1;
             this.lblTituloCola.Text = "En cola";
             this.lblTituloCola.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -324,7 +331,7 @@ namespace Shalom
             this.lblEnCola.AutoSize = true;
             this.lblEnCola.Location = new System.Drawing.Point(28, 16);
             this.lblEnCola.Name = "lblEnCola";
-            this.lblEnCola.Size = new System.Drawing.Size(13, 15);
+            this.lblEnCola.Size = new System.Drawing.Size(22, 25);
             this.lblEnCola.TabIndex = 0;
             this.lblEnCola.Text = "0";
             // 
@@ -347,7 +354,7 @@ namespace Shalom
             // 
             this.txtGuia.Location = new System.Drawing.Point(138, 36);
             this.txtGuia.Name = "txtGuia";
-            this.txtGuia.Size = new System.Drawing.Size(160, 23);
+            this.txtGuia.Size = new System.Drawing.Size(160, 31);
             this.txtGuia.TabIndex = 6;
             // 
             // btnBuscarEnvio
@@ -365,7 +372,7 @@ namespace Shalom
             this.lnkRastreoCompleto.AutoSize = true;
             this.lnkRastreoCompleto.Location = new System.Drawing.Point(49, 63);
             this.lnkRastreoCompleto.Name = "lnkRastreoCompleto";
-            this.lnkRastreoCompleto.Size = new System.Drawing.Size(126, 15);
+            this.lnkRastreoCompleto.Size = new System.Drawing.Size(192, 25);
             this.lnkRastreoCompleto.TabIndex = 5;
             this.lnkRastreoCompleto.TabStop = true;
             this.lnkRastreoCompleto.Text = "Abrir rastreo completo";
@@ -376,7 +383,7 @@ namespace Shalom
             this.lblTituloGuia.AutoSize = true;
             this.lblTituloGuia.Location = new System.Drawing.Point(49, 36);
             this.lblTituloGuia.Name = "lblTituloGuia";
-            this.lblTituloGuia.Size = new System.Drawing.Size(66, 15);
+            this.lblTituloGuia.Size = new System.Drawing.Size(100, 25);
             this.lblTituloGuia.TabIndex = 0;
             this.lblTituloGuia.Text = "N° de guía:";
             // 
@@ -446,8 +453,8 @@ namespace Shalom
             // colPaquetes
             // 
             this.colPaquetes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle5;
             this.colPaquetes.FillWeight = 32F;
             this.colPaquetes.HeaderText = "Paquetes";
             this.colPaquetes.MinimumWidth = 6;
@@ -457,8 +464,8 @@ namespace Shalom
             // colCarga
             // 
             this.colCarga.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCarga.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCarga.DefaultCellStyle = dataGridViewCellStyle6;
             this.colCarga.FillWeight = 32F;
             this.colCarga.HeaderText = "Carga";
             this.colCarga.MinimumWidth = 6;
@@ -471,7 +478,7 @@ namespace Shalom
             this.lnkPendientesRuta.AutoSize = true;
             this.lnkPendientesRuta.Location = new System.Drawing.Point(225, 217);
             this.lnkPendientesRuta.Name = "lnkPendientesRuta";
-            this.lnkPendientesRuta.Size = new System.Drawing.Size(114, 13);
+            this.lnkPendientesRuta.Size = new System.Drawing.Size(178, 20);
             this.lnkPendientesRuta.TabIndex = 4;
             this.lnkPendientesRuta.TabStop = true;
             this.lnkPendientesRuta.Text = "Ver pendientes de ruta";
@@ -494,7 +501,7 @@ namespace Shalom
             this.lblSeleccionado.AutoSize = true;
             this.lblSeleccionado.Location = new System.Drawing.Point(709, 247);
             this.lblSeleccionado.Name = "lblSeleccionado";
-            this.lblSeleccionado.Size = new System.Drawing.Size(10, 13);
+            this.lblSeleccionado.Size = new System.Drawing.Size(15, 20);
             this.lblSeleccionado.TabIndex = 1;
             this.lblSeleccionado.Text = "-";
             // 
@@ -504,7 +511,7 @@ namespace Shalom
             this.lblTituloSeleccionado.AutoSize = true;
             this.lblTituloSeleccionado.Location = new System.Drawing.Point(590, 247);
             this.lblTituloSeleccionado.Name = "lblTituloSeleccionado";
-            this.lblTituloSeleccionado.Size = new System.Drawing.Size(53, 13);
+            this.lblTituloSeleccionado.Size = new System.Drawing.Size(78, 20);
             this.lblTituloSeleccionado.TabIndex = 0;
             this.lblTituloSeleccionado.Text = "Vehículo:";
             // 
@@ -521,10 +528,43 @@ namespace Shalom
             this.pnlNavegacion.Controls.Add(this.btnActualizar);
             this.pnlNavegacion.Controls.Add(this.btnIngreso);
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNavegacion.Location = new System.Drawing.Point(0, 105);
+            this.pnlNavegacion.Location = new System.Drawing.Point(0, 115);
             this.pnlNavegacion.Name = "pnlNavegacion";
-            this.pnlNavegacion.Size = new System.Drawing.Size(220, 507);
+            this.pnlNavegacion.Size = new System.Drawing.Size(220, 487);
             this.pnlNavegacion.TabIndex = 7;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
+            this.label5.Location = new System.Drawing.Point(17, 306);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(108, 23);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "CONSULTAS";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
+            this.label4.Location = new System.Drawing.Point(17, 94);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(97, 23);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "PROCESOS";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
+            this.label3.Location = new System.Drawing.Point(17, 12);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(85, 23);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "GENERAL";
             // 
             // btnRastreo
             // 
@@ -647,14 +687,15 @@ namespace Shalom
             this.pnlCabecera.Size = new System.Drawing.Size(1054, 70);
             this.pnlCabecera.TabIndex = 8;
             // 
-            // picLogo
+            // label2
             // 
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(12, 3);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(231, 50);
-            this.picLogo.TabIndex = 0;
-            this.picLogo.TabStop = false;
+            this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(268, 38);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(397, 25);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Sistema de Seguimiento y Trazabilidad de envíos";
             // 
             // label1
             // 
@@ -664,56 +705,43 @@ namespace Shalom
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(266, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 25);
+            this.label1.Size = new System.Drawing.Size(275, 40);
             this.label1.TabIndex = 1;
             this.label1.Text = "Rastreo y Logística";
             // 
-            // label2
+            // picLogo
             // 
-            this.label2.AutoSize = true;
-            this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(268, 38);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(262, 15);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Sistema de Seguimiento y Trazabilidad de envíos";
+            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(12, 3);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(231, 50);
+            this.picLogo.TabIndex = 0;
+            this.picLogo.TabStop = false;
             // 
-            // label3
+            // linkLabel1
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
-            this.label3.Location = new System.Drawing.Point(17, 12);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(57, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "GENERAL";
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(634, 45);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(85, 25);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkDavid";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
             // 
-            // label4
+            // pictureBox1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
-            this.label4.Location = new System.Drawing.Point(17, 94);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(62, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "PROCESOS";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
-            this.label5.Location = new System.Drawing.Point(17, 306);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(69, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "CONSULTAS";
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(726, 19);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(53, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // RastreoYLogística
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1054, 634);
@@ -740,6 +768,7 @@ namespace Shalom
             this.barraEstado.ResumeLayout(false);
             this.barraEstado.PerformLayout();
             this.grpResumen.ResumeLayout(false);
+            this.grpResumen.PerformLayout();
             this.pnlEntregados.ResumeLayout(false);
             this.pnlEntregados.PerformLayout();
             this.pnlRuta.ResumeLayout(false);
@@ -758,6 +787,7 @@ namespace Shalom
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -817,5 +847,7 @@ namespace Shalom
         private Label label5;
         private Label label4;
         private Label label3;
+        private LinkLabel linkLabel1;
+        private PictureBox pictureBox1;
     }
 }
