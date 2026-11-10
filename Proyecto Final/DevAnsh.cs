@@ -14,5 +14,10 @@ namespace Shalom
         {
             Close();
         }
+
+        private void lblCarrera_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
