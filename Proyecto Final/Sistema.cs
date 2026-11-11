@@ -9,7 +9,7 @@ namespace Shalom
         // CONEXIÓN A SQL SERVER
         private static readonly string cadenaConexion =
             @"Data Source=ANGGIE\SQLEXPRESS;Initial Catalog=ShalomDB_Final;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
-
+        //depositenme dinero
         public static SqlConnection CrearConexion()
         {
             return new SqlConnection(cadenaConexion);
