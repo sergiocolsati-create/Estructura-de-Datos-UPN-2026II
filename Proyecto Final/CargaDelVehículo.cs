@@ -27,6 +27,7 @@ namespace Shalom
             btnPeek.Click += btnPeek_Click;
             btnCerrar.Click += btnCerrar_Click;
             cboVehiculo.SelectedIndexChanged += cboVehiculo_SelectedIndexChanged;
+            btnCerrar.Click += btnCerrar_Click;
 
             ConfigurarControles();
 
@@ -165,11 +166,7 @@ namespace Shalom
             lblTope.Text = tope == null ? "Tope de la pila: (vacía)" : "Tope de la pila: " + tope.Codigo;
             btnPop.Enabled = tope != null;
             btnPeek.Enabled = tope != null;
-        }
-
-        private void btnCerrar_Click_1(object sender, EventArgs e)
-        {
-
+            lblPorcentaje.Text = porcentaje + " %";
         }
 
         private void lblContador_Click(object sender, EventArgs e)
@@ -177,14 +174,5 @@ namespace Shalom
             lblContador.Text = vehiculo.Carga.Contar().ToString();
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            new DevAnsh().ShowDialog(this);
-        }
     }
 }
