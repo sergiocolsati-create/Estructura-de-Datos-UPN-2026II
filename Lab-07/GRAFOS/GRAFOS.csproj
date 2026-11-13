@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{B16F7819-237A-4318-B90B-19EE51FBE92F}</ProjectGuid>
+    <ProjectGuid>{7E633E91-8199-A78C-53AC-D3D4E02FC38D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>GRAFOS</RootNamespace>
     <AssemblyName>GRAFOS</AssemblyName>
@@ -43,9 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FloydWarshall.cs" />
     <Compile Include="grafo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Pruebas.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

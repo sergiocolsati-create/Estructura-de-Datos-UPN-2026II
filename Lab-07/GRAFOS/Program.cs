@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GRAFOS
 {
@@ -10,6 +7,9 @@ namespace GRAFOS
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = System.Text.Encoding.UTF8;   // para que se vean las tildes
+
+            // 1. Crear el grafo (parte 1, ya implementada)
             grafo g = new grafo();
 
             g.agregarVertice("Lima");
@@ -22,28 +22,28 @@ namespace GRAFOS
             g.agregarArista("Lima", "Trujillo", 560);
             g.agregarArista("Arequipa", "Cusco", 520);
 
-            Console.WriteLine("\nVértices:");
-            foreach (string verti in g.obtenerVertices())
-            {
-                Console.Write(verti + "  ");
-            }
-            Console.WriteLine();
+            List<string> vertices = g.obtenerVertices();
 
-            Console.WriteLine("\nMatriz de adyacencia:");
-            int n = g.cantidadVertices();
-            int[,] m = g.obtenerMatriz();
+            // 2. Mostrar la matriz INICIAL (pesos de las aristas directas)
+            Console.WriteLine("=== MATRIZ DE DISTANCIAS INICIAL ===");
+            FloydWarshall.ImprimirMatriz(g.obtenerMatriz(), vertices);
 
-            for (int i = 0; i < n; i++)
-            {
-                for (int j = 0; j < n; j++)
-                {
-                    if (m[i, j] == grafo.Inf)
-                        Console.Write("Inf\t");
-                    else
-                        Console.Write(m[i, j] + "\t");
-                }
-                Console.WriteLine();
-            }
+            // 3. Aplicar Floyd-Warshall
+            FloydWarshall fw = new FloydWarshall(g);
+            int[,] resultado = fw.Ejecutar();
+
+            // 4. Mostrar la matriz FINAL (distancias más cortas)
+            Console.WriteLine("\n=== MATRIZ DE DISTANCIAS FINAL (Floyd-Warshall) ===");
+            FloydWarshall.ImprimirMatriz(resultado, vertices);
+
+            // 5. Mostrar algunos caminos reconstruidos
+            Console.WriteLine("\n=== CAMINOS MÁS CORTOS ===");
+            Console.WriteLine(fw.ObtenerCamino("Trujillo", "Cusco"));
+            Console.WriteLine(fw.ObtenerCamino("Trujillo", "Arequipa"));
+            Console.WriteLine(fw.ObtenerCamino("Cusco", "Arequipa"));
+
+            // 6. PARTE 3: validar la implementación con casos de prueba
+            Pruebas.EjecutarTodas();
 
             Console.ReadKey();
         }
