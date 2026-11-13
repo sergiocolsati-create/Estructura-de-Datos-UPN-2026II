@@ -321,5 +321,18 @@ namespace Shalom
                 }
             }
         }
+
+        private void lnkPerfil_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TarjetaColaborador tarjeta = new TarjetaColaborador();
+            tarjeta.MostrarDatos(Colaborador.Buscar("N00469214"), true);
+
+            Form ventana = new Form();
+            ventana.Text = "Colaboradora";
+            ventana.ClientSize = tarjeta.Size;
+            ventana.StartPosition = FormStartPosition.CenterParent;
+            ventana.Controls.Add(tarjeta);
+            ventana.ShowDialog(this);
+        }
     }
 }

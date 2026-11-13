@@ -56,5 +56,10 @@ namespace Shalom
                     "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
+
+        private void lnkGitHub_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
