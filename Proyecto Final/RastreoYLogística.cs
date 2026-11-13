@@ -205,11 +205,6 @@ namespace Shalom
             MessageBox.Show(texto, "Pendientes de ruta - " + vehiculo.Placa);
         }
 
-        private void miSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void menuAyuda_Click(object sender, EventArgs e)
         {
             MessageBox.Show("1. Registrar el envío.\n2. Enviarlo al almacén.\n" +
@@ -226,6 +221,15 @@ namespace Shalom
         private void btnReportes_Click(object sender, EventArgs e)
         {
             AbrirFormulario(new FormularioReportes());
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Desea cerrar sesión?", "Cerrar sesión",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.Yes)
+                Application.Restart();
         }
     }
 }
