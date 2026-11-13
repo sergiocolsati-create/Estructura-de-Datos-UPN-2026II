@@ -90,6 +90,12 @@
     <Compile Include="DevDavid.Designer.cs">
       <DependentUpon>DevDavid.cs</DependentUpon>
     </Compile>
+    <Compile Include="DevEst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevEst.Designer.cs">
+      <DependentUpon>DevEst.cs</DependentUpon>
+    </Compile>
     <Compile Include="DevSer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -152,6 +158,9 @@
     <EmbeddedResource Include="DevDavid.resx">
       <DependentUpon>DevDavid.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DevEst.resx">
+      <DependentUpon>DevEst.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DevSer.resx">
       <DependentUpon>DevSer.cs</DependentUpon>
     </EmbeddedResource>
@@ -189,6 +198,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\WhatsApp Image 2026-11-13 at 3.03.22 PM.jpeg" />
     <None Include="Resources\Captura de pantalla 2026-11-09 001404.png" />
     <None Include="Resources\imagen_23x24.png" />
     <Content Include="Resources\logo_shalom_blanco.png" />
