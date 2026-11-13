@@ -72,6 +72,8 @@ namespace Shalom
 
             btnExportarTxt.Enabled = false;   // Se activa al generar
             ActualizarRango();
+
+            btnExportarCSV.Enabled = false;
         }
 
         // =========================================================
@@ -118,6 +120,8 @@ namespace Shalom
             ActualizarRango();
             btnExportarTxt.Enabled = false;
             lblTotal.Text = "Filtros cambiados: presione \"Generar vista previa\".";
+
+            btnExportarCSV.Enabled = false;
         }
 
         // =========================================================
@@ -142,6 +146,8 @@ namespace Shalom
 
             lblTotal.Text = "Envíos encontrados: " + resultadoActual.Count;
             btnExportarTxt.Enabled = resultadoActual.Count > 0;
+
+            btnExportarCSV.Enabled = btnExportarTxt.Enabled;
         }
 
         private void btnExportarTxt_Click(object sender, EventArgs e)
@@ -170,6 +176,26 @@ namespace Shalom
                 {
                     MessageBox.Show("No se pudo guardar el reporte:\n" + ex.Message,
                         "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void btnExportarCSV_Click(object sender, EventArgs e)
+        {
+            using (SaveFileDialog dialogo = new SaveFileDialog())
+            {
+                dialogo.Filter = "Archivo CSV (*.csv)|*.csv";
+                dialogo.FileName = "Envios_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".csv";
+                if (dialogo.ShowDialog() != DialogResult.OK) return;
+
+                try
+                {
+                    Reportes.GuardarTxt(dialogo.FileName, Reportes.ReporteCsv(resultadoActual));
+                    MessageBox.Show("Archivo guardado en:\n" + dialogo.FileName, "CSV generado");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo guardar (¿está abierto en Excel?):\n" + ex.Message, "Error");
                 }
             }
         }

@@ -44,6 +44,7 @@
             this.dgvVistaPrevia = new System.Windows.Forms.DataGridView();
             this.lblTotal = new System.Windows.Forms.Label();
             this.btnExportarTxt = new System.Windows.Forms.Button();
+            this.btnExportarCSV = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVistaPrevia)).BeginInit();
             this.SuspendLayout();
@@ -197,7 +198,7 @@
             // 
             // btnExportarTxt
             // 
-            this.btnExportarTxt.Location = new System.Drawing.Point(133, 459);
+            this.btnExportarTxt.Location = new System.Drawing.Point(52, 464);
             this.btnExportarTxt.Name = "btnExportarTxt";
             this.btnExportarTxt.Size = new System.Drawing.Size(123, 33);
             this.btnExportarTxt.TabIndex = 13;
@@ -205,12 +206,23 @@
             this.btnExportarTxt.UseVisualStyleBackColor = true;
             this.btnExportarTxt.Click += new System.EventHandler(this.btnExportarTxt_Click);
             // 
+            // btnExportarCSV
+            // 
+            this.btnExportarCSV.Location = new System.Drawing.Point(206, 464);
+            this.btnExportarCSV.Name = "btnExportarCSV";
+            this.btnExportarCSV.Size = new System.Drawing.Size(123, 33);
+            this.btnExportarCSV.TabIndex = 16;
+            this.btnExportarCSV.Text = "Exportar CSV";
+            this.btnExportarCSV.UseVisualStyleBackColor = true;
+            this.btnExportarCSV.Click += new System.EventHandler(this.btnExportarCSV_Click);
+            // 
             // FormularioReportes
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(882, 553);
+            this.Controls.Add(this.btnExportarCSV);
             this.Controls.Add(this.btnExportarTxt);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.dgvVistaPrevia);
@@ -245,5 +257,6 @@
         private System.Windows.Forms.Label lblTotal;
         private System.Windows.Forms.Button btnExportarTxt;
         private System.Windows.Forms.DateTimePicker dtpFecha;
+        private System.Windows.Forms.Button btnExportarCSV;
     }
 }

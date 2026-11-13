@@ -222,6 +222,41 @@ namespace Shalom
             return sb.ToString();
         }
 
+        // ---------- CSV para Excel / Power BI: una fila por envío ----------
+        public static string ReporteCsv(List<Envio> envios)
+        {
+            StringBuilder sb = new StringBuilder();
+            string sep = CultureInfo.CurrentCulture.TextInfo.ListSeparator;   // "," o ";" según la PC
+            sb.AppendLine("Guia,FechaRegistro,Origen,Destino,Remitente,Destinatario,Tipo,PesoKg,PrecioSoles,ModalidadPago,EstadoActual,Vehiculo,UltimaActualizacion".Replace(",", sep));
+
+            foreach (Envio e in envios)
+            {
+                string[] campos =
+                {
+            e.Codigo,
+            e.FechaRegistro.ToString("yyyy-MM-dd HH:mm"),
+            NombreSede(e.SedeOrigen),
+            NombreSede(e.SedeDestino),
+            e.Remitente == null ? "" : e.Remitente.Nombres,
+            e.Destinatario == null ? "" : e.Destinatario.Nombres,
+            e.Tipo.ToString(),
+            e.PesoKg.ToString("0.00"),
+            e.Precio.ToString("0.00"),
+            NombrePago(e.ModalidadPago),
+            ArbolEnvios.NombreEstadoLegible(e.Estado),
+            e.PlacaVehiculo ?? "",
+            e.FechaActualizacion.ToString("yyyy-MM-dd HH:mm")
+        };
+
+                // Cada dato entre comillas, por si alguno trae una coma adentro
+                for (int i = 0; i < campos.Length; i++)
+                    campos[i] = "\"" + campos[i].Replace("\"", "\"\"") + "\"";
+
+                sb.AppendLine(string.Join(sep, campos));
+            }
+            return sb.ToString();
+        }
+
         // Nombre de cada sección según el estado del envío. null = "Todas".
         public static string NombreSeccion(EstadoEnvio? seccion)
         {
