@@ -133,6 +133,7 @@
     <Compile Include="RastreoYLogística.Designer.cs">
       <DependentUpon>RastreoYLogística.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes.cs" />
     <Compile Include="Sede.cs" />
     <Compile Include="Sistema.cs" />
     <Compile Include="Tarifa.cs" />

@@ -67,6 +67,7 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.btnReporteEnvio = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.dgvEnvios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -231,6 +232,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnReporteEnvio);
             this.groupBox3.Controls.Add(this.lstResumen);
             this.groupBox3.Controls.Add(this.textBox5);
             this.groupBox3.Controls.Add(this.textBox4);
@@ -240,11 +242,11 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(48, 335);
+            this.groupBox3.Location = new System.Drawing.Point(39, 335);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(516, 342);
+            this.groupBox3.Size = new System.Drawing.Size(525, 386);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle del envío";
@@ -399,7 +401,7 @@
             this.groupBox5.Controls.Add(this.button4);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Location = new System.Drawing.Point(31, 709);
+            this.groupBox5.Location = new System.Drawing.Point(39, 736);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -490,11 +492,21 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
             // 
+            // btnReporteEnvio
+            // 
+            this.btnReporteEnvio.Location = new System.Drawing.Point(167, 335);
+            this.btnReporteEnvio.Name = "btnReporteEnvio";
+            this.btnReporteEnvio.Size = new System.Drawing.Size(164, 36);
+            this.btnReporteEnvio.TabIndex = 1;
+            this.btnReporteEnvio.Text = "Exportar reporte (.txt)";
+            this.btnReporteEnvio.UseVisualStyleBackColor = true;
+            this.btnReporteEnvio.Click += new System.EventHandler(this.btnReporteEnvio_Click);
+            // 
             // RastreoDeEnvíos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 810);
+            this.ClientSize = new System.Drawing.Size(1130, 836);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -566,6 +578,7 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ListBox lstResumen;
+        private System.Windows.Forms.Button btnReporteEnvio;
     }
 }
 
