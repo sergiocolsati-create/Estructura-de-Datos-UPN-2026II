@@ -43,6 +43,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnReporteEnvio = new System.Windows.Forms.Button();
             this.lstResumen = new System.Windows.Forms.ListBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -67,6 +68,11 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pnlCabecera = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
+            this.lnkPerfil = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.dgvEnvios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,6 +81,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.pnlCabecera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -85,7 +93,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(39, 11);
+            this.groupBox1.Location = new System.Drawing.Point(12, 91);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -158,7 +166,7 @@
             // dgvEnvios
             // 
             this.dgvEnvios.Controls.Add(this.dataGridView1);
-            this.dgvEnvios.Location = new System.Drawing.Point(39, 81);
+            this.dgvEnvios.Location = new System.Drawing.Point(12, 161);
             this.dgvEnvios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvEnvios.Name = "dgvEnvios";
             this.dgvEnvios.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -231,6 +239,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnReporteEnvio);
             this.groupBox3.Controls.Add(this.lstResumen);
             this.groupBox3.Controls.Add(this.textBox5);
             this.groupBox3.Controls.Add(this.textBox4);
@@ -240,14 +249,24 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(48, 335);
+            this.groupBox3.Location = new System.Drawing.Point(12, 415);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(516, 342);
+            this.groupBox3.Size = new System.Drawing.Size(525, 386);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle del envío";
+            // 
+            // btnReporteEnvio
+            // 
+            this.btnReporteEnvio.Location = new System.Drawing.Point(167, 335);
+            this.btnReporteEnvio.Name = "btnReporteEnvio";
+            this.btnReporteEnvio.Size = new System.Drawing.Size(164, 36);
+            this.btnReporteEnvio.TabIndex = 1;
+            this.btnReporteEnvio.Text = "Exportar reporte (.txt)";
+            this.btnReporteEnvio.UseVisualStyleBackColor = true;
+            this.btnReporteEnvio.Click += new System.EventHandler(this.btnReporteEnvio_Click);
             // 
             // lstResumen
             // 
@@ -339,7 +358,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dataGridView2);
-            this.groupBox4.Location = new System.Drawing.Point(587, 334);
+            this.groupBox4.Location = new System.Drawing.Point(560, 414);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -399,7 +418,7 @@
             this.groupBox5.Controls.Add(this.button4);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Location = new System.Drawing.Point(31, 709);
+            this.groupBox5.Location = new System.Drawing.Point(12, 816);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -490,11 +509,69 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
             // 
+            // pnlCabecera
+            // 
+            this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.lnkPerfil);
+            this.pnlCabecera.Controls.Add(this.label9);
+            this.pnlCabecera.Controls.Add(this.label10);
+            this.pnlCabecera.Controls.Add(this.picLogo);
+            this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
+            this.pnlCabecera.Name = "pnlCabecera";
+            this.pnlCabecera.Size = new System.Drawing.Size(1082, 70);
+            this.pnlCabecera.TabIndex = 9;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(268, 38);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(304, 16);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Sistema de Seguimiento y Trazabilidad de envíos";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(266, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(217, 32);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Rastreo de Envíos";
+            // 
+            // picLogo
+            // 
+            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(3, 3);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(240, 50);
+            this.picLogo.TabIndex = 0;
+            this.picLogo.TabStop = false;
+            // 
+            // lnkPerfil
+            // 
+            this.lnkPerfil.AutoSize = true;
+            this.lnkPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkPerfil.LinkColor = System.Drawing.Color.White;
+            this.lnkPerfil.Location = new System.Drawing.Point(961, 25);
+            this.lnkPerfil.Name = "lnkPerfil";
+            this.lnkPerfil.Size = new System.Drawing.Size(96, 16);
+            this.lnkPerfil.TabIndex = 10;
+            this.lnkPerfil.TabStop = true;
+            this.lnkPerfil.Text = "Yanela Acori";
+            this.lnkPerfil.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPerfil_LinkClicked);
+            // 
             // RastreoDeEnvíos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1130, 810);
+            this.ClientSize = new System.Drawing.Size(1082, 896);
+            this.Controls.Add(this.pnlCabecera);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -520,6 +597,9 @@
             this.groupBox5.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.pnlCabecera.ResumeLayout(false);
+            this.pnlCabecera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -566,6 +646,12 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ListBox lstResumen;
+        private System.Windows.Forms.Button btnReporteEnvio;
+        private System.Windows.Forms.Panel pnlCabecera;
+        private System.Windows.Forms.LinkLabel lnkPerfil;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox picLogo;
     }
 }
 

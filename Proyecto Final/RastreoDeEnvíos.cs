@@ -263,7 +263,7 @@ namespace Shalom
             lstResumen.Items.Add("Remitente: " + remitente);
             lstResumen.Items.Add("Destinatario: " + destinatario);
             lstResumen.Items.Add("Paquete: " + envio.Tipo + ", " + envio.PesoKg + " kg / " + envio.Descripcion);
-            lstResumen.Items.Add("Pago: " + NombrePago(envio.ModalidadPago) + " / S/ " + envio.Precio.ToString("0.00"));
+            lstResumen.Items.Add("Pago: " + Reportes.NombrePago(envio.ModalidadPago) + " / S/ " + envio.Precio.ToString("0.00"));
             lstResumen.Items.Add("Vehículo: " + (envio.PlacaVehiculo ?? "-"));
             lstResumen.Items.Add("Clave de entrega: " + envio.ClaveSeguridad);
             lstResumen.Items.Add("");
@@ -273,16 +273,6 @@ namespace Shalom
             string[] eventos = envio.Historial.ObtenerTexto()
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             lstResumen.Items.AddRange(eventos);
-        }
-
-        private string NombrePago(ModalidadPago pago)
-        {
-            switch (pago)
-            {
-                case ModalidadPago.PagadoEnOrigen: return "Pagado en origen";
-                case ModalidadPago.PorCobrarEnDestino: return "Por cobrar en destino";
-                default: return pago.ToString();
-            }
         }
 
         private void lstResumen_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,6 +287,52 @@ namespace Shalom
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnReporteEnvio_Click(object sender, EventArgs e)
+        {
+            if (envioSeleccionado == null)
+            {
+                MessageBox.Show("Seleccione un envío de la lista");
+                return;
+            }
+
+            using (SaveFileDialog dialogo = new SaveFileDialog())
+            {
+                dialogo.Title = "Guardar reporte del envío";
+                dialogo.Filter = "Archivo de texto (*.txt)|*.txt";
+                dialogo.FileName = "Reporte_" + envioSeleccionado.Codigo + ".txt";
+
+                if (dialogo.ShowDialog() != DialogResult.OK)
+                    return;   // El usuario canceló
+
+                try
+                {
+                    string contenido = Reportes.ReporteEnvio(envioSeleccionado);
+                    Reportes.GuardarTxt(dialogo.FileName, contenido);
+
+                    MessageBox.Show("Reporte guardado en:\n" + dialogo.FileName,
+                        "Reporte generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo guardar el reporte:\n" + ex.Message,
+                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void lnkPerfil_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TarjetaColaborador tarjeta = new TarjetaColaborador();
+            tarjeta.MostrarDatos(Colaborador.Buscar("N00469214"), true);
+
+            Form ventana = new Form();
+            ventana.Text = "Colaboradora";
+            ventana.ClientSize = tarjeta.Size;
+            ventana.StartPosition = FormStartPosition.CenterParent;
+            ventana.Controls.Add(tarjeta);
+            ventana.ShowDialog(this);
         }
     }
 }

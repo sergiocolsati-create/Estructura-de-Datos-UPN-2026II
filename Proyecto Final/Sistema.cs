@@ -8,8 +8,8 @@ namespace Shalom
     {
         // CONEXIÓN A SQL SERVER
         private static readonly string cadenaConexion =
-            @"Data Source=ANGGIE\SQLEXPRESS;Initial Catalog=ShalomDB_Final;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
-        //depositenme dinero
+            @"Data Source=localhost\SQLEXPRESS;Initial Catalog=ShalomDB_Final;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
+        
         public static SqlConnection CrearConexion()
         {
             return new SqlConnection(cadenaConexion);
@@ -1056,5 +1056,32 @@ namespace Shalom
 
             return null;
         }
+
+
+        // =========================================================
+        // LOGIN
+        // =========================================================
+
+        public static bool ValidarUsuario(string usuario, string contrasena)
+        {
+            string consulta = "SELECT COUNT(*) FROM Usuario " + 
+                              "WHERE Usuario = @usuario " +
+                              "AND Contrasena = @contrasena COLLATE Latin1_General_CS_AS";
+
+            using (SqlConnection conexion = CrearConexion())
+            {
+                conexion.Open();
+
+                using (SqlCommand comando = new SqlCommand(consulta, conexion))
+                {
+                    comando.Parameters.AddWithValue("@usuario", usuario);
+                    comando.Parameters.AddWithValue("@contrasena", contrasena);
+
+                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+                    return cantidad > 0;
+                }
+            }
+        }
+
     }
 }

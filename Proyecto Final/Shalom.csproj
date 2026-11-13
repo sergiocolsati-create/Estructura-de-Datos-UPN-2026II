@@ -77,6 +77,7 @@
     <Compile Include="CargaDelVehículo.Designer.cs">
       <DependentUpon>CargaDelVehículo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Colaborador.cs" />
     <Compile Include="ColaEnvios.cs" />
     <Compile Include="DevAnsh.cs">
       <SubType>Form</SubType>
@@ -111,6 +112,12 @@
     <Compile Include="FormularioLogin.Designer.cs">
       <DependentUpon>FormularioLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormularioReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioReportes.Designer.cs">
+      <DependentUpon>FormularioReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="IngresoDeEnvíos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -139,9 +146,16 @@
     <Compile Include="RastreoYLogística.Designer.cs">
       <DependentUpon>RastreoYLogística.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes.cs" />
     <Compile Include="Sede.cs" />
     <Compile Include="Sistema.cs" />
     <Compile Include="Tarifa.cs" />
+    <Compile Include="TarjetaColaborador.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TarjetaColaborador.Designer.cs">
+      <DependentUpon>TarjetaColaborador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vehiculo.cs" />
     <EmbeddedResource Include="Almacén.resx">
       <DependentUpon>Almacén.cs</DependentUpon>
@@ -167,6 +181,9 @@
     <EmbeddedResource Include="FormularioLogin.resx">
       <DependentUpon>FormularioLogin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormularioReportes.resx">
+      <DependentUpon>FormularioReportes.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="IngresoDeEnvíos.resx">
       <DependentUpon>IngresoDeEnvíos.cs</DependentUpon>
     </EmbeddedResource>
@@ -185,6 +202,9 @@
     </Compile>
     <EmbeddedResource Include="RastreoYLogística.resx">
       <DependentUpon>RastreoYLogística.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TarjetaColaborador.resx">
+      <DependentUpon>TarjetaColaborador.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
