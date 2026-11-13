@@ -22,22 +22,37 @@ namespace Shalom
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text;
 
-            if (usuario == "grupo2" && contrasena == "admin123")
+            if (usuario == "" && contrasena == "")
+            {
+                MessageBox.Show("Ingrese su usuario y contraseña.", "Datos incompletos",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            bool valido;
+
+            try
+            {
+                valido = Sistema.ValidarUsuario(usuario, contrasena);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo conectar con la base de datos.\n\n" + ex.Message,
+                    "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            if (valido)
             {
                 DialogResult = DialogResult.OK;
                 Close();
             }
             else
             {
-                MessageBox.Show(
-                    "El usuario o la contraseña son incorrectos.",
-                    "Error de acceso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-
+                MessageBox.Show("El usuario o la contraseña son incorrectos.", "Error de acceso",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 txtContrasena.Clear();
-                txtUsuario.Focus();
+                txtContrasena.Focus();
             }
         }
 
@@ -46,6 +61,11 @@ namespace Shalom
             txtContrasena.UseSystemPasswordChar = !txtContrasena.UseSystemPasswordChar;
             btnMostrarClave.Text = txtContrasena.UseSystemPasswordChar ? "Ver" : "Ocultar";
             txtContrasena.Focus();
+        }
+
+        private void txtUsuario_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
