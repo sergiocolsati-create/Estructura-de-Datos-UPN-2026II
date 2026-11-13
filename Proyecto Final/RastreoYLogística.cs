@@ -222,5 +222,10 @@ namespace Shalom
         {
             new DevDavid().ShowDialog(this);
         }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormularioReportes());
+        }
     }
 }

@@ -18,8 +18,8 @@ namespace Shalom
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RastreoYLogística));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.miIngreso = new System.Windows.Forms.ToolStripMenuItem();
             this.miAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.miCarga = new System.Windows.Forms.ToolStripMenuItem();
@@ -34,8 +34,6 @@ namespace Shalom
             this.lblSesion = new System.Windows.Forms.ToolStripStatusLabel();
             this.barraEstado = new System.Windows.Forms.StatusStrip();
             this.grpResumen = new System.Windows.Forms.GroupBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlEntregados = new System.Windows.Forms.Panel();
             this.lblTituloEntregados = new System.Windows.Forms.Label();
             this.lblEntregados = new System.Windows.Forms.Label();
@@ -48,6 +46,8 @@ namespace Shalom
             this.pnlCola = new System.Windows.Forms.Panel();
             this.lblTituloCola = new System.Windows.Forms.Label();
             this.lblEnCola = new System.Windows.Forms.Label();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.grpRastreo = new System.Windows.Forms.GroupBox();
             this.txtGuia = new System.Windows.Forms.TextBox();
             this.btnBuscarEnvio = new System.Windows.Forms.Button();
@@ -77,14 +77,15 @@ namespace Shalom
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
+            this.btnReportes = new System.Windows.Forms.Button();
             this.menuPrincipal.SuspendLayout();
             this.barraEstado.SuspendLayout();
             this.grpResumen.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlEntregados.SuspendLayout();
             this.pnlRuta.SuspendLayout();
             this.pnlAlmacen.SuspendLayout();
             this.pnlCola.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpRastreo.SuspendLayout();
             this.grpVehiculos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVehiculos)).BeginInit();
@@ -217,27 +218,6 @@ namespace Shalom
             this.grpResumen.TabStop = false;
             this.grpResumen.Text = "Resumen de envíos";
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(959, 85);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(71, 20);
-            this.linkLabel1.TabIndex = 9;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkDavid";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1036, 70);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
             // pnlEntregados
             // 
             this.pnlEntregados.BackColor = System.Drawing.Color.White;
@@ -352,6 +332,27 @@ namespace Shalom
             this.lblEnCola.Size = new System.Drawing.Size(17, 20);
             this.lblEnCola.TabIndex = 0;
             this.lblEnCola.Text = "0";
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(959, 85);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(71, 20);
+            this.linkLabel1.TabIndex = 9;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "linkDavid";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(1036, 70);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(41, 40);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 10;
+            this.pictureBox1.TabStop = false;
             // 
             // grpRastreo
             // 
@@ -471,8 +472,8 @@ namespace Shalom
             // colPaquetes
             // 
             this.colPaquetes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle3;
             this.colPaquetes.FillWeight = 32F;
             this.colPaquetes.HeaderText = "Paquetes";
             this.colPaquetes.MinimumWidth = 6;
@@ -482,8 +483,8 @@ namespace Shalom
             // colCarga
             // 
             this.colCarga.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCarga.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCarga.DefaultCellStyle = dataGridViewCellStyle4;
             this.colCarga.FillWeight = 32F;
             this.colCarga.HeaderText = "Carga";
             this.colCarga.MinimumWidth = 6;
@@ -536,6 +537,7 @@ namespace Shalom
             // pnlNavegacion
             // 
             this.pnlNavegacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(47)))), ((int)(((byte)(58)))));
+            this.pnlNavegacion.Controls.Add(this.btnReportes);
             this.pnlNavegacion.Controls.Add(this.label5);
             this.pnlNavegacion.Controls.Add(this.label4);
             this.pnlNavegacion.Controls.Add(this.label3);
@@ -736,6 +738,24 @@ namespace Shalom
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
             // 
+            // btnReportes
+            // 
+            this.btnReportes.FlatAppearance.BorderSize = 0;
+            this.btnReportes.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(75)))), ((int)(((byte)(90)))));
+            this.btnReportes.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(76)))));
+            this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReportes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnReportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
+            this.btnReportes.Location = new System.Drawing.Point(20, 379);
+            this.btnReportes.Name = "btnReportes";
+            this.btnReportes.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnReportes.Size = new System.Drawing.Size(196, 38);
+            this.btnReportes.TabIndex = 9;
+            this.btnReportes.Text = "Reportes";
+            this.btnReportes.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnReportes.UseVisualStyleBackColor = false;
+            this.btnReportes.Click += new System.EventHandler(this.btnReportes_Click);
+            // 
             // RastreoYLogística
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -767,7 +787,6 @@ namespace Shalom
             this.barraEstado.ResumeLayout(false);
             this.barraEstado.PerformLayout();
             this.grpResumen.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlEntregados.ResumeLayout(false);
             this.pnlEntregados.PerformLayout();
             this.pnlRuta.ResumeLayout(false);
@@ -776,6 +795,7 @@ namespace Shalom
             this.pnlAlmacen.PerformLayout();
             this.pnlCola.ResumeLayout(false);
             this.pnlCola.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpRastreo.ResumeLayout(false);
             this.grpRastreo.PerformLayout();
             this.grpVehiculos.ResumeLayout(false);
@@ -847,5 +867,6 @@ namespace Shalom
         private Label label3;
         private LinkLabel linkLabel1;
         private PictureBox pictureBox1;
+        private Button btnReportes;
     }
 }
