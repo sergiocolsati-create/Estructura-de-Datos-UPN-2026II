@@ -22,7 +22,7 @@ namespace Shalom
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text;
 
-            if (usuario == "" && contrasena == "")
+            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contrasena))
             {
                 MessageBox.Show("Ingrese su usuario y contraseña.", "Datos incompletos",
                     MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -66,6 +66,10 @@ namespace Shalom
         private void txtUsuario_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnColaboradores_Click(object sender, EventArgs e)
+        {
         }
     }
 }

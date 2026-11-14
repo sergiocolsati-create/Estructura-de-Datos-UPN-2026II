@@ -296,30 +296,8 @@ namespace Shalom
                 MessageBox.Show("Seleccione un envío de la lista");
                 return;
             }
-
-            using (SaveFileDialog dialogo = new SaveFileDialog())
-            {
-                dialogo.Title = "Guardar reporte del envío";
-                dialogo.Filter = "Archivo de texto (*.txt)|*.txt";
-                dialogo.FileName = "Reporte_" + envioSeleccionado.Codigo + ".txt";
-
-                if (dialogo.ShowDialog() != DialogResult.OK)
-                    return;   // El usuario canceló
-
-                try
-                {
-                    string contenido = Reportes.ReporteEnvio(envioSeleccionado);
-                    Reportes.GuardarTxt(dialogo.FileName, contenido);
-
-                    MessageBox.Show("Reporte guardado en:\n" + dialogo.FileName,
-                        "Reporte generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se pudo guardar el reporte:\n" + ex.Message,
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            Reportes.GuardarConDialogo("Reporte_" + envioSeleccionado.Codigo + ".txt",
+                Reportes.ReporteEnvio(envioSeleccionado));
         }
 
         private void lnkPerfil_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -333,6 +311,11 @@ namespace Shalom
             ventana.StartPosition = FormStartPosition.CenterParent;
             ventana.Controls.Add(tarjeta);
             ventana.ShowDialog(this);
+        }
+
+        private void pnlCabecera_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

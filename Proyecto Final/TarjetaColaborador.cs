@@ -12,8 +12,8 @@ namespace Shalom
         public TarjetaColaborador()
         {
             InitializeComponent();
-            lnkLinkedIn.LinkClicked += lnkLinkedIn_LinkClicked;
-            lnkGitHub.LinkClicked += lnkGitHub_LinkClicked;
+            lnkLinkedIn.LinkClicked += (s, e) => AbrirEnlace(colaborador.LinkedIn);
+            lnkGitHub.LinkClicked += (s, e) => AbrirEnlace(colaborador.GitHub);
         }
 
         // Llena la card con los datos de un integrante.
@@ -33,16 +33,6 @@ namespace Shalom
             lnkGitHub.Visible = mostrarLinks && !string.IsNullOrWhiteSpace(c.GitHub);
         }
 
-        private void lnkLinkedIn_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            AbrirEnlace(colaborador.LinkedIn);
-        }
-
-        private void lnkGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-            AbrirEnlace(colaborador.GitHub);
-        }
-
         // Abre la página en el navegador predeterminado.
         private void AbrirEnlace(string url)
         {
@@ -58,6 +48,11 @@ namespace Shalom
         }
 
         private void lnkGitHub_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
+
+        private void lnkLinkedIn_LinkClicked_1(object sender, LinkLabelLinkClickedEventArgs e)
         {
 
         }

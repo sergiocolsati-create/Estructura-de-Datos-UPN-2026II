@@ -3,6 +3,8 @@ using System.IO;
 using System.Text;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Windows.Forms;
+using System.Linq;
 
 namespace Shalom
 {
@@ -61,9 +63,26 @@ namespace Shalom
         }
 
         // ------ Guardar en archivo de texto ------
-        public static void GuardarTxt(string ruta, string contenido)
+        public static void GuardarConDialogo(string nombreSugerido, string contenido)
         {
-            File.WriteAllText(ruta, contenido, Encoding.UTF8);
+            string extension = Path.GetExtension(nombreSugerido);   // ".txt" o ".csv"
+
+            using (SaveFileDialog dialogo = new SaveFileDialog())
+            {
+                dialogo.FileName = nombreSugerido;
+                dialogo.Filter = "Archivo " + extension + "|*" + extension;
+                if (dialogo.ShowDialog() != DialogResult.OK) return;
+
+                try
+                {
+                    File.WriteAllText(dialogo.FileName, contenido, Encoding.UTF8);
+                    MessageBox.Show("Archivo guardado en:\n" + dialogo.FileName, "Listo");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("No se pudo guardar (¿está abierto en otro programa?):\n" + ex.Message, "Error");
+                }
+            }
         }
 
         // ------ Filtros ------
@@ -107,27 +126,19 @@ namespace Shalom
         {
             DateTime desde = InicioPeriodo(f);
             DateTime hasta = FinPeriodo(f);
-
-            // Si no hay filtro de fecha ni de sección, no hace falta revisar el historial.
             bool revisarHistorial = f.Periodo != TipoPeriodo.Todo || f.Seccion != null;
 
-            List<Envio> resultado = new List<Envio>();
+            return Sistema.Registro.ObtenerTodos()
+                .Where(e => MismaSede(f.SedeOrigen, e.SedeOrigen)
+                         && MismaSede(f.SedeDestino, e.SedeDestino)
+                         && (!revisarHistorial || e.Historial.TieneEvento(f.Seccion, desde, hasta)))
+                .ToList();
+        }
 
-            foreach (Envio e in Sistema.Registro.ObtenerTodos())
-            {
-                if (f.SedeOrigen != null && (e.SedeOrigen == null || e.SedeOrigen.Id != f.SedeOrigen.Id))
-                    continue;
-
-                if (f.SedeDestino != null && (e.SedeDestino == null || e.SedeDestino.Id != f.SedeDestino.Id))
-                    continue;
-
-                if (revisarHistorial && !e.Historial.TieneEvento(f.Seccion, desde, hasta))
-                    continue;
-
-                resultado.Add(e);
-            }
-
-            return resultado;
+        // true si se eligió "Todas" o si la sede del envío es la elegida.
+        private static bool MismaSede(Sede elegida, Sede delEnvio)
+        {
+            return elegida == null || elegida.Id == delEnvio?.Id;
         }
 
         // ---------- Reporte por filtros ----------
@@ -148,8 +159,8 @@ namespace Shalom
             sb.AppendLine("FILTROS APLICADOS");
             sb.AppendLine("  Periodo:       " + DescripcionPeriodo(f));
             sb.AppendLine("  Sección:       " + NombreSeccion(f.Seccion));
-            sb.AppendLine("  Sede origen:   " + (f.SedeOrigen == null ? "Todas" : f.SedeOrigen.Nombre));
-            sb.AppendLine("  Sede destino:  " + (f.SedeDestino == null ? "Todas" : f.SedeDestino.Nombre));
+            sb.AppendLine("  Sede origen:   " + (f.SedeOrigen?.Nombre ?? "Todas"));
+            sb.AppendLine("  Sede destino:  " + (f.SedeDestino?.Nombre ?? "Todas"));
             sb.AppendLine();
 
             if (envios.Count == 0)
@@ -159,22 +170,11 @@ namespace Shalom
                 return sb.ToString();
             }
 
-            // 3. Resumen: se calculan los totales recorriendo la lista una sola vez
-            decimal pesoTotal = 0, montoTotal = 0, pagado = 0, porCobrar = 0;
-            int[] porEstado = new int[Enum.GetValues(typeof(EstadoEnvio)).Length];
-
-            foreach (Envio e in envios)
-            {
-                pesoTotal += e.PesoKg;
-                montoTotal += e.Precio;
-
-                if (e.ModalidadPago == ModalidadPago.PagadoEnOrigen)
-                    pagado += e.Precio;
-                else
-                    porCobrar += e.Precio;
-
-                porEstado[(int)e.Estado]++;
-            }
+            // 3. Resumen
+            decimal pesoTotal = envios.Sum(e => e.PesoKg);
+            decimal montoTotal = envios.Sum(e => e.Precio);
+            decimal pagado = envios.Where(e => e.ModalidadPago == ModalidadPago.PagadoEnOrigen).Sum(e => e.Precio);
+            decimal porCobrar = montoTotal - pagado;
 
             sb.AppendLine("RESUMEN");
             sb.AppendLine("  Total de envíos:         " + envios.Count);
@@ -185,14 +185,15 @@ namespace Shalom
             sb.AppendLine();
             sb.AppendLine("  Envíos según su estado actual:");
 
-            for (int i = 0; i < porEstado.Length; i++)
+            foreach (EstadoEnvio estado in Enum.GetValues(typeof(EstadoEnvio)))
             {
-                if (porEstado[i] > 0)
-                    sb.AppendLine("    " + ArbolEnvios.NombreEstadoLegible((EstadoEnvio)i).PadRight(18) + porEstado[i]);
+                int cantidad = envios.Count(e => e.Estado == estado);
+                if (cantidad > 0)
+                    sb.AppendLine("    " + ArbolEnvios.NombreEstadoLegible(estado).PadRight(18) + cantidad);
             }
-            sb.AppendLine();
 
             // 4. Detalle: una fila por envío, en columnas alineadas
+            sb.AppendLine();
             sb.AppendLine("DETALLE");
             sb.AppendLine(guiones);
             sb.AppendLine(
@@ -237,8 +238,8 @@ namespace Shalom
             e.FechaRegistro.ToString("yyyy-MM-dd HH:mm"),
             NombreSede(e.SedeOrigen),
             NombreSede(e.SedeDestino),
-            e.Remitente == null ? "" : e.Remitente.Nombres,
-            e.Destinatario == null ? "" : e.Destinatario.Nombres,
+            e.Remitente?.Nombres ?? "",
+            e.Destinatario?.Nombres ?? "",
             e.Tipo.ToString(),
             e.PesoKg.ToString("0.00"),
             e.Precio.ToString("0.00"),
@@ -305,7 +306,7 @@ namespace Shalom
 
         public static string CodigoSede(Sede sede)
         {
-            return sede == null ? "---" : sede.Codigo;
+            return sede?.Codigo ?? "---";
         }
 
 
@@ -323,7 +324,7 @@ namespace Shalom
 
         public static string NombreSede(Sede sede)
         {
-            return sede == null ? "(sin datos)" : sede.Nombre;
+            return sede?.Nombre ?? "(sin datos)";
         }
 
         public static string DatosPersona(Persona p)
