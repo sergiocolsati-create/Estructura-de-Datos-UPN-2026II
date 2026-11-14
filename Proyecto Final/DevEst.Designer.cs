@@ -135,7 +135,6 @@
             // 
             this.picFoto.BackColor = System.Drawing.Color.White;
             this.picFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.picFoto.Image = global::Shalom.Properties.Resources.WhatsApp_Image_2026_11_13_at_3_03_22_PM;
             this.picFoto.Location = new System.Drawing.Point(105, 32);
             this.picFoto.Name = "picFoto";
             this.picFoto.Size = new System.Drawing.Size(110, 110);

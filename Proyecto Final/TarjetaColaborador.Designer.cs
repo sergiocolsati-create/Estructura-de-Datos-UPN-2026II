@@ -144,6 +144,7 @@
             this.lnkLinkedIn.TabStop = true;
             this.lnkLinkedIn.Text = "LinkedIn";
             this.lnkLinkedIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lnkLinkedIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLinkedIn_LinkClicked_1);
             // 
             // lnkGitHub
             // 
