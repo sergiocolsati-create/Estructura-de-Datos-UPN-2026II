@@ -52,7 +52,7 @@
             this.panelMarca.Controls.Add(this.lblMarca);
             this.panelMarca.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMarca.Location = new System.Drawing.Point(0, 0);
-            this.panelMarca.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.panelMarca.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panelMarca.Name = "panelMarca";
             this.panelMarca.Size = new System.Drawing.Size(471, 517);
             this.panelMarca.TabIndex = 11;
@@ -218,7 +218,7 @@
             this.Controls.Add(this.btnMostrarClave);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.btnColaboradores);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.Name = "FormularioLogin";
             this.Text = "FormularioLogin";
             this.panelMarca.ResumeLayout(false);

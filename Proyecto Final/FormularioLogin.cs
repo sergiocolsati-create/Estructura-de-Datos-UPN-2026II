@@ -71,5 +71,10 @@ namespace Shalom
         private void btnColaboradores_Click(object sender, EventArgs e)
         {
         }
+
+        private void txtUsuario_TextChanged_1(object sender, EventArgs e)
+        {
+
+        }
     }
 }
