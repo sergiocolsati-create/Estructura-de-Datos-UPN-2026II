@@ -6,8 +6,6 @@ namespace Shalom
 {
     public partial class FormularioReportes : Form
     {
-        // Lo último que se generó. Al exportar se usa esto,
-        // así el archivo siempre coincide con la vista previa.
         private FiltroReporte filtroActual;
         private List<Envio> resultadoActual;
 
@@ -16,7 +14,6 @@ namespace Shalom
             InitializeComponent();
             ConfigurarControles();
 
-            // Los eventos se conectan DESPUÉS de llenar los combos.
             cboPeriodo.SelectedIndexChanged += FiltroCambiado;
             dtpFecha.ValueChanged += FiltroCambiado;
             cboSeccion.SelectedIndexChanged += FiltroCambiado;
@@ -63,17 +60,11 @@ namespace Shalom
             dgvVistaPrevia.ReadOnly = true;
             dgvVistaPrevia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvVistaPrevia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvVistaPrevia.Columns.Add("colGuia", "Guía");
-            dgvVistaPrevia.Columns.Add("colRegistro", "Registro");
-            dgvVistaPrevia.Columns.Add("colRuta", "Ruta");
-            dgvVistaPrevia.Columns.Add("colEstado", "Estado actual");
-            dgvVistaPrevia.Columns.Add("colPeso", "Peso (kg)");
-            dgvVistaPrevia.Columns.Add("colPrecio", "Precio (S/)");
+            foreach (string titulo in new[] { "Guía", "Registro", "Ruta", "Estado actual", "Peso (kg)", "Precio (S/)" })
+                dgvVistaPrevia.Columns.Add(titulo, titulo);
 
-            btnExportarTxt.Enabled = false;   // Se activa al generar
+            HabilitarExportar(false);
             ActualizarRango();
-
-            btnExportarCSV.Enabled = false;
         }
 
         // =========================================================
@@ -92,15 +83,8 @@ namespace Shalom
             else
                 f.Seccion = (EstadoEnvio)(cboSeccion.SelectedIndex - 1);
 
-            if (cboOrigen.SelectedIndex == 0)
-                f.SedeOrigen = null;
-            else
-                f.SedeOrigen = Sistema.Sedes[cboOrigen.SelectedIndex - 1];
-
-            if (cboDestino.SelectedIndex == 0)
-                f.SedeDestino = null;
-            else
-                f.SedeDestino = Sistema.Sedes[cboDestino.SelectedIndex - 1];
+            f.SedeOrigen = SedeElegida(cboOrigen);
+            f.SedeDestino = SedeElegida(cboDestino);
 
             return f;
         }
@@ -109,7 +93,7 @@ namespace Shalom
         private void ActualizarRango()
         {
             FiltroReporte f = LeerFiltros();
-            dtpFecha.Enabled = f.Periodo != TipoPeriodo.Todo;   // "Todo" no necesita fecha
+            dtpFecha.Enabled = f.Periodo != TipoPeriodo.Todo;  
             lblRango.Text = Reportes.DescripcionPeriodo(f);
         }
 
@@ -118,10 +102,7 @@ namespace Shalom
         private void FiltroCambiado(object sender, EventArgs e)
         {
             ActualizarRango();
-            btnExportarTxt.Enabled = false;
-            lblTotal.Text = "Filtros cambiados: presione \"Generar vista previa\".";
-
-            btnExportarCSV.Enabled = false;
+            HabilitarExportar(false);
         }
 
         // =========================================================
@@ -145,59 +126,36 @@ namespace Shalom
             }
 
             lblTotal.Text = "Envíos encontrados: " + resultadoActual.Count;
-            btnExportarTxt.Enabled = resultadoActual.Count > 0;
-
-            btnExportarCSV.Enabled = btnExportarTxt.Enabled;
+            HabilitarExportar(resultadoActual.Count > 0);
         }
 
         private void btnExportarTxt_Click(object sender, EventArgs e)
         {
-            if (resultadoActual == null)
-                return;
-
-            using (SaveFileDialog dialogo = new SaveFileDialog())
-            {
-                dialogo.Title = "Guardar reporte";
-                dialogo.Filter = "Archivo de texto (*.txt)|*.txt";
-                dialogo.FileName = "Reporte_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".txt";
-
-                if (dialogo.ShowDialog() != DialogResult.OK)
-                    return;
-
-                try
-                {
-                    string contenido = Reportes.ReporteFiltrado(filtroActual, resultadoActual);
-                    Reportes.GuardarTxt(dialogo.FileName, contenido);
-
-                    MessageBox.Show("Reporte guardado en:\n" + dialogo.FileName,
-                        "Reporte generado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se pudo guardar el reporte:\n" + ex.Message,
-                        "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
-            }
+            Reportes.GuardarConDialogo("Reporte_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".txt",
+                Reportes.ReporteFiltrado(filtroActual, resultadoActual));
         }
 
         private void btnExportarCSV_Click(object sender, EventArgs e)
         {
-            using (SaveFileDialog dialogo = new SaveFileDialog())
-            {
-                dialogo.Filter = "Archivo CSV (*.csv)|*.csv";
-                dialogo.FileName = "Envios_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".csv";
-                if (dialogo.ShowDialog() != DialogResult.OK) return;
+            Reportes.GuardarConDialogo("Envios_" + DateTime.Now.ToString("yyyyMMdd_HHmm") + ".csv",
+                Reportes.ReporteCsv(resultadoActual));
+        }
 
-                try
-                {
-                    Reportes.GuardarTxt(dialogo.FileName, Reportes.ReporteCsv(resultadoActual));
-                    MessageBox.Show("Archivo guardado en:\n" + dialogo.FileName, "CSV generado");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("No se pudo guardar (¿está abierto en Excel?):\n" + ex.Message, "Error");
-                }
-            }
+        private void HabilitarExportar(bool habilitar)
+        {
+            btnExportarTxt.Enabled = habilitar;
+            btnExportarCSV.Enabled = habilitar;
+        }
+
+        private Sede SedeElegida(ComboBox combo)
+        {
+            if (combo.SelectedIndex == 0) return null;   // "Todas"
+            return Sistema.Sedes[combo.SelectedIndex - 1];
+        }
+
+        private void dgvVistaPrevia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

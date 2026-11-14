@@ -13,50 +13,24 @@ namespace Shalom
         public string LinkedIn { get; set; }   // null = no tiene
         public string GitHub { get; set; }
 
-        // Todo el equipo, definido UNA sola vez.
+        public Colaborador(string nombre, string rol, string codigo, string carrera,
+                   string linkedIn = null, string gitHub = null)
+        {
+            Nombre = nombre; Rol = rol; Codigo = codigo; Carrera = carrera;
+            LinkedIn = linkedIn; GitHub = gitHub;
+        }
+
         public static Colaborador[] ObtenerEquipo()
         {
             return new Colaborador[]
             {
-                new Colaborador
-                {
-                    Nombre = "Alfonso David Moscoso Yparraguirre",
-                    Rol = "Desarrollador",
-                    Codigo = "N00574312",
-                    Carrera = "Ingeniería de Software"
-                },
-                new Colaborador
-                {
-                    Nombre = "Anshely Aznaila Quezada Prado",
-                    Rol = "Desarrolladora",
-                    Codigo = "N00474619",
-                    Carrera = "Ingeniería de Software"
-                },
-                new Colaborador
-                {
-                    Nombre = "Estrella Valeria Castañeda Rivas",
-                    Rol = "Desarrolladora",
-                    Codigo = "N00000000",              // DEMO: reemplazar con su código real
-                    Carrera = "Ingeniería de Software"  // DEMO
-                },
-                new Colaborador
-                {
-                    Nombre = "Sergio Isaac Colán Sánchez",
-                    Rol = "Desarrollador",
-                    Codigo = "N00525394",
-                    Carrera = "Ingeniería de Redes y Sistemas",
-                    LinkedIn = "https://www.linkedin.com/in/sergiocolansanchez/",
-                    GitHub = "https://github.com/sergiocolsati-create"
-                },
-                new Colaborador
-                {
-                    Nombre = "Yanela Liz Acori Sanchez",
-                    Rol = "Desarrolladora",
-                    Codigo = "N00469214",
-                    Carrera = "Ingeniería de Software",
-                    LinkedIn = "https://www.linkedin.com/in/yanela-acori-sanchez-7451983a6/",
-                    GitHub = "https://github.com/yanlogic"
-                }
+                new Colaborador("Alfonso David Moscoso Yparraguirre", "Desarrollador",  "N00574312", "Ingeniería de Software"),
+                new Colaborador("Anshely Aznaila Quezada Prado",      "Desarrolladora", "N00474619", "Ingeniería de Software"),
+                new Colaborador("Estrella Valeria Castañeda Rivas",   "Desarrolladora", "N00480736", "Ingeniería de Sistemas"),
+                new Colaborador("Sergio Isaac Colán Sánchez",         "Desarrollador",  "N00525394", "Ingeniería de Redes y Sistemas",
+                                "https://www.linkedin.com/in/sergiocolansanchez/", "https://github.com/sergiocolsati-create"),
+                new Colaborador("Yanela Liz Acori Sanchez",           "Desarrolladora", "N00469214", "Ingeniería de Software",
+                                "https://www.linkedin.com/in/yanela-acori-sanchez-7451983a6/", "https://github.com/yanlogic")
             };
         }
 
