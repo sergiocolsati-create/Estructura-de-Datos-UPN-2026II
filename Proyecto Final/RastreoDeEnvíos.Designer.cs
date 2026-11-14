@@ -43,6 +43,7 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btnReporteEnvio = new System.Windows.Forms.Button();
             this.lstResumen = new System.Windows.Forms.ListBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -67,6 +68,12 @@
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pnlCabecera = new System.Windows.Forms.Panel();
+            this.lnkPerfil = new System.Windows.Forms.LinkLabel();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.picPerfil = new System.Windows.Forms.PictureBox();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.dgvEnvios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -75,6 +82,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.groupBox5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
+            this.pnlCabecera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -85,7 +95,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 91);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -158,11 +168,11 @@
             // dgvEnvios
             // 
             this.dgvEnvios.Controls.Add(this.dataGridView1);
-            this.dgvEnvios.Location = new System.Drawing.Point(12, 82);
+            this.dgvEnvios.Location = new System.Drawing.Point(12, 161);
             this.dgvEnvios.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvEnvios.Name = "dgvEnvios";
             this.dgvEnvios.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvEnvios.Size = new System.Drawing.Size(925, 249);
+            this.dgvEnvios.Size = new System.Drawing.Size(1048, 249);
             this.dgvEnvios.TabIndex = 5;
             this.dgvEnvios.TabStop = false;
             this.dgvEnvios.Text = "Envíos";
@@ -182,7 +192,7 @@
             this.Column4,
             this.Column5});
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 30);
+            this.dataGridView1.Location = new System.Drawing.Point(57, 33);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 30;
@@ -231,6 +241,7 @@
             // 
             // groupBox3
             // 
+            this.groupBox3.Controls.Add(this.btnReporteEnvio);
             this.groupBox3.Controls.Add(this.lstResumen);
             this.groupBox3.Controls.Add(this.textBox5);
             this.groupBox3.Controls.Add(this.textBox4);
@@ -240,23 +251,33 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Location = new System.Drawing.Point(21, 336);
+            this.groupBox3.Location = new System.Drawing.Point(12, 415);
             this.groupBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox3.Size = new System.Drawing.Size(371, 342);
+            this.groupBox3.Size = new System.Drawing.Size(525, 386);
             this.groupBox3.TabIndex = 6;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Detalle del envío";
+            // 
+            // btnReporteEnvio
+            // 
+            this.btnReporteEnvio.Location = new System.Drawing.Point(167, 335);
+            this.btnReporteEnvio.Name = "btnReporteEnvio";
+            this.btnReporteEnvio.Size = new System.Drawing.Size(164, 36);
+            this.btnReporteEnvio.TabIndex = 1;
+            this.btnReporteEnvio.Text = "Exportar reporte (.txt)";
+            this.btnReporteEnvio.UseVisualStyleBackColor = true;
+            this.btnReporteEnvio.Click += new System.EventHandler(this.btnReporteEnvio_Click);
             // 
             // lstResumen
             // 
             this.lstResumen.FormattingEnabled = true;
             this.lstResumen.ItemHeight = 16;
             this.lstResumen.Location = new System.Drawing.Point(19, 148);
-            this.lstResumen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstResumen.Margin = new System.Windows.Forms.Padding(4);
             this.lstResumen.Name = "lstResumen";
-            this.lstResumen.Size = new System.Drawing.Size(336, 164);
+            this.lstResumen.Size = new System.Drawing.Size(478, 180);
             this.lstResumen.TabIndex = 9;
             this.lstResumen.SelectedIndexChanged += new System.EventHandler(this.lstResumen_SelectedIndexChanged);
             // 
@@ -264,46 +285,46 @@
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Location = new System.Drawing.Point(84, 110);
+            this.textBox5.Location = new System.Drawing.Point(136, 109);
             this.textBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(273, 22);
+            this.textBox5.Size = new System.Drawing.Size(348, 22);
             this.textBox5.TabIndex = 8;
             // 
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Location = new System.Drawing.Point(84, 81);
+            this.textBox4.Location = new System.Drawing.Point(136, 80);
             this.textBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(273, 22);
+            this.textBox4.Size = new System.Drawing.Size(348, 22);
             this.textBox4.TabIndex = 7;
             // 
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Location = new System.Drawing.Point(84, 53);
+            this.textBox3.Location = new System.Drawing.Point(136, 53);
             this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(273, 22);
+            this.textBox3.Size = new System.Drawing.Size(348, 22);
             this.textBox3.TabIndex = 6;
             // 
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Location = new System.Drawing.Point(84, 25);
+            this.textBox2.Location = new System.Drawing.Point(136, 25);
             this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(273, 22);
+            this.textBox2.Size = new System.Drawing.Size(348, 22);
             this.textBox2.TabIndex = 5;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(5, 111);
+            this.label6.Location = new System.Drawing.Point(21, 111);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(62, 16);
             this.label6.TabIndex = 4;
@@ -312,7 +333,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(5, 82);
+            this.label5.Location = new System.Drawing.Point(27, 82);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(56, 16);
             this.label5.TabIndex = 3;
@@ -321,7 +342,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(5, 55);
+            this.label4.Location = new System.Drawing.Point(32, 55);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(51, 16);
             this.label4.TabIndex = 2;
@@ -330,7 +351,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(5, 27);
+            this.label3.Location = new System.Drawing.Point(45, 27);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(38, 16);
             this.label3.TabIndex = 1;
@@ -339,7 +360,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.dataGridView2);
-            this.groupBox4.Location = new System.Drawing.Point(411, 336);
+            this.groupBox4.Location = new System.Drawing.Point(560, 414);
             this.groupBox4.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -399,7 +420,7 @@
             this.groupBox5.Controls.Add(this.button4);
             this.groupBox5.Controls.Add(this.label7);
             this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Location = new System.Drawing.Point(31, 709);
+            this.groupBox5.Location = new System.Drawing.Point(12, 816);
             this.groupBox5.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -490,11 +511,87 @@
             this.toolStripStatusLabel3.Size = new System.Drawing.Size(151, 20);
             this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
             // 
+            // pnlCabecera
+            // 
+            this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.picPerfil);
+            this.pnlCabecera.Controls.Add(this.lnkPerfil);
+            this.pnlCabecera.Controls.Add(this.label9);
+            this.pnlCabecera.Controls.Add(this.label10);
+            this.pnlCabecera.Controls.Add(this.picLogo);
+            this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
+            this.pnlCabecera.Name = "pnlCabecera";
+            this.pnlCabecera.Size = new System.Drawing.Size(1082, 70);
+            this.pnlCabecera.TabIndex = 9;
+            this.pnlCabecera.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCabecera_Paint);
+            // 
+            // lnkPerfil
+            // 
+            this.lnkPerfil.AutoSize = true;
+            this.lnkPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkPerfil.LinkColor = System.Drawing.Color.White;
+            this.lnkPerfil.Location = new System.Drawing.Point(899, 25);
+            this.lnkPerfil.Name = "lnkPerfil";
+            this.lnkPerfil.Size = new System.Drawing.Size(96, 16);
+            this.lnkPerfil.TabIndex = 10;
+            this.lnkPerfil.TabStop = true;
+            this.lnkPerfil.Text = "Yanela Acori";
+            this.lnkPerfil.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPerfil_LinkClicked);
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.ForeColor = System.Drawing.Color.White;
+            this.label9.Location = new System.Drawing.Point(283, 38);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(304, 16);
+            this.label9.TabIndex = 2;
+            this.label9.Text = "Sistema de Seguimiento y Trazabilidad de envíos";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.BackColor = System.Drawing.Color.Transparent;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.White;
+            this.label10.Location = new System.Drawing.Point(280, 9);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(217, 32);
+            this.label10.TabIndex = 1;
+            this.label10.Text = "Rastreo de Envíos";
+            // 
+            // picPerfil
+            // 
+            this.picPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.picPerfil.BackgroundImage = global::Shalom.Properties.Resources.xd_1;
+            this.picPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picPerfil.Image = global::Shalom.Properties.Resources.xd_1;
+            this.picPerfil.Location = new System.Drawing.Point(1020, 14);
+            this.picPerfil.Name = "picPerfil";
+            this.picPerfil.Size = new System.Drawing.Size(40, 40);
+            this.picPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picPerfil.TabIndex = 11;
+            this.picPerfil.TabStop = false;
+            this.picPerfil.Click += new System.EventHandler(this.picPerfil_Click);
+            // 
+            // picLogo
+            // 
+            this.picLogo.BackColor = System.Drawing.Color.Transparent;
+            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(0, 3);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(261, 50);
+            this.picLogo.TabIndex = 0;
+            this.picLogo.TabStop = false;
+            // 
             // RastreoDeEnvíos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(952, 810);
+            this.ClientSize = new System.Drawing.Size(1082, 896);
+            this.Controls.Add(this.pnlCabecera);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
@@ -520,6 +617,10 @@
             this.groupBox5.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.pnlCabecera.ResumeLayout(false);
+            this.pnlCabecera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -566,6 +667,13 @@
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ListBox lstResumen;
+        private System.Windows.Forms.Button btnReporteEnvio;
+        private System.Windows.Forms.Panel pnlCabecera;
+        private System.Windows.Forms.LinkLabel lnkPerfil;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.PictureBox picPerfil;
     }
 }
 

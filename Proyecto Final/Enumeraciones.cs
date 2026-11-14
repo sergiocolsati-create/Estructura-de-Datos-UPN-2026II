@@ -21,4 +21,7 @@ namespace Shalom
     public enum TipoPaquete { Sobre, Caja }
 
     public enum ModalidadPago { PagadoEnOrigen, PorCobrarEnDestino }
+
+    public enum  TipoPeriodo { Todo, Dia, Mes, Trimestre, Anio }
+
 }

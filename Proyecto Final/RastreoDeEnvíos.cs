@@ -263,7 +263,7 @@ namespace Shalom
             lstResumen.Items.Add("Remitente: " + remitente);
             lstResumen.Items.Add("Destinatario: " + destinatario);
             lstResumen.Items.Add("Paquete: " + envio.Tipo + ", " + envio.PesoKg + " kg / " + envio.Descripcion);
-            lstResumen.Items.Add("Pago: " + NombrePago(envio.ModalidadPago) + " / S/ " + envio.Precio.ToString("0.00"));
+            lstResumen.Items.Add("Pago: " + Reportes.NombrePago(envio.ModalidadPago) + " / S/ " + envio.Precio.ToString("0.00"));
             lstResumen.Items.Add("Vehículo: " + (envio.PlacaVehiculo ?? "-"));
             lstResumen.Items.Add("Clave de entrega: " + envio.ClaveSeguridad);
             lstResumen.Items.Add("");
@@ -273,16 +273,6 @@ namespace Shalom
             string[] eventos = envio.Historial.ObtenerTexto()
                 .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
             lstResumen.Items.AddRange(eventos);
-        }
-
-        private string NombrePago(ModalidadPago pago)
-        {
-            switch (pago)
-            {
-                case ModalidadPago.PagadoEnOrigen: return "Pagado en origen";
-                case ModalidadPago.PorCobrarEnDestino: return "Por cobrar en destino";
-                default: return pago.ToString();
-            }
         }
 
         private void lstResumen_SelectedIndexChanged(object sender, EventArgs e)
@@ -297,6 +287,40 @@ namespace Shalom
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnReporteEnvio_Click(object sender, EventArgs e)
+        {
+            if (envioSeleccionado == null)
+            {
+                MessageBox.Show("Seleccione un envío de la lista");
+                return;
+            }
+            Reportes.GuardarConDialogo("Reporte_" + envioSeleccionado.Codigo + ".txt",
+                Reportes.ReporteEnvio(envioSeleccionado));
+        }
+
+        private void lnkPerfil_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TarjetaColaborador tarjeta = new TarjetaColaborador();
+            tarjeta.MostrarDatos(Colaborador.Buscar("N00469214"), true);
+
+            Form ventana = new Form();
+            ventana.Text = "Colaboradora";
+            ventana.ClientSize = tarjeta.Size;
+            ventana.StartPosition = FormStartPosition.CenterParent;
+            ventana.Controls.Add(tarjeta);
+            ventana.ShowDialog(this);
+        }
+
+        private void pnlCabecera_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void picPerfil_Click(object sender, EventArgs e)
+        {
+            lnkPerfil_LinkClicked(sender, null);
         }
     }
 }

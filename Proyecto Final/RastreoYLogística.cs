@@ -205,17 +205,36 @@ namespace Shalom
             MessageBox.Show(texto, "Pendientes de ruta - " + vehiculo.Placa);
         }
 
-        private void miSalir_Click(object sender, EventArgs e)
-        {
-            Close();
-        }
-
         private void menuAyuda_Click(object sender, EventArgs e)
         {
             MessageBox.Show("1. Registrar el envío.\n2. Enviarlo al almacén.\n" +
                 "3. Cargarlo en un vehículo.\n4. Asignarlo a la ruta.\n" +
                 "5. Registrar la entrega desde Rastreo.\n\n" +
                 "El resumen cuenta todos los envíos por su estado actual.", "Ayuda");
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new DevDavid().ShowDialog(this);
+        }
+
+        private void btnReportes_Click(object sender, EventArgs e)
+        {
+            AbrirFormulario(new FormularioReportes());
+        }
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            DialogResult respuesta = MessageBox.Show("¿Desea cerrar sesión?", "Cerrar sesión",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (respuesta == DialogResult.Yes)
+                Application.Restart();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

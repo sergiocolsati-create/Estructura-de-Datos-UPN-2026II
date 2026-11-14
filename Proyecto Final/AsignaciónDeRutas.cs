@@ -250,5 +250,20 @@ namespace Shalom
                     "Cola " + paradas[cantidadVisible - 1];
             }
         }
+
+        private void grpRutaVehiculo_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void grpPaquetesPendientes_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvParadasRuta_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

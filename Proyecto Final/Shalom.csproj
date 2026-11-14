@@ -77,10 +77,47 @@
     <Compile Include="CargaDelVehículo.Designer.cs">
       <DependentUpon>CargaDelVehículo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Colaborador.cs" />
     <Compile Include="ColaEnvios.cs" />
+    <Compile Include="DevAnsh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevAnsh.Designer.cs">
+      <DependentUpon>DevAnsh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevDavid.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevDavid.Designer.cs">
+      <DependentUpon>DevDavid.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevEst.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevEst.Designer.cs">
+      <DependentUpon>DevEst.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevSer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DevSer.Designer.cs">
+      <DependentUpon>DevSer.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="EventoRastreo.cs" />
+    <Compile Include="FormularioLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioLogin.Designer.cs">
+      <DependentUpon>FormularioLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormularioReportes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormularioReportes.Designer.cs">
+      <DependentUpon>FormularioReportes.cs</DependentUpon>
+    </Compile>
     <Compile Include="IngresoDeEnvíos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,9 +146,16 @@
     <Compile Include="RastreoYLogística.Designer.cs">
       <DependentUpon>RastreoYLogística.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes.cs" />
     <Compile Include="Sede.cs" />
     <Compile Include="Sistema.cs" />
     <Compile Include="Tarifa.cs" />
+    <Compile Include="TarjetaColaborador.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TarjetaColaborador.Designer.cs">
+      <DependentUpon>TarjetaColaborador.cs</DependentUpon>
+    </Compile>
     <Compile Include="Vehiculo.cs" />
     <EmbeddedResource Include="Almacén.resx">
       <DependentUpon>Almacén.cs</DependentUpon>
@@ -121,6 +165,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="CargaDelVehículo.resx">
       <DependentUpon>CargaDelVehículo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevAnsh.resx">
+      <DependentUpon>DevAnsh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevDavid.resx">
+      <DependentUpon>DevDavid.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevEst.resx">
+      <DependentUpon>DevEst.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevSer.resx">
+      <DependentUpon>DevSer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioLogin.resx">
+      <DependentUpon>FormularioLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormularioReportes.resx">
+      <DependentUpon>FormularioReportes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="IngresoDeEnvíos.resx">
       <DependentUpon>IngresoDeEnvíos.cs</DependentUpon>
@@ -141,6 +203,9 @@
     <EmbeddedResource Include="RastreoYLogística.resx">
       <DependentUpon>RastreoYLogística.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TarjetaColaborador.resx">
+      <DependentUpon>TarjetaColaborador.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -153,6 +218,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Captura de pantalla 2026-11-09 001404.png" />
+    <None Include="Resources\imagen_23x24.png" />
     <Content Include="Resources\logo_shalom_blanco.png" />
     <Content Include="Resources\logo_shalom_cabecera.png" />
     <Content Include="Resources\logo_shalom_rojo.png" />

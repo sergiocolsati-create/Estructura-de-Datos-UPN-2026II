@@ -31,6 +31,25 @@ namespace Shalom
             ulti = nuevo;
         }
 
+        public bool TieneEvento(EstadoEnvio? estado, DateTime desde, DateTime hasta)
+        {
+            NodoEvento actual = pri;
+            while (actual != null)
+            {
+                EventoRastreo ev = actual.Dato;
+
+                bool coincideEstado = estado == null || ev.Estado == estado;
+                bool dentroDelPeriodo = ev.Fecha >= desde && ev.Fecha < hasta;
+
+                if (coincideEstado && dentroDelPeriodo)
+                {
+                    return true;
+                }
+                actual = actual.Sgte;
+            }
+            return false;
+        }
+
         // Columnas: Fecha, Estado, Ubicación
         public void Mostrar(DataGridView tabla)
         {
@@ -51,7 +70,10 @@ namespace Shalom
             while (actual != null)
             {
                 EventoRastreo ev = actual.Dato;
-                texto += ev.Fecha.ToString("dd/MM HH:mm") + " - " + ArbolEnvios.NombreEstadoLegible(ev.Estado) + " - " + ev.Ubicacion + Environment.NewLine;
+                texto += ev.Fecha.ToString("dd/MM HH:mm") + " - " + ArbolEnvios.NombreEstadoLegible(ev.Estado) + " - " + ev.Ubicacion;
+                if (!string.IsNullOrWhiteSpace(ev.Observacion))
+                    texto += " - " + ev.Observacion;
+                texto += Environment.NewLine;
                 actual = actual.Sgte;
             }
             return texto;
