@@ -185,6 +185,7 @@
             this.dgvVistaPrevia.RowTemplate.Height = 24;
             this.dgvVistaPrevia.Size = new System.Drawing.Size(482, 496);
             this.dgvVistaPrevia.TabIndex = 14;
+            this.dgvVistaPrevia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVistaPrevia_CellContentClick);
             // 
             // lblTotal
             // 

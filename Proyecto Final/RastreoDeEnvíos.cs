@@ -317,5 +317,10 @@ namespace Shalom
         {
 
         }
+
+        private void picPerfil_Click(object sender, EventArgs e)
+        {
+            lnkPerfil_LinkClicked(sender, null);
+        }
     }
 }

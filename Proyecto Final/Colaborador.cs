@@ -14,10 +14,10 @@ namespace Shalom
         public string GitHub { get; set; }
 
         public Colaborador(string nombre, string rol, string codigo, string carrera,
-                   string linkedIn = null, string gitHub = null)
+                   string linkedIn = null, string gitHub = null, Image foto = null)
         {
             Nombre = nombre; Rol = rol; Codigo = codigo; Carrera = carrera;
-            LinkedIn = linkedIn; GitHub = gitHub;
+            LinkedIn = linkedIn; GitHub = gitHub; Foto = foto;
         }
 
         public static Colaborador[] ObtenerEquipo()
@@ -30,7 +30,7 @@ namespace Shalom
                 new Colaborador("Sergio Isaac Colán Sánchez",         "Desarrollador",  "N00525394", "Ingeniería de Redes y Sistemas",
                                 "https://www.linkedin.com/in/sergiocolansanchez/", "https://github.com/sergiocolsati-create"),
                 new Colaborador("Yanela Liz Acori Sanchez",           "Desarrolladora", "N00469214", "Ingeniería de Software",
-                                "https://www.linkedin.com/in/yanela-acori-sanchez-7451983a6/", "https://github.com/yanlogic")
+                                "https://www.linkedin.com/in/yanela-acori-sanchez-7451983a6/", "https://github.com/yanlogic", Properties.Resources.xd_1)
             };
         }
 

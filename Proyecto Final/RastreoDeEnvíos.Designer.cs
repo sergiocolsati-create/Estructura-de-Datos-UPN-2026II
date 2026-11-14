@@ -69,10 +69,11 @@
             this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlCabecera = new System.Windows.Forms.Panel();
+            this.lnkPerfil = new System.Windows.Forms.LinkLabel();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
+            this.picPerfil = new System.Windows.Forms.PictureBox();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.lnkPerfil = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             this.dgvEnvios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -82,6 +83,7 @@
             this.groupBox5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.pnlCabecera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -512,6 +514,7 @@
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.picPerfil);
             this.pnlCabecera.Controls.Add(this.lnkPerfil);
             this.pnlCabecera.Controls.Add(this.label9);
             this.pnlCabecera.Controls.Add(this.label10);
@@ -521,12 +524,26 @@
             this.pnlCabecera.Name = "pnlCabecera";
             this.pnlCabecera.Size = new System.Drawing.Size(1082, 70);
             this.pnlCabecera.TabIndex = 9;
+            this.pnlCabecera.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCabecera_Paint);
+            // 
+            // lnkPerfil
+            // 
+            this.lnkPerfil.AutoSize = true;
+            this.lnkPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lnkPerfil.LinkColor = System.Drawing.Color.White;
+            this.lnkPerfil.Location = new System.Drawing.Point(899, 25);
+            this.lnkPerfil.Name = "lnkPerfil";
+            this.lnkPerfil.Size = new System.Drawing.Size(96, 16);
+            this.lnkPerfil.TabIndex = 10;
+            this.lnkPerfil.TabStop = true;
+            this.lnkPerfil.Text = "Yanela Acori";
+            this.lnkPerfil.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPerfil_LinkClicked);
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(268, 38);
+            this.label9.Location = new System.Drawing.Point(283, 38);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(304, 16);
             this.label9.TabIndex = 2;
@@ -538,33 +555,36 @@
             this.label10.BackColor = System.Drawing.Color.Transparent;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.White;
-            this.label10.Location = new System.Drawing.Point(266, 9);
+            this.label10.Location = new System.Drawing.Point(280, 9);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(217, 32);
             this.label10.TabIndex = 1;
             this.label10.Text = "Rastreo de Envíos";
             // 
+            // picPerfil
+            // 
+            this.picPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.picPerfil.BackColor = System.Drawing.Color.Transparent;
+            this.picPerfil.BackgroundImage = global::Shalom.Properties.Resources.xd_1;
+            this.picPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.picPerfil.Image = global::Shalom.Properties.Resources.xd_1;
+            this.picPerfil.Location = new System.Drawing.Point(1020, 14);
+            this.picPerfil.Name = "picPerfil";
+            this.picPerfil.Size = new System.Drawing.Size(40, 40);
+            this.picPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picPerfil.TabIndex = 11;
+            this.picPerfil.TabStop = false;
+            this.picPerfil.Click += new System.EventHandler(this.picPerfil_Click);
+            // 
             // picLogo
             // 
+            this.picLogo.BackColor = System.Drawing.Color.Transparent;
             this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(3, 3);
+            this.picLogo.Location = new System.Drawing.Point(0, 3);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(240, 50);
+            this.picLogo.Size = new System.Drawing.Size(261, 50);
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
-            // 
-            // lnkPerfil
-            // 
-            this.lnkPerfil.AutoSize = true;
-            this.lnkPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkPerfil.LinkColor = System.Drawing.Color.White;
-            this.lnkPerfil.Location = new System.Drawing.Point(961, 25);
-            this.lnkPerfil.Name = "lnkPerfil";
-            this.lnkPerfil.Size = new System.Drawing.Size(96, 16);
-            this.lnkPerfil.TabIndex = 10;
-            this.lnkPerfil.TabStop = true;
-            this.lnkPerfil.Text = "Yanela Acori";
-            this.lnkPerfil.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPerfil_LinkClicked);
             // 
             // RastreoDeEnvíos
             // 
@@ -599,6 +619,7 @@
             this.statusStrip1.PerformLayout();
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -652,6 +673,7 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.PictureBox picPerfil;
     }
 }
 

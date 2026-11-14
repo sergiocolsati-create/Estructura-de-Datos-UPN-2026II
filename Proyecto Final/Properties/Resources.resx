@@ -133,4 +133,7 @@
   <data name="imagen_23x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\imagen_23x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="xd_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\xd_1.jpeg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
 </root>
