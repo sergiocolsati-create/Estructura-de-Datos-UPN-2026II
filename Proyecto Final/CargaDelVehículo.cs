@@ -174,5 +174,9 @@ namespace Shalom
             lblContador.Text = vehiculo.Carga.Contar().ToString();
         }
 
+        private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new DevAnsh().ShowDialog(this);
+        }
     }
 }

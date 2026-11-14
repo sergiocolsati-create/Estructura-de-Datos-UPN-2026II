@@ -218,7 +218,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\WhatsApp Image 2026-11-13 at 3.03.22 PM.jpeg" />
     <None Include="Resources\Captura de pantalla 2026-11-09 001404.png" />
     <None Include="Resources\imagen_23x24.png" />
     <Content Include="Resources\logo_shalom_blanco.png" />
