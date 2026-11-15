@@ -32,5 +32,12 @@ namespace Shalom
         {
             Process.Start("https://github.com/sergiocolsati-create");
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DevDavid siguiente = new DevDavid();
+            siguiente.Show();
+            this.Close();
+        }
     }
 }

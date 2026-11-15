@@ -70,11 +70,20 @@ namespace Shalom
 
         private void btnColaboradores_Click(object sender, EventArgs e)
         {
+            new DevSer().Show();
         }
 
         private void txtUsuario_TextChanged_1(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAyuda_Click(object sender, EventArgs e)
+        {
+            using (var ayuda = new CentroAyuda())
+            {
+                ayuda.ShowDialog(this);
+            }
         }
     }
 }

@@ -19,5 +19,12 @@ namespace Shalom
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            DevEst siguiente = new DevEst();
+            siguiente.Show();
+            this.Close();
+        }
     }
 }
