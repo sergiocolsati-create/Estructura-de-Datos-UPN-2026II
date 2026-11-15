@@ -17,8 +17,8 @@ namespace Shalom
 
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RastreoYLogística));
             this.miIngreso = new System.Windows.Forms.ToolStripMenuItem();
             this.miAlmacen = new System.Windows.Forms.ToolStripMenuItem();
@@ -96,48 +96,50 @@ namespace Shalom
             // miIngreso
             // 
             this.miIngreso.Name = "miIngreso";
-            this.miIngreso.Size = new System.Drawing.Size(222, 26);
+            this.miIngreso.Size = new System.Drawing.Size(227, 26);
             this.miIngreso.Text = "Ingreso de envíos";
             this.miIngreso.Click += new System.EventHandler(this.btnIngreso_Click);
             // 
             // miAlmacen
             // 
             this.miAlmacen.Name = "miAlmacen";
-            this.miAlmacen.Size = new System.Drawing.Size(222, 26);
+            this.miAlmacen.Size = new System.Drawing.Size(227, 26);
             this.miAlmacen.Text = "Almacén";
             this.miAlmacen.Click += new System.EventHandler(this.btnAlmacen_Click);
             // 
             // miCarga
             // 
             this.miCarga.Name = "miCarga";
-            this.miCarga.Size = new System.Drawing.Size(222, 26);
+            this.miCarga.Size = new System.Drawing.Size(227, 26);
             this.miCarga.Text = "Carga de vehículos";
             this.miCarga.Click += new System.EventHandler(this.btnCarga_Click);
             // 
             // miRutas
             // 
             this.miRutas.Name = "miRutas";
-            this.miRutas.Size = new System.Drawing.Size(222, 26);
+            this.miRutas.Size = new System.Drawing.Size(227, 26);
             this.miRutas.Text = "Asignación de rutas";
             this.miRutas.Click += new System.EventHandler(this.btnRutas_Click);
             // 
             // miRastreo
             // 
             this.miRastreo.Name = "miRastreo";
-            this.miRastreo.Size = new System.Drawing.Size(222, 26);
+            this.miRastreo.Size = new System.Drawing.Size(227, 26);
             this.miRastreo.Text = "Rastreo de envíos";
             this.miRastreo.Click += new System.EventHandler(this.btnRastreo_Click);
             // 
             // menuOperaciones
             // 
+            this.menuOperaciones.BackColor = System.Drawing.Color.White;
             this.menuOperaciones.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.miIngreso,
             this.miAlmacen,
             this.miCarga,
             this.miRutas,
             this.miRastreo});
+            this.menuOperaciones.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuOperaciones.Name = "menuOperaciones";
-            this.menuOperaciones.Size = new System.Drawing.Size(106, 24);
+            this.menuOperaciones.Size = new System.Drawing.Size(108, 24);
             this.menuOperaciones.Text = "Operaciones";
             // 
             // menuPrincipal
@@ -149,20 +151,22 @@ namespace Shalom
             this.menuPrincipal.Location = new System.Drawing.Point(0, 70);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Padding = new System.Windows.Forms.Padding(14, 8, 0, 8);
-            this.menuPrincipal.Size = new System.Drawing.Size(1089, 40);
+            this.menuPrincipal.Size = new System.Drawing.Size(1241, 40);
             this.menuPrincipal.TabIndex = 3;
             // 
             // menuAyuda
             // 
+            this.menuAyuda.BackColor = System.Drawing.Color.White;
+            this.menuAyuda.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuAyuda.Name = "menuAyuda";
-            this.menuAyuda.Size = new System.Drawing.Size(65, 24);
+            this.menuAyuda.Size = new System.Drawing.Size(68, 24);
             this.menuAyuda.Text = "Ayuda";
             this.menuAyuda.Click += new System.EventHandler(this.menuAyuda_Click);
             // 
             // lblEstado
             // 
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(1068, 20);
+            this.lblEstado.Size = new System.Drawing.Size(1220, 20);
             this.lblEstado.Spring = true;
             this.lblEstado.Text = "Listo";
             this.lblEstado.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -179,10 +183,10 @@ namespace Shalom
             this.barraEstado.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.lblEstado,
             this.lblSesion});
-            this.barraEstado.Location = new System.Drawing.Point(0, 683);
+            this.barraEstado.Location = new System.Drawing.Point(0, 774);
             this.barraEstado.Name = "barraEstado";
             this.barraEstado.Padding = new System.Windows.Forms.Padding(1, 0, 20, 0);
-            this.barraEstado.Size = new System.Drawing.Size(1089, 26);
+            this.barraEstado.Size = new System.Drawing.Size(1241, 26);
             this.barraEstado.SizingGrip = false;
             this.barraEstado.TabIndex = 2;
             // 
@@ -190,23 +194,26 @@ namespace Shalom
             // 
             this.grpResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpResumen.BackColor = System.Drawing.Color.White;
             this.grpResumen.Controls.Add(this.pnlEntregados);
             this.grpResumen.Controls.Add(this.pnlRuta);
             this.grpResumen.Controls.Add(this.pnlAlmacen);
             this.grpResumen.Controls.Add(this.pnlCola);
+            this.grpResumen.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpResumen.Location = new System.Drawing.Point(238, 108);
             this.grpResumen.Name = "grpResumen";
-            this.grpResumen.Size = new System.Drawing.Size(820, 116);
+            this.grpResumen.Size = new System.Drawing.Size(972, 116);
             this.grpResumen.TabIndex = 4;
             this.grpResumen.TabStop = false;
             this.grpResumen.Text = "Resumen de envíos";
             // 
             // pnlEntregados
             // 
-            this.pnlEntregados.BackColor = System.Drawing.Color.White;
+            this.pnlEntregados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
             this.pnlEntregados.Controls.Add(this.lblTituloEntregados);
             this.pnlEntregados.Controls.Add(this.lblEntregados);
-            this.pnlEntregados.Location = new System.Drawing.Point(439, 29);
+            this.pnlEntregados.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlEntregados.Location = new System.Drawing.Point(623, 29);
             this.pnlEntregados.Name = "pnlEntregados";
             this.pnlEntregados.Size = new System.Drawing.Size(97, 75);
             this.pnlEntregados.TabIndex = 5;
@@ -214,9 +221,9 @@ namespace Shalom
             // lblTituloEntregados
             // 
             this.lblTituloEntregados.AutoSize = true;
-            this.lblTituloEntregados.Location = new System.Drawing.Point(3, 44);
+            this.lblTituloEntregados.Location = new System.Drawing.Point(10, 44);
             this.lblTituloEntregados.Name = "lblTituloEntregados";
-            this.lblTituloEntregados.Size = new System.Drawing.Size(84, 20);
+            this.lblTituloEntregados.Size = new System.Drawing.Size(79, 20);
             this.lblTituloEntregados.TabIndex = 4;
             this.lblTituloEntregados.Text = "Entregados";
             // 
@@ -231,20 +238,21 @@ namespace Shalom
             // 
             // pnlRuta
             // 
-            this.pnlRuta.BackColor = System.Drawing.Color.White;
+            this.pnlRuta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
             this.pnlRuta.Controls.Add(this.lblTituloRuta);
             this.pnlRuta.Controls.Add(this.lblEnRuta);
-            this.pnlRuta.Location = new System.Drawing.Point(308, 29);
+            this.pnlRuta.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlRuta.Location = new System.Drawing.Point(455, 26);
             this.pnlRuta.Name = "pnlRuta";
-            this.pnlRuta.Size = new System.Drawing.Size(82, 75);
+            this.pnlRuta.Size = new System.Drawing.Size(97, 75);
             this.pnlRuta.TabIndex = 5;
             // 
             // lblTituloRuta
             // 
             this.lblTituloRuta.AutoSize = true;
-            this.lblTituloRuta.Location = new System.Drawing.Point(19, 44);
+            this.lblTituloRuta.Location = new System.Drawing.Point(20, 44);
             this.lblTituloRuta.Name = "lblTituloRuta";
-            this.lblTituloRuta.Size = new System.Drawing.Size(55, 20);
+            this.lblTituloRuta.Size = new System.Drawing.Size(54, 20);
             this.lblTituloRuta.TabIndex = 3;
             this.lblTituloRuta.Text = "En ruta";
             this.lblTituloRuta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -252,7 +260,7 @@ namespace Shalom
             // lblEnRuta
             // 
             this.lblEnRuta.AutoSize = true;
-            this.lblEnRuta.Location = new System.Drawing.Point(32, 16);
+            this.lblEnRuta.Location = new System.Drawing.Point(37, 16);
             this.lblEnRuta.Name = "lblEnRuta";
             this.lblEnRuta.Size = new System.Drawing.Size(17, 20);
             this.lblEnRuta.TabIndex = 0;
@@ -260,20 +268,21 @@ namespace Shalom
             // 
             // pnlAlmacen
             // 
-            this.pnlAlmacen.BackColor = System.Drawing.Color.White;
+            this.pnlAlmacen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
             this.pnlAlmacen.Controls.Add(this.lblTituloAlmacen);
             this.pnlAlmacen.Controls.Add(this.lblEnAlmacen);
-            this.pnlAlmacen.Location = new System.Drawing.Point(170, 29);
+            this.pnlAlmacen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlAlmacen.Location = new System.Drawing.Point(285, 29);
             this.pnlAlmacen.Name = "pnlAlmacen";
-            this.pnlAlmacen.Size = new System.Drawing.Size(89, 75);
+            this.pnlAlmacen.Size = new System.Drawing.Size(97, 75);
             this.pnlAlmacen.TabIndex = 5;
             // 
             // lblTituloAlmacen
             // 
             this.lblTituloAlmacen.AutoSize = true;
-            this.lblTituloAlmacen.Location = new System.Drawing.Point(1, 44);
+            this.lblTituloAlmacen.Location = new System.Drawing.Point(9, 44);
             this.lblTituloAlmacen.Name = "lblTituloAlmacen";
-            this.lblTituloAlmacen.Size = new System.Drawing.Size(85, 20);
+            this.lblTituloAlmacen.Size = new System.Drawing.Size(83, 20);
             this.lblTituloAlmacen.TabIndex = 2;
             this.lblTituloAlmacen.Text = "En almacén";
             this.lblTituloAlmacen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -281,7 +290,7 @@ namespace Shalom
             // lblEnAlmacen
             // 
             this.lblEnAlmacen.AutoSize = true;
-            this.lblEnAlmacen.Location = new System.Drawing.Point(32, 16);
+            this.lblEnAlmacen.Location = new System.Drawing.Point(37, 16);
             this.lblEnAlmacen.Name = "lblEnAlmacen";
             this.lblEnAlmacen.Size = new System.Drawing.Size(17, 20);
             this.lblEnAlmacen.TabIndex = 0;
@@ -289,20 +298,21 @@ namespace Shalom
             // 
             // pnlCola
             // 
-            this.pnlCola.BackColor = System.Drawing.Color.White;
+            this.pnlCola.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
             this.pnlCola.Controls.Add(this.lblTituloCola);
             this.pnlCola.Controls.Add(this.lblEnCola);
-            this.pnlCola.Location = new System.Drawing.Point(39, 29);
+            this.pnlCola.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlCola.Location = new System.Drawing.Point(115, 29);
             this.pnlCola.Name = "pnlCola";
-            this.pnlCola.Size = new System.Drawing.Size(82, 75);
+            this.pnlCola.Size = new System.Drawing.Size(97, 75);
             this.pnlCola.TabIndex = 4;
             // 
             // lblTituloCola
             // 
             this.lblTituloCola.AutoSize = true;
-            this.lblTituloCola.Location = new System.Drawing.Point(10, 44);
+            this.lblTituloCola.Location = new System.Drawing.Point(19, 44);
             this.lblTituloCola.Name = "lblTituloCola";
-            this.lblTituloCola.Size = new System.Drawing.Size(57, 20);
+            this.lblTituloCola.Size = new System.Drawing.Size(55, 20);
             this.lblTituloCola.TabIndex = 1;
             this.lblTituloCola.Text = "En cola";
             this.lblTituloCola.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -310,7 +320,8 @@ namespace Shalom
             // lblEnCola
             // 
             this.lblEnCola.AutoSize = true;
-            this.lblEnCola.Location = new System.Drawing.Point(28, 16);
+            this.lblEnCola.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnCola.Location = new System.Drawing.Point(38, 16);
             this.lblEnCola.Name = "lblEnCola";
             this.lblEnCola.Size = new System.Drawing.Size(17, 20);
             this.lblEnCola.TabIndex = 0;
@@ -319,7 +330,7 @@ namespace Shalom
             // linkLabel1
             // 
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(959, 85);
+            this.linkLabel1.Location = new System.Drawing.Point(1111, 85);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(71, 20);
             this.linkLabel1.TabIndex = 9;
@@ -331,19 +342,23 @@ namespace Shalom
             // 
             this.grpRastreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpRastreo.BackColor = System.Drawing.Color.White;
             this.grpRastreo.Controls.Add(this.txtGuia);
             this.grpRastreo.Controls.Add(this.btnBuscarEnvio);
             this.grpRastreo.Controls.Add(this.lnkRastreoCompleto);
             this.grpRastreo.Controls.Add(this.lblTituloGuia);
+            this.grpRastreo.Font = new System.Drawing.Font("Segoe UI", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpRastreo.Location = new System.Drawing.Point(238, 230);
             this.grpRastreo.Name = "grpRastreo";
-            this.grpRastreo.Size = new System.Drawing.Size(820, 98);
+            this.grpRastreo.Size = new System.Drawing.Size(972, 98);
             this.grpRastreo.TabIndex = 5;
             this.grpRastreo.TabStop = false;
             this.grpRastreo.Text = "Rastreo rápido";
             // 
             // txtGuia
             // 
+            this.txtGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGuia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtGuia.Location = new System.Drawing.Point(138, 36);
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.Size = new System.Drawing.Size(160, 27);
@@ -351,17 +366,21 @@ namespace Shalom
             // 
             // btnBuscarEnvio
             // 
-            this.btnBuscarEnvio.Location = new System.Drawing.Point(331, 36);
+            this.btnBuscarEnvio.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.btnBuscarEnvio.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscarEnvio.ForeColor = System.Drawing.Color.White;
+            this.btnBuscarEnvio.Location = new System.Drawing.Point(331, 34);
             this.btnBuscarEnvio.Name = "btnBuscarEnvio";
-            this.btnBuscarEnvio.Size = new System.Drawing.Size(189, 27);
+            this.btnBuscarEnvio.Size = new System.Drawing.Size(189, 37);
             this.btnBuscarEnvio.TabIndex = 5;
             this.btnBuscarEnvio.Text = "Buscar envío";
-            this.btnBuscarEnvio.UseVisualStyleBackColor = true;
+            this.btnBuscarEnvio.UseVisualStyleBackColor = false;
             this.btnBuscarEnvio.Click += new System.EventHandler(this.btnBuscarEnvio_Click);
             // 
             // lnkRastreoCompleto
             // 
             this.lnkRastreoCompleto.AutoSize = true;
+            this.lnkRastreoCompleto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lnkRastreoCompleto.Location = new System.Drawing.Point(49, 63);
             this.lnkRastreoCompleto.Name = "lnkRastreoCompleto";
             this.lnkRastreoCompleto.Size = new System.Drawing.Size(160, 20);
@@ -373,6 +392,7 @@ namespace Shalom
             // lblTituloGuia
             // 
             this.lblTituloGuia.AutoSize = true;
+            this.lblTituloGuia.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTituloGuia.Location = new System.Drawing.Point(49, 36);
             this.lblTituloGuia.Name = "lblTituloGuia";
             this.lblTituloGuia.Size = new System.Drawing.Size(83, 20);
@@ -384,15 +404,16 @@ namespace Shalom
             this.grpVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpVehiculos.BackColor = System.Drawing.Color.White;
             this.grpVehiculos.Controls.Add(this.dgvVehiculos);
             this.grpVehiculos.Controls.Add(this.lnkPendientesRuta);
             this.grpVehiculos.Controls.Add(this.btnVerCarga);
             this.grpVehiculos.Controls.Add(this.lblSeleccionado);
             this.grpVehiculos.Controls.Add(this.lblTituloSeleccionado);
-            this.grpVehiculos.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.grpVehiculos.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpVehiculos.Location = new System.Drawing.Point(238, 334);
             this.grpVehiculos.Name = "grpVehiculos";
-            this.grpVehiculos.Size = new System.Drawing.Size(820, 350);
+            this.grpVehiculos.Size = new System.Drawing.Size(972, 441);
             this.grpVehiculos.TabIndex = 6;
             this.grpVehiculos.TabStop = false;
             this.grpVehiculos.Text = "Vehículos y carga";
@@ -420,7 +441,7 @@ namespace Shalom
             this.dgvVehiculos.RowHeadersVisible = false;
             this.dgvVehiculos.RowHeadersWidth = 51;
             this.dgvVehiculos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvVehiculos.Size = new System.Drawing.Size(796, 254);
+            this.dgvVehiculos.Size = new System.Drawing.Size(948, 345);
             this.dgvVehiculos.TabIndex = 5;
             this.dgvVehiculos.SelectionChanged += new System.EventHandler(this.dgvVehiculos_SelectionChanged);
             // 
@@ -445,8 +466,8 @@ namespace Shalom
             // colPaquetes
             // 
             this.colPaquetes.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colPaquetes.DefaultCellStyle = dataGridViewCellStyle1;
             this.colPaquetes.FillWeight = 32F;
             this.colPaquetes.HeaderText = "Paquetes";
             this.colPaquetes.MinimumWidth = 6;
@@ -456,8 +477,8 @@ namespace Shalom
             // colCarga
             // 
             this.colCarga.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.colCarga.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.colCarga.DefaultCellStyle = dataGridViewCellStyle2;
             this.colCarga.FillWeight = 32F;
             this.colCarga.HeaderText = "Carga";
             this.colCarga.MinimumWidth = 6;
@@ -468,9 +489,9 @@ namespace Shalom
             // 
             this.lnkPendientesRuta.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lnkPendientesRuta.AutoSize = true;
-            this.lnkPendientesRuta.Location = new System.Drawing.Point(225, 292);
+            this.lnkPendientesRuta.Location = new System.Drawing.Point(229, 400);
             this.lnkPendientesRuta.Name = "lnkPendientesRuta";
-            this.lnkPendientesRuta.Size = new System.Drawing.Size(153, 17);
+            this.lnkPendientesRuta.Size = new System.Drawing.Size(164, 16);
             this.lnkPendientesRuta.TabIndex = 4;
             this.lnkPendientesRuta.TabStop = true;
             this.lnkPendientesRuta.Text = "Ver pendientes de ruta";
@@ -479,21 +500,24 @@ namespace Shalom
             // btnVerCarga
             // 
             this.btnVerCarga.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnVerCarga.Location = new System.Drawing.Point(18, 288);
+            this.btnVerCarga.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnVerCarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVerCarga.ForeColor = System.Drawing.Color.White;
+            this.btnVerCarga.Location = new System.Drawing.Point(20, 383);
             this.btnVerCarga.Name = "btnVerCarga";
-            this.btnVerCarga.Size = new System.Drawing.Size(189, 33);
+            this.btnVerCarga.Size = new System.Drawing.Size(189, 51);
             this.btnVerCarga.TabIndex = 2;
             this.btnVerCarga.Text = "Ver carga del vehículo";
-            this.btnVerCarga.UseVisualStyleBackColor = true;
+            this.btnVerCarga.UseVisualStyleBackColor = false;
             this.btnVerCarga.Click += new System.EventHandler(this.btnVerCarga_Click);
             // 
             // lblSeleccionado
             // 
             this.lblSeleccionado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblSeleccionado.AutoSize = true;
-            this.lblSeleccionado.Location = new System.Drawing.Point(744, 322);
+            this.lblSeleccionado.Location = new System.Drawing.Point(891, 404);
             this.lblSeleccionado.Name = "lblSeleccionado";
-            this.lblSeleccionado.Size = new System.Drawing.Size(13, 17);
+            this.lblSeleccionado.Size = new System.Drawing.Size(12, 16);
             this.lblSeleccionado.TabIndex = 1;
             this.lblSeleccionado.Text = "-";
             // 
@@ -501,9 +525,9 @@ namespace Shalom
             // 
             this.lblTituloSeleccionado.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTituloSeleccionado.AutoSize = true;
-            this.lblTituloSeleccionado.Location = new System.Drawing.Point(625, 322);
+            this.lblTituloSeleccionado.Location = new System.Drawing.Point(772, 404);
             this.lblTituloSeleccionado.Name = "lblTituloSeleccionado";
-            this.lblTituloSeleccionado.Size = new System.Drawing.Size(66, 17);
+            this.lblTituloSeleccionado.Size = new System.Drawing.Size(71, 16);
             this.lblTituloSeleccionado.TabIndex = 0;
             this.lblTituloSeleccionado.Text = "Vehículo:";
             // 
@@ -524,7 +548,7 @@ namespace Shalom
             this.pnlNavegacion.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlNavegacion.Location = new System.Drawing.Point(0, 110);
             this.pnlNavegacion.Name = "pnlNavegacion";
-            this.pnlNavegacion.Size = new System.Drawing.Size(220, 573);
+            this.pnlNavegacion.Size = new System.Drawing.Size(220, 664);
             this.pnlNavegacion.TabIndex = 7;
             // 
             // btnSalir
@@ -536,7 +560,7 @@ namespace Shalom
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnSalir.Location = new System.Drawing.Point(12, 525);
+            this.btnSalir.Location = new System.Drawing.Point(12, 607);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnSalir.Size = new System.Drawing.Size(196, 38);
@@ -554,7 +578,7 @@ namespace Shalom
             this.btnReportes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReportes.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReportes.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnReportes.Location = new System.Drawing.Point(20, 379);
+            this.btnReportes.Location = new System.Drawing.Point(16, 441);
             this.btnReportes.Name = "btnReportes";
             this.btnReportes.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnReportes.Size = new System.Drawing.Size(196, 38);
@@ -569,7 +593,7 @@ namespace Shalom
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
-            this.label5.Location = new System.Drawing.Point(17, 306);
+            this.label5.Location = new System.Drawing.Point(13, 368);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(89, 19);
             this.label5.TabIndex = 8;
@@ -580,7 +604,7 @@ namespace Shalom
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
-            this.label4.Location = new System.Drawing.Point(17, 94);
+            this.label4.Location = new System.Drawing.Point(13, 136);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(81, 19);
             this.label4.TabIndex = 7;
@@ -591,7 +615,7 @@ namespace Shalom
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(125)))), ((int)(((byte)(132)))), ((int)(((byte)(148)))));
-            this.label3.Location = new System.Drawing.Point(17, 12);
+            this.label3.Location = new System.Drawing.Point(12, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(70, 19);
             this.label3.TabIndex = 6;
@@ -605,7 +629,7 @@ namespace Shalom
             this.btnRastreo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRastreo.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRastreo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnRastreo.Location = new System.Drawing.Point(20, 335);
+            this.btnRastreo.Location = new System.Drawing.Point(16, 397);
             this.btnRastreo.Name = "btnRastreo";
             this.btnRastreo.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnRastreo.Size = new System.Drawing.Size(196, 38);
@@ -623,7 +647,7 @@ namespace Shalom
             this.btnRutas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRutas.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRutas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnRutas.Location = new System.Drawing.Point(20, 253);
+            this.btnRutas.Location = new System.Drawing.Point(16, 295);
             this.btnRutas.Name = "btnRutas";
             this.btnRutas.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnRutas.Size = new System.Drawing.Size(196, 38);
@@ -641,7 +665,7 @@ namespace Shalom
             this.btnCarga.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCarga.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCarga.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnCarga.Location = new System.Drawing.Point(18, 209);
+            this.btnCarga.Location = new System.Drawing.Point(14, 251);
             this.btnCarga.Name = "btnCarga";
             this.btnCarga.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnCarga.Size = new System.Drawing.Size(196, 38);
@@ -659,7 +683,7 @@ namespace Shalom
             this.btnAlmacen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAlmacen.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlmacen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnAlmacen.Location = new System.Drawing.Point(20, 165);
+            this.btnAlmacen.Location = new System.Drawing.Point(16, 207);
             this.btnAlmacen.Name = "btnAlmacen";
             this.btnAlmacen.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnAlmacen.Size = new System.Drawing.Size(196, 38);
@@ -678,7 +702,7 @@ namespace Shalom
             this.btnActualizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnActualizar.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnActualizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnActualizar.Location = new System.Drawing.Point(20, 38);
+            this.btnActualizar.Location = new System.Drawing.Point(15, 64);
             this.btnActualizar.Name = "btnActualizar";
             this.btnActualizar.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnActualizar.Size = new System.Drawing.Size(196, 38);
@@ -696,7 +720,7 @@ namespace Shalom
             this.btnIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngreso.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngreso.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
-            this.btnIngreso.Location = new System.Drawing.Point(20, 121);
+            this.btnIngreso.Location = new System.Drawing.Point(16, 163);
             this.btnIngreso.Name = "btnIngreso";
             this.btnIngreso.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
             this.btnIngreso.Size = new System.Drawing.Size(196, 38);
@@ -715,7 +739,7 @@ namespace Shalom
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
             this.pnlCabecera.Name = "pnlCabecera";
-            this.pnlCabecera.Size = new System.Drawing.Size(1089, 70);
+            this.pnlCabecera.Size = new System.Drawing.Size(1241, 70);
             this.pnlCabecera.TabIndex = 8;
             // 
             // label2
@@ -753,7 +777,7 @@ namespace Shalom
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1036, 70);
+            this.pictureBox1.Location = new System.Drawing.Point(1188, 70);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(41, 40);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -765,7 +789,7 @@ namespace Shalom
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(1089, 709);
+            this.ClientSize = new System.Drawing.Size(1241, 800);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlNavegacion);

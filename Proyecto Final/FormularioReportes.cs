@@ -157,5 +157,10 @@ namespace Shalom
         {
 
         }
+
+        private void lblTotal_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

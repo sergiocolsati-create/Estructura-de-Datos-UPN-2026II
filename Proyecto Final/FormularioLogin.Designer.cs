@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.panelMarca = new System.Windows.Forms.Panel();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblPieMarca = new System.Windows.Forms.Label();
             this.lblLema = new System.Windows.Forms.Label();
-            this.lblMarca = new System.Windows.Forms.Label();
             this.lblBienvenida = new System.Windows.Forms.Label();
             this.panelLinea = new System.Windows.Forms.Panel();
             this.lblUsuario = new System.Windows.Forms.Label();
@@ -42,59 +42,59 @@
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnColaboradores = new System.Windows.Forms.Button();
             this.panelMarca.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMarca
             // 
             this.panelMarca.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.panelMarca.Controls.Add(this.picLogo);
             this.panelMarca.Controls.Add(this.lblPieMarca);
             this.panelMarca.Controls.Add(this.lblLema);
-            this.panelMarca.Controls.Add(this.lblMarca);
             this.panelMarca.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMarca.Location = new System.Drawing.Point(0, 0);
             this.panelMarca.Margin = new System.Windows.Forms.Padding(2, 1, 2, 1);
             this.panelMarca.Name = "panelMarca";
-            this.panelMarca.Size = new System.Drawing.Size(471, 517);
+            this.panelMarca.Size = new System.Drawing.Size(374, 477);
             this.panelMarca.TabIndex = 11;
+            // 
+            // picLogo
+            // 
+            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(53, 126);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(229, 58);
+            this.picLogo.TabIndex = 3;
+            this.picLogo.TabStop = false;
             // 
             // lblPieMarca
             // 
             this.lblPieMarca.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblPieMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lblPieMarca.Location = new System.Drawing.Point(29, 414);
+            this.lblPieMarca.Location = new System.Drawing.Point(12, 429);
             this.lblPieMarca.Name = "lblPieMarca";
-            this.lblPieMarca.Size = new System.Drawing.Size(418, 24);
+            this.lblPieMarca.Size = new System.Drawing.Size(314, 24);
             this.lblPieMarca.TabIndex = 2;
             this.lblPieMarca.Text = "RASTREO  •  LOGÍSTICA  •  CONFIANZA";
             this.lblPieMarca.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblLema
             // 
-            this.lblLema.Font = new System.Drawing.Font("Segoe UI", 17F);
+            this.lblLema.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLema.ForeColor = System.Drawing.Color.White;
-            this.lblLema.Location = new System.Drawing.Point(55, 217);
+            this.lblLema.Location = new System.Drawing.Point(48, 186);
             this.lblLema.Name = "lblLema";
-            this.lblLema.Size = new System.Drawing.Size(379, 91);
+            this.lblLema.Size = new System.Drawing.Size(245, 91);
             this.lblLema.TabIndex = 1;
-            this.lblLema.Text = "Gestiona el recorrido de cada envío.";
+            this.lblLema.Text = "Gestiona el recorrido de cada envío";
             this.lblLema.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // lblMarca
-            // 
-            this.lblMarca.Font = new System.Drawing.Font("Segoe UI", 43F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblMarca.ForeColor = System.Drawing.Color.White;
-            this.lblMarca.Location = new System.Drawing.Point(34, 122);
-            this.lblMarca.Name = "lblMarca";
-            this.lblMarca.Size = new System.Drawing.Size(400, 80);
-            this.lblMarca.TabIndex = 0;
-            this.lblMarca.Text = "SHALOM";
-            this.lblMarca.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblBienvenida
             // 
             this.lblBienvenida.Font = new System.Drawing.Font("Segoe UI", 32F, System.Drawing.FontStyle.Bold);
             this.lblBienvenida.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
-            this.lblBienvenida.Location = new System.Drawing.Point(500, 65);
+            this.lblBienvenida.Location = new System.Drawing.Point(400, 31);
             this.lblBienvenida.Name = "lblBienvenida";
             this.lblBienvenida.Size = new System.Drawing.Size(418, 65);
             this.lblBienvenida.TabIndex = 12;
@@ -104,20 +104,20 @@
             // panelLinea
             // 
             this.panelLinea.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(0)))), ((int)(((byte)(43)))));
-            this.panelLinea.Location = new System.Drawing.Point(666, 130);
+            this.panelLinea.Location = new System.Drawing.Point(546, 98);
             this.panelLinea.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.panelLinea.Name = "panelLinea";
-            this.panelLinea.Size = new System.Drawing.Size(71, 4);
+            this.panelLinea.Size = new System.Drawing.Size(101, 10);
             this.panelLinea.TabIndex = 13;
             // 
             // lblUsuario
             // 
             this.lblUsuario.AutoSize = true;
-            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUsuario.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
-            this.lblUsuario.Location = new System.Drawing.Point(500, 162);
+            this.lblUsuario.Location = new System.Drawing.Point(407, 150);
             this.lblUsuario.Name = "lblUsuario";
-            this.lblUsuario.Size = new System.Drawing.Size(84, 28);
+            this.lblUsuario.Size = new System.Drawing.Size(75, 25);
             this.lblUsuario.TabIndex = 14;
             this.lblUsuario.Text = "Usuario";
             // 
@@ -125,7 +125,7 @@
             // 
             this.txtUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUsuario.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.txtUsuario.Location = new System.Drawing.Point(505, 190);
+            this.txtUsuario.Location = new System.Drawing.Point(412, 178);
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtUsuario.MaxLength = 40;
             this.txtUsuario.Name = "txtUsuario";
@@ -136,11 +136,11 @@
             // lblContrasena
             // 
             this.lblContrasena.AutoSize = true;
-            this.lblContrasena.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold);
+            this.lblContrasena.Font = new System.Drawing.Font("Segoe UI Semibold", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContrasena.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
-            this.lblContrasena.Location = new System.Drawing.Point(500, 234);
+            this.lblContrasena.Location = new System.Drawing.Point(407, 222);
             this.lblContrasena.Name = "lblContrasena";
-            this.lblContrasena.Size = new System.Drawing.Size(118, 28);
+            this.lblContrasena.Size = new System.Drawing.Size(103, 25);
             this.lblContrasena.TabIndex = 16;
             this.lblContrasena.Text = "Contraseña";
             // 
@@ -148,7 +148,7 @@
             // 
             this.txtContrasena.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtContrasena.Font = new System.Drawing.Font("Segoe UI", 13F);
-            this.txtContrasena.Location = new System.Drawing.Point(505, 262);
+            this.txtContrasena.Location = new System.Drawing.Point(412, 250);
             this.txtContrasena.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.txtContrasena.MaxLength = 60;
             this.txtContrasena.Name = "txtContrasena";
@@ -161,11 +161,11 @@
             this.btnMostrarClave.BackColor = System.Drawing.Color.White;
             this.btnMostrarClave.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(158)))), ((int)(((byte)(164)))));
             this.btnMostrarClave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMostrarClave.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btnMostrarClave.Location = new System.Drawing.Point(865, 262);
+            this.btnMostrarClave.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnMostrarClave.Location = new System.Drawing.Point(782, 250);
             this.btnMostrarClave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnMostrarClave.Name = "btnMostrarClave";
-            this.btnMostrarClave.Size = new System.Drawing.Size(82, 34);
+            this.btnMostrarClave.Size = new System.Drawing.Size(53, 36);
             this.btnMostrarClave.TabIndex = 18;
             this.btnMostrarClave.Text = "Ver";
             this.btnMostrarClave.UseVisualStyleBackColor = false;
@@ -173,15 +173,14 @@
             // 
             // btnIngresar
             // 
-            this.btnIngresar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.btnIngresar.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnIngresar.FlatAppearance.BorderSize = 0;
-            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.btnIngresar.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.Color.White;
-            this.btnIngresar.Location = new System.Drawing.Point(505, 332);
+            this.btnIngresar.Location = new System.Drawing.Point(475, 317);
             this.btnIngresar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(404, 46);
+            this.btnIngresar.Size = new System.Drawing.Size(259, 56);
             this.btnIngresar.TabIndex = 19;
             this.btnIngresar.Text = "Ingresar";
             this.btnIngresar.UseVisualStyleBackColor = false;
@@ -189,15 +188,14 @@
             // 
             // btnColaboradores
             // 
-            this.btnColaboradores.BackColor = System.Drawing.Color.White;
+            this.btnColaboradores.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
             this.btnColaboradores.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(150)))), ((int)(((byte)(158)))), ((int)(((byte)(164)))));
-            this.btnColaboradores.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnColaboradores.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btnColaboradores.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnColaboradores.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(45)))), ((int)(((byte)(49)))));
-            this.btnColaboradores.Location = new System.Drawing.Point(738, 414);
+            this.btnColaboradores.Location = new System.Drawing.Point(637, 409);
             this.btnColaboradores.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnColaboradores.Name = "btnColaboradores";
-            this.btnColaboradores.Size = new System.Drawing.Size(200, 38);
+            this.btnColaboradores.Size = new System.Drawing.Size(200, 44);
             this.btnColaboradores.TabIndex = 21;
             this.btnColaboradores.Text = "Ver colaboradores";
             this.btnColaboradores.UseVisualStyleBackColor = false;
@@ -207,7 +205,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(957, 517);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.ClientSize = new System.Drawing.Size(858, 477);
             this.Controls.Add(this.panelMarca);
             this.Controls.Add(this.lblBienvenida);
             this.Controls.Add(this.panelLinea);
@@ -222,6 +221,7 @@
             this.Name = "FormularioLogin";
             this.Text = "FormularioLogin";
             this.panelMarca.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -232,7 +232,6 @@
         private System.Windows.Forms.Panel panelMarca;
         private System.Windows.Forms.Label lblPieMarca;
         private System.Windows.Forms.Label lblLema;
-        private System.Windows.Forms.Label lblMarca;
         private System.Windows.Forms.Label lblBienvenida;
         private System.Windows.Forms.Panel panelLinea;
         private System.Windows.Forms.Label lblUsuario;
@@ -242,5 +241,6 @@
         private System.Windows.Forms.Button btnMostrarClave;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnColaboradores;
+        private System.Windows.Forms.PictureBox picLogo;
     }
 }

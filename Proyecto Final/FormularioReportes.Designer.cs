@@ -52,14 +52,16 @@
             // PeriodoTxt
             // 
             this.PeriodoTxt.AutoSize = true;
+            this.PeriodoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.PeriodoTxt.Location = new System.Drawing.Point(33, 34);
             this.PeriodoTxt.Name = "PeriodoTxt";
             this.PeriodoTxt.Size = new System.Drawing.Size(58, 16);
             this.PeriodoTxt.TabIndex = 1;
-            this.PeriodoTxt.Text = "Periodo:";
+            this.PeriodoTxt.Text = "Período:";
             // 
             // cboPeriodo
             // 
+            this.cboPeriodo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPeriodo.FormattingEnabled = true;
             this.cboPeriodo.Location = new System.Drawing.Point(129, 31);
             this.cboPeriodo.Name = "cboPeriodo";
@@ -69,6 +71,7 @@
             // FechaTxt
             // 
             this.FechaTxt.AutoSize = true;
+            this.FechaTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FechaTxt.Location = new System.Drawing.Point(33, 74);
             this.FechaTxt.Name = "FechaTxt";
             this.FechaTxt.Size = new System.Drawing.Size(48, 16);
@@ -78,6 +81,7 @@
             // lblRango
             // 
             this.lblRango.AutoSize = true;
+            this.lblRango.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRango.Location = new System.Drawing.Point(33, 115);
             this.lblRango.MaximumSize = new System.Drawing.Size(260, 0);
             this.lblRango.Name = "lblRango";
@@ -88,6 +92,7 @@
             // SeccionTxt
             // 
             this.SeccionTxt.AutoSize = true;
+            this.SeccionTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SeccionTxt.Location = new System.Drawing.Point(32, 165);
             this.SeccionTxt.Name = "SeccionTxt";
             this.SeccionTxt.Size = new System.Drawing.Size(59, 16);
@@ -96,6 +101,7 @@
             // 
             // cboSeccion
             // 
+            this.cboSeccion.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboSeccion.FormattingEnabled = true;
             this.cboSeccion.Location = new System.Drawing.Point(129, 162);
             this.cboSeccion.Name = "cboSeccion";
@@ -105,6 +111,7 @@
             // OrigenTxt
             // 
             this.OrigenTxt.AutoSize = true;
+            this.OrigenTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OrigenTxt.Location = new System.Drawing.Point(32, 213);
             this.OrigenTxt.Name = "OrigenTxt";
             this.OrigenTxt.Size = new System.Drawing.Size(84, 16);
@@ -114,6 +121,7 @@
             // DestinoTxt
             // 
             this.DestinoTxt.AutoSize = true;
+            this.DestinoTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DestinoTxt.Location = new System.Drawing.Point(32, 262);
             this.DestinoTxt.Name = "DestinoTxt";
             this.DestinoTxt.Size = new System.Drawing.Size(90, 16);
@@ -122,6 +130,7 @@
             // 
             // cboOrigen
             // 
+            this.cboOrigen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboOrigen.FormattingEnabled = true;
             this.cboOrigen.Location = new System.Drawing.Point(129, 210);
             this.cboOrigen.Name = "cboOrigen";
@@ -130,6 +139,7 @@
             // 
             // cboDestino
             // 
+            this.cboDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboDestino.FormattingEnabled = true;
             this.cboDestino.Location = new System.Drawing.Point(128, 259);
             this.cboDestino.Name = "cboDestino";
@@ -138,16 +148,19 @@
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(78, 307);
+            this.btnGenerar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
+            this.btnGenerar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnGenerar.Location = new System.Drawing.Point(57, 322);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(155, 33);
+            this.btnGenerar.Size = new System.Drawing.Size(191, 51);
             this.btnGenerar.TabIndex = 12;
             this.btnGenerar.Text = "Generar vista previa";
-            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.UseVisualStyleBackColor = false;
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.White;
             this.groupBox1.Controls.Add(this.dtpFecha);
             this.groupBox1.Controls.Add(this.PeriodoTxt);
             this.groupBox1.Controls.Add(this.btnGenerar);
@@ -160,15 +173,17 @@
             this.groupBox1.Controls.Add(this.OrigenTxt);
             this.groupBox1.Controls.Add(this.SeccionTxt);
             this.groupBox1.Controls.Add(this.cboSeccion);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(39, 24);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(311, 365);
+            this.groupBox1.Size = new System.Drawing.Size(311, 400);
             this.groupBox1.TabIndex = 13;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Filtros:";
             // 
             // dtpFecha
             // 
+            this.dtpFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dtpFecha.Location = new System.Drawing.Point(129, 74);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(140, 22);
@@ -178,6 +193,7 @@
             // 
             this.dgvVistaPrevia.AllowUserToResizeColumns = false;
             this.dgvVistaPrevia.AllowUserToResizeRows = false;
+            this.dgvVistaPrevia.BackgroundColor = System.Drawing.Color.White;
             this.dgvVistaPrevia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVistaPrevia.Location = new System.Drawing.Point(366, 24);
             this.dgvVistaPrevia.Name = "dgvVistaPrevia";
@@ -190,31 +206,41 @@
             // lblTotal
             // 
             this.lblTotal.AutoSize = true;
-            this.lblTotal.Location = new System.Drawing.Point(36, 408);
+            this.lblTotal.BackColor = System.Drawing.Color.White;
+            this.lblTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotal.ForeColor = System.Drawing.Color.Red;
+            this.lblTotal.Location = new System.Drawing.Point(36, 441);
             this.lblTotal.MaximumSize = new System.Drawing.Size(260, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(139, 16);
+            this.lblTotal.Size = new System.Drawing.Size(160, 16);
             this.lblTotal.TabIndex = 15;
             this.lblTotal.Text = "Envíos encontrados: 0";
+            this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
             // btnExportarTxt
             // 
-            this.btnExportarTxt.Location = new System.Drawing.Point(52, 464);
+            this.btnExportarTxt.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnExportarTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarTxt.ForeColor = System.Drawing.Color.White;
+            this.btnExportarTxt.Location = new System.Drawing.Point(39, 473);
             this.btnExportarTxt.Name = "btnExportarTxt";
-            this.btnExportarTxt.Size = new System.Drawing.Size(123, 33);
+            this.btnExportarTxt.Size = new System.Drawing.Size(140, 47);
             this.btnExportarTxt.TabIndex = 13;
             this.btnExportarTxt.Text = "Exportar TXT";
-            this.btnExportarTxt.UseVisualStyleBackColor = true;
+            this.btnExportarTxt.UseVisualStyleBackColor = false;
             this.btnExportarTxt.Click += new System.EventHandler(this.btnExportarTxt_Click);
             // 
             // btnExportarCSV
             // 
-            this.btnExportarCSV.Location = new System.Drawing.Point(206, 464);
+            this.btnExportarCSV.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnExportarCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExportarCSV.ForeColor = System.Drawing.Color.White;
+            this.btnExportarCSV.Location = new System.Drawing.Point(199, 473);
             this.btnExportarCSV.Name = "btnExportarCSV";
-            this.btnExportarCSV.Size = new System.Drawing.Size(123, 33);
+            this.btnExportarCSV.Size = new System.Drawing.Size(123, 47);
             this.btnExportarCSV.TabIndex = 16;
             this.btnExportarCSV.Text = "Exportar CSV";
-            this.btnExportarCSV.UseVisualStyleBackColor = true;
+            this.btnExportarCSV.UseVisualStyleBackColor = false;
             this.btnExportarCSV.Click += new System.EventHandler(this.btnExportarCSV_Click);
             // 
             // FormularioReportes
@@ -222,6 +248,7 @@
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(882, 553);
             this.Controls.Add(this.btnExportarCSV);
             this.Controls.Add(this.btnExportarTxt);

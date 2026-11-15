@@ -362,5 +362,10 @@ namespace Shalom
             if (mapa.Zoom > 12)
                 mapa.Zoom = 12;   // Si todo está en una sola ciudad, no acercar demasiado
         }
+
+        private void lblParadas_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
