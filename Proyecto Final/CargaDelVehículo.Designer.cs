@@ -110,7 +110,7 @@
             this.cboVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVehiculo.FormattingEnabled = true;
             this.cboVehiculo.Location = new System.Drawing.Point(95, 32);
-            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4);
             this.cboVehiculo.Name = "cboVehiculo";
             this.cboVehiculo.Size = new System.Drawing.Size(160, 24);
             this.cboVehiculo.TabIndex = 9;
@@ -408,7 +408,7 @@
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
             this.pictureBox1.Location = new System.Drawing.Point(1008, 78);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(32, 30);
             this.pictureBox1.TabIndex = 7;
@@ -417,9 +417,9 @@
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Controls.Add(this.label8);
             this.pnlCabecera.Controls.Add(this.label9);
-            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
             this.pnlCabecera.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -451,12 +451,12 @@
             // 
             // picLogo
             // 
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(38, 2);
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(50, 11);
             this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(239, 54);
-            this.picLogo.TabIndex = 0;
+            this.picLogo.Size = new System.Drawing.Size(229, 54);
+            this.picLogo.TabIndex = 3;
             this.picLogo.TabStop = false;
             // 
             // CargaDelVehículo
@@ -530,8 +530,8 @@
         private System.Windows.Forms.Panel pnlCabecera;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.Label lblPorcentaje;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.PictureBox picLogo;
     }
 }

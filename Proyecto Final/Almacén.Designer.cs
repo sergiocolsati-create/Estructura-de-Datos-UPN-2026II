@@ -35,9 +35,9 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnAlmacenar = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -77,7 +77,7 @@
             // 
             this.pbarOcupacion.BackColor = System.Drawing.Color.White;
             this.pbarOcupacion.Location = new System.Drawing.Point(41, 171);
-            this.pbarOcupacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbarOcupacion.Margin = new System.Windows.Forms.Padding(4);
             this.pbarOcupacion.Name = "pbarOcupacion";
             this.pbarOcupacion.Size = new System.Drawing.Size(970, 34);
             this.pbarOcupacion.TabIndex = 1;
@@ -137,25 +137,13 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(41, 244);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(970, 315);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Paquetes almacenados";
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(58, 307);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(932, 251);
-            this.dataGridView1.TabIndex = 9;
             // 
             // label7
             // 
@@ -179,6 +167,18 @@
             this.label6.TabIndex = 7;
             this.label6.Text = "Frente: el más antiguo sale primero";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToOrderColumns = true;
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(58, 307);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(932, 251);
+            this.dataGridView1.TabIndex = 9;
+            // 
             // groupBox2
             // 
             this.groupBox2.BackColor = System.Drawing.Color.White;
@@ -186,9 +186,9 @@
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(47, 579);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(427, 150);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
@@ -200,7 +200,7 @@
             this.btnAlmacenar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAlmacenar.ForeColor = System.Drawing.Color.White;
             this.btnAlmacenar.Location = new System.Drawing.Point(75, 74);
-            this.btnAlmacenar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAlmacenar.Margin = new System.Windows.Forms.Padding(4);
             this.btnAlmacenar.Name = "btnAlmacenar";
             this.btnAlmacenar.Size = new System.Drawing.Size(249, 59);
             this.btnAlmacenar.TabIndex = 11;
@@ -228,9 +228,9 @@
             this.groupBox3.Controls.Add(this.label9);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(545, 579);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(466, 150);
             this.groupBox3.TabIndex = 8;
             this.groupBox3.TabStop = false;
@@ -241,7 +241,7 @@
             this.btnFrente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
             this.btnFrente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFrente.Location = new System.Drawing.Point(248, 74);
-            this.btnFrente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFrente.Margin = new System.Windows.Forms.Padding(4);
             this.btnFrente.Name = "btnFrente";
             this.btnFrente.Size = new System.Drawing.Size(188, 59);
             this.btnFrente.TabIndex = 3;
@@ -255,7 +255,7 @@
             this.btnDespacho.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDespacho.ForeColor = System.Drawing.Color.White;
             this.btnDespacho.Location = new System.Drawing.Point(28, 74);
-            this.btnDespacho.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDespacho.Margin = new System.Windows.Forms.Padding(4);
             this.btnDespacho.Name = "btnDespacho";
             this.btnDespacho.Size = new System.Drawing.Size(188, 59);
             this.btnDespacho.TabIndex = 2;
@@ -268,7 +268,7 @@
             this.cboVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboVehiculo.FormattingEnabled = true;
             this.cboVehiculo.Location = new System.Drawing.Point(153, 34);
-            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4);
             this.cboVehiculo.Name = "cboVehiculo";
             this.cboVehiculo.Size = new System.Drawing.Size(208, 24);
             this.cboVehiculo.TabIndex = 1;
@@ -321,7 +321,7 @@
             // 
             // picLogo
             // 
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
             this.picLogo.Location = new System.Drawing.Point(50, 9);
             this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picLogo.Name = "picLogo";
@@ -331,9 +331,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Shalom.Properties.Resources.imagen_23x24;
             this.pictureBox1.Location = new System.Drawing.Point(1023, 76);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 30);
             this.pictureBox1.TabIndex = 29;
@@ -371,7 +370,7 @@
             this.Controls.Add(this.pbarOcupacion);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Almacén";

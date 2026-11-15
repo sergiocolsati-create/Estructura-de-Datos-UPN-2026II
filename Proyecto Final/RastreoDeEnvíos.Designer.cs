@@ -71,9 +71,9 @@
             this.pnlCabecera = new System.Windows.Forms.Panel();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.picPerfil = new System.Windows.Forms.PictureBox();
             this.lnkPerfil = new System.Windows.Forms.LinkLabel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.dgvEnvios.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -83,8 +83,8 @@
             this.groupBox5.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.pnlCabecera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -547,9 +547,9 @@
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.pictureBox1);
             this.pnlCabecera.Controls.Add(this.label9);
             this.pnlCabecera.Controls.Add(this.label10);
-            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
             this.pnlCabecera.Name = "pnlCabecera";
@@ -579,21 +579,10 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "Rastreo de Envíos";
             // 
-            // picLogo
-            // 
-            this.picLogo.BackColor = System.Drawing.Color.Transparent;
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(16, 9);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(261, 50);
-            this.picLogo.TabIndex = 0;
-            this.picLogo.TabStop = false;
-            // 
             // picPerfil
             // 
             this.picPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.picPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.picPerfil.BackgroundImage = global::Shalom.Properties.Resources.xd_1;
             this.picPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
             this.picPerfil.Image = global::Shalom.Properties.Resources.xd_1;
             this.picPerfil.Location = new System.Drawing.Point(1030, 76);
@@ -617,6 +606,16 @@
             this.lnkPerfil.TabStop = true;
             this.lnkPerfil.Text = "Yanela Acori";
             this.lnkPerfil.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPerfil_LinkClicked);
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.pictureBox1.Location = new System.Drawing.Point(31, 9);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 54);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // RastreoDeEnvíos
             // 
@@ -653,8 +652,8 @@
             this.statusStrip1.PerformLayout();
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -706,8 +705,8 @@
         private System.Windows.Forms.LinkLabel lnkPerfil;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.PictureBox picPerfil;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

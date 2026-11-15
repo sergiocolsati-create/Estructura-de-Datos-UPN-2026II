@@ -105,9 +105,9 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(13, 144);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox1.Size = new System.Drawing.Size(435, 156);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -117,7 +117,7 @@
             // 
             this.txtDniRemitente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDniRemitente.Location = new System.Drawing.Point(75, 34);
-            this.txtDniRemitente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDniRemitente.Margin = new System.Windows.Forms.Padding(4);
             this.txtDniRemitente.Name = "txtDniRemitente";
             this.txtDniRemitente.Size = new System.Drawing.Size(160, 22);
             this.txtDniRemitente.TabIndex = 17;
@@ -149,7 +149,7 @@
             // 
             this.txtTel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTel.Location = new System.Drawing.Point(111, 105);
-            this.txtTel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTel.Margin = new System.Windows.Forms.Padding(4);
             this.txtTel.Name = "txtTel";
             this.txtTel.Size = new System.Drawing.Size(160, 22);
             this.txtTel.TabIndex = 9;
@@ -158,7 +158,7 @@
             // 
             this.txtRemitente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtRemitente.Location = new System.Drawing.Point(111, 66);
-            this.txtRemitente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtRemitente.Margin = new System.Windows.Forms.Padding(4);
             this.txtRemitente.Name = "txtRemitente";
             this.txtRemitente.Size = new System.Drawing.Size(272, 22);
             this.txtRemitente.TabIndex = 8;
@@ -178,7 +178,7 @@
             // 
             this.cboTipo.FormattingEnabled = true;
             this.cboTipo.Location = new System.Drawing.Point(113, 571);
-            this.cboTipo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboTipo.Margin = new System.Windows.Forms.Padding(4);
             this.cboTipo.Name = "cboTipo";
             this.cboTipo.Size = new System.Drawing.Size(160, 24);
             this.cboTipo.TabIndex = 25;
@@ -197,7 +197,7 @@
             // 
             this.cboDestino.FormattingEnabled = true;
             this.cboDestino.Location = new System.Drawing.Point(113, 643);
-            this.cboDestino.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboDestino.Margin = new System.Windows.Forms.Padding(4);
             this.cboDestino.Name = "cboDestino";
             this.cboDestino.Size = new System.Drawing.Size(160, 24);
             this.cboDestino.TabIndex = 23;
@@ -206,7 +206,7 @@
             // 
             this.cboOrigen.FormattingEnabled = true;
             this.cboOrigen.Location = new System.Drawing.Point(113, 609);
-            this.cboOrigen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboOrigen.Margin = new System.Windows.Forms.Padding(4);
             this.cboOrigen.Name = "cboOrigen";
             this.cboOrigen.Size = new System.Drawing.Size(160, 24);
             this.cboOrigen.TabIndex = 22;
@@ -215,7 +215,7 @@
             // 
             this.txtDniDestinatario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDniDestinatario.Location = new System.Drawing.Point(75, 34);
-            this.txtDniDestinatario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDniDestinatario.Margin = new System.Windows.Forms.Padding(4);
             this.txtDniDestinatario.Name = "txtDniDestinatario";
             this.txtDniDestinatario.Size = new System.Drawing.Size(160, 22);
             this.txtDniDestinatario.TabIndex = 21;
@@ -235,7 +235,7 @@
             // 
             this.txtTelDestinatario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTelDestinatario.Location = new System.Drawing.Point(112, 105);
-            this.txtTelDestinatario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTelDestinatario.Margin = new System.Windows.Forms.Padding(4);
             this.txtTelDestinatario.Name = "txtTelDestinatario";
             this.txtTelDestinatario.Size = new System.Drawing.Size(159, 22);
             this.txtTelDestinatario.TabIndex = 19;
@@ -275,7 +275,7 @@
             // 
             this.txtDetalle.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDetalle.Location = new System.Drawing.Point(113, 532);
-            this.txtDetalle.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDetalle.Margin = new System.Windows.Forms.Padding(4);
             this.txtDetalle.Name = "txtDetalle";
             this.txtDetalle.Size = new System.Drawing.Size(272, 22);
             this.txtDetalle.TabIndex = 12;
@@ -284,7 +284,7 @@
             // 
             this.txtPeso.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPeso.Location = new System.Drawing.Point(113, 499);
-            this.txtPeso.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPeso.Margin = new System.Windows.Forms.Padding(4);
             this.txtPeso.Name = "txtPeso";
             this.txtPeso.Size = new System.Drawing.Size(272, 22);
             this.txtPeso.TabIndex = 11;
@@ -293,7 +293,7 @@
             // 
             this.txtDestinatario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDestinatario.Location = new System.Drawing.Point(112, 74);
-            this.txtDestinatario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDestinatario.Margin = new System.Windows.Forms.Padding(4);
             this.txtDestinatario.Name = "txtDestinatario";
             this.txtDestinatario.Size = new System.Drawing.Size(260, 22);
             this.txtDestinatario.TabIndex = 10;
@@ -303,7 +303,7 @@
             this.txtGuia.BackColor = System.Drawing.Color.White;
             this.txtGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtGuia.Location = new System.Drawing.Point(113, 87);
-            this.txtGuia.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtGuia.Margin = new System.Windows.Forms.Padding(4);
             this.txtGuia.Name = "txtGuia";
             this.txtGuia.ReadOnly = true;
             this.txtGuia.Size = new System.Drawing.Size(272, 22);
@@ -315,7 +315,7 @@
             this.btnEncolar.BackColor = System.Drawing.Color.White;
             this.btnEncolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEncolar.Location = new System.Drawing.Point(472, 650);
-            this.btnEncolar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEncolar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEncolar.Name = "btnEncolar";
             this.btnEncolar.Size = new System.Drawing.Size(256, 39);
             this.btnEncolar.TabIndex = 6;
@@ -377,9 +377,9 @@
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(472, 127);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox2.Size = new System.Drawing.Size(684, 462);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -414,7 +414,7 @@
             this.btnVerfrente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerfrente.ForeColor = System.Drawing.Color.Black;
             this.btnVerfrente.Location = new System.Drawing.Point(322, 360);
-            this.btnVerfrente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVerfrente.Margin = new System.Windows.Forms.Padding(4);
             this.btnVerfrente.Name = "btnVerfrente";
             this.btnVerfrente.Size = new System.Drawing.Size(237, 41);
             this.btnVerfrente.TabIndex = 20;
@@ -428,7 +428,7 @@
             this.btnDesencolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesencolar.ForeColor = System.Drawing.Color.White;
             this.btnDesencolar.Location = new System.Drawing.Point(72, 356);
-            this.btnDesencolar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDesencolar.Margin = new System.Windows.Forms.Padding(4);
             this.btnDesencolar.Name = "btnDesencolar";
             this.btnDesencolar.Size = new System.Drawing.Size(237, 45);
             this.btnDesencolar.TabIndex = 19;
@@ -441,7 +441,7 @@
             this.dgvRecepcion.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
             this.dgvRecepcion.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvRecepcion.Location = new System.Drawing.Point(27, 71);
-            this.dgvRecepcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvRecepcion.Margin = new System.Windows.Forms.Padding(4);
             this.dgvRecepcion.Name = "dgvRecepcion";
             this.dgvRecepcion.RowHeadersWidth = 51;
             this.dgvRecepcion.Size = new System.Drawing.Size(612, 267);
@@ -587,7 +587,7 @@
             // 
             this.cboPago.FormattingEnabled = true;
             this.cboPago.Location = new System.Drawing.Point(851, 607);
-            this.cboPago.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboPago.Margin = new System.Windows.Forms.Padding(4);
             this.cboPago.Name = "cboPago";
             this.cboPago.Size = new System.Drawing.Size(160, 24);
             this.cboPago.TabIndex = 18;
@@ -613,9 +613,9 @@
             this.groupBox3.Controls.Add(this.txtDestinatario);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(13, 308);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(4);
             this.groupBox3.Size = new System.Drawing.Size(435, 156);
             this.groupBox3.TabIndex = 20;
             this.groupBox3.TabStop = false;
@@ -635,9 +635,8 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = global::Shalom.Properties.Resources.imagen_23x24;
             this.pictureBox1.Location = new System.Drawing.Point(1168, 78);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(31, 30);
             this.pictureBox1.TabIndex = 27;
@@ -646,9 +645,9 @@
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Controls.Add(this.label20);
             this.pnlCabecera.Controls.Add(this.label21);
-            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
             this.pnlCabecera.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -681,12 +680,12 @@
             // 
             // picLogo
             // 
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(62, 2);
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(44, 11);
             this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(236, 54);
-            this.picLogo.TabIndex = 0;
+            this.picLogo.Size = new System.Drawing.Size(229, 54);
+            this.picLogo.TabIndex = 3;
             this.picLogo.TabStop = false;
             // 
             // Ingreso_de_envíos_Cola_de_Recepción
@@ -722,7 +721,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnEncolar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Ingreso_de_envíos_Cola_de_Recepción";

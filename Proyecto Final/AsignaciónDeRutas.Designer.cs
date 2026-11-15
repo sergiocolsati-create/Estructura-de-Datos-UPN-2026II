@@ -28,12 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlCabecera = new System.Windows.Forms.Panel();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.grpVehiculo = new System.Windows.Forms.GroupBox();
             this.pbCarga = new System.Windows.Forms.ProgressBar();
             this.lblCarga = new System.Windows.Forms.Label();
@@ -56,24 +55,25 @@
             this.lblParadas = new System.Windows.Forms.Label();
             this.grpMapa = new System.Windows.Forms.GroupBox();
             this.lblLeyenda = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCabecera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.grpVehiculo.SuspendLayout();
             this.grpPorAsignar.SuspendLayout();
             this.grpParadas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParadas)).BeginInit();
             this.grpMapa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.pictureBox1);
             this.pnlCabecera.Controls.Add(this.lblSubtitulo);
             this.pnlCabecera.Controls.Add(this.lblTitulo);
-            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
-            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCabecera.Name = "pnlCabecera";
             this.pnlCabecera.Size = new System.Drawing.Size(1573, 86);
             this.pnlCabecera.TabIndex = 0;
@@ -102,17 +102,6 @@
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Asignación de Rutas";
             // 
-            // picLogo
-            // 
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.picLogo.Location = new System.Drawing.Point(69, 13);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(226, 62);
-            this.picLogo.TabIndex = 0;
-            this.picLogo.TabStop = false;
-            // 
             // grpVehiculo
             // 
             this.grpVehiculo.BackColor = System.Drawing.Color.White;
@@ -124,9 +113,9 @@
             this.grpVehiculo.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpVehiculo.ForeColor = System.Drawing.Color.Black;
             this.grpVehiculo.Location = new System.Drawing.Point(27, 105);
-            this.grpVehiculo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpVehiculo.Margin = new System.Windows.Forms.Padding(4);
             this.grpVehiculo.Name = "grpVehiculo";
-            this.grpVehiculo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpVehiculo.Padding = new System.Windows.Forms.Padding(4);
             this.grpVehiculo.Size = new System.Drawing.Size(400, 178);
             this.grpVehiculo.TabIndex = 1;
             this.grpVehiculo.TabStop = false;
@@ -135,7 +124,7 @@
             // pbCarga
             // 
             this.pbCarga.Location = new System.Drawing.Point(20, 142);
-            this.pbCarga.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbCarga.Margin = new System.Windows.Forms.Padding(4);
             this.pbCarga.Name = "pbCarga";
             this.pbCarga.Size = new System.Drawing.Size(360, 15);
             this.pbCarga.TabIndex = 4;
@@ -168,7 +157,7 @@
             this.cboVehiculo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cboVehiculo.FormattingEnabled = true;
             this.cboVehiculo.Location = new System.Drawing.Point(107, 34);
-            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4);
             this.cboVehiculo.Name = "cboVehiculo";
             this.cboVehiculo.Size = new System.Drawing.Size(272, 29);
             this.cboVehiculo.TabIndex = 1;
@@ -196,9 +185,9 @@
             this.grpPorAsignar.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPorAsignar.ForeColor = System.Drawing.Color.Black;
             this.grpPorAsignar.Location = new System.Drawing.Point(27, 295);
-            this.grpPorAsignar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpPorAsignar.Margin = new System.Windows.Forms.Padding(4);
             this.grpPorAsignar.Name = "grpPorAsignar";
-            this.grpPorAsignar.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpPorAsignar.Padding = new System.Windows.Forms.Padding(4);
             this.grpPorAsignar.Size = new System.Drawing.Size(400, 542);
             this.grpPorAsignar.TabIndex = 2;
             this.grpPorAsignar.TabStop = false;
@@ -212,7 +201,7 @@
             this.btnInsertarDespues.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnInsertarDespues.ForeColor = System.Drawing.Color.White;
             this.btnInsertarDespues.Location = new System.Drawing.Point(42, 470);
-            this.btnInsertarDespues.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnInsertarDespues.Margin = new System.Windows.Forms.Padding(4);
             this.btnInsertarDespues.Name = "btnInsertarDespues";
             this.btnInsertarDespues.Size = new System.Drawing.Size(299, 60);
             this.btnInsertarDespues.TabIndex = 3;
@@ -228,7 +217,7 @@
             this.btnAgregarAlFinal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAgregarAlFinal.ForeColor = System.Drawing.Color.White;
             this.btnAgregarAlFinal.Location = new System.Drawing.Point(42, 406);
-            this.btnAgregarAlFinal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAgregarAlFinal.Margin = new System.Windows.Forms.Padding(4);
             this.btnAgregarAlFinal.Name = "btnAgregarAlFinal";
             this.btnAgregarAlFinal.Size = new System.Drawing.Size(299, 56);
             this.btnAgregarAlFinal.TabIndex = 2;
@@ -244,7 +233,7 @@
             this.lstPorAsignar.FormattingEnabled = true;
             this.lstPorAsignar.ItemHeight = 19;
             this.lstPorAsignar.Location = new System.Drawing.Point(20, 86);
-            this.lstPorAsignar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lstPorAsignar.Margin = new System.Windows.Forms.Padding(4);
             this.lstPorAsignar.Name = "lstPorAsignar";
             this.lstPorAsignar.SelectionMode = System.Windows.Forms.SelectionMode.None;
             this.lstPorAsignar.Size = new System.Drawing.Size(359, 306);
@@ -270,9 +259,9 @@
             this.grpParadas.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpParadas.ForeColor = System.Drawing.Color.Black;
             this.grpParadas.Location = new System.Drawing.Point(447, 105);
-            this.grpParadas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpParadas.Margin = new System.Windows.Forms.Padding(4);
             this.grpParadas.Name = "grpParadas";
-            this.grpParadas.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpParadas.Padding = new System.Windows.Forms.Padding(4);
             this.grpParadas.Size = new System.Drawing.Size(573, 732);
             this.grpParadas.TabIndex = 3;
             this.grpParadas.TabStop = false;
@@ -286,7 +275,7 @@
             this.btnQuitarParada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnQuitarParada.ForeColor = System.Drawing.Color.Black;
             this.btnQuitarParada.Location = new System.Drawing.Point(94, 669);
-            this.btnQuitarParada.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnQuitarParada.Margin = new System.Windows.Forms.Padding(4);
             this.btnQuitarParada.Name = "btnQuitarParada";
             this.btnQuitarParada.Size = new System.Drawing.Size(408, 42);
             this.btnQuitarParada.TabIndex = 2;
@@ -299,8 +288,8 @@
             this.dgvParadas.AllowUserToAddRows = false;
             this.dgvParadas.AllowUserToDeleteRows = false;
             this.dgvParadas.AllowUserToResizeRows = false;
-            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
-            this.dgvParadas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dgvParadas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvParadas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvParadas.BackgroundColor = System.Drawing.Color.White;
             this.dgvParadas.BorderStyle = System.Windows.Forms.BorderStyle.None;
@@ -314,18 +303,18 @@
             this.colDestino,
             this.colDestinatario,
             this.colPeso});
-            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 9F);
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(226)))), ((int)(((byte)(227)))));
-            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvParadas.DefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(253)))), ((int)(((byte)(226)))), ((int)(((byte)(227)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvParadas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvParadas.EnableHeadersVisualStyles = false;
             this.dgvParadas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.dgvParadas.Location = new System.Drawing.Point(20, 96);
-            this.dgvParadas.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvParadas.Margin = new System.Windows.Forms.Padding(4);
             this.dgvParadas.MultiSelect = false;
             this.dgvParadas.Name = "dgvParadas";
             this.dgvParadas.ReadOnly = true;
@@ -396,9 +385,9 @@
             this.grpMapa.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpMapa.ForeColor = System.Drawing.Color.Black;
             this.grpMapa.Location = new System.Drawing.Point(1040, 105);
-            this.grpMapa.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpMapa.Margin = new System.Windows.Forms.Padding(4);
             this.grpMapa.Name = "grpMapa";
-            this.grpMapa.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpMapa.Padding = new System.Windows.Forms.Padding(4);
             this.grpMapa.Size = new System.Drawing.Size(507, 732);
             this.grpMapa.TabIndex = 4;
             this.grpMapa.TabStop = false;
@@ -416,6 +405,16 @@
             this.lblLeyenda.Text = "Verde: salida   Rojo: paradas   Azul: parada seleccionada.\r\nArrastre para mover, " +
     "rueda para zoom. Mapa © OpenStreetMap.";
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.pictureBox1.Location = new System.Drawing.Point(69, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 54);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
+            // 
             // AsignaciónDeRutas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -428,7 +427,7 @@
             this.Controls.Add(this.grpVehiculo);
             this.Controls.Add(this.pnlCabecera);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "AsignaciónDeRutas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -436,7 +435,6 @@
             this.Load += new System.EventHandler(this.AsignaciónDeRutas_Load);
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.grpVehiculo.ResumeLayout(false);
             this.grpVehiculo.PerformLayout();
             this.grpPorAsignar.ResumeLayout(false);
@@ -444,6 +442,7 @@
             this.grpParadas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParadas)).EndInit();
             this.grpMapa.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -453,7 +452,6 @@
         private System.Windows.Forms.Panel pnlCabecera;
         private System.Windows.Forms.Label lblSubtitulo;
         private System.Windows.Forms.Label lblTitulo;
-        private System.Windows.Forms.PictureBox picLogo;
         private System.Windows.Forms.GroupBox grpVehiculo;
         private System.Windows.Forms.ProgressBar pbCarga;
         private System.Windows.Forms.Label lblCarga;
@@ -476,5 +474,6 @@
         private System.Windows.Forms.Label lblParadas;
         private System.Windows.Forms.GroupBox grpMapa;
         private System.Windows.Forms.Label lblLeyenda;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

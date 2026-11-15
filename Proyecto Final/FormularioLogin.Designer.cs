@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.panelMarca = new System.Windows.Forms.Panel();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.lblPieMarca = new System.Windows.Forms.Label();
             this.lblLema = new System.Windows.Forms.Label();
             this.lblBienvenida = new System.Windows.Forms.Label();
@@ -41,6 +40,7 @@
             this.btnMostrarClave = new System.Windows.Forms.Button();
             this.btnIngresar = new System.Windows.Forms.Button();
             this.btnColaboradores = new System.Windows.Forms.Button();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.panelMarca.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
@@ -58,21 +58,11 @@
             this.panelMarca.Size = new System.Drawing.Size(374, 477);
             this.panelMarca.TabIndex = 11;
             // 
-            // picLogo
-            // 
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(53, 126);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(229, 58);
-            this.picLogo.TabIndex = 3;
-            this.picLogo.TabStop = false;
-            // 
             // lblPieMarca
             // 
             this.lblPieMarca.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
             this.lblPieMarca.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(225)))), ((int)(((byte)(230)))));
-            this.lblPieMarca.Location = new System.Drawing.Point(12, 429);
+            this.lblPieMarca.Location = new System.Drawing.Point(36, 400);
             this.lblPieMarca.Name = "lblPieMarca";
             this.lblPieMarca.Size = new System.Drawing.Size(314, 24);
             this.lblPieMarca.TabIndex = 2;
@@ -83,7 +73,7 @@
             // 
             this.lblLema.Font = new System.Drawing.Font("Segoe UI Semibold", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLema.ForeColor = System.Drawing.Color.White;
-            this.lblLema.Location = new System.Drawing.Point(48, 186);
+            this.lblLema.Location = new System.Drawing.Point(59, 209);
             this.lblLema.Name = "lblLema";
             this.lblLema.Size = new System.Drawing.Size(245, 91);
             this.lblLema.TabIndex = 1;
@@ -200,6 +190,16 @@
             this.btnColaboradores.Text = "Ver colaboradores";
             this.btnColaboradores.UseVisualStyleBackColor = false;
             this.btnColaboradores.Click += new System.EventHandler(this.btnColaboradores_Click);
+            // 
+            // picLogo
+            // 
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(75, 139);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(229, 54);
+            this.picLogo.TabIndex = 3;
+            this.picLogo.TabStop = false;
             // 
             // FormularioLogin
             // 
