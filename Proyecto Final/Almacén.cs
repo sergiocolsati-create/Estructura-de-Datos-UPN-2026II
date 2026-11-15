@@ -118,5 +118,15 @@ namespace Shalom
         {
 
         }
+
+        private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            new DevSer().ShowDialog(this);
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

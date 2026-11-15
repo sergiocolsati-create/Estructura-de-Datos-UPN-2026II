@@ -87,9 +87,9 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(15, 93);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(226, 205);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -118,7 +118,7 @@
             // progressBar1
             // 
             this.progressBar1.Location = new System.Drawing.Point(14, 160);
-            this.progressBar1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.progressBar1.Margin = new System.Windows.Forms.Padding(2);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(178, 19);
             this.progressBar1.TabIndex = 8;
@@ -129,7 +129,7 @@
             this.txtCarga.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCarga.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCarga.Location = new System.Drawing.Point(84, 126);
-            this.txtCarga.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCarga.Margin = new System.Windows.Forms.Padding(2);
             this.txtCarga.Name = "txtCarga";
             this.txtCarga.ReadOnly = true;
             this.txtCarga.Size = new System.Drawing.Size(108, 19);
@@ -141,7 +141,7 @@
             this.txtCapacidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCapacidad.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCapacidad.Location = new System.Drawing.Point(84, 93);
-            this.txtCapacidad.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtCapacidad.Margin = new System.Windows.Forms.Padding(2);
             this.txtCapacidad.Name = "txtCapacidad";
             this.txtCapacidad.ReadOnly = true;
             this.txtCapacidad.Size = new System.Drawing.Size(108, 19);
@@ -153,7 +153,7 @@
             this.txtConductor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtConductor.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtConductor.Location = new System.Drawing.Point(84, 62);
-            this.txtConductor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtConductor.Margin = new System.Windows.Forms.Padding(2);
             this.txtConductor.Name = "txtConductor";
             this.txtConductor.ReadOnly = true;
             this.txtConductor.Size = new System.Drawing.Size(108, 19);
@@ -213,9 +213,9 @@
             this.groupBox2.Controls.Add(this.textBox1);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(15, 318);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(226, 200);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -238,7 +238,7 @@
             this.btnPeek.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPeek.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(47)))), ((int)(((byte)(58)))));
             this.btnPeek.Location = new System.Drawing.Point(38, 151);
-            this.btnPeek.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPeek.Margin = new System.Windows.Forms.Padding(2);
             this.btnPeek.Name = "btnPeek";
             this.btnPeek.Size = new System.Drawing.Size(154, 33);
             this.btnPeek.TabIndex = 3;
@@ -251,7 +251,7 @@
             this.btnPop.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPop.ForeColor = System.Drawing.Color.White;
             this.btnPop.Location = new System.Drawing.Point(38, 108);
-            this.btnPop.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPop.Margin = new System.Windows.Forms.Padding(2);
             this.btnPop.Name = "btnPop";
             this.btnPop.Size = new System.Drawing.Size(154, 35);
             this.btnPop.TabIndex = 2;
@@ -264,7 +264,7 @@
             this.btnPush.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPush.ForeColor = System.Drawing.Color.White;
             this.btnPush.Location = new System.Drawing.Point(38, 72);
-            this.btnPush.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnPush.Margin = new System.Windows.Forms.Padding(2);
             this.btnPush.Name = "btnPush";
             this.btnPush.Size = new System.Drawing.Size(154, 35);
             this.btnPush.TabIndex = 1;
@@ -277,7 +277,7 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(22, 38);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(180, 19);
             this.textBox1.TabIndex = 0;
@@ -311,9 +311,9 @@
             this.groupBox3.Controls.Add(this.label5);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(260, 102);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox3.Size = new System.Drawing.Size(494, 359);
             this.groupBox3.TabIndex = 3;
             this.groupBox3.TabStop = false;
@@ -371,7 +371,7 @@
             this.lstPaquetes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lstPaquetes.FormattingEnabled = true;
             this.lstPaquetes.Location = new System.Drawing.Point(26, 51);
-            this.lstPaquetes.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.lstPaquetes.Margin = new System.Windows.Forms.Padding(2);
             this.lstPaquetes.Name = "lstPaquetes";
             this.lstPaquetes.Size = new System.Drawing.Size(450, 210);
             this.lstPaquetes.TabIndex = 1;
@@ -394,7 +394,7 @@
             this.btnCerrar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCerrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(47)))), ((int)(((byte)(58)))));
             this.btnCerrar.Location = new System.Drawing.Point(260, 481);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(2);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(93, 37);
             this.btnCerrar.TabIndex = 4;
@@ -429,7 +429,7 @@
             this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
-            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCabecera.Name = "pnlCabecera";
             this.pnlCabecera.Size = new System.Drawing.Size(806, 57);
             this.pnlCabecera.TabIndex = 9;
@@ -438,7 +438,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(202, 33);
+            this.label8.Location = new System.Drawing.Point(257, 27);
             this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(239, 13);
@@ -451,7 +451,7 @@
             this.label9.BackColor = System.Drawing.Color.Transparent;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label9.ForeColor = System.Drawing.Color.White;
-            this.label9.Location = new System.Drawing.Point(200, 7);
+            this.label9.Location = new System.Drawing.Point(255, 2);
             this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(175, 25);
@@ -462,9 +462,9 @@
             // 
             this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
             this.picLogo.Location = new System.Drawing.Point(9, 2);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(2);
             this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(173, 41);
+            this.picLogo.Size = new System.Drawing.Size(232, 44);
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
             // 
@@ -483,7 +483,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CargaDelVehículo";
