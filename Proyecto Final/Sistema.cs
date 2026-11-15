@@ -4,27 +4,50 @@ using System.Data.SqlClient;
 
 namespace Shalom
 {
+    // CLASE SISTEMA
+    // Es el "centro" del programa. Es estática: existe una sola en toda la aplicación
+    // y todos los formularios la usan sin crearla (Sistema.Recepcion, Sistema.RegistrarEnvio...).
+    //
+    // Hace tres cosas:
+    //   1. Guarda las estructuras de datos en memoria (colas, árbol, vehículos con su pila y ruta).
+    //   2. Al iniciar, carga esas estructuras con lo que hay en SQL Server.
+    //   3. Cada vez que algo cambia, lo guarda en SQL Server y actualiza las estructuras.
+    //
+    // Los formularios NO hablan con la base de datos: siempre pasan por aquí.
     internal static class Sistema
     {
-        // CONEXIÓN A SQL SERVER
+        // =========================================================
+        //  CONEXIÓN A SQL SERVER
+        // =========================================================
+
+        // Dirección de la base de datos. Si en otra PC el servidor se llama distinto
+        // (por ejemplo localhost\SQLEXPRESS), se cambia aquí. Se ve en SSMS → Conectar.
         private static readonly string cadenaConexion =
-            @"Data Source=localhost;Initial Catalog=ShalomDB_Final;Integrated Security=True;";// Es importante actualizar la direccion de la conexion a BD en SSMS
-        
+            @"Data Source=localhost;Initial Catalog=ShalomDB_Final;Integrated Security=True;";
+
+        // Crea una conexión nueva. Cada método la abre, la usa y la cierra
+        // (el "using" la cierra solo al terminar, aunque haya un error).
         public static SqlConnection CrearConexion()
         {
             return new SqlConnection(cadenaConexion);
         }
 
-        // ESTRUCTURAS DE DATOS
-        public static ColaEnvios Recepcion = new ColaEnvios();
-        public static ColaEnvios Almacen = new ColaEnvios(50);
-        public static ArbolEnvios Registro = new ArbolEnvios();
+        // =========================================================
+        //  ESTRUCTURAS DE DATOS (en memoria)
+        // =========================================================
 
-        // CATÁLOGOS
-        public static Sede[] Sedes = new Sede[0];
-        public static Vehiculo[] Vehiculos = new Vehiculo[0];
+        public static ColaEnvios Recepcion = new ColaEnvios();     // COLA: envíos recién registrados (FIFO)
+        public static ColaEnvios Almacen = new ColaEnvios(50);     // COLA: envíos en almacén, máximo 50
+        public static ArbolEnvios Registro = new ArbolEnvios();    // ÁRBOL: TODOS los envíos, para buscar por guía rápido
 
-        // BUSCAR SEDE POR ID
+        // =========================================================
+        //  CATÁLOGOS (datos fijos que se leen de la base)
+        // =========================================================
+
+        public static Sede[] Sedes = new Sede[0];             // Lima, Arequipa, Trujillo, Cusco...
+        public static Vehiculo[] Vehiculos = new Vehiculo[0]; // Cada vehículo tiene su PILA (Carga) y su LISTA (Ruta)
+
+        // Recorre el arreglo de sedes y devuelve la que tiene ese Id (o null si no existe)
         public static Sede BuscarSedePorId(int id)
         {
             for (int i = 0; i < Sedes.Length; i++)
@@ -36,7 +59,7 @@ namespace Shalom
             return null;
         }
 
-        // BUSCAR VEHÍCULO POR PLACA
+        // Recorre el arreglo de vehículos y devuelve el que tiene esa placa (o null)
         public static Vehiculo BuscarVehiculoPorPlaca(string placa)
         {
             if (string.IsNullOrWhiteSpace(placa))
@@ -51,10 +74,17 @@ namespace Shalom
             return null;
         }
 
-        // CARGAR LOS DATOS DESDE SQL SERVER
+        // =========================================================
+        //  CARGA INICIAL: SQL SERVER → ESTRUCTURAS
+        //  Se ejecuta al abrir el programa. Lee las tablas y coloca
+        //  cada envío en la estructura que le corresponde según su estado.
+        // =========================================================
+
+        // Método principal de carga. El orden importa: primero sedes, vehículos y personas,
+        // porque los envíos los necesitan para armarse.
         public static void CargarDatosSQL()
         {
-            // Reiniciar estructuras para evitar duplicados.
+            // Se crean estructuras vacías para no duplicar datos si se carga dos veces
             Recepcion = new ColaEnvios();
             Almacen = new ColaEnvios(50);
             Registro = new ArbolEnvios();
@@ -69,12 +99,12 @@ namespace Shalom
                 List<Persona> personas = CargarPersonas(conexion);
                 List<Envio> envios = CargarEnvios(conexion, personas);
 
-                CargarHistorial(conexion, envios);
-                CargarParadas(conexion, envios);
+                CargarHistorial(conexion, envios);   // Eventos de rastreo de cada envío
+                CargarParadas(conexion, envios);     // Rutas de los vehículos
             }
         }
 
-        // CARGAR SEDES
+        // Lee la tabla Sede y llena el arreglo Sedes
         private static void CargarSedes(SqlConnection conexion)
         {
             List<Sede> lista = new List<Sede>();
@@ -86,7 +116,7 @@ namespace Shalom
             using (SqlCommand comando = new SqlCommand(consulta, conexion))
             using (SqlDataReader lector = comando.ExecuteReader())
             {
-                while (lector.Read())
+                while (lector.Read())   // Una vuelta por cada fila de la tabla
                 {
                     Sede sede = new Sede();
 
@@ -95,6 +125,7 @@ namespace Shalom
                     sede.Nombre = lector["Nombre"].ToString();
                     sede.Ciudad = lector["Ciudad"].ToString();
 
+                    // DBNull = la celda está vacía (NULL) en SQL; en C# se usa ""
                     sede.Direccion =
                         lector["Direccion"] == DBNull.Value
                             ? ""
@@ -107,7 +138,8 @@ namespace Shalom
             Sedes = lista.ToArray();
         }
 
-        // CARGAR VEHÍCULOS
+        // Lee la tabla Vehiculo y llena el arreglo Vehiculos
+        // (cada vehículo nace con su pila y su ruta vacías)
         private static void CargarVehiculos(SqlConnection conexion)
         {
             List<Vehiculo> lista = new List<Vehiculo>();
@@ -133,7 +165,7 @@ namespace Shalom
             Vehiculos = lista.ToArray();
         }
 
-        // CARGAR PERSONAS
+        // Lee la tabla Persona (remitentes y destinatarios) y devuelve la lista
         private static List<Persona> CargarPersonas(
             SqlConnection conexion)
         {
@@ -171,7 +203,7 @@ namespace Shalom
             return lista;
         }
 
-        // BUSCAR PERSONA POR ID
+        // Busca una persona por su Id dentro de la lista ya cargada (o null)
         private static Persona BuscarPersonaPorId(
             List<Persona> personas, int id)
         {
@@ -184,7 +216,8 @@ namespace Shalom
             return null;
         }
 
-        // CONVERTIR EL ESTADO DE SQL A C#
+        // En SQL el estado se guarda como texto ("EnTransito");
+        // este método lo convierte al enum de C# (EstadoEnvio.EnTransito)
         private static EstadoEnvio ConvertirEstado(string texto)
         {
             switch (texto)
@@ -214,7 +247,7 @@ namespace Shalom
             }
         }
 
-        // BUSCAR ENVÍO POR CÓDIGO
+        // Busca un envío por su guía dentro de la lista ya cargada (o null)
         private static Envio BuscarEnvioPorCodigo(
             List<Envio> envios, string codigo)
         {
@@ -227,14 +260,18 @@ namespace Shalom
             return null;
         }
 
-        // CARGAR ENVÍOS Y DISTRIBUIRLOS EN LAS ESTRUCTURAS
+        // Lee la tabla Envio, arma cada objeto Envio y lo coloca en su estructura:
+        //   Registrado    → cola de Recepción
+        //   EnPreparacion → cola del Almacén
+        //   EnTransito    → pila del vehículo
+        //   (EnReparto va a la ruta, eso lo hace CargarParadas)
+        // Además, TODOS entran al árbol para poder buscarlos por guía.
         private static List<Envio> CargarEnvios(
             SqlConnection conexion, List<Persona> personas)
         {
             List<Envio> lista = new List<Envio>();
 
-            // Ya no se consultan dimensiones ni fechas opcionales
-            // que hemos decidido retirar del modelo C#.
+            // Se ordena por fecha para que las colas y pilas queden en el orden en que llegaron
             string consulta =
                 "SELECT Id, Codigo, ClaveSeguridad, " +
                 "SedeOrigenId, SedeDestinoId, RemitenteId, DestinatarioId, " +
@@ -255,6 +292,7 @@ namespace Shalom
                     envio.ClaveSeguridad =
                         lector["ClaveSeguridad"].ToString();
 
+                    // En la tabla solo están los Id; aquí se cambian por los objetos completos
                     envio.SedeOrigen = BuscarSedePorId(
                         Convert.ToInt32(lector["SedeOrigenId"]));
 
@@ -269,7 +307,7 @@ namespace Shalom
                         personas,
                         Convert.ToInt32(lector["DestinatarioId"]));
 
-                    // Tipo de paquete
+                    // Tipo de paquete: texto de SQL → enum de C#
                     string tipoTexto = lector["Tipo"].ToString();
 
                     switch (tipoTexto)
@@ -299,7 +337,7 @@ namespace Shalom
                     envio.Precio =
                         Convert.ToDecimal(lector["Precio"]);
 
-                    // Modalidad de pago
+                    // Modalidad de pago: texto de SQL → enum de C#
                     string pagoTexto =
                         lector["ModalidadPago"].ToString();
 
@@ -332,12 +370,13 @@ namespace Shalom
                     EstadoEnvio estado =
                         ConvertirEstado(lector["Estado"].ToString());
 
+                    // Se fija el estado tal como está en la base, sin crear un evento nuevo
                     envio.FijarEstadoDesdeSQL(
                         estado,
                         Convert.ToDateTime(
                             lector["FechaActualizacion"]));
 
-                    // Distribuir según el estado actual.
+                    // Según su estado, el envío entra a una estructura u otra
                     if (estado == EstadoEnvio.Registrado)
                     {
                         Recepcion.Encolar(envio);
@@ -366,7 +405,8 @@ namespace Shalom
             return lista;
         }
 
-        // CARGAR HISTORIAL DE TRAZABILIDAD
+        // Lee la tabla HistorialEnvio y agrega cada evento a la LISTA SIMPLE
+        // de historial de su envío (en orden de fecha). Es lo que se ve en Rastreo.
         private static void CargarHistorial(
             SqlConnection conexion, List<Envio> envios)
         {
@@ -387,7 +427,7 @@ namespace Shalom
                         BuscarEnvioPorCodigo(envios, codigo);
 
                     if (envio == null)
-                        continue;
+                        continue;   // Evento de un envío que no existe: se ignora
 
                     EstadoEnvio estado =
                         ConvertirEstado(lector["Estado"].ToString());
@@ -417,7 +457,8 @@ namespace Shalom
             }
         }
 
-        // CARGAR LAS PARADAS DE LAS RUTAS
+        // Lee la tabla ParadaRuta (ordenada por vehículo y número de parada)
+        // y arma la LISTA DOBLE de paradas de cada vehículo.
         private static void CargarParadas(
             SqlConnection conexion, List<Envio> envios)
         {
@@ -436,8 +477,8 @@ namespace Shalom
                     Vehiculo vehiculo = BuscarVehiculoPorPlaca(placa);
                     Envio envio = BuscarEnvioPorCodigo(envios, codigo);
 
-                    // Solo se cargan envíos en reparto
-                    // que pertenezcan al vehículo indicado.
+                    // Solo se agregan envíos que están "En reparto"
+                    // y que pertenecen a ese vehículo (evita datos inconsistentes)
                     if (vehiculo != null &&
                         envio != null &&
                         envio.Estado == EstadoEnvio.EnReparto &&
@@ -451,14 +492,15 @@ namespace Shalom
 
         // =========================================================
         //  ESCRITURA EN SQL SERVER
-        //  Regla: primero se guarda en SQL; solo si salió bien
-        //  se modifica la memoria (estructuras). Así nunca quedan
-        //  datos distintos entre el formulario y la base.
+        //  Regla de todo el sistema: PRIMERO se guarda en SQL y,
+        //  solo si salió bien, se modifica la memoria (estructuras).
+        //  Así la pantalla nunca muestra algo que no está en la base.
         // =========================================================
 
         // RECEPCIÓN: registra un envío nuevo.
-        // SQL asigna el Id, con él se genera el código, se guarda el
-        // primer evento del historial y recién entra a la cola.
+        // Pasos: guarda remitente y destinatario → guarda el envío (SQL le da un Id) →
+        // con ese Id se genera la guía (ej. LIM-ARE-000007) → primer evento del historial.
+        // Todo va en una TRANSACCIÓN: si algo falla, se deshace todo.
         public static void RegistrarEnvio(Envio envio)
         {
             DateTime ahora = DateTime.Now;
@@ -482,27 +524,28 @@ namespace Shalom
                         InsertarHistorial(conexion, tx, envio.Codigo,
                             EstadoEnvio.Registrado, ahora, ubicacion, observacion);
 
-                        tx.Commit();                                 // Todo o nada
+                        tx.Commit();                                 // Confirma: se guarda todo
                     }
                     catch
                     {
-                        tx.Rollback();
-                        throw;
+                        tx.Rollback();                               // Algo falló: no se guarda nada
+                        throw;                                       // El formulario muestra el error
                     }
                 }
             }
 
-            // SQL guardó todo: ahora sí se actualiza la memoria
+            // SQL guardó todo: ahora sí entra a la cola de recepción y al árbol
             envio.CambiarEstado(EstadoEnvio.Registrado, ubicacion, observacion);
             Recepcion.Encolar(envio);
             Registro.Insertar(envio);
         }
 
-        // RECEPCIÓN → ALMACÉN (desencolar de una cola y encolar en la otra).
+        // RECEPCIÓN → ALMACÉN: el primero de la cola de recepción (el más antiguo)
+        // sale y entra al final de la cola del almacén.
         // Devuelve "" si se pudo, o el motivo si no.
         public static string EnviarAAlmacen()
         {
-            Envio frente = Recepcion.VerFrente();
+            Envio frente = Recepcion.VerFrente();   // Se mira sin sacarlo
             if (frente == null)
                 return "No hay envíos en la cola de recepción.";
 
@@ -513,11 +556,12 @@ namespace Shalom
             CambiarEstado(frente, EstadoEnvio.EnPreparacion,
                 "Almacén " + frente.SedeOrigen.Nombre, "Ingresó al almacén");
 
-            Almacen.Encolar(Recepcion.Desencolar());
+            Almacen.Encolar(Recepcion.Desencolar());   // Sale de una cola y entra a la otra
             return "";
         }
 
-        // ALMACÉN → PILA DEL VEHÍCULO (desencolar y apilar).
+        // ALMACÉN → VEHÍCULO: el primero de la cola del almacén se sube al vehículo
+        // y queda en el TOPE de su pila.
         // Devuelve "" si se pudo, o el motivo si no.
         public static string DespacharA(Vehiculo vehiculo)
         {
@@ -528,10 +572,12 @@ namespace Shalom
             if (frente == null)
                 return "El almacén está vacío.";
 
-            // Se revisa ANTES de desencolar: si no entra, se queda en el almacén
-            if (vehiculo.Carga.PesoActual + frente.PesoKg > vehiculo.CapacidadKg)
+            // Se revisa ANTES de sacarlo: si no entra, se queda en el almacén.
+            // Se cuenta la pila y también las paradas, porque siguen físicamente en el vehículo.
+            decimal pesoActual = PesoEnVehiculo(vehiculo);
+            if (pesoActual + frente.PesoKg > vehiculo.CapacidadKg)
                 return "El paquete " + frente.Codigo + " (" + frente.PesoKg + " kg) excede la capacidad de " +
-                       vehiculo.Placa + ".\nCarga actual: " + vehiculo.Carga.PesoActual +
+                       vehiculo.Placa + ".\nCarga actual: " + pesoActual +
                        " de " + vehiculo.CapacidadKg + " kg.";
 
             frente.PlacaVehiculo = vehiculo.Placa;
@@ -542,103 +588,117 @@ namespace Shalom
             }
             catch
             {
-                frente.PlacaVehiculo = null;   // Si SQL falló, se deshace en memoria
+                frente.PlacaVehiculo = null;   // Si SQL falló, se deshace la placa en memoria
                 throw;
             }
 
-            vehiculo.Carga.Apilar(Almacen.Desencolar());
+            vehiculo.Carga.Apilar(Almacen.Desencolar());   // Sale del almacén y entra a la pila
             return "";
+        }
+
+        // Peso total dentro del vehículo. Se suman las DOS estructuras, porque
+        // los paquetes con parada asignada siguen físicamente en el vehículo:
+        //   pila (por asignar) + lista (paradas de la ruta)
+        public static decimal PesoEnVehiculo(Vehiculo vehiculo)
+        {
+            decimal total = vehiculo.Carga.PesoActual;
+
+            Envio[] paradas = vehiculo.Ruta.ObtenerEnvios();
+            for (int i = 0; i < paradas.Length; i++)
+                total += paradas[i].PesoKg;
+
+            return total;
         }
 
         // =========================================================
         //  RUTAS (pila del vehículo ↔ lista de paradas)
+        //
+        //  Cada vehículo tiene dos estructuras:
+        //    Carga = PILA  → paquetes subidos al vehículo que aún no tienen parada
+        //    Ruta  = LISTA DOBLE → paradas de reparto, en el orden en que se entregan
+        //
+        //  Misma regla de siempre, en 2 pasos:
+        //    1. Se arma en una COPIA cómo quedará la ruta y se guarda en SQL.
+        //    2. Solo si SQL guardó bien, se cambian la pila y la lista reales.
         // =========================================================
 
-        // PILA → RUTA: el TOPE de la pila (último cargado, LIFO) pasa a ser una parada.
-        // codigoReferencia = null  → se agrega al final de la ruta
-        // codigoReferencia = guía  → se inserta después de esa parada
+        // PILA → RUTA: el paquete del TOPE de la pila pasa a ser una parada.
+        // codigoReferencia = null  → va al final de la ruta
+        // codigoReferencia = guía  → va justo después de esa parada
         // Devuelve "" si se pudo, o el motivo si no.
         public static string AsignarTope(Vehiculo vehiculo, string codigoReferencia)
         {
+            // Validaciones: hay vehículo, hay paquete en la pila y la parada de referencia existe
             if (vehiculo == null)
                 return "Seleccione un vehículo.";
 
-            Envio tope = vehiculo.Carga.VerTope();
+            Envio tope = vehiculo.Carga.VerTope();   // Solo se mira, todavía no se saca
             if (tope == null)
                 return "No hay paquetes en el vehículo pendientes de asignar.";
 
-            // 1. Memoria: se mueve de la pila a la lista
-            if (codigoReferencia == null)
-            {
-                vehiculo.Ruta.AgregarAlFinal(tope);
-            }
-            else if (!vehiculo.Ruta.InsertarDespues(codigoReferencia, tope))
-            {
+            if (codigoReferencia != null && !vehiculo.Ruta.Contiene(codigoReferencia))
                 return "No se encontró la parada de referencia.";
-            }
-            vehiculo.Carga.Desapilar();
 
-            // 2. SQL: estado, historial y el nuevo orden de la ruta
-            try
-            {
-                GuardarCambioRuta(vehiculo, tope, EstadoEnvio.EnReparto,
-                    "Ruta " + vehiculo.Placa, "Asignado a la ruta de reparto");
-            }
-            catch
-            {
-                CargarDatosSQL();   // Si SQL falló, la memoria vuelve a ser igual a la base
-                throw;
-            }
+            string ubicacion = "Ruta " + vehiculo.Placa;
+            string observacion = "Asignado a la ruta de reparto";
 
-            tope.CambiarEstado(EstadoEnvio.EnReparto,
-                "Ruta " + vehiculo.Placa, "Asignado a la ruta de reparto");
+            // 1. Copia de la ruta actual + el paquete en su nueva posición → se guarda en SQL
+            List<Envio> nuevaRuta = new List<Envio>(vehiculo.Ruta.ObtenerEnvios());
+            int posicion = codigoReferencia == null
+                ? nuevaRuta.Count                                  // Al final
+                : PosicionDe(nuevaRuta, codigoReferencia) + 1;     // Una después de la referencia
+            nuevaRuta.Insert(posicion, tope);
+
+            GuardarCambioRuta(vehiculo.Placa, nuevaRuta, tope, EstadoEnvio.EnReparto, ubicacion, observacion);
+
+            // 2. SQL guardó bien: ahora sí el paquete sale de la pila y entra a la lista
+            if (codigoReferencia == null)
+                vehiculo.Ruta.AgregarAlFinal(tope);
+            else
+                vehiculo.Ruta.InsertarDespues(codigoReferencia, tope);
+
+            vehiculo.Carga.Desapilar();                                        // Sale de la pila
+            tope.CambiarEstado(EstadoEnvio.EnReparto, ubicacion, observacion); // Estado e historial en memoria
             return "";
         }
 
-        // Atajo usado por "Entregar tope" en Carga del vehículo: tope al final de la ruta
+        // Atajo usado por "Entregar tope" en Carga del vehículo: manda el tope al final de la ruta
         public static string EntregarTope(Vehiculo vehiculo)
         {
             return AsignarTope(vehiculo, null);
         }
 
-        // RUTA → PILA: la parada se elimina y el paquete vuelve al TOPE del vehículo,
-        // quedando otra vez en "Paquetes por asignar".
+        // RUTA → PILA: la parada se elimina de la lista y el paquete vuelve al TOPE de la pila,
+        // quedando otra vez en "Paquetes por asignar". No se revisa el peso porque
+        // el paquete nunca salió del vehículo: solo cambia de estructura.
         public static string QuitarParada(Vehiculo vehiculo, string codigo)
         {
             if (vehiculo == null)
                 return "Seleccione un vehículo.";
 
-            Envio envio = Registro.Buscar(codigo);
+            Envio envio = Registro.Buscar(codigo);   // El árbol encuentra el envío por su guía
             if (envio == null || !vehiculo.Ruta.Contiene(codigo))
                 return "La parada no pertenece a la ruta de este vehículo.";
 
-            if (vehiculo.Carga.PesoActual + envio.PesoKg > vehiculo.CapacidadKg)
-                return "No hay espacio en el vehículo para devolver el paquete " + codigo + ".";
+            string ubicacion = "Vehículo " + vehiculo.Placa;
+            string observacion = "Retirado de la ruta, vuelve al vehículo";
 
-            // 1. Memoria: sale de la lista y vuelve a la pila
+            // 1. Se guarda en SQL cómo queda la ruta sin esa parada
+            GuardarCambioRuta(vehiculo.Placa, RutaSin(vehiculo, codigo), envio,
+                EstadoEnvio.EnTransito, ubicacion, observacion);
+
+            // 2. SQL guardó bien: sale de la lista y vuelve arriba de la pila
             vehiculo.Ruta.EliminarParada(codigo);
             vehiculo.Carga.Apilar(envio);
-
-            // 2. SQL
-            try
-            {
-                GuardarCambioRuta(vehiculo, envio, EstadoEnvio.EnTransito,
-                    "Vehículo " + vehiculo.Placa, "Retirado de la ruta, vuelve al vehículo");
-            }
-            catch
-            {
-                CargarDatosSQL();
-                throw;
-            }
-
-            envio.CambiarEstado(EstadoEnvio.EnTransito,
-                "Vehículo " + vehiculo.Placa, "Retirado de la ruta, vuelve al vehículo");
+            envio.CambiarEstado(EstadoEnvio.EnTransito, ubicacion, observacion);
             return "";
         }
 
-        // Guarda en una transacción: estado del envío, evento del historial
-        // y la ruta completa del vehículo en su orden actual.
-        private static void GuardarCambioRuta(Vehiculo vehiculo, Envio envio,
+        // Guarda 3 cosas juntas en una TRANSACCIÓN (o se guardan todas o ninguna):
+        //   1. El nuevo estado del envío (tabla Envio)
+        //   2. Un evento en su historial (tabla HistorialEnvio)
+        //   3. La ruta completa del vehículo en el orden recibido (tabla ParadaRuta)
+        private static void GuardarCambioRuta(string placa, List<Envio> paradas, Envio envio,
             EstadoEnvio estado, string ubicacion, string observacion)
         {
             DateTime ahora = DateTime.Now;
@@ -652,7 +712,7 @@ namespace Shalom
                     {
                         ActualizarEstadoSQL(conexion, tx, envio, estado, ahora);
                         InsertarHistorial(conexion, tx, envio.Codigo, estado, ahora, ubicacion, observacion);
-                        GuardarRuta(conexion, tx, vehiculo);
+                        GuardarRuta(conexion, tx, placa, paradas);
                         tx.Commit();
                     }
                     catch
@@ -664,25 +724,25 @@ namespace Shalom
             }
         }
 
-        // Reescribe ParadaRuta con el orden actual de la lista doble.
-        // Así "Insertar después" y "Eliminar" quedan bien numerados (1, 2, 3...).
-        private static void GuardarRuta(SqlConnection conexion, SqlTransaction tx, Vehiculo vehiculo)
+        // Borra las paradas guardadas del vehículo y las vuelve a escribir en el orden recibido.
+        // Es más simple que mover números: la columna Orden siempre queda 1, 2, 3...
+        private static void GuardarRuta(SqlConnection conexion, SqlTransaction tx,
+            string placa, List<Envio> paradas)
         {
             using (SqlCommand borrar = new SqlCommand(
                 "DELETE FROM ParadaRuta WHERE PlacaVehiculo = @placa", conexion, tx))
             {
-                borrar.Parameters.AddWithValue("@placa", vehiculo.Placa);
+                borrar.Parameters.AddWithValue("@placa", placa);
                 borrar.ExecuteNonQuery();
             }
 
-            Envio[] paradas = vehiculo.Ruta.ObtenerEnvios();
-            for (int i = 0; i < paradas.Length; i++)
+            for (int i = 0; i < paradas.Count; i++)
             {
                 using (SqlCommand insertar = new SqlCommand(
                     "INSERT INTO ParadaRuta (PlacaVehiculo, CodigoEnvio, Orden) VALUES (@placa, @cod, @orden)",
                     conexion, tx))
                 {
-                    insertar.Parameters.AddWithValue("@placa", vehiculo.Placa);
+                    insertar.Parameters.AddWithValue("@placa", placa);
                     insertar.Parameters.AddWithValue("@cod", paradas[i].Codigo);
                     insertar.Parameters.AddWithValue("@orden", i + 1);
                     insertar.ExecuteNonQuery();
@@ -690,44 +750,58 @@ namespace Shalom
             }
         }
 
+        // Posición (0, 1, 2...) de una guía dentro de la ruta, o -1 si no está
+        private static int PosicionDe(List<Envio> paradas, string codigo)
+        {
+            for (int i = 0; i < paradas.Count; i++)
+            {
+                if (paradas[i].Codigo == codigo)
+                    return i;
+            }
+
+            return -1;
+        }
+
+        // Copia de la ruta actual sin la parada indicada (la lista real no se toca)
+        private static List<Envio> RutaSin(Vehiculo vehiculo, string codigo)
+        {
+            List<Envio> paradas = new List<Envio>(vehiculo.Ruta.ObtenerEnvios());
+            paradas.RemoveAt(PosicionDe(paradas, codigo));
+            return paradas;
+        }
+
         // =========================================================
         //  RASTREO
         // =========================================================
 
         // Marca como ENTREGADO un envío que está en reparto:
-        // sale de la ruta del vehículo y queda solo en el árbol.
+        // sale de la ruta del vehículo y queda solo en el árbol (para poder consultarlo).
         public static string MarcarEntregado(Envio envio, string observacion)
         {
             if (envio.Estado != EstadoEnvio.EnReparto)
                 return "Solo se puede entregar un envío que está En reparto (estado actual: " + envio.Estado + ").";
 
             Vehiculo vehiculo = BuscarVehiculoPorPlaca(envio.PlacaVehiculo);
-            if (vehiculo == null)
-                return "No se encontró el vehículo del envío.";
+            if (vehiculo == null || !vehiculo.Ruta.Contiene(envio.Codigo))
+                return "No se encontró el envío en la ruta de su vehículo.";
 
             string ubicacion = envio.SedeDestino.Nombre;
             if (string.IsNullOrWhiteSpace(observacion))
-                observacion = "Entregado al destinatario";
+                observacion = "Entregado al destinatario";   // Texto por defecto
 
-            vehiculo.Ruta.EliminarParada(envio.Codigo);   // Lista doble: deja de ser parada
+            // 1. Se guarda en SQL cómo queda la ruta sin esa parada
+            GuardarCambioRuta(vehiculo.Placa, RutaSin(vehiculo, envio.Codigo), envio,
+                EstadoEnvio.Entregado, ubicacion, observacion);
 
-            try
-            {
-                GuardarCambioRuta(vehiculo, envio, EstadoEnvio.Entregado, ubicacion, observacion);
-            }
-            catch
-            {
-                CargarDatosSQL();
-                throw;
-            }
-
+            // 2. SQL guardó bien: deja de ser parada
+            vehiculo.Ruta.EliminarParada(envio.Codigo);
             envio.CambiarEstado(EstadoEnvio.Entregado, ubicacion, observacion);
             return "";
         }
 
         // Registra una INCIDENCIA en el historial (retraso, daño, etc.).
-        // El paquete NO cambia de estructura: sigue en la cola, pila o ruta donde estaba.
-        // REGISTRAR UNA INCIDENCIA
+        // El paquete NO cambia de estructura ni de estado: sigue en la cola, pila o ruta donde estaba;
+        // solo se agrega un evento a su historial.
         public static string RegistrarIncidencia(Envio envio, string observacion)
         {
             if (envio == null)
@@ -739,6 +813,7 @@ namespace Shalom
             DateTime ahora = DateTime.Now;
             string ubicacion = "Rastreo";
 
+            // 1. SQL
             using (SqlConnection conexion = CrearConexion())
             {
                 conexion.Open();
@@ -747,14 +822,8 @@ namespace Shalom
                 {
                     try
                     {
-                        InsertarHistorial(
-                            conexion,
-                            tx,
-                            envio.Codigo,
-                            EstadoEnvio.Incidencia,
-                            ahora,
-                            ubicacion,
-                            observacion);
+                        InsertarHistorial(conexion, tx, envio.Codigo,
+                            EstadoEnvio.Incidencia, ahora, ubicacion, observacion);
 
                         tx.Commit();
                     }
@@ -766,22 +835,23 @@ namespace Shalom
                 }
             }
 
-            // Agregar el evento al historial en memoria.
+            // 2. Memoria: el evento se agrega al final de la lista de historial del envío
             EventoRastreo evento = new EventoRastreo(
                 EstadoEnvio.Incidencia,
                 ubicacion,
                 observacion);
 
             evento.Fecha = ahora;
-            evento.PendienteSincronizar = false;
+            evento.PendienteSincronizar = false;   // Ya está guardado en la base
 
             envio.Historial.AgregarAlFinal(evento);
 
             return "";
         }
 
-        // PUNTO ÚNICO para cambiar el estado de un envío existente:
-        // actualiza la tabla Envio y agrega el evento a HistorialEnvio.
+        // PUNTO ÚNICO para cambiar el estado de un envío existente.
+        // En una transacción: actualiza la tabla Envio y agrega el evento a HistorialEnvio.
+        // Luego actualiza el envío en memoria.
         public static void CambiarEstado(Envio envio, EstadoEnvio estado,
             string ubicacion, string observacion)
         {
@@ -810,8 +880,13 @@ namespace Shalom
             envio.CambiarEstado(estado, ubicacion, observacion);
         }
 
-        // ---------- Métodos privados de apoyo ----------
+        // =========================================================
+        //  MÉTODOS PRIVADOS DE APOYO (consultas SQL pequeñas)
+        //  Reciben la conexión y la transacción ya abiertas, para que
+        //  formen parte de la misma operación "todo o nada".
+        // =========================================================
 
+        // UPDATE del estado, la fecha y la placa del envío en la tabla Envio
         private static void ActualizarEstadoSQL(SqlConnection conexion,
             SqlTransaction tx, Envio envio, EstadoEnvio estado, DateTime fecha)
         {
@@ -820,6 +895,7 @@ namespace Shalom
                 "FechaActualizacion = @fecha, PlacaVehiculo = @placa " +
                 "WHERE Id = @id";
 
+            // Los @parámetros evitan errores con comillas y la inyección SQL
             using (SqlCommand comando = new SqlCommand(consulta, conexion, tx))
             {
                 comando.Parameters.AddWithValue("@estado", estado.ToString());
@@ -830,8 +906,9 @@ namespace Shalom
             }
         }
 
-        // Si la persona ya existe (mismo DNI) se reutiliza y se actualizan
-        // sus datos; si no existe, se inserta. Devuelve su Id.
+        // Guarda una persona y devuelve su Id.
+        // Si ya existe alguien con ese DNI, se reutiliza y se actualizan su nombre y teléfono;
+        // si no existe, se inserta. Así no se duplican personas.
         private static int GuardarPersona(SqlConnection conexion,
             SqlTransaction tx, Persona persona)
         {
@@ -840,7 +917,7 @@ namespace Shalom
             using (SqlCommand comando = new SqlCommand(buscar, conexion, tx))
             {
                 comando.Parameters.AddWithValue("@doc", persona.NumeroDocumento);
-                object id = comando.ExecuteScalar();
+                object id = comando.ExecuteScalar();   // Devuelve el Id, o null si no hay nadie
 
                 if (id != null)
                 {
@@ -859,6 +936,7 @@ namespace Shalom
                 }
             }
 
+            // No existía: se inserta. OUTPUT INSERTED.Id devuelve el Id que SQL le asignó
             string insertar =
                 "INSERT INTO Persona (TipoDocumento, NumeroDocumento, Nombres, Telefono) " +
                 "OUTPUT INSERTED.Id " +
@@ -874,7 +952,9 @@ namespace Shalom
             }
         }
 
-        // Inserta el envío con un código temporal y devuelve el Id que asignó SQL
+        // Inserta el envío y devuelve el Id que le asignó SQL.
+        // La guía real necesita ese Id (LIM-ARE-000007), así que primero
+        // se guarda un código temporal único y luego ActualizarCodigo lo reemplaza.
         private static int InsertarEnvio(SqlConnection conexion,
             SqlTransaction tx, Envio envio, DateTime fecha)
         {
@@ -888,7 +968,7 @@ namespace Shalom
 
             using (SqlCommand comando = new SqlCommand(consulta, conexion, tx))
             {
-                // Temporal (20 caracteres): el código real necesita el Id
+                // Código temporal: "TMP" + 17 caracteres al azar (20 en total, único)
                 comando.Parameters.AddWithValue("@cod",
                     "TMP" + Guid.NewGuid().ToString("N").Substring(0, 17));
                 comando.Parameters.AddWithValue("@clave", envio.ClaveSeguridad);
@@ -908,6 +988,7 @@ namespace Shalom
             }
         }
 
+        // Cambia el código temporal por la guía real del envío
         private static void ActualizarCodigo(SqlConnection conexion,
             SqlTransaction tx, Envio envio)
         {
@@ -921,6 +1002,7 @@ namespace Shalom
             }
         }
 
+        // Agrega una fila a HistorialEnvio (un evento de rastreo: qué pasó, cuándo y dónde)
         private static void InsertarHistorial(SqlConnection conexion,
             SqlTransaction tx, string codigo, EstadoEnvio estado,
             DateTime fecha, string ubicacion, string observacion)
@@ -940,7 +1022,7 @@ namespace Shalom
             }
         }
 
-        // Texto vacío o null de C# → NULL de SQL
+        // Texto vacío o null de C# → NULL de SQL (para no guardar textos vacíos)
         private static object ValorONulo(string valor)
         {
             if (string.IsNullOrWhiteSpace(valor))
@@ -952,7 +1034,8 @@ namespace Shalom
         //  PERSONAS (validaciones del formulario de Ingreso)
         // =========================================================
 
-        // Busca una persona por su DNI. Devuelve null si no está registrada.
+        // Busca una persona por su DNI directamente en la base.
+        // Lo usa Ingreso para autocompletar nombre y teléfono. Devuelve null si no está registrada.
         public static Persona BuscarPersonaPorDni(string dni)
         {
             string consulta =
@@ -970,7 +1053,7 @@ namespace Shalom
                     using (SqlDataReader lector = comando.ExecuteReader())
                     {
                         if (!lector.Read())
-                            return null;
+                            return null;   // No hay ninguna fila con ese DNI
 
                         Persona persona = new Persona();
                         persona.Id = Convert.ToInt32(lector["Id"]);
@@ -988,6 +1071,7 @@ namespace Shalom
 
         // ¿El teléfono ya pertenece a OTRA persona (otro DNI)?
         // Devuelve el nombre de esa persona, o null si el teléfono está libre.
+        // Evita que dos personas distintas tengan el mismo número.
         public static string TelefonoDeOtraPersona(string telefono, string dniPropio)
         {
             string consulta =
@@ -1009,7 +1093,12 @@ namespace Shalom
             }
         }
 
-        // BUSCAR TARIFA SEGÚN EL TRAYECTO
+        // =========================================================
+        //  TARIFAS
+        // =========================================================
+
+        // Busca el precio del trayecto origen → destino (precio base + precio por kg).
+        // Devuelve null si ese trayecto no tiene tarifa registrada.
         public static Tarifa BuscarTarifa(int origenId, int destinoId)
         {
             if (origenId <= 0 || destinoId <= 0 || origenId == destinoId)
@@ -1057,14 +1146,16 @@ namespace Shalom
             return null;
         }
 
-
         // =========================================================
-        // LOGIN
+        //  LOGIN
         // =========================================================
 
+        // Revisa si existe un usuario con ese nombre y contraseña.
+        // COLLATE Latin1_General_CS_AS hace que la contraseña distinga mayúsculas y minúsculas.
+        // Devuelve true si los datos son correctos.
         public static bool ValidarUsuario(string usuario, string contrasena)
         {
-            string consulta = "SELECT COUNT(*) FROM Usuario " + 
+            string consulta = "SELECT COUNT(*) FROM Usuario " +
                               "WHERE Usuario = @usuario " +
                               "AND Contrasena = @contrasena COLLATE Latin1_General_CS_AS";
 
@@ -1077,11 +1168,10 @@ namespace Shalom
                     comando.Parameters.AddWithValue("@usuario", usuario);
                     comando.Parameters.AddWithValue("@contrasena", contrasena);
 
-                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());
+                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());   // Cuántos usuarios coinciden
                     return cantidad > 0;
                 }
             }
         }
-
     }
 }
