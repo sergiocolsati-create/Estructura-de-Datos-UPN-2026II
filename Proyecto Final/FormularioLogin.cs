@@ -19,40 +19,37 @@ namespace Shalom
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            string usuario = txtUsuario.Text.Trim();
-            string contrasena = txtContrasena.Text;
+            {
+                string usuario = txtUsuario.Text.Trim();
+                string contrasena = txtContrasena.Text;
 
-            if (string.IsNullOrWhiteSpace(usuario) || string.IsNullOrWhiteSpace(contrasena))
-            {
-                MessageBox.Show("Ingrese su usuario y contraseña.", "Datos incompletos",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+                if (string.IsNullOrWhiteSpace(usuario) ||
+                    string.IsNullOrWhiteSpace(contrasena))
+                {
+                    MessageBox.Show(
+                        "Ingrese su usuario y contraseña.",
+                        "Datos incompletos",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
+                    return;
+                }
 
-            bool valido;
+                if (usuario == "grupo2" && contrasena == "admin123")
+                {
+                    DialogResult = DialogResult.OK;
+                    Close();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        "El usuario o la contraseña son incorrectos.",
+                        "Error de acceso",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning);
 
-            try
-            {
-                valido = Sistema.ValidarUsuario(usuario, contrasena);
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo conectar con la base de datos.\n\n" + ex.Message,
-                    "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            if (valido)
-            {
-                DialogResult = DialogResult.OK;
-                Close();
-            }
-            else
-            {
-                MessageBox.Show("El usuario o la contraseña son incorrectos.", "Error de acceso",
-                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                txtContrasena.Clear();
-                txtContrasena.Focus();
+                    txtContrasena.Clear();
+                    txtContrasena.Focus();
+                }
             }
         }
 

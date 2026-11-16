@@ -29,17 +29,16 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.lblCorreo = new System.Windows.Forms.Label();
-            this.lblNotaCorreo = new System.Windows.Forms.Label();
-            this.lblDescripcion = new System.Windows.Forms.Label();
-            this.txtDescripcion = new System.Windows.Forms.TextBox();
-            this.btnEnviarSolicitud = new System.Windows.Forms.Button();
             this.btnVolver = new System.Windows.Forms.Button();
             this.txtCorreo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
+            this.lblDescripcion = new System.Windows.Forms.Label();
+            this.lblSobre = new System.Windows.Forms.Label();
+            this.lblEscribenos = new System.Windows.Forms.Label();
+            this.lnkCorreoSoporte = new System.Windows.Forms.LinkLabel();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,68 +53,13 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "Centro de ayuda";
             // 
-            // lblCorreo
-            // 
-            this.lblCorreo.AutoSize = true;
-            this.lblCorreo.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblCorreo.Location = new System.Drawing.Point(24, 154);
-            this.lblCorreo.Name = "lblCorreo";
-            this.lblCorreo.Size = new System.Drawing.Size(238, 36);
-            this.lblCorreo.TabIndex = 3;
-            this.lblCorreo.Text = "Correo electrónico";
-            // 
-            // lblNotaCorreo
-            // 
-            this.lblNotaCorreo.AutoSize = true;
-            this.lblNotaCorreo.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Italic);
-            this.lblNotaCorreo.Location = new System.Drawing.Point(25, 228);
-            this.lblNotaCorreo.Name = "lblNotaCorreo";
-            this.lblNotaCorreo.Size = new System.Drawing.Size(357, 28);
-            this.lblNotaCorreo.TabIndex = 8;
-            this.lblNotaCorreo.Text = "Usaremos este correo para responderte.";
-            // 
-            // lblDescripcion
-            // 
-            this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.lblDescripcion.Location = new System.Drawing.Point(101, 330);
-            this.lblDescripcion.Name = "lblDescripcion";
-            this.lblDescripcion.Size = new System.Drawing.Size(270, 36);
-            this.lblDescripcion.TabIndex = 9;
-            this.lblDescripcion.Text = "Describe el problema";
-            // 
-            // txtDescripcion
-            // 
-            this.txtDescripcion.AccessibleName = "Describe el problema";
-            this.txtDescripcion.Location = new System.Drawing.Point(30, 330);
-            this.txtDescripcion.MaxLength = 1000;
-            this.txtDescripcion.Multiline = true;
-            this.txtDescripcion.Name = "txtDescripcion";
-            this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtDescripcion.Size = new System.Drawing.Size(564, 172);
-            this.txtDescripcion.TabIndex = 10;
-            // 
-            // btnEnviarSolicitud
-            // 
-            this.btnEnviarSolicitud.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(24)))), ((int)(((byte)(100)))));
-            this.btnEnviarSolicitud.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEnviarSolicitud.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnEnviarSolicitud.ForeColor = System.Drawing.Color.White;
-            this.btnEnviarSolicitud.Location = new System.Drawing.Point(430, 524);
-            this.btnEnviarSolicitud.Name = "btnEnviarSolicitud";
-            this.btnEnviarSolicitud.Size = new System.Drawing.Size(173, 46);
-            this.btnEnviarSolicitud.TabIndex = 11;
-            this.btnEnviarSolicitud.Text = "Enviar solicitud";
-            this.btnEnviarSolicitud.UseVisualStyleBackColor = false;
-            this.btnEnviarSolicitud.Click += new System.EventHandler(this.btnEnviarSolicitud_Click);
-            // 
             // btnVolver
             // 
             this.btnVolver.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(198)))), ((int)(((byte)(207)))));
             this.btnVolver.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnVolver.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVolver.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
-            this.btnVolver.Location = new System.Drawing.Point(238, 524);
+            this.btnVolver.Location = new System.Drawing.Point(284, 631);
             this.btnVolver.Name = "btnVolver";
             this.btnVolver.Size = new System.Drawing.Size(167, 46);
             this.btnVolver.TabIndex = 12;
@@ -126,21 +70,11 @@
             // txtCorreo
             // 
             this.txtCorreo.AccessibleName = "Correo electrónico";
-            this.txtCorreo.Location = new System.Drawing.Point(30, 199);
+            this.txtCorreo.Location = new System.Drawing.Point(71, 206);
             this.txtCorreo.MaxLength = 254;
             this.txtCorreo.Name = "txtCorreo";
             this.txtCorreo.Size = new System.Drawing.Size(564, 26);
             this.txtCorreo.TabIndex = 13;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(24, 272);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(270, 36);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Describe el problema";
             // 
             // panel1
             // 
@@ -150,7 +84,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(615, 124);
+            this.panel1.Size = new System.Drawing.Size(769, 124);
             this.panel1.TabIndex = 15;
             // 
             // label3
@@ -175,20 +109,78 @@
             this.label4.TabIndex = 1;
             this.label4.Text = "Centro de ayuda";
             // 
+            // lblTitulo
+            // 
+            this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 30F, System.Drawing.FontStyle.Bold);
+            this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(17)))), ((int)(((byte)(31)))), ((int)(((byte)(67)))));
+            this.lblTitulo.Location = new System.Drawing.Point(57, 136);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(617, 77);
+            this.lblTitulo.TabIndex = 16;
+            this.lblTitulo.Text = "Soporte";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblDescripcion
+            // 
+            this.lblDescripcion.Font = new System.Drawing.Font("Segoe UI", 15F);
+            this.lblDescripcion.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.lblDescripcion.Location = new System.Drawing.Point(76, 258);
+            this.lblDescripcion.Name = "lblDescripcion";
+            this.lblDescripcion.Size = new System.Drawing.Size(600, 86);
+            this.lblDescripcion.TabIndex = 17;
+            this.lblDescripcion.Text = "¿Tienes dudas o un problema con tu envío?\r\nContáctanos por correo y nuestro equip" +
+    "o de soporte te ayudará a la brevedad.";
+            this.lblDescripcion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblSobre
+            // 
+            this.lblSobre.Font = new System.Drawing.Font("Segoe UI Symbol", 48F);
+            this.lblSobre.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(0)))), ((int)(((byte)(43)))));
+            this.lblSobre.Location = new System.Drawing.Point(311, 344);
+            this.lblSobre.Name = "lblSobre";
+            this.lblSobre.Size = new System.Drawing.Size(126, 117);
+            this.lblSobre.TabIndex = 18;
+            this.lblSobre.Text = "✉";
+            this.lblSobre.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblEscribenos
+            // 
+            this.lblEscribenos.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
+            this.lblEscribenos.Location = new System.Drawing.Point(74, 460);
+            this.lblEscribenos.Name = "lblEscribenos";
+            this.lblEscribenos.Size = new System.Drawing.Size(600, 57);
+            this.lblEscribenos.TabIndex = 19;
+            this.lblEscribenos.Text = "Escríbenos a:";
+            this.lblEscribenos.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lnkCorreoSoporte
+            // 
+            this.lnkCorreoSoporte.ActiveLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(195)))), ((int)(((byte)(0)))), ((int)(((byte)(43)))));
+            this.lnkCorreoSoporte.Font = new System.Drawing.Font("Segoe UI", 21F, System.Drawing.FontStyle.Bold);
+            this.lnkCorreoSoporte.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.lnkCorreoSoporte.Location = new System.Drawing.Point(72, 517);
+            this.lnkCorreoSoporte.Name = "lnkCorreoSoporte";
+            this.lnkCorreoSoporte.Size = new System.Drawing.Size(604, 87);
+            this.lnkCorreoSoporte.TabIndex = 20;
+            this.lnkCorreoSoporte.TabStop = true;
+            this.lnkCorreoSoporte.Text = "soporte@shalom.com";
+            this.lnkCorreoSoporte.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lnkCorreoSoporte.VisitedLinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(51)))), ((int)(((byte)(204)))));
+            this.lnkCorreoSoporte.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkCorreoSoporte_LinkClicked);
+            // 
             // CentroAyuda
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(615, 572);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.txtCorreo);
-            this.Controls.Add(this.btnEnviarSolicitud);
-            this.Controls.Add(this.btnVolver);
-            this.Controls.Add(this.txtDescripcion);
+            this.ClientSize = new System.Drawing.Size(769, 744);
+            this.Controls.Add(this.lnkCorreoSoporte);
+            this.Controls.Add(this.lblEscribenos);
+            this.Controls.Add(this.lblSobre);
             this.Controls.Add(this.lblDescripcion);
-            this.Controls.Add(this.lblNotaCorreo);
-            this.Controls.Add(this.lblCorreo);
+            this.Controls.Add(this.lblTitulo);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.txtCorreo);
+            this.Controls.Add(this.btnVolver);
             this.Controls.Add(this.label2);
             this.Name = "CentroAyuda";
             this.Text = "CentroAyuda";
@@ -202,16 +194,15 @@
         #endregion
 
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lblCorreo;
-        private System.Windows.Forms.Label lblNotaCorreo;
-        private System.Windows.Forms.Label lblDescripcion;
-        private System.Windows.Forms.TextBox txtDescripcion;
-        private System.Windows.Forms.Button btnEnviarSolicitud;
         private System.Windows.Forms.Button btnVolver;
         private System.Windows.Forms.TextBox txtCorreo;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label lblTitulo;
+        private System.Windows.Forms.Label lblDescripcion;
+        private System.Windows.Forms.Label lblSobre;
+        private System.Windows.Forms.Label lblEscribenos;
+        private System.Windows.Forms.LinkLabel lnkCorreoSoporte;
     }
 }
