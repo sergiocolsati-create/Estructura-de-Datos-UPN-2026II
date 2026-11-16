@@ -58,7 +58,7 @@
       <HintPath>packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System">
-      <HintPath>..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -178,6 +178,11 @@
     <Compile Include="Persona.cs" />
     <Compile Include="PilaEnvios.cs" />
     <Compile Include="Program.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="RastreoDeEnvíos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -239,15 +244,10 @@
       <DependentUpon>RastreoDeEnvíos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <EmbeddedResource Include="RastreoYLogística.resx">
       <DependentUpon>RastreoYLogística.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,10 +267,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\shalom_logo_Cabcera.png" />
     <None Include="Resources\Captura de pantalla 2026-11-09 001404.png" />
     <None Include="Resources\imagen_23x24.png" />
     <Content Include="Resources\logo_shalom_blanco.png" />
-    <Content Include="Resources\logo_shalom_cabecera.png" />
     <Content Include="Resources\logo_shalom_rojo.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

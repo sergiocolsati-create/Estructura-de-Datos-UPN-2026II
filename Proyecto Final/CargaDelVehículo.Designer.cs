@@ -429,7 +429,6 @@
             // 
             // picLogo
             // 
-            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
             this.picLogo.Location = new System.Drawing.Point(50, 11);
             this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.picLogo.Name = "picLogo";
