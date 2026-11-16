@@ -82,9 +82,9 @@
             this.lnkDesarrollador = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCabecera = new System.Windows.Forms.Panel();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecepcion)).BeginInit();
@@ -655,6 +655,16 @@
             this.pnlCabecera.Size = new System.Drawing.Size(1230, 70);
             this.pnlCabecera.TabIndex = 28;
             // 
+            // picLogo
+            // 
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(44, 11);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(229, 54);
+            this.picLogo.TabIndex = 3;
+            this.picLogo.TabStop = false;
+            // 
             // label20
             // 
             this.label20.AutoSize = true;
@@ -677,16 +687,6 @@
             this.label21.TabIndex = 1;
             this.label21.Text = "Ingreso De Envíos";
             this.label21.Click += new System.EventHandler(this.label21_Click);
-            // 
-            // picLogo
-            // 
-            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(44, 11);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(229, 54);
-            this.picLogo.TabIndex = 3;
-            this.picLogo.TabStop = false;
             // 
             // Ingreso_de_envíos_Cola_de_Recepción
             // 

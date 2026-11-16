@@ -1,44 +1,16 @@
-﻿using System;
+using System;
 using System.Windows.Forms;
 
-namespace Shalom
+namespace SoporteShalom
 {
     internal static class Program
     {
         [STAThread]
-        static void Main()
+        private static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-
-            using (var login = new FormularioLogin())
-            {
-                if (login.ShowDialog() != DialogResult.OK)
-                {
-                    return;
-                }
-            }
-
-            try
-            {
-                // Conectar con SQL y cargar los datos iniciales.
-                Sistema.CargarDatosSQL();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(
-                    "No se pudo conectar con SQL Server.\n\n" +
-                    "Verifica el nombre del servidor y la base de datos.\n\n" +
-                    "Detalle: " + ex.Message,
-                    "Error de conexión",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Error
-                );
-
-                return;
-            }
-
-            Application.Run(new RastreoYLogística());
+            Application.Run(new FormularioSoporte());
         }
     }
 }

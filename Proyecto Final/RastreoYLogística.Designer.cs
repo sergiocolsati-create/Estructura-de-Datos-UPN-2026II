@@ -767,7 +767,7 @@ namespace Shalom
             // 
             // picLogo
             // 
-            this.picLogo.BackgroundImage = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
             this.picLogo.Location = new System.Drawing.Point(12, 3);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(231, 50);

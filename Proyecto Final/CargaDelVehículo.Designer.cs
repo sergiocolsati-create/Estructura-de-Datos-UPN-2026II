@@ -60,9 +60,9 @@
             this.lnkDesarrollador = new System.Windows.Forms.LinkLabel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCabecera = new System.Windows.Forms.Panel();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
-            this.picLogo = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -427,6 +427,16 @@
             this.pnlCabecera.Size = new System.Drawing.Size(1075, 72);
             this.pnlCabecera.TabIndex = 9;
             // 
+            // picLogo
+            // 
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(50, 11);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(229, 54);
+            this.picLogo.TabIndex = 3;
+            this.picLogo.TabStop = false;
+            // 
             // label8
             // 
             this.label8.AutoSize = true;
@@ -448,16 +458,6 @@
             this.label9.Size = new System.Drawing.Size(225, 32);
             this.label9.TabIndex = 1;
             this.label9.Text = "Carga del vehículo";
-            // 
-            // picLogo
-            // 
-            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.picLogo.Location = new System.Drawing.Point(50, 11);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.picLogo.Name = "picLogo";
-            this.picLogo.Size = new System.Drawing.Size(229, 54);
-            this.picLogo.TabIndex = 3;
-            this.picLogo.TabStop = false;
             // 
             // CargaDelVehículo
             // 

@@ -31,6 +31,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlCabecera = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.grpVehiculo = new System.Windows.Forms.GroupBox();
@@ -55,14 +56,13 @@
             this.lblParadas = new System.Windows.Forms.Label();
             this.grpMapa = new System.Windows.Forms.GroupBox();
             this.lblLeyenda = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCabecera.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpVehiculo.SuspendLayout();
             this.grpPorAsignar.SuspendLayout();
             this.grpParadas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParadas)).BeginInit();
             this.grpMapa.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCabecera
@@ -77,6 +77,16 @@
             this.pnlCabecera.Name = "pnlCabecera";
             this.pnlCabecera.Size = new System.Drawing.Size(1573, 86);
             this.pnlCabecera.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.pictureBox1.Location = new System.Drawing.Point(69, 13);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(229, 54);
+            this.pictureBox1.TabIndex = 3;
+            this.pictureBox1.TabStop = false;
             // 
             // lblSubtitulo
             // 
@@ -405,16 +415,6 @@
             this.lblLeyenda.Text = "Verde: salida   Rojo: paradas   Azul: parada seleccionada.\r\nArrastre para mover, " +
     "rueda para zoom. Mapa © OpenStreetMap.";
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.pictureBox1.Location = new System.Drawing.Point(69, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 54);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
-            // 
             // AsignaciónDeRutas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -435,6 +435,7 @@
             this.Load += new System.EventHandler(this.AsignaciónDeRutas_Load);
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpVehiculo.ResumeLayout(false);
             this.grpVehiculo.PerformLayout();
             this.grpPorAsignar.ResumeLayout(false);
@@ -442,7 +443,6 @@
             this.grpParadas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParadas)).EndInit();
             this.grpMapa.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
