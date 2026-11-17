@@ -45,7 +45,7 @@
             // 
             // picFoto
             // 
-            this.picFoto.BackColor = System.Drawing.Color.White;
+            this.picFoto.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(239)))), ((int)(((byte)(241)))));
             this.picFoto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picFoto.Location = new System.Drawing.Point(128, 26);
             this.picFoto.Margin = new System.Windows.Forms.Padding(4);
@@ -129,7 +129,7 @@
             this.lblCurso.Name = "lblCurso";
             this.lblCurso.Size = new System.Drawing.Size(400, 25);
             this.lblCurso.TabIndex = 16;
-            this.lblCurso.Text = "Estructura de datos - UPN";
+            this.lblCurso.Text = "Estructura de Datos - UPN";
             this.lblCurso.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lnkLinkedIn
@@ -144,7 +144,7 @@
             this.lnkLinkedIn.TabStop = true;
             this.lnkLinkedIn.Text = "LinkedIn";
             this.lnkLinkedIn.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lnkLinkedIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLinkedIn_LinkClicked_1);
+            this.lnkLinkedIn.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkLinkedIn_LinkClicked);
             // 
             // lnkGitHub
             // 
@@ -158,11 +158,12 @@
             this.lnkGitHub.TabStop = true;
             this.lnkGitHub.Text = "GitHub";
             this.lnkGitHub.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lnkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGitHub_LinkClicked_1);
+            this.lnkGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkGitHub_LinkClicked);
             // 
             // btnCerrar
             // 
             this.btnCerrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(42)))), ((int)(((byte)(47)))));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCerrar.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -180,7 +181,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.picFoto);
             this.Controls.Add(this.pnlCabecera);
             this.Controls.Add(this.lblNombre);

@@ -303,7 +303,7 @@ namespace Shalom
         private void lnkPerfil_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             TarjetaColaborador tarjeta = new TarjetaColaborador();
-            tarjeta.MostrarDatos(Colaborador.Buscar("N00469214"), true);
+            tarjeta.MostrarDatos(Colaborador.Buscar("N00469214"));
 
             Form ventana = new Form();
             ventana.Text = "Colaboradora";

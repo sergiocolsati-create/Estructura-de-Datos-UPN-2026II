@@ -123,31 +123,13 @@
       <DependentUpon>CentroAyuda.cs</DependentUpon>
     </Compile>
     <Compile Include="Colaborador.cs" />
+    <Compile Include="Colaboradores.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Colaboradores.Designer.cs">
+      <DependentUpon>Colaboradores.cs</DependentUpon>
+    </Compile>
     <Compile Include="ColaEnvios.cs" />
-    <Compile Include="DevAnsh.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DevAnsh.Designer.cs">
-      <DependentUpon>DevAnsh.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DevDavid.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DevDavid.Designer.cs">
-      <DependentUpon>DevDavid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DevEst.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DevEst.Designer.cs">
-      <DependentUpon>DevEst.cs</DependentUpon>
-    </Compile>
-    <Compile Include="DevSer.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="DevSer.Designer.cs">
-      <DependentUpon>DevSer.cs</DependentUpon>
-    </Compile>
     <Compile Include="Enumeraciones.cs" />
     <Compile Include="Envio.cs" />
     <Compile Include="EventoRastreo.cs" />
@@ -219,18 +201,6 @@
     <EmbeddedResource Include="CentroAyuda.resx">
       <DependentUpon>CentroAyuda.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="DevAnsh.resx">
-      <DependentUpon>DevAnsh.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DevDavid.resx">
-      <DependentUpon>DevDavid.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DevEst.resx">
-      <DependentUpon>DevEst.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="DevSer.resx">
-      <DependentUpon>DevSer.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormularioLogin.resx">
       <DependentUpon>FormularioLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -267,9 +237,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Resources\Serg.png" />
     <None Include="Resources\shalom_logo_Cabcera.png" />
-    <None Include="Resources\Captura de pantalla 2026-11-09 001404.png" />
     <None Include="Resources\imagen_23x24.png" />
+    <Content Include="Resources\Ansh.png" />
     <Content Include="Resources\logo_shalom_blanco.png" />
     <Content Include="Resources\logo_shalom_rojo.png" />
   </ItemGroup>

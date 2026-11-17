@@ -31,7 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.pnlCabecera = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.lblSubtitulo = new System.Windows.Forms.Label();
             this.lblTitulo = new System.Windows.Forms.Label();
             this.grpVehiculo = new System.Windows.Forms.GroupBox();
@@ -56,46 +55,36 @@
             this.lblParadas = new System.Windows.Forms.Label();
             this.grpMapa = new System.Windows.Forms.GroupBox();
             this.lblLeyenda = new System.Windows.Forms.Label();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.pnlCabecera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.grpVehiculo.SuspendLayout();
             this.grpPorAsignar.SuspendLayout();
             this.grpParadas.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParadas)).BeginInit();
             this.grpMapa.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
-            this.pnlCabecera.Controls.Add(this.pictureBox1);
+            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Controls.Add(this.lblSubtitulo);
             this.pnlCabecera.Controls.Add(this.lblTitulo);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
-            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(4);
             this.pnlCabecera.Name = "pnlCabecera";
-            this.pnlCabecera.Size = new System.Drawing.Size(1573, 86);
+            this.pnlCabecera.Size = new System.Drawing.Size(1180, 70);
             this.pnlCabecera.TabIndex = 0;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Location = new System.Drawing.Point(69, 13);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(229, 54);
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
             // 
             // lblSubtitulo
             // 
             this.lblSubtitulo.AutoSize = true;
             this.lblSubtitulo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblSubtitulo.ForeColor = System.Drawing.Color.White;
-            this.lblSubtitulo.Location = new System.Drawing.Point(328, 52);
-            this.lblSubtitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSubtitulo.Location = new System.Drawing.Point(246, 42);
             this.lblSubtitulo.Name = "lblSubtitulo";
-            this.lblSubtitulo.Size = new System.Drawing.Size(332, 23);
+            this.lblSubtitulo.Size = new System.Drawing.Size(258, 17);
             this.lblSubtitulo.TabIndex = 2;
             this.lblSubtitulo.Text = "Del vehículo (pila) a las paradas de la ruta ";
             // 
@@ -104,10 +93,9 @@
             this.lblTitulo.AutoSize = true;
             this.lblTitulo.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold);
             this.lblTitulo.ForeColor = System.Drawing.Color.White;
-            this.lblTitulo.Location = new System.Drawing.Point(323, 13);
-            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTitulo.Location = new System.Drawing.Point(242, 11);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(276, 37);
+            this.lblTitulo.Size = new System.Drawing.Size(213, 30);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Asignación de Rutas";
             // 
@@ -121,31 +109,27 @@
             this.grpVehiculo.Controls.Add(this.lblVehiculo);
             this.grpVehiculo.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpVehiculo.ForeColor = System.Drawing.Color.Black;
-            this.grpVehiculo.Location = new System.Drawing.Point(27, 105);
-            this.grpVehiculo.Margin = new System.Windows.Forms.Padding(4);
+            this.grpVehiculo.Location = new System.Drawing.Point(20, 85);
             this.grpVehiculo.Name = "grpVehiculo";
-            this.grpVehiculo.Padding = new System.Windows.Forms.Padding(4);
-            this.grpVehiculo.Size = new System.Drawing.Size(400, 178);
+            this.grpVehiculo.Size = new System.Drawing.Size(300, 145);
             this.grpVehiculo.TabIndex = 1;
             this.grpVehiculo.TabStop = false;
             this.grpVehiculo.Text = "Vehículo";
             // 
             // pbCarga
             // 
-            this.pbCarga.Location = new System.Drawing.Point(20, 142);
-            this.pbCarga.Margin = new System.Windows.Forms.Padding(4);
+            this.pbCarga.Location = new System.Drawing.Point(15, 115);
             this.pbCarga.Name = "pbCarga";
-            this.pbCarga.Size = new System.Drawing.Size(360, 15);
+            this.pbCarga.Size = new System.Drawing.Size(270, 12);
             this.pbCarga.TabIndex = 4;
             // 
             // lblCarga
             // 
             this.lblCarga.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblCarga.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lblCarga.Location = new System.Drawing.Point(16, 108);
-            this.lblCarga.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCarga.Location = new System.Drawing.Point(12, 88);
             this.lblCarga.Name = "lblCarga";
-            this.lblCarga.Size = new System.Drawing.Size(367, 25);
+            this.lblCarga.Size = new System.Drawing.Size(275, 20);
             this.lblCarga.TabIndex = 3;
             this.lblCarga.Text = "Carga: -";
             // 
@@ -153,10 +137,9 @@
             // 
             this.lblConductor.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblConductor.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lblConductor.Location = new System.Drawing.Point(16, 79);
-            this.lblConductor.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblConductor.Location = new System.Drawing.Point(12, 64);
             this.lblConductor.Name = "lblConductor";
-            this.lblConductor.Size = new System.Drawing.Size(367, 25);
+            this.lblConductor.Size = new System.Drawing.Size(275, 20);
             this.lblConductor.TabIndex = 2;
             this.lblConductor.Text = "Conductor: -";
             // 
@@ -165,10 +148,9 @@
             this.cboVehiculo.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboVehiculo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.cboVehiculo.FormattingEnabled = true;
-            this.cboVehiculo.Location = new System.Drawing.Point(107, 34);
-            this.cboVehiculo.Margin = new System.Windows.Forms.Padding(4);
+            this.cboVehiculo.Location = new System.Drawing.Point(80, 28);
             this.cboVehiculo.Name = "cboVehiculo";
-            this.cboVehiculo.Size = new System.Drawing.Size(272, 29);
+            this.cboVehiculo.Size = new System.Drawing.Size(205, 25);
             this.cboVehiculo.TabIndex = 1;
             this.cboVehiculo.SelectedIndexChanged += new System.EventHandler(this.cboVehiculo_SelectedIndexChanged);
             // 
@@ -177,10 +159,9 @@
             this.lblVehiculo.AutoSize = true;
             this.lblVehiculo.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblVehiculo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lblVehiculo.Location = new System.Drawing.Point(16, 38);
-            this.lblVehiculo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblVehiculo.Location = new System.Drawing.Point(12, 31);
             this.lblVehiculo.Name = "lblVehiculo";
-            this.lblVehiculo.Size = new System.Drawing.Size(54, 23);
+            this.lblVehiculo.Size = new System.Drawing.Size(41, 17);
             this.lblVehiculo.TabIndex = 0;
             this.lblVehiculo.Text = "Placa:";
             // 
@@ -193,11 +174,9 @@
             this.grpPorAsignar.Controls.Add(this.lblTope);
             this.grpPorAsignar.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpPorAsignar.ForeColor = System.Drawing.Color.Black;
-            this.grpPorAsignar.Location = new System.Drawing.Point(27, 295);
-            this.grpPorAsignar.Margin = new System.Windows.Forms.Padding(4);
+            this.grpPorAsignar.Location = new System.Drawing.Point(20, 240);
             this.grpPorAsignar.Name = "grpPorAsignar";
-            this.grpPorAsignar.Padding = new System.Windows.Forms.Padding(4);
-            this.grpPorAsignar.Size = new System.Drawing.Size(400, 542);
+            this.grpPorAsignar.Size = new System.Drawing.Size(300, 440);
             this.grpPorAsignar.TabIndex = 2;
             this.grpPorAsignar.TabStop = false;
             this.grpPorAsignar.Text = "Paquetes por asignar (pila)";
@@ -209,10 +188,9 @@
             this.btnInsertarDespues.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
             this.btnInsertarDespues.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnInsertarDespues.ForeColor = System.Drawing.Color.White;
-            this.btnInsertarDespues.Location = new System.Drawing.Point(42, 470);
-            this.btnInsertarDespues.Margin = new System.Windows.Forms.Padding(4);
+            this.btnInsertarDespues.Location = new System.Drawing.Point(32, 382);
             this.btnInsertarDespues.Name = "btnInsertarDespues";
-            this.btnInsertarDespues.Size = new System.Drawing.Size(299, 60);
+            this.btnInsertarDespues.Size = new System.Drawing.Size(224, 49);
             this.btnInsertarDespues.TabIndex = 3;
             this.btnInsertarDespues.Text = "Insertar después de la parada seleccionada";
             this.btnInsertarDespues.UseVisualStyleBackColor = false;
@@ -225,10 +203,9 @@
             this.btnAgregarAlFinal.FlatAppearance.BorderSize = 0;
             this.btnAgregarAlFinal.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnAgregarAlFinal.ForeColor = System.Drawing.Color.White;
-            this.btnAgregarAlFinal.Location = new System.Drawing.Point(42, 406);
-            this.btnAgregarAlFinal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregarAlFinal.Location = new System.Drawing.Point(32, 330);
             this.btnAgregarAlFinal.Name = "btnAgregarAlFinal";
-            this.btnAgregarAlFinal.Size = new System.Drawing.Size(299, 56);
+            this.btnAgregarAlFinal.Size = new System.Drawing.Size(224, 46);
             this.btnAgregarAlFinal.TabIndex = 2;
             this.btnAgregarAlFinal.Text = "Agregar al final de la ruta";
             this.btnAgregarAlFinal.UseVisualStyleBackColor = false;
@@ -240,22 +217,20 @@
             this.lstPorAsignar.Font = new System.Drawing.Font("Consolas", 9.75F);
             this.lstPorAsignar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
             this.lstPorAsignar.FormattingEnabled = true;
-            this.lstPorAsignar.ItemHeight = 19;
-            this.lstPorAsignar.Location = new System.Drawing.Point(20, 86);
-            this.lstPorAsignar.Margin = new System.Windows.Forms.Padding(4);
+            this.lstPorAsignar.ItemHeight = 15;
+            this.lstPorAsignar.Location = new System.Drawing.Point(15, 70);
             this.lstPorAsignar.Name = "lstPorAsignar";
             this.lstPorAsignar.SelectionMode = System.Windows.Forms.SelectionMode.None;
-            this.lstPorAsignar.Size = new System.Drawing.Size(359, 306);
+            this.lstPorAsignar.Size = new System.Drawing.Size(270, 242);
             this.lstPorAsignar.TabIndex = 1;
             // 
             // lblTope
             // 
             this.lblTope.Font = new System.Drawing.Font("Segoe UI Semibold", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTope.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lblTope.Location = new System.Drawing.Point(16, 34);
-            this.lblTope.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblTope.Location = new System.Drawing.Point(12, 28);
             this.lblTope.Name = "lblTope";
-            this.lblTope.Size = new System.Drawing.Size(367, 44);
+            this.lblTope.Size = new System.Drawing.Size(275, 36);
             this.lblTope.TabIndex = 0;
             this.lblTope.Text = "Siguiente en salir (tope): -";
             // 
@@ -267,11 +242,9 @@
             this.grpParadas.Controls.Add(this.lblParadas);
             this.grpParadas.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpParadas.ForeColor = System.Drawing.Color.Black;
-            this.grpParadas.Location = new System.Drawing.Point(447, 105);
-            this.grpParadas.Margin = new System.Windows.Forms.Padding(4);
+            this.grpParadas.Location = new System.Drawing.Point(335, 85);
             this.grpParadas.Name = "grpParadas";
-            this.grpParadas.Padding = new System.Windows.Forms.Padding(4);
-            this.grpParadas.Size = new System.Drawing.Size(573, 732);
+            this.grpParadas.Size = new System.Drawing.Size(430, 595);
             this.grpParadas.TabIndex = 3;
             this.grpParadas.TabStop = false;
             this.grpParadas.Text = "Paradas de la ruta ";
@@ -283,10 +256,9 @@
             this.btnQuitarParada.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
             this.btnQuitarParada.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
             this.btnQuitarParada.ForeColor = System.Drawing.Color.Black;
-            this.btnQuitarParada.Location = new System.Drawing.Point(94, 669);
-            this.btnQuitarParada.Margin = new System.Windows.Forms.Padding(4);
+            this.btnQuitarParada.Location = new System.Drawing.Point(70, 544);
             this.btnQuitarParada.Name = "btnQuitarParada";
-            this.btnQuitarParada.Size = new System.Drawing.Size(408, 42);
+            this.btnQuitarParada.Size = new System.Drawing.Size(306, 34);
             this.btnQuitarParada.TabIndex = 2;
             this.btnQuitarParada.Text = "Quitar parada (vuelve al tope del vehículo)";
             this.btnQuitarParada.UseVisualStyleBackColor = false;
@@ -322,8 +294,7 @@
             this.dgvParadas.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvParadas.EnableHeadersVisualStyles = false;
             this.dgvParadas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
-            this.dgvParadas.Location = new System.Drawing.Point(20, 96);
-            this.dgvParadas.Margin = new System.Windows.Forms.Padding(4);
+            this.dgvParadas.Location = new System.Drawing.Point(15, 78);
             this.dgvParadas.MultiSelect = false;
             this.dgvParadas.Name = "dgvParadas";
             this.dgvParadas.ReadOnly = true;
@@ -331,7 +302,7 @@
             this.dgvParadas.RowHeadersWidth = 51;
             this.dgvParadas.RowTemplate.Height = 28;
             this.dgvParadas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvParadas.Size = new System.Drawing.Size(533, 560);
+            this.dgvParadas.Size = new System.Drawing.Size(400, 455);
             this.dgvParadas.TabIndex = 1;
             this.dgvParadas.SelectionChanged += new System.EventHandler(this.dgvParadas_SelectionChanged);
             // 
@@ -379,10 +350,9 @@
             this.lblParadas.AutoSize = true;
             this.lblParadas.Font = new System.Drawing.Font("Segoe UI", 9.75F);
             this.lblParadas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(60)))), ((int)(((byte)(60)))));
-            this.lblParadas.Location = new System.Drawing.Point(16, 40);
-            this.lblParadas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblParadas.Location = new System.Drawing.Point(12, 32);
             this.lblParadas.Name = "lblParadas";
-            this.lblParadas.Size = new System.Drawing.Size(87, 23);
+            this.lblParadas.Size = new System.Drawing.Size(69, 17);
             this.lblParadas.TabIndex = 0;
             this.lblParadas.Text = "Paradas: 0";
             this.lblParadas.Click += new System.EventHandler(this.lblParadas_Click);
@@ -393,11 +363,9 @@
             this.grpMapa.Controls.Add(this.lblLeyenda);
             this.grpMapa.Font = new System.Drawing.Font("Segoe UI", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.grpMapa.ForeColor = System.Drawing.Color.Black;
-            this.grpMapa.Location = new System.Drawing.Point(1040, 105);
-            this.grpMapa.Margin = new System.Windows.Forms.Padding(4);
+            this.grpMapa.Location = new System.Drawing.Point(780, 85);
             this.grpMapa.Name = "grpMapa";
-            this.grpMapa.Padding = new System.Windows.Forms.Padding(4);
-            this.grpMapa.Size = new System.Drawing.Size(507, 732);
+            this.grpMapa.Size = new System.Drawing.Size(380, 595);
             this.grpMapa.TabIndex = 4;
             this.grpMapa.TabStop = false;
             this.grpMapa.Text = "Mapa de la ruta";
@@ -406,27 +374,36 @@
             // 
             this.lblLeyenda.Font = new System.Drawing.Font("Segoe UI", 8.25F);
             this.lblLeyenda.ForeColor = System.Drawing.Color.Gray;
-            this.lblLeyenda.Location = new System.Drawing.Point(16, 677);
-            this.lblLeyenda.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLeyenda.Location = new System.Drawing.Point(12, 550);
             this.lblLeyenda.Name = "lblLeyenda";
-            this.lblLeyenda.Size = new System.Drawing.Size(473, 43);
+            this.lblLeyenda.Size = new System.Drawing.Size(355, 35);
             this.lblLeyenda.TabIndex = 1;
             this.lblLeyenda.Text = "Verde: salida   Rojo: paradas   Azul: parada seleccionada.\r\nArrastre para mover, " +
     "rueda para zoom. Mapa © OpenStreetMap.";
             // 
+            // picLogo
+            // 
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(35, 11);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(2);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(172, 44);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picLogo.TabIndex = 4;
+            this.picLogo.TabStop = false;
+            // 
             // AsignaciónDeRutas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(1573, 862);
+            this.ClientSize = new System.Drawing.Size(1180, 700);
             this.Controls.Add(this.grpMapa);
             this.Controls.Add(this.grpParadas);
             this.Controls.Add(this.grpPorAsignar);
             this.Controls.Add(this.grpVehiculo);
             this.Controls.Add(this.pnlCabecera);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.Name = "AsignaciónDeRutas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -434,7 +411,6 @@
             this.Load += new System.EventHandler(this.AsignaciónDeRutas_Load);
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.grpVehiculo.ResumeLayout(false);
             this.grpVehiculo.PerformLayout();
             this.grpPorAsignar.ResumeLayout(false);
@@ -442,6 +418,7 @@
             this.grpParadas.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParadas)).EndInit();
             this.grpMapa.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -473,6 +450,6 @@
         private System.Windows.Forms.Label lblParadas;
         private System.Windows.Forms.GroupBox grpMapa;
         private System.Windows.Forms.Label lblLeyenda;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picLogo;
     }
 }

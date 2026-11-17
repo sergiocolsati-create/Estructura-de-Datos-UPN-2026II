@@ -1150,28 +1150,56 @@ namespace Shalom
         //  LOGIN
         // =========================================================
 
-        // Revisa si existe un usuario con ese nombre y contraseña.
+        // Datos del usuario que inició sesión ("" si nadie ha entrado).
+        // Cualquier formulario puede usarlos, por ejemplo: Sistema.UsuarioNombres
+        public static string UsuarioNombres = "";
+        public static string UsuarioSede = "";
+
+        // Revisa el usuario y la contraseña en la tabla Usuario.
         // COLLATE Latin1_General_CS_AS hace que la contraseña distinga mayúsculas y minúsculas.
-        // Devuelve true si los datos son correctos.
-        public static bool ValidarUsuario(string usuario, string contrasena)
+        // Devuelve "" si entró (y guarda sus datos), o el motivo si no pudo entrar.
+        public static string IniciarSesion(string nombreUsuario, string contrasena)
         {
-            string consulta = "SELECT COUNT(*) FROM Usuario " +
-                              "WHERE Usuario = @usuario " +
-                              "AND Contrasena = @contrasena COLLATE Latin1_General_CS_AS";
+            string consulta =
+                "SELECT u.Nombres, u.Activo, s.Nombre AS Sede " +
+                "FROM Usuario AS u " +
+                "LEFT JOIN Sede AS s ON s.Id = u.SedeId " +
+                "WHERE u.NombreUsuario = @usuario " +
+                "AND u.Contrasena = @contrasena COLLATE Latin1_General_CS_AS";
 
             using (SqlConnection conexion = CrearConexion())
             {
                 conexion.Open();
 
+                // 1. Buscar al usuario con esa contraseña
                 using (SqlCommand comando = new SqlCommand(consulta, conexion))
                 {
-                    comando.Parameters.AddWithValue("@usuario", usuario);
+                    comando.Parameters.AddWithValue("@usuario", nombreUsuario);
                     comando.Parameters.AddWithValue("@contrasena", contrasena);
 
-                    int cantidad = Convert.ToInt32(comando.ExecuteScalar());   // Cuántos usuarios coinciden
-                    return cantidad > 0;
+                    using (SqlDataReader lector = comando.ExecuteReader())
+                    {
+                        if (!lector.Read())
+                            return "El usuario o la contraseña son incorrectos.";
+
+                        if (!Convert.ToBoolean(lector["Activo"]))
+                            return "Este usuario está desactivado. Consulte con el administrador.";
+
+                        UsuarioNombres = lector["Nombres"].ToString();
+                        UsuarioSede = lector["Sede"] == DBNull.Value ? "" : lector["Sede"].ToString();
+                    }
+                }
+
+                // 2. Guardar la fecha y hora de este acceso
+                using (SqlCommand comando = new SqlCommand(
+                    "UPDATE Usuario SET UltimoAcceso = GETDATE() WHERE NombreUsuario = @usuario", conexion))
+                {
+                    comando.Parameters.AddWithValue("@usuario", nombreUsuario);
+                    comando.ExecuteNonQuery();
                 }
             }
+
+            return "";
         }
     }
 }
