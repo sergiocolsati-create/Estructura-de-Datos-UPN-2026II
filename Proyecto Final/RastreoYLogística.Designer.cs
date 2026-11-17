@@ -19,7 +19,6 @@ namespace Shalom
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(RastreoYLogística));
             this.miIngreso = new System.Windows.Forms.ToolStripMenuItem();
             this.miAlmacen = new System.Windows.Forms.ToolStripMenuItem();
             this.miCarga = new System.Windows.Forms.ToolStripMenuItem();
@@ -27,24 +26,26 @@ namespace Shalom
             this.miRastreo = new System.Windows.Forms.ToolStripMenuItem();
             this.menuOperaciones = new System.Windows.Forms.ToolStripMenuItem();
             this.menuPrincipal = new System.Windows.Forms.MenuStrip();
-            this.menuAyuda = new System.Windows.Forms.ToolStripMenuItem();
             this.lblEstado = new System.Windows.Forms.ToolStripStatusLabel();
             this.lblSesion = new System.Windows.Forms.ToolStripStatusLabel();
             this.barraEstado = new System.Windows.Forms.StatusStrip();
             this.grpResumen = new System.Windows.Forms.GroupBox();
             this.pnlEntregados = new System.Windows.Forms.Panel();
             this.lblTituloEntregados = new System.Windows.Forms.Label();
+            this.lblIconoEntregados = new System.Windows.Forms.Label();
             this.lblEntregados = new System.Windows.Forms.Label();
             this.pnlRuta = new System.Windows.Forms.Panel();
             this.lblTituloRuta = new System.Windows.Forms.Label();
+            this.lblIconoRuta = new System.Windows.Forms.Label();
             this.lblEnRuta = new System.Windows.Forms.Label();
             this.pnlAlmacen = new System.Windows.Forms.Panel();
             this.lblTituloAlmacen = new System.Windows.Forms.Label();
+            this.lblIconoAlmacen = new System.Windows.Forms.Label();
             this.lblEnAlmacen = new System.Windows.Forms.Label();
             this.pnlCola = new System.Windows.Forms.Panel();
             this.lblTituloCola = new System.Windows.Forms.Label();
+            this.lblIconoCola = new System.Windows.Forms.Label();
             this.lblEnCola = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.grpRastreo = new System.Windows.Forms.GroupBox();
             this.txtGuia = new System.Windows.Forms.TextBox();
             this.btnBuscarEnvio = new System.Windows.Forms.Button();
@@ -62,6 +63,7 @@ namespace Shalom
             this.lblTituloSeleccionado = new System.Windows.Forms.Label();
             this.pnlNavegacion = new System.Windows.Forms.Panel();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnAyuda = new System.Windows.Forms.Button();
             this.btnReportes = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -76,7 +78,10 @@ namespace Shalom
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblSede = new System.Windows.Forms.Label();
+            this.lnkDesarrollador = new System.Windows.Forms.LinkLabel();
+            this.lblIconoUsuario = new System.Windows.Forms.Label();
             this.menuPrincipal.SuspendLayout();
             this.barraEstado.SuspendLayout();
             this.grpResumen.SuspendLayout();
@@ -90,7 +95,6 @@ namespace Shalom
             this.pnlNavegacion.SuspendLayout();
             this.pnlCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // miIngreso
@@ -146,22 +150,12 @@ namespace Shalom
             // 
             this.menuPrincipal.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuPrincipal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.menuOperaciones,
-            this.menuAyuda});
+            this.menuOperaciones});
             this.menuPrincipal.Location = new System.Drawing.Point(0, 70);
             this.menuPrincipal.Name = "menuPrincipal";
             this.menuPrincipal.Padding = new System.Windows.Forms.Padding(14, 8, 0, 8);
             this.menuPrincipal.Size = new System.Drawing.Size(1241, 40);
             this.menuPrincipal.TabIndex = 3;
-            // 
-            // menuAyuda
-            // 
-            this.menuAyuda.BackColor = System.Drawing.Color.White;
-            this.menuAyuda.Font = new System.Drawing.Font("Segoe UI Semibold", 9F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuAyuda.Name = "menuAyuda";
-            this.menuAyuda.Size = new System.Drawing.Size(68, 24);
-            this.menuAyuda.Text = "Ayuda";
-            this.menuAyuda.Click += new System.EventHandler(this.menuAyuda_Click);
             // 
             // lblEstado
             // 
@@ -192,7 +186,7 @@ namespace Shalom
             // 
             // grpResumen
             // 
-            this.grpResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpResumen.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpResumen.BackColor = System.Drawing.Color.White;
             this.grpResumen.Controls.Add(this.pnlEntregados);
@@ -209,19 +203,30 @@ namespace Shalom
             // 
             // pnlEntregados
             // 
-            this.pnlEntregados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
+            this.pnlEntregados.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.pnlEntregados.Controls.Add(this.lblIconoEntregados);
             this.pnlEntregados.Controls.Add(this.lblTituloEntregados);
             this.pnlEntregados.Controls.Add(this.lblEntregados);
             this.pnlEntregados.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlEntregados.Location = new System.Drawing.Point(623, 29);
+            this.pnlEntregados.Location = new System.Drawing.Point(750, 29);
             this.pnlEntregados.Name = "pnlEntregados";
-            this.pnlEntregados.Size = new System.Drawing.Size(97, 75);
+            this.pnlEntregados.Size = new System.Drawing.Size(180, 75);
             this.pnlEntregados.TabIndex = 5;
+            // 
+            // lblIconoEntregados
+            // 
+            this.lblIconoEntregados.Font = new System.Drawing.Font("Segoe UI Emoji", 18F);
+            this.lblIconoEntregados.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(163)))), ((int)(((byte)(74)))));
+            this.lblIconoEntregados.Location = new System.Drawing.Point(8, 14);
+            this.lblIconoEntregados.Name = "lblIconoEntregados";
+            this.lblIconoEntregados.Size = new System.Drawing.Size(46, 46);
+            this.lblIconoEntregados.Text = "✔";
+            this.lblIconoEntregados.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTituloEntregados
             // 
             this.lblTituloEntregados.AutoSize = true;
-            this.lblTituloEntregados.Location = new System.Drawing.Point(10, 44);
+            this.lblTituloEntregados.Location = new System.Drawing.Point(62, 44);
             this.lblTituloEntregados.Name = "lblTituloEntregados";
             this.lblTituloEntregados.Size = new System.Drawing.Size(79, 20);
             this.lblTituloEntregados.TabIndex = 4;
@@ -230,7 +235,8 @@ namespace Shalom
             // lblEntregados
             // 
             this.lblEntregados.AutoSize = true;
-            this.lblEntregados.Location = new System.Drawing.Point(39, 16);
+            this.lblEntregados.Location = new System.Drawing.Point(60, 6);
+            this.lblEntregados.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblEntregados.Name = "lblEntregados";
             this.lblEntregados.Size = new System.Drawing.Size(17, 20);
             this.lblEntregados.TabIndex = 0;
@@ -238,29 +244,40 @@ namespace Shalom
             // 
             // pnlRuta
             // 
-            this.pnlRuta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
+            this.pnlRuta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.pnlRuta.Controls.Add(this.lblIconoRuta);
             this.pnlRuta.Controls.Add(this.lblTituloRuta);
             this.pnlRuta.Controls.Add(this.lblEnRuta);
             this.pnlRuta.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlRuta.Location = new System.Drawing.Point(455, 26);
+            this.pnlRuta.Location = new System.Drawing.Point(520, 29);
             this.pnlRuta.Name = "pnlRuta";
-            this.pnlRuta.Size = new System.Drawing.Size(97, 75);
+            this.pnlRuta.Size = new System.Drawing.Size(180, 75);
             this.pnlRuta.TabIndex = 5;
+            // 
+            // lblIconoRuta
+            // 
+            this.lblIconoRuta.Font = new System.Drawing.Font("Segoe UI Emoji", 18F);
+            this.lblIconoRuta.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.lblIconoRuta.Location = new System.Drawing.Point(8, 14);
+            this.lblIconoRuta.Name = "lblIconoRuta";
+            this.lblIconoRuta.Size = new System.Drawing.Size(46, 46);
+            this.lblIconoRuta.Text = "🚚";
+            this.lblIconoRuta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTituloRuta
             // 
             this.lblTituloRuta.AutoSize = true;
-            this.lblTituloRuta.Location = new System.Drawing.Point(20, 44);
+            this.lblTituloRuta.Location = new System.Drawing.Point(62, 44);
             this.lblTituloRuta.Name = "lblTituloRuta";
             this.lblTituloRuta.Size = new System.Drawing.Size(54, 20);
             this.lblTituloRuta.TabIndex = 3;
             this.lblTituloRuta.Text = "En ruta";
-            this.lblTituloRuta.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEnRuta
             // 
             this.lblEnRuta.AutoSize = true;
-            this.lblEnRuta.Location = new System.Drawing.Point(37, 16);
+            this.lblEnRuta.Location = new System.Drawing.Point(60, 6);
+            this.lblEnRuta.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblEnRuta.Name = "lblEnRuta";
             this.lblEnRuta.Size = new System.Drawing.Size(17, 20);
             this.lblEnRuta.TabIndex = 0;
@@ -268,29 +285,40 @@ namespace Shalom
             // 
             // pnlAlmacen
             // 
-            this.pnlAlmacen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
+            this.pnlAlmacen.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.pnlAlmacen.Controls.Add(this.lblIconoAlmacen);
             this.pnlAlmacen.Controls.Add(this.lblTituloAlmacen);
             this.pnlAlmacen.Controls.Add(this.lblEnAlmacen);
             this.pnlAlmacen.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlAlmacen.Location = new System.Drawing.Point(285, 29);
+            this.pnlAlmacen.Location = new System.Drawing.Point(290, 29);
             this.pnlAlmacen.Name = "pnlAlmacen";
-            this.pnlAlmacen.Size = new System.Drawing.Size(97, 75);
+            this.pnlAlmacen.Size = new System.Drawing.Size(180, 75);
             this.pnlAlmacen.TabIndex = 5;
+            // 
+            // lblIconoAlmacen
+            // 
+            this.lblIconoAlmacen.Font = new System.Drawing.Font("Segoe UI Emoji", 18F);
+            this.lblIconoAlmacen.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(59)))), ((int)(((byte)(130)))), ((int)(((byte)(246)))));
+            this.lblIconoAlmacen.Location = new System.Drawing.Point(8, 14);
+            this.lblIconoAlmacen.Name = "lblIconoAlmacen";
+            this.lblIconoAlmacen.Size = new System.Drawing.Size(46, 46);
+            this.lblIconoAlmacen.Text = "📦";
+            this.lblIconoAlmacen.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTituloAlmacen
             // 
             this.lblTituloAlmacen.AutoSize = true;
-            this.lblTituloAlmacen.Location = new System.Drawing.Point(9, 44);
+            this.lblTituloAlmacen.Location = new System.Drawing.Point(62, 44);
             this.lblTituloAlmacen.Name = "lblTituloAlmacen";
             this.lblTituloAlmacen.Size = new System.Drawing.Size(83, 20);
             this.lblTituloAlmacen.TabIndex = 2;
             this.lblTituloAlmacen.Text = "En almacén";
-            this.lblTituloAlmacen.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEnAlmacen
             // 
             this.lblEnAlmacen.AutoSize = true;
-            this.lblEnAlmacen.Location = new System.Drawing.Point(37, 16);
+            this.lblEnAlmacen.Location = new System.Drawing.Point(60, 6);
+            this.lblEnAlmacen.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblEnAlmacen.Name = "lblEnAlmacen";
             this.lblEnAlmacen.Size = new System.Drawing.Size(17, 20);
             this.lblEnAlmacen.TabIndex = 0;
@@ -298,49 +326,48 @@ namespace Shalom
             // 
             // pnlCola
             // 
-            this.pnlCola.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
+            this.pnlCola.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
+            this.pnlCola.Controls.Add(this.lblIconoCola);
             this.pnlCola.Controls.Add(this.lblTituloCola);
             this.pnlCola.Controls.Add(this.lblEnCola);
             this.pnlCola.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pnlCola.Location = new System.Drawing.Point(115, 29);
+            this.pnlCola.Location = new System.Drawing.Point(60, 29);
             this.pnlCola.Name = "pnlCola";
-            this.pnlCola.Size = new System.Drawing.Size(97, 75);
+            this.pnlCola.Size = new System.Drawing.Size(180, 75);
             this.pnlCola.TabIndex = 4;
+            // 
+            // lblIconoCola
+            // 
+            this.lblIconoCola.Font = new System.Drawing.Font("Segoe UI Emoji", 18F);
+            this.lblIconoCola.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(245)))), ((int)(((byte)(158)))), ((int)(((byte)(11)))));
+            this.lblIconoCola.Location = new System.Drawing.Point(8, 14);
+            this.lblIconoCola.Name = "lblIconoCola";
+            this.lblIconoCola.Size = new System.Drawing.Size(46, 46);
+            this.lblIconoCola.Text = "📥";
+            this.lblIconoCola.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblTituloCola
             // 
             this.lblTituloCola.AutoSize = true;
-            this.lblTituloCola.Location = new System.Drawing.Point(19, 44);
+            this.lblTituloCola.Location = new System.Drawing.Point(62, 44);
             this.lblTituloCola.Name = "lblTituloCola";
             this.lblTituloCola.Size = new System.Drawing.Size(55, 20);
             this.lblTituloCola.TabIndex = 1;
             this.lblTituloCola.Text = "En cola";
-            this.lblTituloCola.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // lblEnCola
             // 
             this.lblEnCola.AutoSize = true;
-            this.lblEnCola.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnCola.Location = new System.Drawing.Point(38, 16);
+            this.lblEnCola.Location = new System.Drawing.Point(60, 6);
+            this.lblEnCola.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
             this.lblEnCola.Name = "lblEnCola";
             this.lblEnCola.Size = new System.Drawing.Size(17, 20);
             this.lblEnCola.TabIndex = 0;
             this.lblEnCola.Text = "0";
             // 
-            // linkLabel1
-            // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(1111, 85);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(71, 20);
-            this.linkLabel1.TabIndex = 9;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "linkDavid";
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
-            // 
             // grpRastreo
             // 
-            this.grpRastreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpRastreo.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpRastreo.BackColor = System.Drawing.Color.White;
             this.grpRastreo.Controls.Add(this.txtGuia);
@@ -401,8 +428,8 @@ namespace Shalom
             // 
             // grpVehiculos
             // 
-            this.grpVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.grpVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.grpVehiculos.BackColor = System.Drawing.Color.White;
             this.grpVehiculos.Controls.Add(this.dgvVehiculos);
@@ -422,8 +449,8 @@ namespace Shalom
             // 
             this.dgvVehiculos.AllowUserToAddRows = false;
             this.dgvVehiculos.AllowUserToDeleteRows = false;
-            this.dgvVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.dgvVehiculos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVehiculos.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvVehiculos.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -534,6 +561,7 @@ namespace Shalom
             // pnlNavegacion
             // 
             this.pnlNavegacion.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(43)))), ((int)(((byte)(47)))), ((int)(((byte)(58)))));
+            this.pnlNavegacion.Controls.Add(this.btnAyuda);
             this.pnlNavegacion.Controls.Add(this.btnSalir);
             this.pnlNavegacion.Controls.Add(this.btnReportes);
             this.pnlNavegacion.Controls.Add(this.label5);
@@ -550,6 +578,25 @@ namespace Shalom
             this.pnlNavegacion.Name = "pnlNavegacion";
             this.pnlNavegacion.Size = new System.Drawing.Size(220, 664);
             this.pnlNavegacion.TabIndex = 7;
+            // 
+            // btnAyuda
+            // 
+            this.btnAyuda.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnAyuda.FlatAppearance.BorderSize = 0;
+            this.btnAyuda.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(75)))), ((int)(((byte)(90)))));
+            this.btnAyuda.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(58)))), ((int)(((byte)(63)))), ((int)(((byte)(76)))));
+            this.btnAyuda.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAyuda.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAyuda.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(210)))), ((int)(((byte)(220)))));
+            this.btnAyuda.Location = new System.Drawing.Point(12, 563);
+            this.btnAyuda.Name = "btnAyuda";
+            this.btnAyuda.Padding = new System.Windows.Forms.Padding(12, 0, 0, 0);
+            this.btnAyuda.Size = new System.Drawing.Size(196, 38);
+            this.btnAyuda.TabIndex = 11;
+            this.btnAyuda.Text = "Ayuda";
+            this.btnAyuda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAyuda.UseVisualStyleBackColor = false;
+            this.btnAyuda.Click += new System.EventHandler(this.btnAyuda_Click);
             // 
             // btnSalir
             // 
@@ -733,6 +780,10 @@ namespace Shalom
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.lblIconoUsuario);
+            this.pnlCabecera.Controls.Add(this.lnkDesarrollador);
+            this.pnlCabecera.Controls.Add(this.lblSede);
+            this.pnlCabecera.Controls.Add(this.lblUsuario);
             this.pnlCabecera.Controls.Add(this.label2);
             this.pnlCabecera.Controls.Add(this.label1);
             this.pnlCabecera.Controls.Add(this.picLogo);
@@ -741,6 +792,50 @@ namespace Shalom
             this.pnlCabecera.Name = "pnlCabecera";
             this.pnlCabecera.Size = new System.Drawing.Size(1241, 70);
             this.pnlCabecera.TabIndex = 8;
+            // 
+            // lblUsuario  (nombre del usuario conectado)
+            // 
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(852, 4);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(320, 24);
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSede  (sede del usuario conectado)
+            // 
+            this.lblSede.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSede.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lblSede.Location = new System.Drawing.Point(852, 28);
+            this.lblSede.Name = "lblSede";
+            this.lblSede.Size = new System.Drawing.Size(320, 20);
+            this.lblSede.Text = "Sede";
+            this.lblSede.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lnkDesarrollador
+            // 
+            this.lnkDesarrollador.ActiveLinkColor = System.Drawing.Color.White;
+            this.lnkDesarrollador.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lnkDesarrollador.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkDesarrollador.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lnkDesarrollador.Location = new System.Drawing.Point(852, 48);
+            this.lnkDesarrollador.Name = "lnkDesarrollador";
+            this.lnkDesarrollador.Size = new System.Drawing.Size(320, 20);
+            this.lnkDesarrollador.TabStop = true;
+            this.lnkDesarrollador.Text = "Formulario de: Alfonso David Moscoso";
+            this.lnkDesarrollador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lnkDesarrollador.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDesarrollador_LinkClicked);
+            // 
+            // lblIconoUsuario
+            // 
+            this.lblIconoUsuario.Font = new System.Drawing.Font("Segoe UI Emoji", 22F);
+            this.lblIconoUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblIconoUsuario.Location = new System.Drawing.Point(1180, 10);
+            this.lblIconoUsuario.Name = "lblIconoUsuario";
+            this.lblIconoUsuario.Size = new System.Drawing.Size(50, 50);
+            this.lblIconoUsuario.Text = "👤";
+            this.lblIconoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -763,7 +858,6 @@ namespace Shalom
             this.label1.Size = new System.Drawing.Size(229, 32);
             this.label1.TabIndex = 1;
             this.label1.Text = "Rastreo y Logística";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // picLogo
             // 
@@ -774,24 +868,12 @@ namespace Shalom
             this.picLogo.TabIndex = 0;
             this.picLogo.TabStop = false;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(1188, 70);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(41, 40);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 10;
-            this.pictureBox1.TabStop = false;
-            // 
             // RastreoYLogística
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1241, 800);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.pnlNavegacion);
             this.Controls.Add(this.menuPrincipal);
             this.Controls.Add(this.pnlCabecera);
@@ -833,7 +915,6 @@ namespace Shalom
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -845,7 +926,6 @@ namespace Shalom
         private ToolStripMenuItem miRastreo;
         private ToolStripMenuItem menuOperaciones;
         private MenuStrip menuPrincipal;
-        private ToolStripMenuItem menuAyuda;
         private ToolStripStatusLabel lblEstado;
         private ToolStripStatusLabel lblSesion;
         private StatusStrip barraEstado;
@@ -874,26 +954,33 @@ namespace Shalom
         private Button btnIngreso;
         private Panel pnlEntregados;
         private Label lblTituloEntregados;
+        private Label lblIconoEntregados;
         private Label lblEntregados;
         private Panel pnlRuta;
         private Label lblTituloRuta;
+        private Label lblIconoRuta;
         private Label lblEnRuta;
         private Panel pnlAlmacen;
         private Label lblTituloAlmacen;
+        private Label lblIconoAlmacen;
         private Label lblEnAlmacen;
         private Panel pnlCola;
         private Label lblTituloCola;
+        private Label lblIconoCola;
         private Button btnRastreo;
         private Panel pnlCabecera;
         private PictureBox picLogo;
+        private Label lblUsuario;
+        private Label lblSede;
+        private LinkLabel lnkDesarrollador;
+        private Label lblIconoUsuario;
         private Label label1;
         private Label label2;
         private Label label5;
         private Label label4;
         private Label label3;
-        private LinkLabel linkLabel1;
-        private PictureBox pictureBox1;
         private Button btnReportes;
         private Button btnSalir;
+        private Button btnAyuda;
     }
 }

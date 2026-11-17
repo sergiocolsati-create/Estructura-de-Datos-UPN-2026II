@@ -1,84 +1,93 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shalom
 {
+    // ALMACÉN (cola del almacén)
+    //   Almacenar:         el frente de la cola de RECEPCIÓN pasa al final de la cola del ALMACÉN
+    //   Despachar primero: el frente de la cola del ALMACÉN se apila en el vehículo elegido
+    //   Ver frente:        muestra el más antiguo del almacén sin sacarlo
     public partial class Almacén : Form
     {
         public Almacén()
         {
             InitializeComponent();
+
+            lblUsuario.Text = Sistema.UsuarioNombres;
+            lblSede.Text = Sistema.UsuarioSede;
+
             ConfigurarControles();
             ActualizarVista();
         }
+
+        // =========================================================
+        //  1. CONFIGURACIÓN INICIAL
+        // =========================================================
+
         private void ConfigurarControles()
         {
+            // El ComboBox muestra la placa y guarda el objeto Vehiculo completo
             cboVehiculo.DisplayMember = "Placa";
             cboVehiculo.Items.AddRange(Sistema.Vehiculos);
             cboVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            // Grilla de solo lectura (las columnas las crea ColaEnvios.Mostrar)
+            dgvAlmacen.AllowUserToAddRows = false;
+            dgvAlmacen.ReadOnly = true;
+            dgvAlmacen.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        // =========================================================
+        //  2. PANTALLA
+        // =========================================================
+
+        // Grilla del almacén, ocupación y siguiente envío de la cola de recepción
+        private void ActualizarVista()
+        {
+            Sistema.Almacen.Mostrar(dgvAlmacen);
+
+            int cantidad = Sistema.Almacen.Cantidad;
+            int capacidad = Sistema.Almacen.Capacidad;
+            int porcentaje = capacidad == 0 ? 0 : cantidad * 100 / capacidad;
+
+            lblOcupacion.Text = cantidad + " de " + capacidad + " (" + porcentaje + "%)";
+            pbarOcupacion.Value = Math.Min(porcentaje, 100);
+
+            Envio siguiente = Sistema.Recepcion.VerFrente();
+            lblSiguiente.Text = "Siguiente en la cola: " + (siguiente == null ? "-----" : siguiente.Codigo);
+        }
+
+        // =========================================================
+        //  3. BOTONES
+        //  Siempre activos (así no se ponen oscuros): si no se puede,
+        //  Sistema devuelve el motivo y se muestra.
+        // =========================================================
+
+        // RECEPCIÓN → ALMACÉN
+        private void btnAlmacenar_Click(object sender, EventArgs e)
+        {
+            if (EjecutarOperacion(() => Sistema.EnviarAAlmacen(), "Almacenar"))
+                ActualizarVista();
+        }
+
+        // ALMACÉN → PILA DEL VEHÍCULO.
+        // Si salió bien, abre la carga de ese vehículo encima; al cerrarla se vuelve aquí.
+        private void btnDespacho_Click(object sender, EventArgs e)
         {
             Vehiculo vehiculo = cboVehiculo.SelectedItem as Vehiculo;
 
-            try
-            {
-                string error = Sistema.DespacharA(vehiculo);   // Guarda en SQL y mueve en memoria
-                if (error != "")
-                {
-                    MessageBox.Show(error, "Despachar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            if (!EjecutarOperacion(() => Sistema.DespacharA(vehiculo), "Despachar"))
                 return;
-            }
 
             ActualizarVista();
 
-            // Abre la carga de ESE vehículo. ShowDialog: al cerrarla se vuelve aquí
-            new CargaDelVehículo(vehiculo).ShowDialog();
-            ActualizarVista();
+            using (CargaDelVehículo carga = new CargaDelVehículo(vehiculo))
+                carga.ShowDialog(this);
 
+            ActualizarVista();
         }
 
-        private void btnAlmacenar_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                string error = Sistema.EnviarAAlmacen();       // Guarda en SQL y mueve en memoria
-                if (error != "")
-                {
-                    MessageBox.Show(error, "Almacenar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            ActualizarVista();
-
-        }
-
+        // Muestra el más antiguo del almacén sin sacarlo (PEEK)
         private void btnFrente_Click(object sender, EventArgs e)
         {
             Envio frente = Sistema.Almacen.VerFrente();
@@ -95,46 +104,36 @@ namespace Shalom
                             "\nIngreso: " + frente.FechaActualizacion.ToString("dd/MM/yyyy HH:mm"),
                             "Frente del almacén");
         }
-        private void ActualizarVista()
+
+        // Ejecuta una operación de Sistema (que guarda en SQL y mueve en memoria).
+        // Devuelve true si salió bien; si no, muestra el motivo o el error de SQL.
+        private bool EjecutarOperacion(Func<string> operacion, string titulo)
         {
-            Sistema.Almacen.Mostrar(dataGridView1);
-
-            // Ocupación: label2 = cantidad, label4 = capacidad, label5 = porcentaje
-            int cantidad = Sistema.Almacen.Cantidad;
-            int capacidad = Sistema.Almacen.Capacidad;
-            int porcentaje = capacidad == 0 ? 0 : cantidad * 100 / capacidad;
-
-            label2.Text = cantidad.ToString();
-            label4.Text = capacidad.ToString();
-            label5.Text = porcentaje + "%";
-            pbarOcupacion.Value = porcentaje;
-
-            Envio siguiente = Sistema.Recepcion.VerFrente();
-            label8.Text = "Siguiente en la cola: " + (siguiente == null ? "-----" : siguiente.Codigo);
-            btnAlmacenar.Enabled = siguiente != null;
+            try
+            {
+                string error = operacion();
+                if (error != "")
+                {
+                    MessageBox.Show(error, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
         }
 
-        private void Almacén_Load(object sender, EventArgs e)
-        {
-
-        }
+        // =========================================================
+        //  4. DESARROLLADOR DEL FORMULARIO
+        // =========================================================
 
         private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            TarjetaColaborador tarjeta = new TarjetaColaborador();
-            tarjeta.MostrarDatos(Colaborador.Buscar("N00525394"));
-
-            Form ventana = new Form();
-            ventana.Text = "Colaboradora";
-            ventana.ClientSize = tarjeta.Size;
-            ventana.StartPosition = FormStartPosition.CenterParent;
-            ventana.Controls.Add(tarjeta);
-            ventana.ShowDialog(this);
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
+            TarjetaColaborador.Abrir("N00525394", this);   // Sergio Colán
         }
     }
 }

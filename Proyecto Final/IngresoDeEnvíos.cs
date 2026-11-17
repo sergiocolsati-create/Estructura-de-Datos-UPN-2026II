@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shalom
 {
+    // INGRESO DE ENVÍOS (cola de recepción)
+    // Se llenan los datos del remitente, del destinatario y del paquete.
+    // Si todo es válido, Sistema lo guarda en SQL y lo pone al final de la COLA de recepción.
+    // Desde aquí también se envía el primero de la cola (el frente) al almacén.
     public partial class Ingreso_de_envíos_Cola_de_Recepción : Form
     {
         // true cuando los datos del remitente / destinatario se cargaron desde la BD por su DNI
@@ -19,26 +17,36 @@ namespace Shalom
         public Ingreso_de_envíos_Cola_de_Recepción()
         {
             InitializeComponent();
+
+            lblUsuario.Text = Sistema.UsuarioNombres;
+            lblSede.Text = Sistema.UsuarioSede;
             lblMonto.Text = "Pendiente de calcular";
+
             ConfigurarControles();
             ConfigurarValidaciones();
             ActualizarVista();
         }
 
+        // =========================================================
+        //  1. CONFIGURACIÓN INICIAL
+        // =========================================================
+
         private void ConfigurarControles()
         {
-            // ComboBox de sedes: muestran el Nombre y guardan el objeto Sede completo
+            // Sedes: el ComboBox muestra el Nombre y guarda el objeto Sede completo
             cboOrigen.DisplayMember = "Nombre";
             cboDestino.DisplayMember = "Nombre";
             cboOrigen.Items.AddRange(Sistema.Sedes);
             cboDestino.Items.AddRange(Sistema.Sedes);
-            cboOrigen.DropDownStyle = ComboBoxStyle.DropDownList;    // No se puede escribir
-            cboDestino.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            // Tipo y modalidad de pago: el ORDEN debe ser igual al del enum,
+            // Tipo y pago: el ORDEN debe ser igual al del enum,
             // porque luego se convierte con (TipoPaquete)cboTipo.SelectedIndex
-            cboTipo.Items.AddRange(new object[] { "Sobre", "Caja" });                              // enum TipoPaquete  { Sobre, Caja }
+            cboTipo.Items.AddRange(new object[] { "Sobre", "Caja" });                              // enum TipoPaquete   { Sobre, Caja }
             cboPago.Items.AddRange(new object[] { "Pagado en origen", "Por cobrar en destino" });  // enum ModalidadPago { PagadoEnOrigen, PorCobrarEnDestino }
+
+            // Ningún ComboBox deja escribir: solo elegir
+            cboOrigen.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboDestino.DropDownStyle = ComboBoxStyle.DropDownList;
             cboTipo.DropDownStyle = ComboBoxStyle.DropDownList;
             cboPago.DropDownStyle = ComboBoxStyle.DropDownList;
 
@@ -48,12 +56,9 @@ namespace Shalom
             dgvRecepcion.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
-        // =========================================================
-        //  VALIDACIONES MIENTRAS SE ESCRIBE
-        // =========================================================
+        // Límites y filtros de teclado de cada campo (validación MIENTRAS se escribe)
         private void ConfigurarValidaciones()
         {
-            // Largo máximo de cada campo
             txtDniRemitente.MaxLength = 8;
             txtDniDestinatario.MaxLength = 8;
             txtTel.MaxLength = 9;
@@ -62,7 +67,6 @@ namespace Shalom
             txtDestinatario.MaxLength = 100;
             txtDetalle.MaxLength = 200;
 
-            // Qué teclas acepta cada campo
             txtDniRemitente.KeyPress += SoloNumeros;
             txtDniDestinatario.KeyPress += SoloNumeros;
             txtTel.KeyPress += SoloNumeros;
@@ -71,7 +75,7 @@ namespace Shalom
             txtDestinatario.KeyPress += SoloLetras;
             txtPeso.KeyPress += SoloDecimal;
 
-            // Al completar los 8 dígitos del DNI se buscan los datos en la BD
+            // Al completar los 8 dígitos del DNI se buscan sus datos en la BD
             txtDniRemitente.TextChanged += (s, e) =>
                 remitenteRegistrado = CargarPersonaPorDni(txtDniRemitente, txtRemitente, txtTel, remitenteRegistrado);
 
@@ -79,10 +83,12 @@ namespace Shalom
                 destinatarioRegistrado = CargarPersonaPorDni(txtDniDestinatario, txtDestinatario, txtTelDestinatario, destinatarioRegistrado);
         }
 
+        // ---------- Filtros de teclado ----------
+
         private void SoloNumeros(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
-                e.Handled = true;
+                e.Handled = true;   // La tecla no se escribe
         }
 
         private void SoloLetras(object sender, KeyPressEventArgs e)
@@ -95,14 +101,10 @@ namespace Shalom
         private void SoloDecimal(object sender, KeyPressEventArgs e)
         {
             TextBox caja = (TextBox)sender;
+            bool esPuntoPermitido = e.KeyChar == '.' && !caja.Text.Contains(".");
 
-            if (char.IsControl(e.KeyChar) || char.IsDigit(e.KeyChar))
-                return;
-
-            if (e.KeyChar == '.' && !caja.Text.Contains("."))
-                return;
-
-            e.Handled = true;
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && !esPuntoPermitido)
+                e.Handled = true;
         }
 
         // Si el DNI ya está registrado, llena nombre y teléfono con los datos de la BD.
@@ -136,7 +138,7 @@ namespace Shalom
                 }
             }
 
-            // DNI incompleto o no registrado: si antes se habían cargado datos de otra persona, se borran
+            // DNI incompleto o no registrado: si antes se cargó a otra persona, se borran sus datos
             if (estabaCargada)
             {
                 txtNombre.Clear();
@@ -146,82 +148,84 @@ namespace Shalom
             return false;
         }
 
+        // =========================================================
+        //  2. VALIDACIÓN ANTES DE REGISTRAR
+        //  Devuelve "" si todo está bien; si no, el mensaje y en "campo"
+        //  el control que hay que corregir.
+        // =========================================================
+
         // ---------- Reglas de formato ----------
 
-        // Al menos 3 caracteres, solo letras y espacios
-        private bool EsNombreValido(string nombre)
-        {
-            if (nombre.Length < 3)
-                return false;
-
-            foreach (char c in nombre)
-            {
-                if (!char.IsLetter(c) && c != ' ')
-                    return false;
-            }
-            return true;
-        }
-
-        // Exactamente 8 dígitos
         private bool EsDniValido(string dni)
         {
-            return dni.Length == 8 && dni.All(char.IsDigit);
+            return dni.Length == 8 && dni.All(char.IsDigit);                           // 8 dígitos
         }
 
-        // Exactamente 9 dígitos y empieza con 9 (celular en Perú)
+        private bool EsNombreValido(string nombre)
+        {
+            return nombre.Length >= 3 && nombre.All(c => char.IsLetter(c) || c == ' '); // Mínimo 3, solo letras
+        }
+
         private bool EsTelefonoValido(string telefono)
         {
-            return telefono.Length == 9 && telefono.All(char.IsDigit) && telefono[0] == '9';
+            return telefono.Length == 9 && telefono.All(char.IsDigit) && telefono[0] == '9';   // Celular peruano
         }
 
-        // =========================================================
-        //  VALIDACIÓN COMPLETA ANTES DE REGISTRAR
-        //  Devuelve "" si todo está bien; si no, el mensaje y el campo a corregir.
-        // =========================================================
+        // Revisa los datos de UNA persona. Se usa igual para el remitente y el destinatario.
+        // quien = "remitente" o "destinatario" (solo para el mensaje)
+        private string ValidarPersona(string quien, TextBox txtDni, TextBox txtNombre, TextBox txtTelefono, out Control campo)
+        {
+            string dni = txtDni.Text.Trim();
+            string telefono = txtTelefono.Text.Trim();
+
+            campo = txtDni;
+            if (!EsDniValido(dni))
+                return "El DNI del " + quien + " debe tener 8 dígitos.";
+
+            campo = txtNombre;
+            if (!EsNombreValido(txtNombre.Text.Trim()))
+                return "Ingrese el nombre del " + quien + " (mínimo 3 letras, sin números).";
+
+            campo = txtTelefono;
+            if (!EsTelefonoValido(telefono))
+                return "El teléfono del " + quien + " debe tener 9 dígitos y empezar con 9.";
+
+            // El teléfono no puede ser de OTRA persona (consulta a la BD)
+            string dueño = Sistema.TelefonoDeOtraPersona(telefono, dni);
+            if (dueño != null)
+                return "El teléfono " + telefono + " ya está registrado a nombre de " + dueño + ".";
+
+            campo = null;
+            return "";
+        }
+
         private string ValidarFormulario(out Control campo)
         {
-            string nomRem = txtRemitente.Text.Trim();
-            string dniRem = txtDniRemitente.Text.Trim();
-            string telRem = txtTel.Text.Trim();
-            string nomDes = txtDestinatario.Text.Trim();
-            string dniDes = txtDniDestinatario.Text.Trim();
-            string telDes = txtTelDestinatario.Text.Trim();
+            // 1. Remitente y destinatario
+            string error = ValidarPersona("remitente", txtDniRemitente, txtRemitente, txtTel, out campo);
+            if (error != "") return error;
 
-            // Remitente
-            campo = txtDniRemitente;
-            if (!EsDniValido(dniRem)) return "El DNI del remitente debe tener 8 dígitos.";
-            campo = txtRemitente;
-            if (!EsNombreValido(nomRem)) return "Ingrese el nombre del remitente (mínimo 3 letras, sin números).";
-           
-            campo = txtTel;
-            if (!EsTelefonoValido(telRem)) return "El teléfono del remitente debe tener 9 dígitos y empezar con 9.";
+            error = ValidarPersona("destinatario", txtDniDestinatario, txtDestinatario, txtTelDestinatario, out campo);
+            if (error != "") return error;
 
-            // Destinatario
+            // 2. Deben ser dos personas distintas
             campo = txtDniDestinatario;
-            if (!EsDniValido(dniDes)) return "El DNI del destinatario debe tener 8 dígitos.";
-            campo = txtDestinatario;
-            if (!EsNombreValido(nomDes)) return "Ingrese el nombre del destinatario (mínimo 3 letras, sin números).";
-            
-            campo = txtTelDestinatario;
-            if (!EsTelefonoValido(telDes)) return "El teléfono del destinatario debe tener 9 dígitos y empezar con 9.";
+            if (txtDniRemitente.Text.Trim() == txtDniDestinatario.Text.Trim())
+                return "El remitente y el destinatario no pueden tener el mismo DNI.";
 
-            // Remitente y destinatario deben ser personas distintas
-            campo = txtDniDestinatario;
-            if (dniRem == dniDes) return "El remitente y el destinatario no pueden tener el mismo DNI.";
             campo = txtTelDestinatario;
-            if (telRem == telDes) return "El remitente y el destinatario no pueden tener el mismo teléfono.";
+            if (txtTel.Text.Trim() == txtTelDestinatario.Text.Trim())
+                return "El remitente y el destinatario no pueden tener el mismo teléfono.";
 
-            // Paquete
+            // 3. Paquete: el peso debe entrar al menos en el vehículo más grande
             campo = txtPeso;
             decimal peso;
             if (!decimal.TryParse(txtPeso.Text, out peso) || peso <= 0)
                 return "Ingrese un peso válido mayor a 0. Ejemplo: 2.5";
 
-            decimal maxCapacidad = 0;
-            foreach (Vehiculo v in Sistema.Vehiculos)
-                if (v.CapacidadKg > maxCapacidad) maxCapacidad = v.CapacidadKg;
-            if (maxCapacidad > 0 && peso > maxCapacidad)
-                return "El peso supera la capacidad del vehículo más grande (" + maxCapacidad.ToString("0") + " kg).";
+            decimal capacidadMaxima = Sistema.Vehiculos.Length == 0 ? 0 : Sistema.Vehiculos.Max(v => v.CapacidadKg);
+            if (capacidadMaxima > 0 && peso > capacidadMaxima)
+                return "El peso supera la capacidad del vehículo más grande (" + capacidadMaxima.ToString("0") + " kg).";
 
             campo = txtDetalle;
             if (txtDetalle.Text.Trim() == "") return "Ingrese el detalle del contenido.";
@@ -229,34 +233,28 @@ namespace Shalom
             campo = cboTipo;
             if (cboTipo.SelectedIndex == -1) return "Seleccione el tipo de paquete.";
 
-            // Sedes y pago
+            // 4. Sedes y pago
             campo = cboOrigen;
             if (cboOrigen.SelectedIndex == -1) return "Seleccione la sede de origen.";
+
             campo = cboDestino;
             if (cboDestino.SelectedIndex == -1) return "Seleccione la sede de destino.";
             if (cboOrigen.SelectedItem == cboDestino.SelectedItem) return "La sede de origen y la de destino no pueden ser la misma.";
+
             campo = cboPago;
             if (cboPago.SelectedIndex == -1) return "Seleccione el método de pago.";
-
-            // Teléfonos que ya pertenecen a OTRA persona (consulta a la BD)
-            string dueño = Sistema.TelefonoDeOtraPersona(telRem, dniRem);
-            campo = txtTel;
-            if (dueño != null) return "El teléfono " + telRem + " ya está registrado a nombre de " + dueño + ".";
-
-            dueño = Sistema.TelefonoDeOtraPersona(telDes, dniDes);
-            campo = txtTelDestinatario;
-            if (dueño != null) return "El teléfono " + telDes + " ya está registrado a nombre de " + dueño + ".";
 
             campo = null;
             return "";
         }
 
         // =========================================================
-        //  REGISTRAR EN COLA
+        //  3. REGISTRAR EN COLA
         // =========================================================
+
         private void btnEncolar_Click(object sender, EventArgs e)
         {
-            // 1. Validar el formulario
+            // 1. Validar (algunas reglas consultan la BD, por eso el try)
             string error;
             Control campo;
             try
@@ -281,7 +279,7 @@ namespace Shalom
                 return;
             }
 
-            // 2. Armar el objeto Envio con los datos del formulario (ya validados)
+            // 2. Armar el envío con los datos ya validados
             Envio envio = new Envio();
             envio.SedeOrigen = cboOrigen.SelectedItem as Sede;
             envio.SedeDestino = cboDestino.SelectedItem as Sede;
@@ -289,32 +287,13 @@ namespace Shalom
             envio.Descripcion = txtDetalle.Text.Trim();
             envio.Tipo = (TipoPaquete)cboTipo.SelectedIndex;
             envio.ModalidadPago = (ModalidadPago)cboPago.SelectedIndex;
+            envio.Remitente = CrearPersona(txtDniRemitente, txtRemitente, txtTel);
+            envio.Destinatario = CrearPersona(txtDniDestinatario, txtDestinatario, txtTelDestinatario);
 
-            envio.Remitente = new Persona();
-            envio.Remitente.TipoDocumento = "DNI";
-            envio.Remitente.Nombres = txtRemitente.Text.Trim();
-            envio.Remitente.NumeroDocumento = txtDniRemitente.Text.Trim();
-            envio.Remitente.Telefono = txtTel.Text.Trim();
-
-            envio.Destinatario = new Persona();
-            envio.Destinatario.TipoDocumento = "DNI";
-            envio.Destinatario.Nombres = txtDestinatario.Text.Trim();
-            envio.Destinatario.NumeroDocumento = txtDniDestinatario.Text.Trim();
-            envio.Destinatario.Telefono = txtTelDestinatario.Text.Trim();
-
-            // 3. Reglas propias del envío (clase Envio)
-            error = envio.Validar();
-            if (error != "")
-            {
-                MessageBox.Show(error, "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
-            // 4. Tarifa, precio y guardado: SQL asigna el Id → guía → historial → cola y árbol
+            // 3. Tarifa y precio, y guardar: SQL asigna el Id → guía → historial → cola y árbol
             try
             {
                 Tarifa tarifa = Sistema.BuscarTarifa(envio.SedeOrigen.Id, envio.SedeDestino.Id);
-
                 if (tarifa == null)
                 {
                     MessageBox.Show("No hay tarifa registrada para el trayecto:\n" +
@@ -333,10 +312,11 @@ namespace Shalom
                 return;
             }
 
-            // 5. Mostrar resultado
+            // 4. Mostrar el resultado y dejar el formulario listo para otro envío
             txtGuia.Text = envio.Codigo;
             lblMonto.Text = "S/ " + envio.Precio.ToString("0.00");
-            MessageBox.Show("Guía: " + envio.Codigo + "\nClave de recojo: " + envio.ClaveSeguridad +
+            MessageBox.Show("Guía: " + envio.Codigo +
+                            "\nClave de recojo: " + envio.ClaveSeguridad +
                             "\nPrecio: S/ " + envio.Precio.ToString("0.00"),
                             "Envío registrado", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
@@ -344,6 +324,22 @@ namespace Shalom
             ActualizarVista();
         }
 
+        // Arma una Persona con lo escrito en sus tres cajas (se usa para remitente y destinatario)
+        private Persona CrearPersona(TextBox txtDni, TextBox txtNombre, TextBox txtTelefono)
+        {
+            Persona persona = new Persona();
+            persona.TipoDocumento = "DNI";
+            persona.NumeroDocumento = txtDni.Text.Trim();
+            persona.Nombres = txtNombre.Text.Trim();
+            persona.Telefono = txtTelefono.Text.Trim();
+            return persona;
+        }
+
+        // =========================================================
+        //  4. COLA DE RECEPCIÓN
+        // =========================================================
+
+        // Muestra el primero de la cola sin sacarlo (PEEK)
         private void btnVerfrente_Click(object sender, EventArgs e)
         {
             Envio frente = Sistema.Recepcion.VerFrente();
@@ -360,13 +356,13 @@ namespace Shalom
                             "Frente de la cola");
         }
 
+        // Saca el frente de la cola de recepción y lo pone al final de la cola del almacén
         private void btnEnvAlm_Click(object sender, EventArgs e)
         {
-            Envio frente = Sistema.Recepcion.VerFrente();   // Para el mensaje final
+            Envio frente = Sistema.Recepcion.VerFrente();   // Se guarda para el mensaje final
 
             try
             {
-                // Desencola de recepción, encola en almacén y lo guarda en SQL
                 string error = Sistema.EnviarAAlmacen();
                 if (error != "")
                 {
@@ -383,10 +379,19 @@ namespace Shalom
 
             ActualizarVista();
             MessageBox.Show(frente.Codigo + " fue enviado al almacén.", "Enviar a almacén");
-
-            new Almacén().Show();
         }
 
+        // Abre Almacén ENCIMA de este formulario (ShowDialog): al cerrarlo se vuelve aquí
+        // sin perder lo que se estaba llenando, y se refresca la cola.
+        private void btnIrAlmacen_Click(object sender, EventArgs e)
+        {
+            using (Almacén almacen = new Almacén())
+                almacen.ShowDialog(this);
+
+            ActualizarVista();
+        }
+
+        // Grilla, cantidad en cola y guía del frente
         private void ActualizarVista()
         {
             Sistema.Recepcion.Mostrar(dgvRecepcion);
@@ -396,19 +401,16 @@ namespace Shalom
             lblMostrar.Text = frente == null ? "-----" : frente.Codigo;
         }
 
+        // Deja el formulario en blanco para el siguiente envío
         private void LimpiarCampos()
         {
-            // Primero los DNI: al vaciarlos se desbloquean los nombres
+            // Al vaciar los DNI se desbloquean los nombres (ver CargarPersonaPorDni)
             txtDniRemitente.Clear();
             txtDniDestinatario.Clear();
             txtRemitente.Clear();
             txtTel.Clear();
             txtDestinatario.Clear();
             txtTelDestinatario.Clear();
-            txtRemitente.ReadOnly = false;
-            txtDestinatario.ReadOnly = false;
-            remitenteRegistrado = false;
-            destinatarioRegistrado = false;
 
             txtPeso.Clear();
             txtDetalle.Clear();
@@ -416,41 +418,17 @@ namespace Shalom
             cboDestino.SelectedIndex = -1;
             cboTipo.SelectedIndex = -1;
             cboPago.SelectedIndex = -1;
-            txtRemitente.Focus();
+
+            txtDniRemitente.Focus();   // Se empieza por el DNI
         }
 
-        // Eventos conectados en el diseñador (se dejan vacíos)
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) { }
-        private void textBox1_TextChanged(object sender, EventArgs e) { }
-        private void Ingreso_de_envíos_Cola_de_Recepción_Load(object sender, EventArgs e) { }
+        // =========================================================
+        //  5. DESARROLLADOR DEL FORMULARIO
+        // =========================================================
 
         private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            TarjetaColaborador tarjeta = new TarjetaColaborador();
-            tarjeta.MostrarDatos(Colaborador.Buscar("N00525394"));
-
-            Form ventana = new Form();
-            ventana.Text = "Colaboradora";
-            ventana.ClientSize = tarjeta.Size;
-            ventana.StartPosition = FormStartPosition.CenterParent;
-            ventana.Controls.Add(tarjeta);
-            ventana.ShowDialog(this);
-        }
-
-        
-        private void txtDniRemitente_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox2_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-
+            TarjetaColaborador.Abrir("N00525394", this);   // Sergio Colán
         }
     }
 }
