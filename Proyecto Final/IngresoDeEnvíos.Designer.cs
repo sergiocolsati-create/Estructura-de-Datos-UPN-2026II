@@ -59,37 +59,30 @@
             this.label12 = new System.Windows.Forms.Label();
             this.btnVerfrente = new System.Windows.Forms.Button();
             this.btnDesencolar = new System.Windows.Forms.Button();
+            this.btnIrAlmacen = new System.Windows.Forms.Button();
             this.dgvRecepcion = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.lblMostrar = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.lblMonto = new System.Windows.Forms.Label();
-            this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cboPago = new System.Windows.Forms.ComboBox();
             this.label19 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.lnkDesarrollador = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCabecera = new System.Windows.Forms.Panel();
             this.picLogo = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblSede = new System.Windows.Forms.Label();
+            this.lblIconoUsuario = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.label21 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecepcion)).BeginInit();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
@@ -118,7 +111,6 @@
             this.txtDniRemitente.Name = "txtDniRemitente";
             this.txtDniRemitente.Size = new System.Drawing.Size(120, 19);
             this.txtDniRemitente.TabIndex = 17;
-            this.txtDniRemitente.TextChanged += new System.EventHandler(this.txtDniRemitente_TextChanged);
             // 
             // label14
             // 
@@ -286,7 +278,6 @@
             this.txtGuia.ReadOnly = true;
             this.txtGuia.Size = new System.Drawing.Size(204, 20);
             this.txtGuia.TabIndex = 7;
-            this.txtGuia.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnEncolar
             // 
@@ -344,6 +335,7 @@
             this.groupBox2.Controls.Add(this.lblContar);
             this.groupBox2.Controls.Add(this.label12);
             this.groupBox2.Controls.Add(this.btnVerfrente);
+            this.groupBox2.Controls.Add(this.btnIrAlmacen);
             this.groupBox2.Controls.Add(this.btnDesencolar);
             this.groupBox2.Controls.Add(this.dgvRecepcion);
             this.groupBox2.Controls.Add(this.label11);
@@ -355,7 +347,6 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Cola de recepción";
-            this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // lblContar
             // 
@@ -382,9 +373,9 @@
             this.btnVerfrente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
             this.btnVerfrente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVerfrente.ForeColor = System.Drawing.Color.Black;
-            this.btnVerfrente.Location = new System.Drawing.Point(242, 292);
+            this.btnVerfrente.Location = new System.Drawing.Point(174, 289);
             this.btnVerfrente.Name = "btnVerfrente";
-            this.btnVerfrente.Size = new System.Drawing.Size(178, 33);
+            this.btnVerfrente.Size = new System.Drawing.Size(145, 36);
             this.btnVerfrente.TabIndex = 20;
             this.btnVerfrente.Text = "Ver frente";
             this.btnVerfrente.UseVisualStyleBackColor = false;
@@ -395,13 +386,27 @@
             this.btnDesencolar.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnDesencolar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDesencolar.ForeColor = System.Drawing.Color.White;
-            this.btnDesencolar.Location = new System.Drawing.Point(54, 289);
+            this.btnDesencolar.Location = new System.Drawing.Point(20, 289);
             this.btnDesencolar.Name = "btnDesencolar";
-            this.btnDesencolar.Size = new System.Drawing.Size(178, 37);
+            this.btnDesencolar.Size = new System.Drawing.Size(145, 36);
             this.btnDesencolar.TabIndex = 19;
             this.btnDesencolar.Text = "Enviar a Almacén";
             this.btnDesencolar.UseVisualStyleBackColor = false;
             this.btnDesencolar.Click += new System.EventHandler(this.btnEnvAlm_Click);
+            // 
+            // btnIrAlmacen  (abre Almacén encima; al cerrarlo se vuelve aquí)
+            // 
+            this.btnIrAlmacen.BackColor = System.Drawing.Color.White;
+            this.btnIrAlmacen.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIrAlmacen.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIrAlmacen.ForeColor = System.Drawing.Color.MidnightBlue;
+            this.btnIrAlmacen.Location = new System.Drawing.Point(328, 289);
+            this.btnIrAlmacen.Name = "btnIrAlmacen";
+            this.btnIrAlmacen.Size = new System.Drawing.Size(151, 36);
+            this.btnIrAlmacen.TabIndex = 21;
+            this.btnIrAlmacen.Text = "Ir a Almacén →";
+            this.btnIrAlmacen.UseVisualStyleBackColor = false;
+            this.btnIrAlmacen.Click += new System.EventHandler(this.btnIrAlmacen_Click);
             // 
             // dgvRecepcion
             // 
@@ -412,7 +417,6 @@
             this.dgvRecepcion.RowHeadersWidth = 51;
             this.dgvRecepcion.Size = new System.Drawing.Size(459, 217);
             this.dgvRecepcion.TabIndex = 18;
-            this.dgvRecepcion.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // label11
             // 
@@ -433,34 +437,6 @@
             this.label10.Size = new System.Drawing.Size(99, 13);
             this.label10.TabIndex = 16;
             this.label10.Text = "Frente: sale primero";
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Guía";
-            this.Column2.MinimumWidth = 6;
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 120;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Turno";
-            this.Column1.MinimumWidth = 6;
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 120;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Cliente";
-            this.Column3.MinimumWidth = 6;
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 120;
-            // 
-            // Column4
-            // 
-            this.Column4.HeaderText = "Peso";
-            this.Column4.MinimumWidth = 6;
-            this.Column4.Name = "Column4";
-            this.Column4.Width = 120;
             // 
             // label7
             // 
@@ -507,41 +483,6 @@
             this.lblMonto.TabIndex = 17;
             this.lblMonto.Text = "S/00.00";
             // 
-            // Column5
-            // 
-            this.Column5.HeaderText = "Turno";
-            this.Column5.MinimumWidth = 6;
-            this.Column5.Name = "Column5";
-            this.Column5.Width = 125;
-            // 
-            // Column6
-            // 
-            this.Column6.HeaderText = "Guía";
-            this.Column6.MinimumWidth = 6;
-            this.Column6.Name = "Column6";
-            this.Column6.Width = 125;
-            // 
-            // Column7
-            // 
-            this.Column7.HeaderText = "Cliente";
-            this.Column7.MinimumWidth = 6;
-            this.Column7.Name = "Column7";
-            this.Column7.Width = 125;
-            // 
-            // Column8
-            // 
-            this.Column8.HeaderText = "Destino";
-            this.Column8.MinimumWidth = 6;
-            this.Column8.Name = "Column8";
-            this.Column8.Width = 125;
-            // 
-            // Column9
-            // 
-            this.Column9.HeaderText = "Peso";
-            this.Column9.MinimumWidth = 6;
-            this.Column9.Name = "Column9";
-            this.Column9.Width = 125;
-            // 
             // cboPago
             // 
             this.cboPago.FormattingEnabled = true;
@@ -578,34 +519,61 @@
             // 
             // lnkDesarrollador
             // 
-            this.lnkDesarrollador.AutoSize = true;
-            this.lnkDesarrollador.Location = new System.Drawing.Point(803, 72);
+            this.lnkDesarrollador.ActiveLinkColor = System.Drawing.Color.White;
+            this.lnkDesarrollador.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lnkDesarrollador.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkDesarrollador.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lnkDesarrollador.Location = new System.Drawing.Point(560, 38);
             this.lnkDesarrollador.Name = "lnkDesarrollador";
-            this.lnkDesarrollador.Size = new System.Drawing.Size(67, 13);
-            this.lnkDesarrollador.TabIndex = 26;
+            this.lnkDesarrollador.Size = new System.Drawing.Size(300, 16);
             this.lnkDesarrollador.TabStop = true;
-            this.lnkDesarrollador.Text = "Sergio Colan";
+            this.lnkDesarrollador.Text = "Formulario de: Sergio Colán";
+            this.lnkDesarrollador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lnkDesarrollador.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDesarrollador_LinkClicked);
             // 
-            // pictureBox1
+            // lblUsuario  (usuario conectado)
             // 
-            this.pictureBox1.Image = global::Shalom.Properties.Resources.foto_sergio;
-            this.pictureBox1.Location = new System.Drawing.Point(876, 63);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(23, 24);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 27;
-            this.pictureBox1.TabStop = false;
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(560, 3);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(300, 19);
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSede  (sede del usuario conectado)
+            // 
+            this.lblSede.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lblSede.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lblSede.Location = new System.Drawing.Point(560, 22);
+            this.lblSede.Name = "lblSede";
+            this.lblSede.Size = new System.Drawing.Size(300, 16);
+            this.lblSede.Text = "Sede";
+            this.lblSede.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblIconoUsuario
+            // 
+            this.lblIconoUsuario.Font = new System.Drawing.Font("Segoe UI Emoji", 18F);
+            this.lblIconoUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblIconoUsuario.Location = new System.Drawing.Point(866, 6);
+            this.lblIconoUsuario.Name = "lblIconoUsuario";
+            this.lblIconoUsuario.Size = new System.Drawing.Size(46, 46);
+            this.lblIconoUsuario.Text = "👤";
+            this.lblIconoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.lblIconoUsuario);
+            this.pnlCabecera.Controls.Add(this.lnkDesarrollador);
+            this.pnlCabecera.Controls.Add(this.lblSede);
+            this.pnlCabecera.Controls.Add(this.lblUsuario);
             this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Controls.Add(this.label20);
             this.pnlCabecera.Controls.Add(this.label21);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
-            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlCabecera.Margin = new System.Windows.Forms.Padding(2);
             this.pnlCabecera.Name = "pnlCabecera";
             this.pnlCabecera.Size = new System.Drawing.Size(922, 57);
             this.pnlCabecera.TabIndex = 28;
@@ -614,7 +582,7 @@
             // 
             this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
             this.picLogo.Location = new System.Drawing.Point(33, 9);
-            this.picLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(2);
             this.picLogo.Name = "picLogo";
             this.picLogo.Size = new System.Drawing.Size(172, 44);
             this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -628,9 +596,9 @@
             this.label20.Location = new System.Drawing.Point(257, 27);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(25, 13);
+            this.label20.Size = new System.Drawing.Size(242, 13);
             this.label20.TabIndex = 2;
-            this.label20.Text = "IDK";
+            this.label20.Text = "Receción de encomiendas y paquetes en general";
             // 
             // label21
             // 
@@ -644,7 +612,6 @@
             this.label21.Size = new System.Drawing.Size(171, 25);
             this.label21.TabIndex = 1;
             this.label21.Text = "Ingreso De Envíos";
-            this.label21.Click += new System.EventHandler(this.label21_Click);
             // 
             // Ingreso_de_envíos_Cola_de_Recepción
             // 
@@ -653,8 +620,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(922, 623);
             this.Controls.Add(this.pnlCabecera);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lnkDesarrollador);
             this.Controls.Add(this.cboDestino);
             this.Controls.Add(this.cboTipo);
             this.Controls.Add(this.cboOrigen);
@@ -683,7 +648,6 @@
             this.MinimizeBox = false;
             this.Name = "Ingreso_de_envíos_Cola_de_Recepción";
             this.Text = "Ingreso De Envíos";
-            this.Load += new System.EventHandler(this.Ingreso_de_envíos_Cola_de_Recepción_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -691,7 +655,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecepcion)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
@@ -726,10 +689,7 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnVerfrente;
         private System.Windows.Forms.Button btnDesencolar;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
+        private System.Windows.Forms.Button btnIrAlmacen;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtDniRemitente;
@@ -743,21 +703,18 @@
         private System.Windows.Forms.ComboBox cboOrigen;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label lblMonto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column9;
         private System.Windows.Forms.ComboBox cboTipo;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.ComboBox cboPago;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.LinkLabel lnkDesarrollador;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlCabecera;
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblSede;
+        private System.Windows.Forms.Label lblIconoUsuario;
     }
 }
