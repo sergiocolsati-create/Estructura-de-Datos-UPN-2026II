@@ -14,6 +14,11 @@ namespace Shalom
         {
             this.Close();
         }
+
+        private void picFoto_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
