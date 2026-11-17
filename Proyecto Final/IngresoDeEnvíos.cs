@@ -426,9 +426,18 @@ namespace Shalom
 
         private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new DevSer().ShowDialog(this);
+            TarjetaColaborador tarjeta = new TarjetaColaborador();
+            tarjeta.MostrarDatos(Colaborador.Buscar("N00525394"));
+
+            Form ventana = new Form();
+            ventana.Text = "Colaboradora";
+            ventana.ClientSize = tarjeta.Size;
+            ventana.StartPosition = FormStartPosition.CenterParent;
+            ventana.Controls.Add(tarjeta);
+            ventana.ShowDialog(this);
         }
 
+        
         private void txtDniRemitente_TextChanged(object sender, EventArgs e)
         {
 

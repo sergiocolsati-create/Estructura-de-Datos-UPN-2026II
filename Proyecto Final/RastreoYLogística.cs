@@ -215,7 +215,15 @@ namespace Shalom
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            new DevDavid().ShowDialog(this);
+            TarjetaColaborador tarjeta = new TarjetaColaborador();
+            tarjeta.MostrarDatos(Colaborador.Buscar("N00574312"));
+
+            Form ventana = new Form();
+            ventana.Text = "Colaboradora";
+            ventana.ClientSize = tarjeta.Size;
+            ventana.StartPosition = FormStartPosition.CenterParent;
+            ventana.Controls.Add(tarjeta);
+            ventana.ShowDialog(this);
         }
 
         private void btnReportes_Click(object sender, EventArgs e)

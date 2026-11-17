@@ -13,24 +13,35 @@ namespace Shalom
         public string LinkedIn { get; set; }   // null = no tiene
         public string GitHub { get; set; }
 
-        public Colaborador(string nombre, string rol, string codigo, string carrera,
-                   string linkedIn = null, string gitHub = null, Image foto = null)
+        public Colaborador(string nombre, string rol, string codigo, string carrera, Image foto,
+                           string linkedIn = null, string gitHub = null)
         {
             Nombre = nombre; Rol = rol; Codigo = codigo; Carrera = carrera;
-            LinkedIn = linkedIn; GitHub = gitHub; Foto = foto;
+            Foto = foto; LinkedIn = linkedIn; GitHub = gitHub;
         }
 
+        // Los 5 integrantes. Cada foto está en Properties > Resources con el nombre foto_<nombre>.
+        // Si alguien todavía no tiene foto, se pone null en su lugar.
         public static Colaborador[] ObtenerEquipo()
         {
             return new Colaborador[]
             {
-                new Colaborador("Alfonso David Moscoso Yparraguirre", "Desarrollador",  "N00574312", "Ingeniería de Software"),
-                new Colaborador("Anshely Aznaila Quezada Prado",      "Desarrolladora", "N00474619", "Ingeniería de Software"),
-                new Colaborador("Estrella Valeria Castañeda Rivas",   "Desarrolladora", "N00480736", "Ingeniería de Sistemas"),
+                new Colaborador("Alfonso David Moscoso Yparraguirre", "Desarrollador",  "N00574312", "Ingeniería de Software",
+                                Properties.Resources.foto_david),
+
+                new Colaborador("Anshely Aznaila Quezada Prado",      "Desarrolladora", "N00474619", "Ingeniería de Software",
+                                Properties.Resources.foto_anshely),
+
+                new Colaborador("Estrella Valeria Castañeda Rivas",   "Desarrolladora", "N00480736", "Ingeniería de Sistemas",
+                                null),
+
                 new Colaborador("Sergio Isaac Colán Sánchez",         "Desarrollador",  "N00525394", "Ingeniería de Redes y Sistemas",
+                                Properties.Resources.foto_sergio,
                                 "https://www.linkedin.com/in/sergiocolansanchez/", "https://github.com/sergiocolsati-create"),
+
                 new Colaborador("Yanela Liz Acori Sanchez",           "Desarrolladora", "N00469214", "Ingeniería de Software",
-                                "https://www.linkedin.com/in/yanela-acori-sanchez-7451983a6/", "https://github.com/yanlogic", Properties.Resources.xd_1)
+                                Properties.Resources.foto_yanela,
+                                "https://www.linkedin.com/in/yanela-acori-sanchez-7451983a6/", "https://github.com/yanlogic")
             };
         }
 

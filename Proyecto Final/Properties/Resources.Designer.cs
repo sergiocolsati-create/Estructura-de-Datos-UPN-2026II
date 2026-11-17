@@ -63,9 +63,9 @@ namespace Shalom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap Captura_de_pantalla_2026_11_09_001404 {
+        public static System.Drawing.Bitmap foto_anshely {
             get {
-                object obj = ResourceManager.GetObject("Captura de pantalla 2026-11-09 001404", resourceCulture);
+                object obj = ResourceManager.GetObject("foto_anshely", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,29 @@ namespace Shalom.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
-        public static System.Drawing.Bitmap imagen_23x24 {
+        public static System.Drawing.Bitmap foto_david {
             get {
-                object obj = ResourceManager.GetObject("imagen_23x24", resourceCulture);
+                object obj = ResourceManager.GetObject("foto_david", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap foto_sergio {
+            get {
+                object obj = ResourceManager.GetObject("foto_sergio", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap foto_yanela {
+            get {
+                object obj = ResourceManager.GetObject("foto_yanela", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -106,16 +126,6 @@ namespace Shalom.Properties {
         public static System.Drawing.Bitmap logo_shalom_rojo {
             get {
                 object obj = ResourceManager.GetObject("logo_shalom_rojo", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        public static System.Drawing.Bitmap xd_1 {
-            get {
-                object obj = ResourceManager.GetObject("xd_1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
