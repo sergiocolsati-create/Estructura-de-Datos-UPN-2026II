@@ -88,7 +88,7 @@ namespace Shalom
         // ------ Filtros ------
         public static DateTime InicioPeriodo(FiltroReporte f)
         {
-            DateTime d = f.Fecha.Date;   
+            DateTime d = f.Fecha.Date;
 
             switch (f.Periodo)
             {
@@ -97,12 +97,12 @@ namespace Shalom
                 case TipoPeriodo.Mes:
                     return new DateTime(d.Year, d.Month, 1);
                 case TipoPeriodo.Trimestre:
-                    int mesInicial = ((d.Month - 1) / 3) * 3 + 1; 
+                    int mesInicial = ((d.Month - 1) / 3) * 3 + 1;
                     return new DateTime(d.Year, mesInicial, 1);
                 case TipoPeriodo.Anio:
                     return new DateTime(d.Year, 1, 1);
                 default:
-                    return DateTime.MinValue;   
+                    return DateTime.MinValue;
             }
         }
 
@@ -141,8 +141,24 @@ namespace Shalom
             return elegida == null || elegida.Id == delEnvio?.Id;
         }
 
-        // ---------- Reporte por filtros ----------
+        // ---------- Reporte por filtros (formulario Reportes) ----------
+        // Arma el texto de los filtros elegidos y usa el formato común de ReporteDeLista.
         public static string ReporteFiltrado(FiltroReporte f, List<Envio> envios)
+        {
+            string[] filtros =
+            {
+                "Periodo:       " + DescripcionPeriodo(f),
+                "Sección:       " + NombreSeccion(f.Seccion),
+                "Sede origen:   " + (f.SedeOrigen?.Nombre ?? "Todas"),
+                "Sede destino:  " + (f.SedeDestino?.Nombre ?? "Todas")
+            };
+            return ReporteDeLista(filtros, envios);
+        }
+
+        // ---------- Reporte de una lista de envíos (formato común) ----------
+        // Lo usan Reportes y Rastreo: cada uno manda sus filtros ya escritos como texto.
+        // Partes: encabezado → filtros → resumen (totales y por estado) → detalle en columnas.
+        public static string ReporteDeLista(string[] filtros, List<Envio> envios)
         {
             StringBuilder sb = new StringBuilder();
             string linea = new string('=', 78);
@@ -157,10 +173,8 @@ namespace Shalom
 
             // 2. Filtros aplicados
             sb.AppendLine("FILTROS APLICADOS");
-            sb.AppendLine("  Periodo:       " + DescripcionPeriodo(f));
-            sb.AppendLine("  Sección:       " + NombreSeccion(f.Seccion));
-            sb.AppendLine("  Sede origen:   " + (f.SedeOrigen?.Nombre ?? "Todas"));
-            sb.AppendLine("  Sede destino:  " + (f.SedeDestino?.Nombre ?? "Todas"));
+            foreach (string filtro in filtros)
+                sb.AppendLine("  " + filtro);
             sb.AppendLine();
 
             if (envios.Count == 0)
@@ -319,7 +333,7 @@ namespace Shalom
                 case ModalidadPago.PorCobrarEnDestino: return "Por cobrar en destino";
                 default: return pago.ToString();
             }
-            
+
         }
 
         public static string NombreSede(Sede sede)
@@ -330,7 +344,7 @@ namespace Shalom
         public static string DatosPersona(Persona p)
         {
             if (p == null) return "(sin datos)";
-            
+
             string texto = p.Nombres + " - " + p.TipoDocumento + ": " + p.NumeroDocumento;
             if (!string.IsNullOrWhiteSpace(p.Telefono))
             {

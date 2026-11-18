@@ -56,6 +56,10 @@
             this.grpMapa = new System.Windows.Forms.GroupBox();
             this.lblLeyenda = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblSede = new System.Windows.Forms.Label();
+            this.lnkDesarrollador = new System.Windows.Forms.LinkLabel();
+            this.lblIconoUsuario = new System.Windows.Forms.Label();
             this.pnlCabecera.SuspendLayout();
             this.grpVehiculo.SuspendLayout();
             this.grpPorAsignar.SuspendLayout();
@@ -68,6 +72,10 @@
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.lblIconoUsuario);
+            this.pnlCabecera.Controls.Add(this.lnkDesarrollador);
+            this.pnlCabecera.Controls.Add(this.lblSede);
+            this.pnlCabecera.Controls.Add(this.lblUsuario);
             this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Controls.Add(this.lblSubtitulo);
             this.pnlCabecera.Controls.Add(this.lblTitulo);
@@ -76,6 +84,50 @@
             this.pnlCabecera.Name = "pnlCabecera";
             this.pnlCabecera.Size = new System.Drawing.Size(1180, 70);
             this.pnlCabecera.TabIndex = 0;
+            // 
+            // lblUsuario  (usuario conectado)
+            // 
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 10.5F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(800, 4);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(320, 22);
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSede  (sede del usuario conectado)
+            // 
+            this.lblSede.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.lblSede.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lblSede.Location = new System.Drawing.Point(800, 26);
+            this.lblSede.Name = "lblSede";
+            this.lblSede.Size = new System.Drawing.Size(320, 18);
+            this.lblSede.Text = "Sede";
+            this.lblSede.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lnkDesarrollador
+            // 
+            this.lnkDesarrollador.ActiveLinkColor = System.Drawing.Color.White;
+            this.lnkDesarrollador.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lnkDesarrollador.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkDesarrollador.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lnkDesarrollador.Location = new System.Drawing.Point(800, 46);
+            this.lnkDesarrollador.Name = "lnkDesarrollador";
+            this.lnkDesarrollador.Size = new System.Drawing.Size(320, 18);
+            this.lnkDesarrollador.TabStop = true;
+            this.lnkDesarrollador.Text = "Formulario de: Anshely Quezada";
+            this.lnkDesarrollador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lnkDesarrollador.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDesarrollador_LinkClicked);
+            // 
+            // lblIconoUsuario
+            // 
+            this.lblIconoUsuario.Font = new System.Drawing.Font("Segoe UI Emoji", 20F);
+            this.lblIconoUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblIconoUsuario.Location = new System.Drawing.Point(1124, 10);
+            this.lblIconoUsuario.Name = "lblIconoUsuario";
+            this.lblIconoUsuario.Size = new System.Drawing.Size(50, 50);
+            this.lblIconoUsuario.Text = "👤";
+            this.lblIconoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblSubtitulo
             // 
@@ -355,7 +407,6 @@
             this.lblParadas.Size = new System.Drawing.Size(69, 17);
             this.lblParadas.TabIndex = 0;
             this.lblParadas.Text = "Paradas: 0";
-            this.lblParadas.Click += new System.EventHandler(this.lblParadas_Click);
             // 
             // grpMapa
             // 
@@ -451,5 +502,9 @@
         private System.Windows.Forms.GroupBox grpMapa;
         private System.Windows.Forms.Label lblLeyenda;
         private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblSede;
+        private System.Windows.Forms.LinkLabel lnkDesarrollador;
+        private System.Windows.Forms.Label lblIconoUsuario;
     }
 }

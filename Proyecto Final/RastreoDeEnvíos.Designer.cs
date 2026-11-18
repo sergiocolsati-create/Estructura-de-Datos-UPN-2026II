@@ -28,190 +28,246 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.grpFiltros = new System.Windows.Forms.GroupBox();
+            this.btnIrReportes = new System.Windows.Forms.Button();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblSede = new System.Windows.Forms.Label();
+            this.lnkDesarrollador = new System.Windows.Forms.LinkLabel();
+            this.lblIconoUsuario = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.cboEstado = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtGuia = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.dgvEnvios = new System.Windows.Forms.GroupBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.grpEnvios = new System.Windows.Forms.GroupBox();
+            this.dgvLista = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.grpDetalle = new System.Windows.Forms.GroupBox();
             this.btnReporteEnvio = new System.Windows.Forms.Button();
             this.lstResumen = new System.Windows.Forms.ListBox();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtDetVehiculo = new System.Windows.Forms.TextBox();
+            this.txtDetDestino = new System.Windows.Forms.TextBox();
+            this.txtDetCliente = new System.Windows.Forms.TextBox();
+            this.txtDetGuia = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.grpHistorial = new System.Windows.Forms.GroupBox();
+            this.dgvHistorial = new System.Windows.Forms.DataGridView();
             this.Column6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.textBox6 = new System.Windows.Forms.TextBox();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
-            this.button4 = new System.Windows.Forms.Button();
+            this.grpActualizar = new System.Windows.Forms.GroupBox();
+            this.txtObservacion = new System.Windows.Forms.TextBox();
+            this.cboNuevoEstado = new System.Windows.Forms.ComboBox();
+            this.btnActualizarEstado = new System.Windows.Forms.Button();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel2 = new System.Windows.Forms.ToolStripStatusLabel();
-            this.toolStripStatusLabel3 = new System.Windows.Forms.ToolStripStatusLabel();
             this.pnlCabecera = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.picLogo = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.picPerfil = new System.Windows.Forms.PictureBox();
-            this.lnkPerfil = new System.Windows.Forms.LinkLabel();
-            this.groupBox1.SuspendLayout();
-            this.dgvEnvios.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
-            this.groupBox5.SuspendLayout();
-            this.statusStrip1.SuspendLayout();
+            this.grpFiltros.SuspendLayout();
+            this.grpEnvios.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).BeginInit();
+            this.grpDetalle.SuspendLayout();
+            this.grpHistorial.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).BeginInit();
+            this.grpActualizar.SuspendLayout();
             this.pnlCabecera.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // groupBox1
+            // grpFiltros
             // 
-            this.groupBox1.BackColor = System.Drawing.Color.White;
-            this.groupBox1.Controls.Add(this.button2);
-            this.groupBox1.Controls.Add(this.button1);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.textBox1);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(9, 74);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox1.Size = new System.Drawing.Size(575, 53);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Buscar envío";
+            this.grpFiltros.BackColor = System.Drawing.Color.White;
+            this.grpFiltros.Controls.Add(this.btnIrReportes);
+            this.grpFiltros.Controls.Add(this.btnLimpiar);
+            this.grpFiltros.Controls.Add(this.btnBuscar);
+            this.grpFiltros.Controls.Add(this.cboEstado);
+            this.grpFiltros.Controls.Add(this.label2);
+            this.grpFiltros.Controls.Add(this.txtGuia);
+            this.grpFiltros.Controls.Add(this.label1);
+            this.grpFiltros.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpFiltros.Location = new System.Drawing.Point(9, 64);
+            this.grpFiltros.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpFiltros.Name = "grpFiltros";
+            this.grpFiltros.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpFiltros.Size = new System.Drawing.Size(1080, 53);
+            this.grpFiltros.TabIndex = 0;
+            this.grpFiltros.TabStop = false;
+            this.grpFiltros.Text = "Buscar envío";
             // 
-            // button2
+            // lblUsuario  (usuario conectado)
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(455, 19);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(93, 25);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = false;
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(740, 3);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(300, 19);
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // button1
+            // lblSede  (sede del usuario conectado)
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.button1.Location = new System.Drawing.Point(364, 19);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(74, 25);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.lblSede.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lblSede.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lblSede.Location = new System.Drawing.Point(740, 22);
+            this.lblSede.Name = "lblSede";
+            this.lblSede.Size = new System.Drawing.Size(300, 16);
+            this.lblSede.Text = "Sede";
+            this.lblSede.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
-            // comboBox1
+            // lnkDesarrollador
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(220, 22);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(102, 21);
-            this.comboBox1.TabIndex = 1;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            this.lnkDesarrollador.ActiveLinkColor = System.Drawing.Color.White;
+            this.lnkDesarrollador.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lnkDesarrollador.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkDesarrollador.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lnkDesarrollador.Location = new System.Drawing.Point(740, 38);
+            this.lnkDesarrollador.Name = "lnkDesarrollador";
+            this.lnkDesarrollador.Size = new System.Drawing.Size(300, 16);
+            this.lnkDesarrollador.TabStop = true;
+            this.lnkDesarrollador.Text = "Formulario de: Yanela Acori";
+            this.lnkDesarrollador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.lnkDesarrollador.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDesarrollador_LinkClicked);
+            // 
+            // lblIconoUsuario
+            // 
+            this.lblIconoUsuario.Font = new System.Drawing.Font("Segoe UI Emoji", 18F);
+            this.lblIconoUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblIconoUsuario.Location = new System.Drawing.Point(1046, 6);
+            this.lblIconoUsuario.Name = "lblIconoUsuario";
+            this.lblIconoUsuario.Size = new System.Drawing.Size(46, 46);
+            this.lblIconoUsuario.Text = "👤";
+            this.lblIconoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // btnIrReportes  (abre Reportes encima; al cerrarlo se vuelve aquí)
+            // 
+            this.btnIrReportes.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnIrReportes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIrReportes.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIrReportes.ForeColor = System.Drawing.Color.White;
+            this.btnIrReportes.Location = new System.Drawing.Point(900, 18);
+            this.btnIrReportes.Name = "btnIrReportes";
+            this.btnIrReportes.Size = new System.Drawing.Size(170, 25);
+            this.btnIrReportes.Text = "Reportes detallados →";
+            this.btnIrReportes.UseVisualStyleBackColor = false;
+            this.btnIrReportes.Click += new System.EventHandler(this.btnIrReportes_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.btnLimpiar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.Color.White;
+            this.btnLimpiar.Location = new System.Drawing.Point(516, 18);
+            this.btnLimpiar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(90, 26);
+            this.btnLimpiar.TabIndex = 4;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
+            // btnBuscar
+            // 
+            this.btnBuscar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(194)))), ((int)(((byte)(202)))));
+            this.btnBuscar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnBuscar.Location = new System.Drawing.Point(420, 18);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(90, 26);
+            this.btnBuscar.TabIndex = 3;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = false;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // cboEstado
+            // 
+            this.cboEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboEstado.FormattingEnabled = true;
+            this.cboEstado.Location = new System.Drawing.Point(275, 21);
+            this.cboEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboEstado.Name = "cboEstado";
+            this.cboEstado.Size = new System.Drawing.Size(130, 21);
+            this.cboEstado.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(173, 24);
+            this.label2.Location = new System.Drawing.Point(225, 25);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(43, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Estado:";
             // 
-            // textBox1
+            // txtGuia
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(63, 23);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(106, 19);
-            this.textBox1.TabIndex = 1;
+            this.txtGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtGuia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtGuia.Location = new System.Drawing.Point(80, 22);
+            this.txtGuia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtGuia.Name = "txtGuia";
+            this.txtGuia.Size = new System.Drawing.Size(130, 19);
+            this.txtGuia.TabIndex = 1;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 25);
+            this.label1.Location = new System.Drawing.Point(12, 25);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "N° de guía:";
             // 
-            // dgvEnvios
+            // grpEnvios
             // 
-            this.dgvEnvios.BackColor = System.Drawing.Color.White;
-            this.dgvEnvios.Controls.Add(this.dataGridView1);
-            this.dgvEnvios.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dgvEnvios.Location = new System.Drawing.Point(9, 131);
-            this.dgvEnvios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgvEnvios.Name = "dgvEnvios";
-            this.dgvEnvios.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dgvEnvios.Size = new System.Drawing.Size(786, 202);
-            this.dgvEnvios.TabIndex = 5;
-            this.dgvEnvios.TabStop = false;
-            this.dgvEnvios.Text = "Envíos";
+            this.grpEnvios.BackColor = System.Drawing.Color.White;
+            this.grpEnvios.Controls.Add(this.dgvLista);
+            this.grpEnvios.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpEnvios.Location = new System.Drawing.Point(9, 123);
+            this.grpEnvios.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpEnvios.Name = "grpEnvios";
+            this.grpEnvios.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpEnvios.Size = new System.Drawing.Size(1080, 202);
+            this.grpEnvios.TabIndex = 5;
+            this.grpEnvios.TabStop = false;
+            this.grpEnvios.Text = "Envíos";
             // 
-            // dataGridView1
+            // dgvLista
             // 
-            this.dataGridView1.AllowUserToResizeColumns = false;
-            this.dataGridView1.AllowUserToResizeRows = false;
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvLista.AllowUserToResizeColumns = false;
+            this.dgvLista.AllowUserToResizeRows = false;
+            this.dgvLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLista.BackgroundColor = System.Drawing.Color.White;
+            this.dgvLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2,
             this.Column3,
             this.Column4,
             this.Column5});
-            this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(43, 27);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 30;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(667, 161);
-            this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            this.dgvLista.EnableHeadersVisualStyles = false;
+            this.dgvLista.Location = new System.Drawing.Point(10, 20);
+            this.dgvLista.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvLista.Name = "dgvLista";
+            this.dgvLista.RowHeadersWidth = 30;
+            this.dgvLista.RowTemplate.Height = 24;
+            this.dgvLista.Size = new System.Drawing.Size(1060, 172);
+            this.dgvLista.TabIndex = 0;
+            this.dgvLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvLista_CellClick);
             // 
             // Column1
             // 
@@ -251,35 +307,35 @@
             this.Column5.ReadOnly = true;
             this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // groupBox3
+            // grpDetalle
             // 
-            this.groupBox3.BackColor = System.Drawing.Color.White;
-            this.groupBox3.Controls.Add(this.btnReporteEnvio);
-            this.groupBox3.Controls.Add(this.lstResumen);
-            this.groupBox3.Controls.Add(this.textBox5);
-            this.groupBox3.Controls.Add(this.textBox4);
-            this.groupBox3.Controls.Add(this.textBox3);
-            this.groupBox3.Controls.Add(this.textBox2);
-            this.groupBox3.Controls.Add(this.label6);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.label4);
-            this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox3.Location = new System.Drawing.Point(9, 337);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox3.Size = new System.Drawing.Size(394, 319);
-            this.groupBox3.TabIndex = 6;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Detalle del envío";
+            this.grpDetalle.BackColor = System.Drawing.Color.White;
+            this.grpDetalle.Controls.Add(this.btnReporteEnvio);
+            this.grpDetalle.Controls.Add(this.lstResumen);
+            this.grpDetalle.Controls.Add(this.txtDetVehiculo);
+            this.grpDetalle.Controls.Add(this.txtDetDestino);
+            this.grpDetalle.Controls.Add(this.txtDetCliente);
+            this.grpDetalle.Controls.Add(this.txtDetGuia);
+            this.grpDetalle.Controls.Add(this.label6);
+            this.grpDetalle.Controls.Add(this.label5);
+            this.grpDetalle.Controls.Add(this.label4);
+            this.grpDetalle.Controls.Add(this.label3);
+            this.grpDetalle.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpDetalle.Location = new System.Drawing.Point(9, 331);
+            this.grpDetalle.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpDetalle.Name = "grpDetalle";
+            this.grpDetalle.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpDetalle.Size = new System.Drawing.Size(530, 319);
+            this.grpDetalle.TabIndex = 6;
+            this.grpDetalle.TabStop = false;
+            this.grpDetalle.Text = "Detalle del envío";
             // 
             // btnReporteEnvio
             // 
             this.btnReporteEnvio.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnReporteEnvio.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReporteEnvio.ForeColor = System.Drawing.Color.White;
-            this.btnReporteEnvio.Location = new System.Drawing.Point(129, 272);
+            this.btnReporteEnvio.Location = new System.Drawing.Point(198, 272);
             this.btnReporteEnvio.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnReporteEnvio.Name = "btnReporteEnvio";
             this.btnReporteEnvio.Size = new System.Drawing.Size(133, 34);
@@ -294,53 +350,52 @@
             this.lstResumen.FormattingEnabled = true;
             this.lstResumen.Location = new System.Drawing.Point(14, 120);
             this.lstResumen.Name = "lstResumen";
-            this.lstResumen.Size = new System.Drawing.Size(360, 147);
+            this.lstResumen.Size = new System.Drawing.Size(500, 147);
             this.lstResumen.TabIndex = 9;
-            this.lstResumen.SelectedIndexChanged += new System.EventHandler(this.lstResumen_SelectedIndexChanged);
             // 
-            // textBox5
+            // txtDetVehiculo
             // 
-            this.textBox5.BackColor = System.Drawing.Color.White;
-            this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox5.Location = new System.Drawing.Point(102, 89);
-            this.textBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(262, 19);
-            this.textBox5.TabIndex = 8;
+            this.txtDetVehiculo.BackColor = System.Drawing.Color.White;
+            this.txtDetVehiculo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDetVehiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDetVehiculo.Location = new System.Drawing.Point(102, 89);
+            this.txtDetVehiculo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDetVehiculo.Name = "txtDetVehiculo";
+            this.txtDetVehiculo.Size = new System.Drawing.Size(410, 19);
+            this.txtDetVehiculo.TabIndex = 8;
             // 
-            // textBox4
+            // txtDetDestino
             // 
-            this.textBox4.BackColor = System.Drawing.Color.White;
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.Location = new System.Drawing.Point(102, 65);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(262, 19);
-            this.textBox4.TabIndex = 7;
+            this.txtDetDestino.BackColor = System.Drawing.Color.White;
+            this.txtDetDestino.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDetDestino.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDetDestino.Location = new System.Drawing.Point(102, 65);
+            this.txtDetDestino.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDetDestino.Name = "txtDetDestino";
+            this.txtDetDestino.Size = new System.Drawing.Size(410, 19);
+            this.txtDetDestino.TabIndex = 7;
             // 
-            // textBox3
+            // txtDetCliente
             // 
-            this.textBox3.BackColor = System.Drawing.Color.White;
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.Location = new System.Drawing.Point(102, 43);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(262, 19);
-            this.textBox3.TabIndex = 6;
+            this.txtDetCliente.BackColor = System.Drawing.Color.White;
+            this.txtDetCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDetCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDetCliente.Location = new System.Drawing.Point(102, 43);
+            this.txtDetCliente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDetCliente.Name = "txtDetCliente";
+            this.txtDetCliente.Size = new System.Drawing.Size(410, 19);
+            this.txtDetCliente.TabIndex = 6;
             // 
-            // textBox2
+            // txtDetGuia
             // 
-            this.textBox2.BackColor = System.Drawing.Color.White;
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(102, 20);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(262, 19);
-            this.textBox2.TabIndex = 5;
+            this.txtDetGuia.BackColor = System.Drawing.Color.White;
+            this.txtDetGuia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtDetGuia.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDetGuia.Location = new System.Drawing.Point(102, 20);
+            this.txtDetGuia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtDetGuia.Name = "txtDetGuia";
+            this.txtDetGuia.Size = new System.Drawing.Size(410, 19);
+            this.txtDetGuia.TabIndex = 5;
             // 
             // label6
             // 
@@ -386,42 +441,41 @@
             this.label3.TabIndex = 1;
             this.label3.Text = "Guía:";
             // 
-            // groupBox4
+            // grpHistorial
             // 
-            this.groupBox4.BackColor = System.Drawing.Color.White;
-            this.groupBox4.Controls.Add(this.dataGridView2);
-            this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(420, 336);
-            this.groupBox4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox4.Size = new System.Drawing.Size(375, 278);
-            this.groupBox4.TabIndex = 7;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Historial de seguimiento";
+            this.grpHistorial.BackColor = System.Drawing.Color.White;
+            this.grpHistorial.Controls.Add(this.dgvHistorial);
+            this.grpHistorial.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpHistorial.Location = new System.Drawing.Point(550, 331);
+            this.grpHistorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpHistorial.Name = "grpHistorial";
+            this.grpHistorial.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpHistorial.Size = new System.Drawing.Size(539, 319);
+            this.grpHistorial.TabIndex = 7;
+            this.grpHistorial.TabStop = false;
+            this.grpHistorial.Text = "Historial de seguimiento";
             // 
-            // dataGridView2
+            // dgvHistorial
             // 
-            this.dataGridView2.AllowUserToResizeColumns = false;
-            this.dataGridView2.AllowUserToResizeRows = false;
-            this.dataGridView2.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView2.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvHistorial.AllowUserToResizeColumns = false;
+            this.dgvHistorial.AllowUserToResizeRows = false;
+            this.dgvHistorial.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvHistorial.BackgroundColor = System.Drawing.Color.White;
+            this.dgvHistorial.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvHistorial.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvHistorial.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column6,
             this.Column7,
             this.Column8});
-            this.dataGridView2.EnableHeadersVisualStyles = false;
-            this.dataGridView2.Location = new System.Drawing.Point(8, 17);
-            this.dataGridView2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.RowHeadersVisible = false;
-            this.dataGridView2.RowHeadersWidth = 70;
-            this.dataGridView2.RowTemplate.Height = 24;
-            this.dataGridView2.Size = new System.Drawing.Size(352, 234);
-            this.dataGridView2.TabIndex = 1;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            this.dgvHistorial.EnableHeadersVisualStyles = false;
+            this.dgvHistorial.Location = new System.Drawing.Point(8, 17);
+            this.dgvHistorial.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvHistorial.Name = "dgvHistorial";
+            this.dgvHistorial.RowHeadersVisible = false;
+            this.dgvHistorial.RowHeadersWidth = 70;
+            this.dgvHistorial.RowTemplate.Height = 24;
+            this.dgvHistorial.Size = new System.Drawing.Size(522, 290);
+            this.dgvHistorial.TabIndex = 1;
             // 
             // Column6
             // 
@@ -444,57 +498,57 @@
             this.Column8.Name = "Column8";
             this.Column8.ReadOnly = true;
             // 
-            // groupBox5
+            // grpActualizar
             // 
-            this.groupBox5.BackColor = System.Drawing.Color.White;
-            this.groupBox5.Controls.Add(this.textBox6);
-            this.groupBox5.Controls.Add(this.comboBox3);
-            this.groupBox5.Controls.Add(this.button4);
-            this.groupBox5.Controls.Add(this.label7);
-            this.groupBox5.Controls.Add(this.label8);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(12, 672);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.groupBox5.Size = new System.Drawing.Size(575, 53);
-            this.groupBox5.TabIndex = 5;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Actualizar estado del envío: ";
+            this.grpActualizar.BackColor = System.Drawing.Color.White;
+            this.grpActualizar.Controls.Add(this.txtObservacion);
+            this.grpActualizar.Controls.Add(this.cboNuevoEstado);
+            this.grpActualizar.Controls.Add(this.btnActualizarEstado);
+            this.grpActualizar.Controls.Add(this.label7);
+            this.grpActualizar.Controls.Add(this.label8);
+            this.grpActualizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpActualizar.Location = new System.Drawing.Point(9, 657);
+            this.grpActualizar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpActualizar.Name = "grpActualizar";
+            this.grpActualizar.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.grpActualizar.Size = new System.Drawing.Size(1080, 53);
+            this.grpActualizar.TabIndex = 5;
+            this.grpActualizar.TabStop = false;
+            this.grpActualizar.Text = "Actualizar estado del envío: ";
             // 
-            // textBox6
+            // txtObservacion
             // 
-            this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox6.Location = new System.Drawing.Point(243, 23);
-            this.textBox6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox6.Name = "textBox6";
-            this.textBox6.Size = new System.Drawing.Size(213, 19);
-            this.textBox6.TabIndex = 5;
+            this.txtObservacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtObservacion.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtObservacion.Location = new System.Drawing.Point(243, 23);
+            this.txtObservacion.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtObservacion.Name = "txtObservacion";
+            this.txtObservacion.Size = new System.Drawing.Size(213, 19);
+            this.txtObservacion.TabIndex = 5;
             // 
-            // comboBox3
+            // cboNuevoEstado
             // 
-            this.comboBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(80, 23);
-            this.comboBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(85, 21);
-            this.comboBox3.TabIndex = 5;
-            this.comboBox3.SelectedIndexChanged += new System.EventHandler(this.comboBox3_SelectedIndexChanged);
+            this.cboNuevoEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboNuevoEstado.FormattingEnabled = true;
+            this.cboNuevoEstado.Location = new System.Drawing.Point(80, 23);
+            this.cboNuevoEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.cboNuevoEstado.Name = "cboNuevoEstado";
+            this.cboNuevoEstado.Size = new System.Drawing.Size(85, 21);
+            this.cboNuevoEstado.TabIndex = 5;
             // 
-            // button4
+            // btnActualizarEstado
             // 
-            this.button4.BackColor = System.Drawing.Color.White;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.Black;
-            this.button4.Location = new System.Drawing.Point(470, 23);
-            this.button4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(100, 20);
-            this.button4.TabIndex = 3;
-            this.button4.Text = "Actualizar estado";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btnActualizarEstado.BackColor = System.Drawing.Color.White;
+            this.btnActualizarEstado.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnActualizarEstado.ForeColor = System.Drawing.Color.Black;
+            this.btnActualizarEstado.Location = new System.Drawing.Point(470, 23);
+            this.btnActualizarEstado.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btnActualizarEstado.Name = "btnActualizarEstado";
+            this.btnActualizarEstado.Size = new System.Drawing.Size(100, 20);
+            this.btnActualizarEstado.TabIndex = 3;
+            this.btnActualizarEstado.Text = "Actualizar estado";
+            this.btnActualizarEstado.UseVisualStyleBackColor = false;
+            this.btnActualizarEstado.Click += new System.EventHandler(this.btnActualizarEstado_Click);
             // 
             // label7
             // 
@@ -518,61 +572,33 @@
             this.label8.TabIndex = 0;
             this.label8.Text = "Nuevo estado:";
             // 
-            // statusStrip1
-            // 
-            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripStatusLabel1});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 376);
-            this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Padding = new System.Windows.Forms.Padding(1, 0, 10, 0);
-            this.statusStrip1.Size = new System.Drawing.Size(600, 21);
-            this.statusStrip1.TabIndex = 8;
-            this.statusStrip1.Text = "statusStrip1";
-            this.statusStrip1.Visible = false;
-            // 
-            // toolStripStatusLabel1
-            // 
-            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
-            this.toolStripStatusLabel1.Size = new System.Drawing.Size(118, 16);
-            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
-            // 
-            // toolStripStatusLabel2
-            // 
-            this.toolStripStatusLabel2.Name = "toolStripStatusLabel2";
-            this.toolStripStatusLabel2.Size = new System.Drawing.Size(151, 20);
-            this.toolStripStatusLabel2.Text = "toolStripStatusLabel2";
-            // 
-            // toolStripStatusLabel3
-            // 
-            this.toolStripStatusLabel3.Name = "toolStripStatusLabel3";
-            this.toolStripStatusLabel3.Size = new System.Drawing.Size(151, 20);
-            this.toolStripStatusLabel3.Text = "toolStripStatusLabel3";
-            // 
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
-            this.pnlCabecera.Controls.Add(this.pictureBox1);
+            this.pnlCabecera.Controls.Add(this.lblIconoUsuario);
+            this.pnlCabecera.Controls.Add(this.lnkDesarrollador);
+            this.pnlCabecera.Controls.Add(this.lblSede);
+            this.pnlCabecera.Controls.Add(this.lblUsuario);
+            this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Controls.Add(this.label9);
             this.pnlCabecera.Controls.Add(this.label10);
             this.pnlCabecera.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlCabecera.Location = new System.Drawing.Point(0, 0);
             this.pnlCabecera.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pnlCabecera.Name = "pnlCabecera";
-            this.pnlCabecera.Size = new System.Drawing.Size(812, 57);
+            this.pnlCabecera.Size = new System.Drawing.Size(1100, 57);
             this.pnlCabecera.TabIndex = 9;
-            this.pnlCabecera.Paint += new System.Windows.Forms.PaintEventHandler(this.pnlCabecera_Paint);
             // 
-            // pictureBox1
+            // picLogo
             // 
-            this.pictureBox1.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
-            this.pictureBox1.Location = new System.Drawing.Point(34, 7);
-            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(172, 44);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 3;
-            this.pictureBox1.TabStop = false;
+            this.picLogo.Image = global::Shalom.Properties.Resources.logo_shalom_cabecera;
+            this.picLogo.Location = new System.Drawing.Point(34, 7);
+            this.picLogo.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.picLogo.Name = "picLogo";
+            this.picLogo.Size = new System.Drawing.Size(172, 44);
+            this.picLogo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.picLogo.TabIndex = 3;
+            this.picLogo.TabStop = false;
             // 
             // label9
             // 
@@ -598,50 +624,17 @@
             this.label10.TabIndex = 1;
             this.label10.Text = "Rastreo de Envíos";
             // 
-            // picPerfil
-            // 
-            this.picPerfil.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.picPerfil.BackColor = System.Drawing.Color.Transparent;
-            this.picPerfil.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.picPerfil.Image = global::Shalom.Properties.Resources.foto_yanela;
-            this.picPerfil.Location = new System.Drawing.Point(772, 62);
-            this.picPerfil.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.picPerfil.Name = "picPerfil";
-            this.picPerfil.Size = new System.Drawing.Size(30, 32);
-            this.picPerfil.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.picPerfil.TabIndex = 11;
-            this.picPerfil.TabStop = false;
-            this.picPerfil.Click += new System.EventHandler(this.picPerfil_Click);
-            // 
-            // lnkPerfil
-            // 
-            this.lnkPerfil.AutoSize = true;
-            this.lnkPerfil.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lnkPerfil.ForeColor = System.Drawing.Color.Blue;
-            this.lnkPerfil.LinkColor = System.Drawing.Color.Blue;
-            this.lnkPerfil.Location = new System.Drawing.Point(696, 74);
-            this.lnkPerfil.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lnkPerfil.Name = "lnkPerfil";
-            this.lnkPerfil.Size = new System.Drawing.Size(79, 13);
-            this.lnkPerfil.TabIndex = 10;
-            this.lnkPerfil.TabStop = true;
-            this.lnkPerfil.Text = "Yanela Acori";
-            this.lnkPerfil.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkPerfil_LinkClicked);
-            // 
             // RastreoDeEnvíos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(812, 746);
-            this.Controls.Add(this.lnkPerfil);
-            this.Controls.Add(this.picPerfil);
+            this.ClientSize = new System.Drawing.Size(1100, 722);
             this.Controls.Add(this.pnlCabecera);
-            this.Controls.Add(this.statusStrip1);
-            this.Controls.Add(this.groupBox5);
-            this.Controls.Add(this.groupBox4);
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.dgvEnvios);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpActualizar);
+            this.Controls.Add(this.grpHistorial);
+            this.Controls.Add(this.grpDetalle);
+            this.Controls.Add(this.grpEnvios);
+            this.Controls.Add(this.grpFiltros);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.MaximizeBox = false;
@@ -649,22 +642,19 @@
             this.Name = "RastreoDeEnvíos";
             this.Text = "Rastreo De Envíos ";
             this.Load += new System.EventHandler(this.RastreoDeEnvíos_Load);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.dgvEnvios.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
-            this.statusStrip1.ResumeLayout(false);
-            this.statusStrip1.PerformLayout();
+            this.grpFiltros.ResumeLayout(false);
+            this.grpFiltros.PerformLayout();
+            this.grpEnvios.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvLista)).EndInit();
+            this.grpDetalle.ResumeLayout(false);
+            this.grpDetalle.PerformLayout();
+            this.grpHistorial.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvHistorial)).EndInit();
+            this.grpActualizar.ResumeLayout(false);
+            this.grpActualizar.PerformLayout();
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picPerfil)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -672,32 +662,32 @@
 
         #endregion
 
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpFiltros;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtGuia;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.GroupBox dgvEnvios;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.Button btnLimpiar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.ComboBox cboEstado;
+        private System.Windows.Forms.GroupBox grpEnvios;
+        private System.Windows.Forms.GroupBox grpDetalle;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.TextBox textBox5;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.GroupBox grpHistorial;
+        private System.Windows.Forms.TextBox txtDetVehiculo;
+        private System.Windows.Forms.TextBox txtDetDestino;
+        private System.Windows.Forms.TextBox txtDetCliente;
+        private System.Windows.Forms.TextBox txtDetGuia;
+        private System.Windows.Forms.GroupBox grpActualizar;
+        private System.Windows.Forms.Button btnActualizarEstado;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox textBox6;
-        private System.Windows.Forms.ComboBox comboBox3;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.TextBox txtObservacion;
+        private System.Windows.Forms.ComboBox cboNuevoEstado;
+        private System.Windows.Forms.DataGridView dgvLista;
+        private System.Windows.Forms.DataGridView dgvHistorial;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column6;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column7;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column8;
@@ -706,18 +696,16 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
-        private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel2;
-        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel3;
         private System.Windows.Forms.ListBox lstResumen;
         private System.Windows.Forms.Button btnReporteEnvio;
         private System.Windows.Forms.Panel pnlCabecera;
-        private System.Windows.Forms.LinkLabel lnkPerfil;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.PictureBox picPerfil;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Button btnIrReportes;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblSede;
+        private System.Windows.Forms.LinkLabel lnkDesarrollador;
+        private System.Windows.Forms.Label lblIconoUsuario;
     }
 }
-

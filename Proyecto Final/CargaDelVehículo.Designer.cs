@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CargaDelVehículo));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblPorcentaje = new System.Windows.Forms.Label();
             this.cboVehiculo = new System.Windows.Forms.ComboBox();
@@ -40,13 +39,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.label10 = new System.Windows.Forms.Label();
             this.btnPeek = new System.Windows.Forms.Button();
             this.btnPop = new System.Windows.Forms.Button();
             this.btnPush = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSiguiente = new System.Windows.Forms.TextBox();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -57,17 +55,19 @@
             this.lstPaquetes = new System.Windows.Forms.ListBox();
             this.label5 = new System.Windows.Forms.Label();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.btnIrRutas = new System.Windows.Forms.Button();
             this.lnkDesarrollador = new System.Windows.Forms.LinkLabel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlCabecera = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.picLogo = new System.Windows.Forms.PictureBox();
+            this.lblUsuario = new System.Windows.Forms.Label();
+            this.lblSede = new System.Windows.Forms.Label();
+            this.lblIconoUsuario = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlCabecera.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +114,7 @@
             this.cboVehiculo.Name = "cboVehiculo";
             this.cboVehiculo.Size = new System.Drawing.Size(121, 21);
             this.cboVehiculo.TabIndex = 9;
+            this.cboVehiculo.SelectedIndexChanged += new System.EventHandler(this.cboVehiculo_SelectedIndexChanged);
             // 
             // progressBar1
             // 
@@ -210,7 +211,7 @@
             this.groupBox2.Controls.Add(this.btnPeek);
             this.groupBox2.Controls.Add(this.btnPop);
             this.groupBox2.Controls.Add(this.btnPush);
-            this.groupBox2.Controls.Add(this.textBox1);
+            this.groupBox2.Controls.Add(this.txtSiguiente);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(15, 318);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
@@ -244,6 +245,7 @@
             this.btnPeek.TabIndex = 3;
             this.btnPeek.Text = "Ver tope";
             this.btnPeek.UseVisualStyleBackColor = false;
+            this.btnPeek.Click += new System.EventHandler(this.btnPeek_Click);
             // 
             // btnPop
             // 
@@ -255,8 +257,9 @@
             this.btnPop.Name = "btnPop";
             this.btnPop.Size = new System.Drawing.Size(154, 35);
             this.btnPop.TabIndex = 2;
-            this.btnPop.Text = "Desapilar tope";
+            this.btnPop.Text = "Pasar tope a la ruta";
             this.btnPop.UseVisualStyleBackColor = false;
+            this.btnPop.Click += new System.EventHandler(this.btnPop_Click);
             // 
             // btnPush
             // 
@@ -272,15 +275,15 @@
             this.btnPush.UseVisualStyleBackColor = false;
             this.btnPush.Click += new System.EventHandler(this.btnPush_Click);
             // 
-            // textBox1
+            // txtSiguiente
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(22, 38);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 19);
-            this.textBox1.TabIndex = 0;
+            this.txtSiguiente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSiguiente.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSiguiente.Location = new System.Drawing.Point(22, 38);
+            this.txtSiguiente.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.txtSiguiente.Name = "txtSiguiente";
+            this.txtSiguiente.Size = new System.Drawing.Size(180, 19);
+            this.txtSiguiente.TabIndex = 0;
             // 
             // statusStrip1
             // 
@@ -340,7 +343,6 @@
             this.lblContador.Size = new System.Drawing.Size(14, 13);
             this.lblContador.TabIndex = 3;
             this.lblContador.Text = "0";
-            this.lblContador.Click += new System.EventHandler(this.lblContador_Click);
             // 
             // label6
             // 
@@ -400,30 +402,73 @@
             this.btnCerrar.TabIndex = 4;
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.UseVisualStyleBackColor = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // btnIrRutas  (abre Asignación de rutas con este vehículo; al cerrarla se vuelve aquí)
+            // 
+            this.btnIrRutas.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnIrRutas.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnIrRutas.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnIrRutas.ForeColor = System.Drawing.Color.White;
+            this.btnIrRutas.Location = new System.Drawing.Point(363, 481);
+            this.btnIrRutas.Name = "btnIrRutas";
+            this.btnIrRutas.Size = new System.Drawing.Size(200, 37);
+            this.btnIrRutas.TabIndex = 5;
+            this.btnIrRutas.Text = "Ir a Asignación de rutas →";
+            this.btnIrRutas.UseVisualStyleBackColor = false;
+            this.btnIrRutas.Click += new System.EventHandler(this.btnIrRutas_Click);
             // 
             // lnkDesarrollador
             // 
-            this.lnkDesarrollador.AutoSize = true;
-            this.lnkDesarrollador.Location = new System.Drawing.Point(665, 74);
+            this.lnkDesarrollador.ActiveLinkColor = System.Drawing.Color.White;
+            this.lnkDesarrollador.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lnkDesarrollador.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.lnkDesarrollador.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lnkDesarrollador.Location = new System.Drawing.Point(446, 38);
             this.lnkDesarrollador.Name = "lnkDesarrollador";
-            this.lnkDesarrollador.Size = new System.Drawing.Size(90, 13);
-            this.lnkDesarrollador.TabIndex = 6;
+            this.lnkDesarrollador.Size = new System.Drawing.Size(300, 16);
             this.lnkDesarrollador.TabStop = true;
-            this.lnkDesarrollador.Text = "Anshely Quezada";
+            this.lnkDesarrollador.Text = "Formulario de: Anshely Quezada";
+            this.lnkDesarrollador.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.lnkDesarrollador.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lnkDesarrollador_LinkClicked);
             // 
-            // pictureBox1
+            // lblUsuario  (usuario conectado)
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(756, 63);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(24, 24);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
+            this.lblUsuario.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Bold);
+            this.lblUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblUsuario.Location = new System.Drawing.Point(446, 3);
+            this.lblUsuario.Name = "lblUsuario";
+            this.lblUsuario.Size = new System.Drawing.Size(300, 19);
+            this.lblUsuario.Text = "Usuario";
+            this.lblUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblSede  (sede del usuario conectado)
+            // 
+            this.lblSede.Font = new System.Drawing.Font("Segoe UI", 8.25F);
+            this.lblSede.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(215)))), ((int)(((byte)(218)))));
+            this.lblSede.Location = new System.Drawing.Point(446, 22);
+            this.lblSede.Name = "lblSede";
+            this.lblSede.Size = new System.Drawing.Size(300, 16);
+            this.lblSede.Text = "Sede";
+            this.lblSede.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblIconoUsuario
+            // 
+            this.lblIconoUsuario.Font = new System.Drawing.Font("Segoe UI Emoji", 18F);
+            this.lblIconoUsuario.ForeColor = System.Drawing.Color.White;
+            this.lblIconoUsuario.Location = new System.Drawing.Point(752, 6);
+            this.lblIconoUsuario.Name = "lblIconoUsuario";
+            this.lblIconoUsuario.Size = new System.Drawing.Size(46, 46);
+            this.lblIconoUsuario.Text = "👤";
+            this.lblIconoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pnlCabecera
             // 
             this.pnlCabecera.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(38)))), ((int)(((byte)(43)))));
+            this.pnlCabecera.Controls.Add(this.lblIconoUsuario);
+            this.pnlCabecera.Controls.Add(this.lnkDesarrollador);
+            this.pnlCabecera.Controls.Add(this.lblSede);
+            this.pnlCabecera.Controls.Add(this.lblUsuario);
             this.pnlCabecera.Controls.Add(this.picLogo);
             this.pnlCabecera.Controls.Add(this.label8);
             this.pnlCabecera.Controls.Add(this.label9);
@@ -476,8 +521,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(806, 570);
             this.Controls.Add(this.pnlCabecera);
-            this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.lnkDesarrollador);
+            this.Controls.Add(this.btnIrRutas);
             this.Controls.Add(this.btnCerrar);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.statusStrip1);
@@ -489,7 +533,6 @@
             this.MinimizeBox = false;
             this.Name = "CargaDelVehículo";
             this.Text = "Carga Del Vehículo";
-            this.Load += new System.EventHandler(this.CargaDelVehículo_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -498,7 +541,6 @@
             this.statusStrip1.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlCabecera.ResumeLayout(false);
             this.pnlCabecera.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
@@ -514,7 +556,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
-        private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private System.Windows.Forms.ProgressBar progressBar1;
         private System.Windows.Forms.TextBox txtCarga;
         private System.Windows.Forms.TextBox txtCapacidad;
@@ -523,7 +564,7 @@
         private System.Windows.Forms.Button btnPeek;
         private System.Windows.Forms.Button btnPop;
         private System.Windows.Forms.Button btnPush;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSiguiente;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
         private System.Windows.Forms.GroupBox groupBox3;
@@ -536,12 +577,15 @@
         private System.Windows.Forms.Label lblTope;
         private System.Windows.Forms.ComboBox cboVehiculo;
         private System.Windows.Forms.LinkLabel lnkDesarrollador;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel pnlCabecera;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblPorcentaje;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.PictureBox picLogo;
+        private System.Windows.Forms.Button btnIrRutas;
+        private System.Windows.Forms.Label lblUsuario;
+        private System.Windows.Forms.Label lblSede;
+        private System.Windows.Forms.Label lblIconoUsuario;
     }
 }
