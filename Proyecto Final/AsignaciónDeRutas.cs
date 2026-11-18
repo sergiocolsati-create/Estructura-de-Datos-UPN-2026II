@@ -28,9 +28,22 @@ namespace Shalom
         // Vehículo elegido en el ComboBox (con él se trabaja en toda la pantalla)
         private Vehiculo vehiculoActual;
 
+        // Vehículo con el que se abre la ventana (null = el primero de la lista)
+        private Vehiculo vehiculoInicial;
+
+        // Desde Carga del vehículo: se abre con ese vehículo ya elegido
+        public AsignaciónDeRutas(Vehiculo vehiculo) : this()
+        {
+            vehiculoInicial = vehiculo;
+        }
+
         public AsignaciónDeRutas()
         {
             InitializeComponent();   // Crea los controles dibujados en el diseñador
+
+            // Usuario conectado (esquina superior derecha)
+            lblUsuario.Text = Sistema.UsuarioNombres;
+            lblSede.Text = Sistema.UsuarioSede;
 
             // El ComboBox guarda el objeto Vehiculo completo, pero muestra solo su placa
             cboVehiculo.DisplayMember = "Placa";
@@ -39,11 +52,13 @@ namespace Shalom
             CrearMapa();
         }
 
-        // Al abrir el formulario se selecciona el primer vehículo
+        // Al abrir se elige el vehículo recibido, o el primero de la lista
         // (eso dispara cboVehiculo_SelectedIndexChanged y se llena la pantalla)
         private void AsignaciónDeRutas_Load(object sender, EventArgs e)
         {
-            if (cboVehiculo.Items.Count > 0)
+            if (vehiculoInicial != null)
+                cboVehiculo.SelectedItem = vehiculoInicial;
+            else if (cboVehiculo.Items.Count > 0)
                 cboVehiculo.SelectedIndex = 0;
         }
 
@@ -59,6 +74,8 @@ namespace Shalom
         //  Todos trabajan con el TOPE de la pila: por ser una pila,
         //  es el único paquete que se puede sacar. Por eso el usuario
         //  no tiene que seleccionarlo.
+        //  Los botones siempre están activos (así no se ponen oscuros):
+        //  si la operación no se puede, Sistema devuelve el motivo.
         // =========================================================
 
         // Saca el tope de la pila y lo pone como ÚLTIMA parada de la ruta
@@ -142,15 +159,6 @@ namespace Shalom
             MostrarVehiculo();      // Conductor y carga
             MostrarPorAsignar();    // Pila
             MostrarParadas();       // Lista enlazada
-
-            // Cada botón solo se habilita cuando tiene sentido usarlo
-            bool hayTope = vehiculoActual.Carga.VerTope() != null;    // ¿Queda algo en la pila?
-            bool hayParadas = !vehiculoActual.Ruta.EstaVacia();       // ¿La ruta tiene paradas?
-
-            btnAgregarAlFinal.Enabled = hayTope;
-            btnInsertarDespues.Enabled = hayTope && hayParadas;   // Necesita una parada de referencia
-            btnQuitarParada.Enabled = hayParadas;
-
             MostrarMapa();     // Ruta del vehículo sobre el mapa
             EncuadrarMapa();   // Zoom para que se vean todas las paradas
         }
@@ -363,9 +371,13 @@ namespace Shalom
                 mapa.Zoom = 12;   // Si todo está en una sola ciudad, no acercar demasiado
         }
 
-        private void lblParadas_Click(object sender, EventArgs e)
-        {
+        // =========================================================
+        //  DESARROLLADORA DEL FORMULARIO
+        // =========================================================
 
+        private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            TarjetaColaborador.Abrir("N00474619", this);   // Anshely Quezada
         }
     }
 }

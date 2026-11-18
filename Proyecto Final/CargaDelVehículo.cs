@@ -1,126 +1,119 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shalom
 {
+    // CARGA DEL VEHÍCULO (pila)
+    //   Apilar paquete:       el frente del ALMACÉN (cola) sube al tope de la PILA del vehículo
+    //   Pasar tope a la ruta: el TOPE de la pila pasa al final de la lista de paradas
+    //   Ver tope:             muestra el último paquete cargado sin sacarlo
     public partial class CargaDelVehículo : Form
     {
-        // Vehículo que se está cargando en esta ventana.
-        private Vehiculo vehiculo;
-        // Desde el menú: sin vehículo elegido
+        private Vehiculo vehiculo;   // Vehículo elegido en el ComboBox
+
+        // Desde el menú: se muestra el primer vehículo
         public CargaDelVehículo() : this(null)
         {
         }
 
+        // Desde el panel o el almacén: se abre con ese vehículo ya elegido
         public CargaDelVehículo(Vehiculo vehiculoInicial)
         {
             InitializeComponent();
 
-            btnPop.Click += btnPop_Click;
-            btnPeek.Click += btnPeek_Click;
-            btnCerrar.Click += btnCerrar_Click;
-            cboVehiculo.SelectedIndexChanged += cboVehiculo_SelectedIndexChanged;
-            btnCerrar.Click += btnCerrar_Click;
+            lblUsuario.Text = Sistema.UsuarioNombres;
+            lblSede.Text = Sistema.UsuarioSede;
 
             ConfigurarControles();
 
+            // Elegir el vehículo dispara cboVehiculo_SelectedIndexChanged, que llena la pantalla
             if (vehiculoInicial != null)
-                cboVehiculo.SelectedItem = vehiculoInicial;   // Dispara SelectedIndexChanged
+                cboVehiculo.SelectedItem = vehiculoInicial;
             else if (cboVehiculo.Items.Count > 0)
                 cboVehiculo.SelectedIndex = 0;
         }
 
-        private void CargaDelVehículo_Load(object sender, EventArgs e)
-        {
+        // =========================================================
+        //  1. CONFIGURACIÓN Y PANTALLA
+        // =========================================================
 
-        }
         private void ConfigurarControles()
         {
-            // Desplegable con los vehículos disponibles
+            // El ComboBox muestra la placa y guarda el objeto Vehiculo completo
             cboVehiculo.DisplayMember = "Placa";
             cboVehiculo.Items.AddRange(Sistema.Vehiculos);
             cboVehiculo.DropDownStyle = ComboBoxStyle.DropDownList;
 
-            // Datos de solo lectura: se llenan solos al elegir el vehículo
+            // Datos de solo lectura: se llenan al elegir el vehículo
             txtConductor.ReadOnly = true;
             txtCapacidad.ReadOnly = true;
             txtCarga.ReadOnly = true;
-            textBox1.ReadOnly = true;       // Muestra el siguiente paquete del almacén
-            textBox1.TabStop = false;
+            txtSiguiente.ReadOnly = true;
+            txtSiguiente.TabStop = false;
         }
-
 
         private void cboVehiculo_SelectedIndexChanged(object sender, EventArgs e)
         {
             vehiculo = cboVehiculo.SelectedItem as Vehiculo;
-            if (vehiculo == null) return;
+            ActualizarPantalla();
+        }
+
+        // Vuelve a mostrar el siguiente del almacén, la pila y la carga del vehículo
+        private void ActualizarPantalla()
+        {
+            // Siguiente paquete del almacén (el que se apilaría)
+            Envio siguiente = Sistema.Almacen.VerFrente();
+            txtSiguiente.Text = siguiente == null
+                ? "(almacén vacío)"
+                : siguiente.Codigo + " | " + siguiente.PesoKg.ToString("0.00") + " kg";
+
+            if (vehiculo == null)
+                return;
 
             txtConductor.Text = vehiculo.Conductor;
             txtCapacidad.Text = vehiculo.CapacidadKg.ToString("0.00") + " kg";
-            ActualizarPantalla();
+
+            // Pila del vehículo (del tope a la base)
+            vehiculo.Carga.Listar(lstPaquetes);
+            lblContador.Text = vehiculo.Carga.Contar().ToString();
+
+            Envio tope = vehiculo.Carga.VerTope();
+            lblTope.Text = tope == null ? "Tope de la pila: (vacía)" : "Tope de la pila: " + tope.Codigo;
+
+            // Carga total: pila + paradas, porque todo sigue dentro del vehículo
+            decimal peso = Sistema.PesoEnVehiculo(vehiculo);
+            int porcentaje = (int)(peso * 100 / vehiculo.CapacidadKg);
+
+            txtCarga.Text = peso.ToString("0.00") + " kg";
+            progressBar1.Value = Math.Min(porcentaje, 100);
+            lblPorcentaje.Text = porcentaje + " %";
         }
 
-        // Apilar: busca el código escrito en textBox1 dentro del registro general
-        // de envíos y, si existe, lo sube a la pila del vehículo.
+        // =========================================================
+        //  2. OPERACIONES DE LA PILA
+        //  Los botones siempre están activos (así no se ponen oscuros):
+        //  si no se puede, Sistema devuelve el motivo y se muestra.
+        // =========================================================
+
+        // PUSH: el frente del almacén sube al tope de la pila
         private void btnPush_Click(object sender, EventArgs e)
         {
+            Envio siguiente = Sistema.Almacen.VerFrente();   // Se guarda para el mensaje
 
-            Envio siguiente = Sistema.Almacen.VerFrente();   // Para el mensaje
-
-            try
-            {
-                string error = Sistema.DespacharA(vehiculo);  // Desencola del almacén, apila y guarda en SQL
-                if (error != "")
-                {
-                    MessageBox.Show(error, "Apilar paquete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            toolStripStatusLabel1.Text = "Apilado: " + siguiente.Codigo;
-            ActualizarPantalla();
-
+            if (EjecutarOperacion(() => Sistema.DespacharA(vehiculo), "Apilar paquete"))
+                toolStripStatusLabel1.Text = "Apilado: " + siguiente.Codigo;
         }
 
-        // Desapilar: saca el paquete del tope (el último que entró).
+        // POP: el tope de la pila pasa al final de la ruta
         private void btnPop_Click(object sender, EventArgs e)
         {
-            Envio tope = vehiculo == null ? null : vehiculo.Carga.VerTope();   // Para el mensaje
+            Envio tope = vehiculo == null ? null : vehiculo.Carga.VerTope();   // Se guarda para el mensaje
 
-            try
-            {
-                string error = Sistema.EntregarTope(vehiculo);
-                if (error != "")
-                {
-                    MessageBox.Show(error, "Entregar tope", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
-                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            toolStripStatusLabel1.Text = "Entregado a la ruta: " + tope.Codigo;
-            ActualizarPantalla();
+            if (EjecutarOperacion(() => Sistema.EntregarTope(vehiculo), "Pasar tope a la ruta"))
+                toolStripStatusLabel1.Text = "Pasado a la ruta: " + tope.Codigo;
         }
 
-        // Peek: solo consulta el tope, no lo retira.
+        // PEEK: solo mira el tope, no lo saca
         private void btnPeek_Click(object sender, EventArgs e)
         {
             Envio tope = vehiculo == null ? null : vehiculo.Carga.VerTope();
@@ -136,56 +129,53 @@ namespace Shalom
                             "Tope de la pila");
         }
 
+        // Ejecuta una operación de Sistema (guarda en SQL y mueve en memoria).
+        // Si salió bien refresca la pantalla y devuelve true; si no, muestra el motivo.
+        private bool EjecutarOperacion(Func<string> operacion, string titulo)
+        {
+            try
+            {
+                string error = operacion();
+                if (error != "")
+                {
+                    MessageBox.Show(error, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("No se pudo guardar el cambio en la base de datos:\n" + ex.Message,
+                                "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            ActualizarPantalla();
+            return true;
+        }
+
+        // =========================================================
+        //  3. NAVEGACIÓN
+        // =========================================================
+
+        // Abre Asignación de rutas ENCIMA de esta ventana, con el mismo vehículo.
+        // Al cerrarla se vuelve aquí y se refresca la pila.
+        private void btnIrRutas_Click(object sender, EventArgs e)
+        {
+            using (AsignaciónDeRutas rutas = new AsignaciónDeRutas(vehiculo))
+                rutas.ShowDialog(this);
+
+            ActualizarPantalla();
+        }
+
         private void btnCerrar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Close();
         }
 
-        // Vuelve a pintar el ListBox, la barra de progreso y las etiquetas.
-        private void ActualizarPantalla()
-        {
-            Envio siguiente = Sistema.Almacen.VerFrente();
-            textBox1.Text = siguiente == null
-                ? "(almacén vacío)"
-                : siguiente.Codigo + " | " + siguiente.PesoKg.ToString("0.00") + " kg";
-            btnPush.Enabled = siguiente != null && vehiculo != null;
-
-            if (vehiculo == null) return;
-
-            vehiculo.Carga.Listar(lstPaquetes);
-
-            txtCarga.Text = vehiculo.Carga.PesoActual.ToString("0.00") + " kg";
-            lblContador.Text = vehiculo.Carga.Contar().ToString();
-
-            int porcentaje = (int)(vehiculo.Carga.PesoActual * 100 / vehiculo.Carga.CapacidadKg);
-            if (porcentaje > 100) porcentaje = 100;
-            if (porcentaje < 0) porcentaje = 0;
-            progressBar1.Value = porcentaje;
-
-            Envio tope = vehiculo.Carga.VerTope();
-            lblTope.Text = tope == null ? "Tope de la pila: (vacía)" : "Tope de la pila: " + tope.Codigo;
-            btnPop.Enabled = tope != null;
-            btnPeek.Enabled = tope != null;
-            lblPorcentaje.Text = porcentaje + " %";
-        }
-
-        private void lblContador_Click(object sender, EventArgs e)
-        {
-            lblContador.Text = vehiculo.Carga.Contar().ToString();
-        }
-
+        // Card de la desarrolladora de este formulario
         private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            TarjetaColaborador tarjeta = new TarjetaColaborador();
-            tarjeta.MostrarDatos(Colaborador.Buscar("N00474619"));
-
-            Form ventana = new Form();
-            ventana.Text = "Colaboradora";
-            ventana.ClientSize = tarjeta.Size;
-            ventana.StartPosition = FormStartPosition.CenterParent;
-            ventana.Controls.Add(tarjeta);
-            ventana.ShowDialog(this);
+            TarjetaColaborador.Abrir("N00474619", this);   // Anshely Quezada
         }
-
     }
 }

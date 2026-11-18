@@ -1,37 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Shalom
 {
+    // RASTREO DE ENVÍOS
+    //   Buscar:   por guía (en el árbol) o por estado
+    //   Detalle:  al hacer clic en un envío se ve su resumen y su historial (lista simple)
+    //   Estado:   desde aquí solo se puede ENTREGAR o registrar una INCIDENCIA
+    //   Reporte:  del envío seleccionado (.txt). Los reportes de muchos envíos están en Reportes.
     public partial class RastreoDeEnvíos : Form
     {
-        private Envio envioSeleccionado;
-        private string guiaInicial = "";
+        private Envio envioSeleccionado;   // Envío elegido en la tabla
+        private string guiaInicial = "";   // Guía que llega desde el panel principal
 
         public RastreoDeEnvíos()
         {
             InitializeComponent();
-            button1.Click += button1_Click;
-            button2.Click += button2_Click;
-            button4.Click += button4_Click;
-            textBox2.ReadOnly = true;
-            textBox3.ReadOnly = true;
-            textBox4.ReadOnly = true;
-            textBox5.ReadOnly = true;
-            // El Designer ya conecta CellContentClick; usamos solo CellClick.
-            dataGridView1.CellContentClick -= dataGridView1_CellContentClick;
 
-            // CellClick responde al clic en cualquier parte de la fila (CellContentClick solo sobre el texto)
-            dataGridView1.CellClick += dataGridView1_CellContentClick;
+            lblUsuario.Text = Sistema.UsuarioNombres;
+            lblSede.Text = Sistema.UsuarioSede;
+
+            ConfigurarControles();
         }
 
+        // Desde el rastreo rápido del panel: se abre buscando esa guía
         public RastreoDeEnvíos(string codigo) : this()
         {
             guiaInicial = codigo;
@@ -39,148 +32,195 @@ namespace Shalom
 
         private void RastreoDeEnvíos_Load(object sender, EventArgs e)
         {
-            comboBox1.Items.Add("Todos");
-            comboBox1.Items.Add(EstadoEnvio.Registrado);
-            comboBox1.Items.Add(EstadoEnvio.EnPreparacion);
-            comboBox1.Items.Add(EstadoEnvio.EnTransito);
-            comboBox1.Items.Add(EstadoEnvio.EnReparto);
-            comboBox1.Items.Add(EstadoEnvio.Entregado);
-            comboBox1.Items.Add(EstadoEnvio.Incidencia);
-
-
-            // Desde Rastreo solo se puede ENTREGAR o registrar una INCIDENCIA.
-            // Los demás estados los cambian sus formularios (cola, almacén, pila, ruta),
-            // así el paquete nunca queda en una estructura que no corresponde a su estado.
-            comboBox3.Items.Add(EstadoEnvio.Entregado);
-            comboBox3.Items.Add(EstadoEnvio.Incidencia);
-            comboBox3.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.DropDownStyle = ComboBoxStyle.DropDownList;
-            comboBox1.SelectedIndex = 0;
-
-            ConfigurarSugerenciasGuia();
-
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Format += ComboEstado_Format;
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Format += ComboEstado_Format;
-
-            dataGridView1.AllowUserToAddRows = false;
-            dataGridView1.ReadOnly = true;
-            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            dataGridView2.AllowUserToAddRows = false;
-            dataGridView2.ReadOnly = true;
-
-            MostrarTodos();
-            if (!string.IsNullOrWhiteSpace(guiaInicial))
-            {
-                textBox1.Text = guiaInicial;
-                button1_Click(this, EventArgs.Empty);
-            }
+            txtGuia.Text = guiaInicial;
+            Buscar();
         }
 
+        // =========================================================
+        //  1. CONFIGURACIÓN INICIAL
+        // =========================================================
+
+        private void ConfigurarControles()
+        {
+            // Estado: "Todos" + cada estado del enum (se muestran con nombre legible)
+            cboEstado.Items.Add("Todos");
+            foreach (EstadoEnvio estado in Enum.GetValues(typeof(EstadoEnvio)))
+                cboEstado.Items.Add(estado);
+            cboEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboEstado.Format += ComboEstado_Format;
+            cboEstado.SelectedIndex = 0;
+
+            // Nuevo estado: solo ENTREGADO o INCIDENCIA. Los demás estados los cambian
+            // sus propios formularios (cola, almacén, pila, ruta), así el paquete nunca
+            // queda en una estructura que no corresponde a su estado.
+            cboNuevoEstado.Items.Add(EstadoEnvio.Entregado);
+            cboNuevoEstado.Items.Add(EstadoEnvio.Incidencia);
+            cboNuevoEstado.DropDownStyle = ComboBoxStyle.DropDownList;
+            cboNuevoEstado.Format += ComboEstado_Format;
+
+            // Tablas de solo lectura
+            dgvLista.AllowUserToAddRows = false;
+            dgvLista.ReadOnly = true;
+            dgvLista.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvHistorial.AllowUserToAddRows = false;
+            dgvHistorial.ReadOnly = true;
+
+            txtDetGuia.ReadOnly = true;
+            txtDetCliente.ReadOnly = true;
+            txtDetDestino.ReadOnly = true;
+            txtDetVehiculo.ReadOnly = true;
+
+            ConfigurarSugerenciasGuia();
+        }
+
+        // Muestra "En tránsito" en lugar de "EnTransito" en los ComboBox de estado
         private void ComboEstado_Format(object sender, ListControlConvertEventArgs e)
         {
             if (e.ListItem is EstadoEnvio estado)
                 e.Value = ArbolEnvios.NombreEstadoLegible(estado);
-            else
-                e.Value = e.ListItem.ToString(); // "Todos" se queda igual
         }
 
+        // Al escribir la guía, sugiere las 5 más recientes
         private void ConfigurarSugerenciasGuia()
         {
-            List<Envio> todos = Sistema.Registro.ObtenerTodos();
-            todos.Sort((a, b) => b.Id.CompareTo(a.Id));
-
             AutoCompleteStringCollection sugerencias = new AutoCompleteStringCollection();
-            int max = Math.Min(todos.Count, 5);
-            for (int i = 0; i < max; i++)
-                sugerencias.Add(todos[i].Codigo);
+            foreach (Envio envio in Sistema.Registro.ObtenerTodos().OrderByDescending(x => x.Id).Take(5))
+                sugerencias.Add(envio.Codigo);
 
-            textBox1.AutoCompleteMode = AutoCompleteMode.Suggest;
-            textBox1.AutoCompleteSource = AutoCompleteSource.CustomSource;
-            textBox1.AutoCompleteCustomSource = sugerencias;
+            txtGuia.AutoCompleteMode = AutoCompleteMode.Suggest;
+            txtGuia.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtGuia.AutoCompleteCustomSource = sugerencias;
         }
 
-        // Si hay texto en "N° de guía", busca ese envío exacto (árbol).
-        // Si no, aplica el filtro de Estado a la lista completa.
-        private void button1_Click(object sender, EventArgs e)
+        // =========================================================
+        //  2. BUSCAR
+        // =========================================================
+
+        private void btnBuscar_Click(object sender, EventArgs e)
         {
-            string codigo = textBox1.Text.Trim().ToUpperInvariant();
+            Buscar();
+        }
 
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtGuia.Text = "";
+            cboEstado.SelectedIndex = 0;
+            Buscar();
+        }
+
+        // Con guía: la busca en el ÁRBOL y muestra su detalle.
+        // Sin guía: muestra todos los envíos del estado elegido ("Todos" = sin filtro).
+        private void Buscar()
+        {
             LimpiarDetalle();
-            dataGridView1.Rows.Clear();
 
-            if (codigo != "")
+            string guia = txtGuia.Text.Trim().ToUpperInvariant();
+            if (guia != "")
             {
-                Envio envio = Sistema.Registro.Buscar(codigo);
+                dgvLista.Rows.Clear();
+                Envio envio = Sistema.Registro.Buscar(guia);
                 if (envio == null)
                 {
-                    MessageBox.Show("No existe un envío con ese código.");
+                    MessageBox.Show("No existe un envío con la guía " + guia + ".", "Buscar");
                     return;
                 }
 
-                dataGridView1.Rows.Clear();
-                ArbolEnvios.AgregarFila(dataGridView1, envio);
-
+                ArbolEnvios.AgregarFila(dgvLista, envio);
                 MostrarDetalle(envio);
                 return;
             }
 
-            if (comboBox1.SelectedIndex <= 0)
-            {
-                Sistema.Registro.Mostrar(dataGridView1, null);   // "Todos"
-            }
-            else
-            {
-                EstadoEnvio filtro = (EstadoEnvio)comboBox1.SelectedItem;
-                Sistema.Registro.Mostrar(dataGridView1, filtro);
-            }
+            EstadoEnvio? estado = cboEstado.SelectedItem is EstadoEnvio elegido ? elegido : (EstadoEnvio?)null;
+            Sistema.Registro.Mostrar(dgvLista, estado);
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            textBox1.Text = "";
-            comboBox1.SelectedIndex = 0;
-            LimpiarDetalle();
-            MostrarTodos();
-        }
+        // =========================================================
+        //  3. DETALLE DEL ENVÍO
+        // =========================================================
 
-        // Al hacer clic en una fila de la tabla, muestra el detalle y el historial de ese envío.
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        // Clic en cualquier parte de una fila: muestra su detalle e historial
+        private void dgvLista_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.RowIndex < 0) return;
+            if (e.RowIndex < 0) return;   // Clic en el encabezado
 
-            string codigo = dataGridView1.Rows[e.RowIndex].Cells[0].Value.ToString();
+            string codigo = dgvLista.Rows[e.RowIndex].Cells[0].Value.ToString();
             Envio envio = Sistema.Registro.Buscar(codigo);
-            if (envio == null) return;
-
-            MostrarDetalle(envio);
+            if (envio != null)
+                MostrarDetalle(envio);
         }
 
-        // ---------- Actualizar estado: Entregado o Incidencia (se guarda en SQL) ----------
-        private void button4_Click(object sender, EventArgs e)
+        private void MostrarDetalle(Envio envio)
+        {
+            envioSeleccionado = envio;
+
+            txtDetGuia.Text = envio.Codigo;
+            txtDetCliente.Text = ArbolEnvios.NombreCliente(envio);
+            txtDetDestino.Text = ArbolEnvios.NombreDestino(envio);
+            txtDetVehiculo.Text = envio.PlacaVehiculo ?? "(sin asignar)";
+
+            envio.Historial.Mostrar(dgvHistorial);   // Lista simple de eventos
+            MostrarResumen(envio);
+        }
+
+        private void LimpiarDetalle()
+        {
+            envioSeleccionado = null;
+            txtDetGuia.Text = "";
+            txtDetCliente.Text = "";
+            txtDetDestino.Text = "";
+            txtDetVehiculo.Text = "";
+            dgvHistorial.Rows.Clear();
+            lstResumen.Items.Clear();
+        }
+
+        // Todo lo que se sabe del envío, una línea por ítem, y al final su recorrido
+        private void MostrarResumen(Envio envio)
+        {
+            lstResumen.Items.Clear();
+
+            lstResumen.Items.Add("Origen: " + Reportes.NombreSede(envio.SedeOrigen));
+            lstResumen.Items.Add("Destino: " + Reportes.NombreSede(envio.SedeDestino));
+            lstResumen.Items.Add("Remitente: " + Reportes.DatosPersona(envio.Remitente));
+            lstResumen.Items.Add("Destinatario: " + Reportes.DatosPersona(envio.Destinatario));
+            lstResumen.Items.Add("Paquete: " + envio.Tipo + ", " + envio.PesoKg + " kg / " + envio.Descripcion);
+            lstResumen.Items.Add("Pago: " + Reportes.NombrePago(envio.ModalidadPago) + " / S/ " + envio.Precio.ToString("0.00"));
+            lstResumen.Items.Add("Vehículo: " + (envio.PlacaVehiculo ?? "-"));
+            lstResumen.Items.Add("Clave de entrega: " + envio.ClaveSeguridad);
+            lstResumen.Items.Add("");
+            lstResumen.Items.Add("Recorrido:");
+
+            // ObtenerTexto() devuelve una línea por evento; cada una pasa a ser un ítem
+            string[] eventos = envio.Historial.ObtenerTexto()
+                .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
+            lstResumen.Items.AddRange(eventos);
+        }
+
+        // =========================================================
+        //  4. ACTUALIZAR ESTADO (Entregado o Incidencia, se guarda en SQL)
+        // =========================================================
+
+        private void btnActualizarEstado_Click(object sender, EventArgs e)
         {
             if (envioSeleccionado == null)
             {
                 MessageBox.Show("Primero seleccione un envío de la lista.");
                 return;
             }
-
-            if (comboBox3.SelectedItem == null)
+            if (cboNuevoEstado.SelectedItem == null)
             {
                 MessageBox.Show("Seleccione el nuevo estado.");
                 return;
             }
 
-            EstadoEnvio nuevoEstado = (EstadoEnvio)comboBox3.SelectedItem;
-            string observacion = textBox6.Text.Trim();
+            Envio envio = envioSeleccionado;   // Se guarda: Buscar() limpia la selección
+            EstadoEnvio nuevoEstado = (EstadoEnvio)cboNuevoEstado.SelectedItem;
+            string observacion = txtObservacion.Text.Trim();
 
             try
             {
                 string error = nuevoEstado == EstadoEnvio.Entregado
-                    ? Sistema.MarcarEntregado(envioSeleccionado, observacion)
-                    : Sistema.RegistrarIncidencia(envioSeleccionado, observacion);
+                    ? Sistema.MarcarEntregado(envio, observacion)
+                    : Sistema.RegistrarIncidencia(envio, observacion);
 
                 if (error != "")
                 {
@@ -195,132 +235,46 @@ namespace Shalom
                 return;
             }
 
-            MostrarDetalle(envioSeleccionado);
-            MostrarTodos();
-            textBox6.Text = "";
+            // Se refresca la tabla con la misma búsqueda y se vuelve a mostrar el envío
+            Buscar();
+            MostrarDetalle(envio);
+            txtObservacion.Text = "";
+
             MessageBox.Show(nuevoEstado == EstadoEnvio.Entregado
-                ? "Envío " + envioSeleccionado.Codigo + " entregado."
-                : "Incidencia registrada en " + envioSeleccionado.Codigo + ".", "Actualizar estado");
+                ? "Envío " + envio.Codigo + " entregado."
+                : "Incidencia registrada en " + envio.Codigo + ".", "Actualizar estado");
         }
 
-        private void MostrarTodos()
-        {
-            Sistema.Registro.Mostrar(dataGridView1, null);
-        }
-
-        private void MostrarDetalle(Envio envio)
-        {
-            envioSeleccionado = envio;
-
-            string cliente = ArbolEnvios.NombreCliente(envio);
-            string destino = ArbolEnvios.NombreDestino(envio);
-
-            string placa = "(sin asignar)";
-            if (envio.PlacaVehiculo != null) placa = envio.PlacaVehiculo;
-
-            textBox2.Text = envio.Codigo;
-            textBox3.Text = cliente;
-            textBox4.Text = destino;
-            textBox5.Text = placa;
-
-            envio.Historial.Mostrar(dataGridView2);
-            MostrarResumen(envio);          // ← Llena el ListBox con todo el recorrido
-        }
-
-        private void LimpiarDetalle()
-        {
-            envioSeleccionado = null;
-            textBox2.Text = "";
-            textBox3.Text = "";
-            textBox4.Text = "";
-            textBox5.Text = "";
-            dataGridView2.Rows.Clear();
-            MostrarResumen(null);           // ← Vacía el ListBox
-        }
-
-
-        private void comboBox3_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        // Todo lo que ha pasado con el envío, una línea por ítem
-        private void MostrarResumen(Envio envio)
-        {
-            lstResumen.Items.Clear();
-            if (envio == null) return;
-
-            string origen = envio.SedeOrigen != null ? envio.SedeOrigen.Nombre : "(sin origen)";
-            string destino = envio.SedeDestino != null ? envio.SedeDestino.Nombre : "(sin destino)";
-            string remitente = envio.Remitente != null
-                ? envio.Remitente.Nombres + " / " + envio.Remitente.NumeroDocumento
-                : "(sin remitente)";
-            string destinatario = envio.Destinatario != null
-                ? envio.Destinatario.Nombres + " / " + envio.Destinatario.NumeroDocumento
-                : "(sin destinatario)";
-
-            lstResumen.Items.Add("Origen: " + origen);
-            lstResumen.Items.Add("Destino: " + destino);
-            lstResumen.Items.Add("Remitente: " + remitente);
-            lstResumen.Items.Add("Destinatario: " + destinatario);
-            lstResumen.Items.Add("Paquete: " + envio.Tipo + ", " + envio.PesoKg + " kg / " + envio.Descripcion);
-            lstResumen.Items.Add("Pago: " + Reportes.NombrePago(envio.ModalidadPago) + " / S/ " + envio.Precio.ToString("0.00"));
-            lstResumen.Items.Add("Vehículo: " + (envio.PlacaVehiculo ?? "-"));
-            lstResumen.Items.Add("Clave de entrega: " + envio.ClaveSeguridad);
-            lstResumen.Items.Add("");
-            lstResumen.Items.Add("Recorrido:");
-
-            // ObtenerTexto() devuelve una línea por evento; se separan para agregarlas como ítems
-            string[] eventos = envio.Historial.ObtenerTexto()
-                .Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries);
-            lstResumen.Items.AddRange(eventos);
-        }
-
-        private void lstResumen_SelectedIndexChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        // =========================================================
+        //  5. REPORTE DEL ENVÍO SELECCIONADO
+        // =========================================================
 
         private void btnReporteEnvio_Click(object sender, EventArgs e)
         {
             if (envioSeleccionado == null)
             {
-                MessageBox.Show("Seleccione un envío de la lista");
+                MessageBox.Show("Seleccione un envío de la lista.");
                 return;
             }
             Reportes.GuardarConDialogo("Reporte_" + envioSeleccionado.Codigo + ".txt",
                 Reportes.ReporteEnvio(envioSeleccionado));
         }
 
-        private void lnkPerfil_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        // Abre Reportes ENCIMA de Rastreo (filtros por periodo, sección y sedes).
+        // Al cerrarlo se vuelve aquí.
+        private void btnIrReportes_Click(object sender, EventArgs e)
         {
-            TarjetaColaborador tarjeta = new TarjetaColaborador();
-            tarjeta.MostrarDatos(Colaborador.Buscar("N00469214"));
-
-            Form ventana = new Form();
-            ventana.Text = "Colaboradora";
-            ventana.ClientSize = tarjeta.Size;
-            ventana.StartPosition = FormStartPosition.CenterParent;
-            ventana.Controls.Add(tarjeta);
-            ventana.ShowDialog(this);
+            using (FormularioReportes reportes = new FormularioReportes())
+                reportes.ShowDialog(this);
         }
 
-        private void pnlCabecera_Paint(object sender, PaintEventArgs e)
-        {
+        // =========================================================
+        //  6. DESARROLLADORA DEL FORMULARIO
+        // =========================================================
 
-        }
-
-        private void picPerfil_Click(object sender, EventArgs e)
+        private void lnkDesarrollador_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            lnkPerfil_LinkClicked(sender, null);
+            TarjetaColaborador.Abrir("N00469214", this);   // Yanela Acori
         }
     }
 }
