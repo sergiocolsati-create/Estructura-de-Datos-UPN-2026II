@@ -191,10 +191,10 @@
             // 
             // dgvVistaPrevia
             // 
-            this.dgvVistaPrevia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-            | System.Windows.Forms.AnchorStyles.Left)
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVistaPrevia.AllowUserToResizeRows = false;
+            this.dgvVistaPrevia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVistaPrevia.BackgroundColor = System.Drawing.Color.White;
             this.dgvVistaPrevia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvVistaPrevia.Location = new System.Drawing.Point(366, 24);
@@ -220,6 +220,7 @@
             // btnExportarTxt
             // 
             this.btnExportarTxt.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnExportarTxt.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExportarTxt.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarTxt.ForeColor = System.Drawing.Color.White;
             this.btnExportarTxt.Location = new System.Drawing.Point(39, 473);
@@ -233,6 +234,7 @@
             // btnExportarCSV
             // 
             this.btnExportarCSV.BackColor = System.Drawing.Color.SeaGreen;
+            this.btnExportarCSV.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExportarCSV.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarCSV.ForeColor = System.Drawing.Color.White;
             this.btnExportarCSV.Location = new System.Drawing.Point(199, 473);
@@ -250,13 +252,13 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
             this.ClientSize = new System.Drawing.Size(1110, 553);
-            this.MinimumSize = new System.Drawing.Size(1128, 600);
             this.Controls.Add(this.btnExportarCSV);
             this.Controls.Add(this.btnExportarTxt);
             this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.dgvVistaPrevia);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;
+            this.MinimumSize = new System.Drawing.Size(1128, 600);
             this.Name = "FormularioReportes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Reportes";

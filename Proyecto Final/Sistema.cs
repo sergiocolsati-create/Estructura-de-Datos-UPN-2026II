@@ -23,7 +23,7 @@ namespace Shalom
         // Dirección de la base de datos. Si en otra PC el servidor se llama distinto
         // (por ejemplo localhost\SQLEXPRESS), se cambia aquí. Se ve en SSMS → Conectar.
         private static readonly string cadenaConexion =
-            @"Data Source=localhost;Initial Catalog=ShalomDB_Final;Integrated Security=True;";
+            @"Data Source=ANGGIE\SQLEXPRESS;Initial Catalog=ShalomDB_Final;Integrated Security=True;";
 
         // Crea una conexión nueva. Cada método la abre, la usa y la cierra
         // (el "using" la cierra solo al terminar, aunque haya un error).
