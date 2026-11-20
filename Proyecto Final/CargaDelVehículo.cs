@@ -4,9 +4,10 @@ using System.Windows.Forms;
 namespace Shalom
 {
     // CARGA DEL VEHÍCULO (pila)
-    //   Apilar paquete:       el frente del ALMACÉN (cola) sube al tope de la PILA del vehículo
-    //   Pasar tope a la ruta: el TOPE de la pila pasa al final de la lista de paradas
-    //   Ver tope:             muestra el último paquete cargado sin sacarlo
+    //   Apilar (Push):    el frente del ALMACÉN (cola) sube al tope de la PILA del vehículo
+    //   Desapilar (Pop):  el TOPE de la pila baja y vuelve al final de la cola del ALMACÉN
+    //   Ver tope (Peek):  muestra el último paquete cargado sin sacarlo
+    //   Las paradas de la ruta se arman en el formulario Asignación de rutas.
     public partial class CargaDelVehículo : Form
     {
         private Vehiculo vehiculo;   // Vehículo elegido en el ComboBox
@@ -104,13 +105,13 @@ namespace Shalom
                 toolStripStatusLabel1.Text = "Apilado: " + siguiente.Codigo;
         }
 
-        // POP: el tope de la pila pasa al final de la ruta
+        // POP: el tope de la pila se baja del vehículo y vuelve al almacén
         private void btnPop_Click(object sender, EventArgs e)
         {
             Envio tope = vehiculo == null ? null : vehiculo.Carga.VerTope();   // Se guarda para el mensaje
 
-            if (EjecutarOperacion(() => Sistema.EntregarTope(vehiculo), "Pasar tope a la ruta"))
-                toolStripStatusLabel1.Text = "Pasado a la ruta: " + tope.Codigo;
+            if (EjecutarOperacion(() => Sistema.DevolverAAlmacen(vehiculo), "Desapilar paquete"))
+                toolStripStatusLabel1.Text = "Devuelto al almacén: " + tope.Codigo;
         }
 
         // PEEK: solo mira el tope, no lo saca

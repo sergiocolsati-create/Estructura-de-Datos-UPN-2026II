@@ -191,7 +191,9 @@
             // 
             // dgvVistaPrevia
             // 
-            this.dgvVistaPrevia.AllowUserToResizeColumns = false;
+            this.dgvVistaPrevia.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+            | System.Windows.Forms.AnchorStyles.Left)
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvVistaPrevia.AllowUserToResizeRows = false;
             this.dgvVistaPrevia.BackgroundColor = System.Drawing.Color.White;
             this.dgvVistaPrevia.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -199,9 +201,8 @@
             this.dgvVistaPrevia.Name = "dgvVistaPrevia";
             this.dgvVistaPrevia.RowHeadersWidth = 51;
             this.dgvVistaPrevia.RowTemplate.Height = 24;
-            this.dgvVistaPrevia.Size = new System.Drawing.Size(482, 496);
+            this.dgvVistaPrevia.Size = new System.Drawing.Size(720, 496);
             this.dgvVistaPrevia.TabIndex = 14;
-            this.dgvVistaPrevia.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvVistaPrevia_CellContentClick);
             // 
             // lblTotal
             // 
@@ -215,7 +216,6 @@
             this.lblTotal.Size = new System.Drawing.Size(160, 16);
             this.lblTotal.TabIndex = 15;
             this.lblTotal.Text = "Envíos encontrados: 0";
-            this.lblTotal.Click += new System.EventHandler(this.lblTotal_Click);
             // 
             // btnExportarTxt
             // 
@@ -249,7 +249,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(245)))), ((int)(((byte)(247)))));
-            this.ClientSize = new System.Drawing.Size(882, 553);
+            this.ClientSize = new System.Drawing.Size(1110, 553);
+            this.MinimumSize = new System.Drawing.Size(1128, 600);
             this.Controls.Add(this.btnExportarCSV);
             this.Controls.Add(this.btnExportarTxt);
             this.Controls.Add(this.lblTotal);

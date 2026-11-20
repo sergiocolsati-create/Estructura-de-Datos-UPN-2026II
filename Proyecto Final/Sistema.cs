@@ -560,7 +560,7 @@ namespace Shalom
             return "";
         }
 
-        // ALMACÉN → VEHÍCULO: el primero de la cola del almacén se sube al vehículo
+        // ALMACÉN → VEHÍCULO (Push): el primero de la cola del almacén se sube al vehículo
         // y queda en el TOPE de su pila.
         // Devuelve "" si se pudo, o el motivo si no.
         public static string DespacharA(Vehiculo vehiculo)
@@ -593,6 +593,39 @@ namespace Shalom
             }
 
             vehiculo.Carga.Apilar(Almacen.Desencolar());   // Sale del almacén y entra a la pila
+            return "";
+        }
+
+        // VEHÍCULO → ALMACÉN: el paquete del TOPE de la pila se baja del vehículo
+        // y vuelve al FINAL de la cola del almacén (es el inverso de DespacharA).
+        // Devuelve "" si se pudo, o el motivo si no.
+        public static string DevolverAAlmacen(Vehiculo vehiculo)
+        {
+            if (vehiculo == null)
+                return "Seleccione un vehículo.";
+
+            Envio tope = vehiculo.Carga.VerTope();   // Solo se mira, todavía no se saca
+            if (tope == null)
+                return "La pila está vacía.";
+
+            if (Almacen.Cantidad >= Almacen.Capacidad)
+                return "El almacén está lleno. No se puede devolver " + tope.Codigo + ".";
+
+            // Primero SQL: vuelve a "En preparación" y sin vehículo (PlacaVehiculo = NULL)
+            tope.PlacaVehiculo = null;
+            try
+            {
+                CambiarEstado(tope, EstadoEnvio.EnPreparacion,
+                    "Almacén " + tope.SedeOrigen.Nombre, "Devuelto al almacén desde " + vehiculo.Placa);
+            }
+            catch
+            {
+                tope.PlacaVehiculo = vehiculo.Placa;   // Si SQL falló, se deshace la placa en memoria
+                throw;
+            }
+
+            // SQL guardó bien: sale de la pila y entra al final de la cola del almacén
+            Almacen.Encolar(vehiculo.Carga.Desapilar());
             return "";
         }
 
@@ -660,12 +693,6 @@ namespace Shalom
             vehiculo.Carga.Desapilar();                                        // Sale de la pila
             tope.CambiarEstado(EstadoEnvio.EnReparto, ubicacion, observacion); // Estado e historial en memoria
             return "";
-        }
-
-        // Atajo usado por "Entregar tope" en Carga del vehículo: manda el tope al final de la ruta
-        public static string EntregarTope(Vehiculo vehiculo)
-        {
-            return AsignarTope(vehiculo, null);
         }
 
         // RUTA → PILA: la parada se elimina de la lista y el paquete vuelve al TOPE de la pila,
@@ -1155,35 +1182,47 @@ namespace Shalom
         public static string UsuarioNombres = "";
         public static string UsuarioSede = "";
 
-        // Revisa el usuario y la contraseña en la tabla Usuario.
-        // COLLATE Latin1_General_CS_AS hace que la contraseña distinga mayúsculas y minúsculas.
+        // Mensajes del login. Son constantes para que el formulario sepa
+        // qué campo marcar (si el usuario no existe, vuelve al campo Usuario).
+        public const string UsuarioNoExiste = "El usuario no existe.";
+        public const string ContrasenaIncorrecta = "El usuario o la contraseña es incorrecta.";
+        public const string UsuarioInactivo = "Este usuario está desactivado. Consulte con el administrador.";
+
+        // Revisa el usuario y la contraseña en la tabla Usuario, en este orden:
+        //   1. ¿Existe el usuario?        → si no: UsuarioNoExiste
+        //   2. ¿La contraseña coincide?   → si no: ContrasenaIncorrecta (distingue mayúsculas)
+        //   3. ¿Está activo?              → si no: UsuarioInactivo
         // Devuelve "" si entró (y guarda sus datos), o el motivo si no pudo entrar.
+        // Aquí NO se muestran mensajes: eso lo hace el formulario.
         public static string IniciarSesion(string nombreUsuario, string contrasena)
         {
             string consulta =
-                "SELECT u.Nombres, u.Activo, s.Nombre AS Sede " +
+                "SELECT u.Contrasena, u.Nombres, u.Activo, s.Nombre AS Sede " +
                 "FROM Usuario AS u " +
                 "LEFT JOIN Sede AS s ON s.Id = u.SedeId " +
-                "WHERE u.NombreUsuario = @usuario " +
-                "AND u.Contrasena = @contrasena COLLATE Latin1_General_CS_AS";
+                "WHERE u.NombreUsuario = @usuario";
 
             using (SqlConnection conexion = CrearConexion())
             {
                 conexion.Open();
 
-                // 1. Buscar al usuario con esa contraseña
+                // 1. Buscar al usuario por su nombre
                 using (SqlCommand comando = new SqlCommand(consulta, conexion))
                 {
                     comando.Parameters.AddWithValue("@usuario", nombreUsuario);
-                    comando.Parameters.AddWithValue("@contrasena", contrasena);
 
                     using (SqlDataReader lector = comando.ExecuteReader())
                     {
                         if (!lector.Read())
-                            return "El usuario o la contraseña son incorrectos.";
+                            return UsuarioNoExiste;   // No hay ninguna fila con ese usuario
+
+                        // Ordinal = compara letra por letra: "Clave" no es igual a "clave"
+                        string contrasenaGuardada = lector["Contrasena"].ToString();
+                        if (!string.Equals(contrasenaGuardada, contrasena, StringComparison.Ordinal))
+                            return ContrasenaIncorrecta;
 
                         if (!Convert.ToBoolean(lector["Activo"]))
-                            return "Este usuario está desactivado. Consulte con el administrador.";
+                            return UsuarioInactivo;
 
                         UsuarioNombres = lector["Nombres"].ToString();
                         UsuarioSede = lector["Sede"] == DBNull.Value ? "" : lector["Sede"].ToString();

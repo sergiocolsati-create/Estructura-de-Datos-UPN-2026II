@@ -257,7 +257,7 @@
             this.btnPop.Name = "btnPop";
             this.btnPop.Size = new System.Drawing.Size(154, 35);
             this.btnPop.TabIndex = 2;
-            this.btnPop.Text = "Pasar tope a la ruta";
+            this.btnPop.Text = "Desapilar (volver al almacén)";
             this.btnPop.UseVisualStyleBackColor = false;
             this.btnPop.Click += new System.EventHandler(this.btnPop_Click);
             // 
@@ -271,7 +271,7 @@
             this.btnPush.Name = "btnPush";
             this.btnPush.Size = new System.Drawing.Size(154, 35);
             this.btnPush.TabIndex = 1;
-            this.btnPush.Text = "Apilar paquete";
+            this.btnPush.Text = "Apilar (desde el almacén)";
             this.btnPush.UseVisualStyleBackColor = false;
             this.btnPush.Click += new System.EventHandler(this.btnPush_Click);
             // 

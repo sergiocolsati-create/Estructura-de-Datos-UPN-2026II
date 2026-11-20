@@ -32,40 +32,56 @@ namespace Shalom
             string usuario = txtUsuario.Text.Trim();
             string contrasena = txtContrasena.Text;
 
-            if (usuario == "" || contrasena == "")
+            // 1. Campos vacíos: se revisan aquí, sin consultar la base
+            if (usuario == "")
             {
-                lblMensaje.Text = "Ingrese su usuario y contraseña.";
+                Alertar("Ingrese su usuario.", txtUsuario);
+                return;
+            }
+            if (contrasena == "")
+            {
+                Alertar("Ingrese su contraseña.", txtContrasena);
                 return;
             }
 
+            // 2. Usuario, contraseña y estado: los revisa Sistema contra la tabla Usuario
             string error;
             try
             {
                 error = Sistema.IniciarSesion(usuario, contrasena);
             }
-            catch (Exception ex)
+            catch
             {
-                MessageBox.Show("No se pudo conectar con la base de datos.\n\n" + ex.Message,
-                                "Error de conexión", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                // Mensaje general: el usuario no necesita saber qué falló por dentro
+                MessageBox.Show("No se pudo iniciar sesión en este momento. Intente nuevamente; " +
+                                "si el problema continúa, use el Centro de ayuda.",
+                                "Iniciar sesión", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            if (error != "")
+            if (error == Sistema.UsuarioNoExiste)
             {
-                lblMensaje.Text = error;   // Aviso en rojo debajo del botón
+                Alertar(error, txtUsuario);
+                return;
+            }
+            if (error != "")   // Contraseña incorrecta o usuario inactivo
+            {
                 txtContrasena.Clear();
-                txtContrasena.Focus();
+                Alertar(error, txtContrasena);
                 return;
             }
 
+            // 3. Todo bien: Program.cs abre el panel principal
             DialogResult = DialogResult.OK;
             Close();
         }
 
-        // Al volver a escribir, se borra el aviso anterior
-        private void Campos_TextChanged(object sender, EventArgs e)
+        // Muestra el aviso y deja el cursor en el campo que hay que corregir
+        private void Alertar(string mensaje, TextBox campo)
         {
-            lblMensaje.Text = "";
+            MessageBox.Show(mensaje, "Iniciar sesión", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            campo.SelectAll();
+            campo.Focus();
         }
 
         // ---------- Ojito: mostrar u ocultar la contraseña ----------

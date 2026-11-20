@@ -45,7 +45,6 @@
             this.btnMostrarClave = new System.Windows.Forms.Button();
             this.lineaContrasena = new System.Windows.Forms.Panel();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.lblMensaje = new System.Windows.Forms.Label();
             this.btnAyuda = new System.Windows.Forms.Button();
             this.lnkColaboradores = new System.Windows.Forms.LinkLabel();
             this.panelMarca.SuspendLayout();
@@ -160,7 +159,6 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(330, 20);
             this.txtUsuario.TabIndex = 0;
-            this.txtUsuario.TextChanged += new System.EventHandler(this.Campos_TextChanged);
             // 
             // lineaUsuario
             // 
@@ -205,7 +203,6 @@
             this.txtContrasena.Size = new System.Drawing.Size(296, 20);
             this.txtContrasena.TabIndex = 0;
             this.txtContrasena.UseSystemPasswordChar = true;
-            this.txtContrasena.TextChanged += new System.EventHandler(this.Campos_TextChanged);
             // 
             // btnMostrarClave
             // 
@@ -252,16 +249,6 @@
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
-            // lblMensaje
-            // 
-            this.lblMensaje.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.lblMensaje.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(200)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
-            this.lblMensaje.Location = new System.Drawing.Point(350, 363);
-            this.lblMensaje.Name = "lblMensaje";
-            this.lblMensaje.Size = new System.Drawing.Size(360, 20);
-            this.lblMensaje.TabIndex = 6;
-            this.lblMensaje.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // btnAyuda
             // 
             this.btnAyuda.BackColor = System.Drawing.Color.White;
@@ -303,7 +290,6 @@
             this.ClientSize = new System.Drawing.Size(760, 460);
             this.Controls.Add(this.lnkColaboradores);
             this.Controls.Add(this.btnAyuda);
-            this.Controls.Add(this.lblMensaje);
             this.Controls.Add(this.btnIngresar);
             this.Controls.Add(this.pnlContrasena);
             this.Controls.Add(this.lblContrasena);
@@ -349,7 +335,6 @@
         private System.Windows.Forms.Button btnMostrarClave;
         private System.Windows.Forms.Panel lineaContrasena;
         private System.Windows.Forms.Button btnIngresar;
-        private System.Windows.Forms.Label lblMensaje;
         private System.Windows.Forms.Button btnAyuda;
         private System.Windows.Forms.LinkLabel lnkColaboradores;
     }

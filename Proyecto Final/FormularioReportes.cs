@@ -59,9 +59,17 @@ namespace Shalom
             dgvVistaPrevia.AllowUserToAddRows = false;
             dgvVistaPrevia.ReadOnly = true;
             dgvVistaPrevia.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvVistaPrevia.RowHeadersVisible = false;   // Quita la columna gris de la izquierda (más espacio)
             dgvVistaPrevia.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            foreach (string titulo in new[] { "Guía", "Registro", "Ruta", "Estado actual", "Peso (kg)", "Precio (S/)" })
-                dgvVistaPrevia.Columns.Add(titulo, titulo);
+
+            // Cada columna recibe una parte del ancho (peso) y nunca baja de su mínimo,
+            // así la guía y el estado siempre se leen completos.
+            AgregarColumna("Guía", 26, 130, false);
+            AgregarColumna("Registro", 16, 85, false);
+            AgregarColumna("Ruta", 14, 80, false);
+            AgregarColumna("Estado actual", 20, 115, false);
+            AgregarColumna("Peso (kg)", 12, 75, true);
+            AgregarColumna("Precio (S/)", 12, 80, true);
 
             HabilitarExportar(false);
             ActualizarRango();
@@ -93,7 +101,7 @@ namespace Shalom
         private void ActualizarRango()
         {
             FiltroReporte f = LeerFiltros();
-            dtpFecha.Enabled = f.Periodo != TipoPeriodo.Todo;  
+            dtpFecha.Enabled = f.Periodo != TipoPeriodo.Todo;
             lblRango.Text = Reportes.DescripcionPeriodo(f);
         }
 
@@ -153,14 +161,20 @@ namespace Shalom
             return Sistema.Sedes[combo.SelectedIndex - 1];
         }
 
-        private void dgvVistaPrevia_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        // Crea una columna de la vista previa.
+        //   peso:    parte del ancho que le toca (las columnas se reparten el espacio)
+        //   minimo:  ancho mínimo en píxeles, para que el texto no se corte
+        //   derecha: true para números (peso y precio se alinean a la derecha)
+        private void AgregarColumna(string titulo, int peso, int minimo, bool derecha)
         {
+            int indice = dgvVistaPrevia.Columns.Add(titulo, titulo);
+            DataGridViewColumn columna = dgvVistaPrevia.Columns[indice];
 
-        }
+            columna.FillWeight = peso;
+            columna.MinimumWidth = minimo;
 
-        private void lblTotal_Click(object sender, EventArgs e)
-        {
-
+            if (derecha)
+                columna.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
         }
     }
 }
